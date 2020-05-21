@@ -49,6 +49,10 @@
     display: inline-block;
 }
 
+.wrapper-right a{
+    text-decoration: none;
+}
+
 .telefonos {
     padding: 0;
 }

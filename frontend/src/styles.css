@@ -31,34 +31,36 @@
     font-style: normal;
 }
 
-/* Un pequeño espacio al contenido
 body{
-    margin: .1rem;
+    margin: 0;
 }
-*/
+
 
 .blue-title{
+    margin: 1.1% 0%;
     color: rgb(6, 82, 151, 1);
     font-size: 4vw;
-    font-weight: 600px;
+    font-weight: 600;
     font-family: 'Signika';
     font-style: normal;
 
 }
 
 .white-title{
+    margin: 1.1% 0%;
     color: white;
     font-size: 4vw;
-    font-weight: 600px;
+    font-weight: 600;
     font-family: 'Signika';
     font-style: normal;
 
 }
 
 .yellow-title{
+    margin: 1.1% 0%;
     color: #E7C11F;
     font-size: 4vw;
-    font-weight: 600px;
+    font-weight: 600;
     font-family: 'Signika';
     font-style: normal;
 }
@@ -68,8 +70,9 @@ body{
 }
 
 .blue-multi{
+    margin: 1% 0%;
     color: rgb(6, 82, 151, 1);
-    font-size: 1.5vw;
+    font-size: 2.5vw;
     font-weight: bold;
     font-family: 'Signika';
     font-style: normal;
@@ -77,9 +80,10 @@ body{
 }
 
 .blue-sub-title{
+    margin: 1% 0%;
     color: rgb(6, 82, 151, 1);
     font-size: 1.5vw;
-    font-weight: 600px;
+    font-weight: 500;
     font-family: 'Signika';
     font-style: normal;
     text-align: center;
@@ -140,36 +144,24 @@ body{
 
 .beneficios-item p{
     color: black;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     font-weight: 300;
     font-style: normal;
     font-family: "Signika", Arial;
 }
 
 .beneficios-item h5{
+    margin: 2% 0;
     color: rgb(6, 82, 151, 1);
-    font-size: 1.3vw;
+    font-size: 1.7vw;
     font-weight: bold;
     font-style: normal;
     font-family: "Signika", Arial;
 }
 
-.prestamo-yellow-button{
+.prestamo-yellow-button, .simula-yellow-button{
     color: white;
-    font-size: 1.4vw;
-    font-family: "Signika", Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    background-color: #f4bc07;
-    border: none;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: .5rem;
-}
-
-.simula-yellow-button{
-    color: white;
-    font-size: 1.7vw;
+    font-size: 1.8vw;
     font-family: "Signika", Arial, Helvetica, sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -217,4 +209,9 @@ body{
 .beneficios-item img{
     width: 4rem;
     height: 4rem;
+}
+
+.beneficios-item a{
+    color: #f4bc07;
+    font-weight: 900;
 }

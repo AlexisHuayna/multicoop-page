@@ -49,15 +49,15 @@
 }
   
 .dropdown-content {
-    margin-top: .2rem;
+    margin-top: .2%;
+    padding: .5% .2%;
     display: none;
     position: absolute;
     background-color: white;
     min-width: 12rem;
     border: .15rem solid #f4bc07;
-    border-radius: 2rem;
+    border-radius: 16%;
     z-index: 1;
-    padding: 3%;
 }
   
 .dropdown-content a {
@@ -75,7 +75,8 @@
 }
   
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;
+    border-radius: 30%;*/
     color: #f4bc07 !important;
 }
 
