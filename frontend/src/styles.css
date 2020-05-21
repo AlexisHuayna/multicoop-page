@@ -1,0 +1,212 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Signika';
+    src: url('assets/fonts/Signika-Light.woff2') format('woff2'),
+        url('assets/fonts/Signika-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('assets/fonts/Signika-Bold.woff2') format('woff2'),
+        url('assets/fonts/Signika-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('assets/fonts/Signika-Regular.woff2') format('woff2'),
+        url('assets/fonts/Signika-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('assets/fonts/Signika-SemiBold.woff2') format('woff2'),
+        url('assets/fonts/Signika-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Un pequeño espacio al contenido
+body{
+    margin: .1rem;
+}
+*/
+
+.blue-title{
+    color: rgb(6, 82, 151, 1);
+    font-size: 4vw;
+    font-weight: 600px;
+    font-family: 'Signika';
+    font-style: normal;
+
+}
+
+.white-title{
+    color: white;
+    font-size: 4vw;
+    font-weight: 600px;
+    font-family: 'Signika';
+    font-style: normal;
+
+}
+
+.beneficios{
+    text-align: center;
+}
+
+.blue-multi{
+    color: rgb(6, 82, 151, 1);
+    font-size: 1.5vw;
+    font-weight: bold;
+    font-family: 'Signika';
+    font-style: normal;
+    text-align: center;
+}
+
+.blue-sub-title{
+    color: rgb(6, 82, 151, 1);
+    font-size: 1.5vw;
+    font-weight: 600px;
+    font-family: 'Signika';
+    font-style: normal;
+    text-align: center;
+}
+
+.req-blue{
+    color: rgb(6, 82, 151, 1);
+    font-size: 10vw;
+}
+
+.req-li li{
+    list-style-type: none;
+    text-decoration: none;
+    padding: .1rem 1.5rem;
+}
+
+.req-li {
+    padding: 0;
+}
+
+.req-li span{
+    padding-left: .3rem;
+    color: black;
+    font-size: 1.7vw;
+    font-weight: 300;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.text-blue{
+    color: rgb(6, 82, 151, 1);
+    font-size: 1.3vw;
+    font-weight: 300;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.bold-text-blue{
+    color: rgb(6, 82, 151, 1);
+    font-size: 1.5vw;
+    font-weight: 600;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.white-text{
+    color: white;
+    font-size: 1.3vw;
+    font-weight: 300;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.beneficios-item{
+    display: inline-block;
+    margin: 1rem 3rem;   
+}
+
+.beneficios-item p{
+    color: black;
+    font-size: 1.2vw;
+    font-weight: 300;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.beneficios-item h5{
+    color: rgb(6, 82, 151, 1);
+    font-size: 1.3vw;
+    font-weight: bold;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.prestamo-yellow-button{
+    color: white;
+    font-size: 1.4vw;
+    font-family: "Signika", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: #f4bc07;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: .5rem;
+}
+
+.simula-yellow-button{
+    color: white;
+    font-size: 1.7vw;
+    font-family: "Signika", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: #f4bc07;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: .5rem;
+}
+
+.simula-yellow-button:hover, .prestamo-yellow-button:hover{
+    cursor: pointer;
+    color: rgb(1, 105, 192, 1);
+}
+
+.wrapper-button{
+    text-align: center;
+}
+
+.li-arrow{
+    width: 1%;
+    height: 1%;
+}
+
+.body-information-content{
+    padding-left: 3.5rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.tail-information-content{
+    padding-left: 3.5rem;
+    padding-top: .1rem;
+    padding-bottom: 2rem;
+}
+
+.tail-information-content h3{
+    color: rgb(6, 82, 151, 1);
+    font-size: 3vw;
+    font-weight: bold;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.beneficios-item img{
+    width: 4rem;
+    height: 4rem;
+}

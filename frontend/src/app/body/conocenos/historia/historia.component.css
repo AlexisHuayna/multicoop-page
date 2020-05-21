@@ -1,0 +1,49 @@
+.head-information-content{
+    padding-left: 3.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-image: url('../../../../assets/images/background_historia.jpg');
+    background-repeat: no-repeat;
+    background-color: #f2faed;
+    background-size: 100% 100%;
+}
+
+.historia p{
+    display: inline;
+    max-width: 25%;
+    min-width: 25%;
+}
+
+.historia h1{
+    display: inline;
+    color: #f4bc07;
+    font-size: 1.5vw !important;
+
+}
+
+.historia{
+    padding-top: 2%;
+    text-align: justify;
+    max-width: 37%;
+    font-weight: 300;
+    font-style: normal;
+    font-family: 'Signika';
+    font-size: 1.5vw;
+    display: inline-block;
+}
+
+.wrapper-historia-content{
+    padding-left: 7%;
+    padding-top: 1%;
+}
+
+.image-container{
+    display: inline-block;
+    min-width: 60%;
+    float: right;
+}
+
+.image-container img{
+    width: 50%;
+    margin-left: 20%;
+}

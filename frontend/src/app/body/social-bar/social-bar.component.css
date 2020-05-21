@@ -1,0 +1,28 @@
+.social {
+    position: fixed;
+    right: 0;
+    top: 30%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	z-index: 100;
+}
+
+.social ul {
+    list-style: none;
+}
+
+.social ul li a{
+    display: inline-block;
+    text-decoration: none;
+    background: transparent;
+	text-decoration: none;
+	padding: .5rem;
+	display: flex;
+	transition: all .5s;
+}
+
+
+.social-icon:hover{
+	transform: scale(1.3);
+}
