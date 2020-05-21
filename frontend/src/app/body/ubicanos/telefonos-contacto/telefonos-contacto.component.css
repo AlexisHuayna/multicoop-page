@@ -7,3 +7,73 @@
     background-color: #f2faed;
     background-size: 100% 100%;
 }
+
+.telefonos-information-content{
+    padding-left: 1%;
+    padding-top: 1.5%;
+}
+
+.wrapper-left{
+    max-width: 30%;
+}
+
+.wrapper-right{
+    max-width: 68%;
+}
+
+.strong-yellow{
+    color: #f4bc07;
+    font-weight: 900;
+}
+
+.wrapper-right p{
+    color: black;
+    font-size: 1.5vw;
+    font-weight: 300;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.wrapper-right li{
+    display: inline-block;
+}
+
+.telefonos {
+    padding: 0;
+}
+
+.telefonos li{
+    min-width: 30%;
+    list-style-type: none;
+    text-decoration: none;
+    padding: 1% 1.5%;
+}
+
+.telefonos h4{
+    padding: 0 2%;
+    color: #f4bc07;
+    font-size: 2vw;
+    font-weight: 600;
+    font-style: normal;
+    font-family: "Signika", Arial;
+    display: inline;
+}
+
+.telefonos-item img{
+    display: inline;
+    max-width: 7%;
+}
+
+.telefonos span{
+    display: block;
+    padding-left: 0.3%;
+    color: rgb(6, 82, 151, 1);
+    font-size: 1.7vw;
+    font-weight: 300;
+    font-style: normal;
+    font-family: "Signika", Arial;
+}
+
+.telefonos-item{
+    text-align: center;
+}
