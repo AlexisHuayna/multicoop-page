@@ -13,6 +13,7 @@ import { HistoriaComponent } from './body/conocenos/historia/historia.component'
 import { MisionVisionComponent } from './body/conocenos/mision-vision/mision-vision.component';
 import { RedAgenciasComponent } from './body/ubicanos/red-agencias/red-agencias.component';
 import { TelefonosContactoComponent } from './body/ubicanos/telefonos-contacto/telefonos-contacto.component';
+import { TransparenciaComponent } from './body/conocenos/transparencia/transparencia.component';
 import { HomeComponent } from './body/home/home.component';
 
 
@@ -51,7 +52,7 @@ const routes: Routes = [
   }, {
     path: 'serviciosMultiples/convenios',
     component: ConveniosComponent,
-    pathMatch: 'full'    
+    pathMatch: 'full'
   }, {
     path: 'conocenos/datosEmpresa',
     component: DatosEmpresaComponent,
@@ -63,6 +64,10 @@ const routes: Routes = [
   }, {
     path: 'conocenos/misionVision',
     component: MisionVisionComponent,
+    pathMatch: 'full'
+  }, {
+    path: 'conocenos/transparencia',
+    component: TransparenciaComponent,
     pathMatch: 'full'
   }, {
     path: 'ubicanos/redAgencias',
