@@ -7,3 +7,25 @@
     background-color: #f2faed;
     background-size: 100% 100%;
 }
+
+.agencias-information-content img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #E7C11F;
+}
+
+.agencias-information-content{
+    text-align: center;
+    font-family: 'Signika';
+    font-size: 2vw;
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(6, 82, 151, 1);
+}
+
+.agencia h4{
+    color: #E7C11F;
+    font-weight: 900 !important;
+    font-style: bold !important;
+}

@@ -11,14 +11,23 @@
 .telefonos-information-content{
     padding-left: 1%;
     padding-top: 1.5%;
+    padding-bottom: 3%;
+    box-sizing: border-box;
+    display: flex;
 }
 
 .wrapper-left{
-    max-width: 30%;
+    max-width: 25%;
+    width: 25%;
+    border-right: 1px solid black;
+    flex-grow: 1;
+    opacity: 0.7;
 }
 
 .wrapper-right{
-    max-width: 68%;
+    flex-grow: 1;
+    max-width: 70%;
+    padding-top: 3%;
 }
 
 .strong-yellow{
@@ -32,6 +41,8 @@
     font-weight: 300;
     font-style: normal;
     font-family: "Signika", Arial;
+    padding-top: 1%;
+    text-align: center;
 }
 
 .wrapper-right li{
@@ -61,7 +72,7 @@
 
 .telefonos-item img{
     display: inline;
-    max-width: 7%;
+    max-width: 5%;
 }
 
 .telefonos span{

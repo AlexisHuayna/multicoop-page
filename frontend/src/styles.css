@@ -55,6 +55,14 @@ body{
 
 }
 
+.yellow-title{
+    color: #E7C11F;
+    font-size: 4vw;
+    font-weight: 600px;
+    font-family: 'Signika';
+    font-style: normal;
+}
+
 .beneficios{
     text-align: center;
 }
