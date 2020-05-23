@@ -23,6 +23,8 @@ import { RedAgenciasComponent } from './body/ubicanos/red-agencias/red-agencias.
 import { TelefonosContactoComponent } from './body/ubicanos/telefonos-contacto/telefonos-contacto.component';
 import { HomeComponent } from './body/home/home.component';
 import { PersonasComponent } from './body/personas/personas.component';
+import { PrecalificadorComponent } from './body/precalificador/precalificador.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,10 +49,12 @@ import { PersonasComponent } from './body/personas/personas.component';
     TelefonosContactoComponent,
     HomeComponent,
     PersonasComponent,
+    PrecalificadorComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
