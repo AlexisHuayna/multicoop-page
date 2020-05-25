@@ -24,7 +24,11 @@ import { TelefonosContactoComponent } from './body/ubicanos/telefonos-contacto/t
 import { HomeComponent } from './body/home/home.component';
 import { PersonasComponent } from './body/personas/personas.component';
 import { PrecalificadorComponent } from './body/precalificador/precalificador.component';
+
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.component';
+import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +54,14 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     PersonasComponent,
     PrecalificadorComponent,
+    ReclamacionesComponent,
+    BolsaTrabajoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

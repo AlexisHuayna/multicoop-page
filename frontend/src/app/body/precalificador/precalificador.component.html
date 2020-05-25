@@ -1,1 +1,37 @@
-<p>precalificador works!</p>
+<form [formGroup]="precalificadorForm" (ngSubmit)="precalificar(precalificadorForm.value)">
+    <div class="">
+        <label>Nombres</label>
+        <input formControlName="nombres" type="text" class="">
+    </div>
+
+    <div class="">
+        <label>Apellidos</label>
+        <input formControlName="apellidos" type="text" class="">
+    </div>
+
+    <div class="">
+        <label>DNI</label>
+        <input formControlName="dni" type="text" class="">
+    </div>
+
+    <div class="">
+        <label>Telefono</label>
+        <input formControlName="telefono" type="text" class="">
+    </div>
+
+    <div class="">
+        <label>Localidad</label>
+        <input formControlName="localidad" type="text" class="">
+    </div>
+
+    <div class="">
+        <label>Monto solicitado en soles</label>
+        <input formControlName="monto" type="text" class="">
+    </div>
+
+    <div class="">
+        <div class="">
+            <button [disabled]="precalificadorForm.invalid" type="submit" class="">Enviar</button>
+        </div>
+    </div>
+</form>

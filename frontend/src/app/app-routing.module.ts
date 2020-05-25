@@ -15,6 +15,9 @@ import { RedAgenciasComponent } from './body/ubicanos/red-agencias/red-agencias.
 import { TelefonosContactoComponent } from './body/ubicanos/telefonos-contacto/telefonos-contacto.component';
 import { TransparenciaComponent } from './body/conocenos/transparencia/transparencia.component';
 import { HomeComponent } from './body/home/home.component';
+import { PrecalificadorComponent } from './body/precalificador/precalificador.component';
+import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.component';
+import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.component';
 
 
 const routes: Routes = [
@@ -76,6 +79,18 @@ const routes: Routes = [
   }, {
     path: 'ubicanos/telefonosContacto',
     component: TelefonosContactoComponent,
+    pathMatch: 'full'
+  }, {
+    path: 'precalificador',
+    component: PrecalificadorComponent,
+    pathMatch: 'full'
+  }, {
+    path: 'reclamacion',
+    component: ReclamacionesComponent,
+    pathMatch: 'full'
+  }, {
+    path: 'bolsaTrabajo',
+    component: BolsaTrabajoComponent,
     pathMatch: 'full'
   }
 ];
