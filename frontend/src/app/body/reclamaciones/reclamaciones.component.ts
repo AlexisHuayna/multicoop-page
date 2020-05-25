@@ -36,7 +36,8 @@ export class ReclamacionesComponent implements OnInit {
       producto: ['', Validators.compose([Validators.required])],
       otrosProducto: [{ value: '', disabled: true }, Validators.compose([Validators.required])],
       tipoReclamacion: ['', Validators.compose([Validators.required])],
-      detalleReclamacion: ['', Validators.compose([Validators.required])]
+      detalleReclamacion: ['', Validators.compose([Validators.required])],
+      condiciones: ['', Validators.compose([Validators.required])]
     })
   }
 

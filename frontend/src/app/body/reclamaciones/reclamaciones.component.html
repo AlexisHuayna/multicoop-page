@@ -1,161 +1,173 @@
-<form [formGroup]="reclamacionesForm" class="" (ngSubmit)="reclamar(reclamacionesForm.value)">
+<h1>Reclamaciones</h1>
 
-    <div class="">
-
-        <div class="">
-            <input formControlName="socio" type="checkbox" class="" checked>
-            <label class="">Socio</label>
-        </div>
+<div class="reclamaciones-content">
+    <form [formGroup]="reclamacionesForm" class="" (ngSubmit)="reclamar(reclamacionesForm.value)">
 
         <div class="">
-            <label>Agencia</label>
-            <select class="" formControlName="agencia">
-                <option value="01">Arequipa</option>
-                <option value="02">Juliaca</option>
-                <option value="03">Puno</option>
-                <option value="04">Moquegua</option>
-                <option value="05">Ayaviri</option>
-                <option value="06">Tacna</option>
-                <option value="07">Cusco</option>
-            </select>
-        </div>
-
-    </div>
-
-    <div class="">
-
-        <div class="">
-            <label>Nombres</label>
-            <input formControlName="nombres" type="text" class="" placeholder="Diego">
-        </div>
-
-        <div class="">
-            <label for="inputApellidos">Apellido Paterno</label>
-            <input formControlName="apellidoPaterno" type="text" class="" placeholder="Rivera">
-        </div>
-
-        <div class="">
-            <label>Apellido Materno</label>
-            <input formControlName="apellidoMaterno" type="text" class="" placeholder="Espinoza">
-        </div>
-
-        <div class="">
-            <label>Documento</label>
-
-            <select formControlName="tipoDocumento" class="">
-                <option selected value="dni">DNI</option>
-                <option value="carnet_extrangeria">Carnet de Extrangería</option>
-            </select>
-
-            <input formControlName="numeroDocumento" type="text" class="" placeholder="65841298">
-        </div>
-
-    </div>
-
-    <div class="">
-
-        <div class="">
-            <label>Direccion</label>
-            <input formControlName="direccion" type="text" class="" placeholder="Av. Los arces 1200">
-        </div>
-
-        <div class="">
-            <label>Departamento</label>
-            <select formControlName="departamento" id="selectDepartamento">
-            </select>
-        </div>
-
-        <div class="">
-            <label>Provincia</label>
-            <select formControlName="provincia" class="">
-            </select>
-        </div>
-
-        <div class="">
-            <label>Distrito</label>
-            <select formControlName="distrito" class="">
-            </select>
-        </div>
-
-    </div>
-
-    <div class="">
-
-        <div class="">
-            <label>Telefono</label>
-            <input formControlName="telefono" type="text" class="" placeholder="926485135">
-        </div>
-
-        <div class="">
-            <label>Correo</label>
-            <input formControlName="correo" type="text" class="" placeholder="socio01@gmail.com">
-        </div>
-
-    </div>
-
-    <div class="">
-        <div class="">
-            <label>Fecha de Incidencia</label>
-            <input formControlName="incidencia" type="text" placeholder="01-12-2020">
-        </div>
-
-    </div>
-
-    <div class="">
-        <label>Producto</label>
-        <div class="">
-
+    
             <div class="">
-                <input formControlName="producto" type="radio" class="" name="producto" value="prestamo">
-                <label class="">Prestamo</label>
+                <input formControlName="socio" type="checkbox" class="" checked>
+                <label class="">Socio</label>
             </div>
-
+    
             <div class="">
-                <input formControlName="producto" type="radio" class="" name="producto" value="agente">
-                <label class="">Agente</label>
+                <label>Agencia</label>
+                <select class="" formControlName="agencia">
+                    <option value="01">Arequipa</option>
+                    <option value="02">Juliaca</option>
+                    <option value="03">Puno</option>
+                    <option value="04">Moquegua</option>
+                    <option value="05">Ayaviri</option>
+                    <option value="06">Tacna</option>
+                    <option value="07">Cusco</option>
+                </select>
             </div>
-
-            <div class="">
-                <input formControlName="producto" type="radio" class="" name="producto" value="pago servicios">
-                <label class="">Pago de servicios</label>
-            </div>
-
-            <div class="">
-                <input formControlName="producto" type="radio" class="" name="producto" value="otros">
-                <label class="">Otros</label>
-            </div>
-
-            <input formControlName="otrosProducto" type="text">
-
+    
         </div>
-
-
+    
+        <div class="">
+    
+            <div class="">
+                <label>Nombres</label>
+                <input formControlName="nombres" type="text" class="" placeholder="Diego">
+            </div>
+    
+            <div class="">
+                <label for="inputApellidos">Apellido Paterno</label>
+                <input formControlName="apellidoPaterno" type="text" class="" placeholder="Rivera">
+            </div>
+    
+            <div class="">
+                <label>Apellido Materno</label>
+                <input formControlName="apellidoMaterno" type="text" class="" placeholder="Espinoza">
+            </div>
+    
+            <div class="">
+                <label>Documento</label>
+    
+                <select formControlName="tipoDocumento" class="">
+                    <option selected value="dni">DNI</option>
+                    <option value="carnet_extrangeria">Carnet de Extrangería</option>
+                </select>
+    
+                <input formControlName="numeroDocumento" type="text" class="" placeholder="65841298">
+            </div>
+    
+        </div>
+    
+        <div class="">
+    
+            <div class="">
+                <label>Direccion</label>
+                <input formControlName="direccion" type="text" class="" placeholder="Av. Los arces 1200">
+            </div>
+    
+            <div class="">
+                <label>Departamento</label>
+                <select formControlName="departamento" id="selectDepartamento">
+                </select>
+            </div>
+    
+            <div class="">
+                <label>Provincia</label>
+                <select formControlName="provincia" class="">
+                </select>
+            </div>
+    
+            <div class="">
+                <label>Distrito</label>
+                <select formControlName="distrito" class="">
+                </select>
+            </div>
+    
+        </div>
+    
+        <div class="">
+    
+            <div class="">
+                <label>Telefono</label>
+                <input formControlName="telefono" type="text" class="" placeholder="926485135">
+            </div>
+    
+            <div class="">
+                <label>Correo</label>
+                <input formControlName="correo" type="text" class="" placeholder="socio01@gmail.com">
+            </div>
+    
+        </div>
+    
         <div class="">
             <div class="">
-                <label>Detalle de reclamacion</label>
-
+                <label>Fecha de Incidencia</label>
+                <input formControlName="incidencia" type="text" placeholder="01-12-2020">
+            </div>
+    
+        </div>
+    
+        <div class="">
+            <label>Producto</label>
+            <div class="">
+    
                 <div class="">
-                    <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion"
-                        value="reclamo">
-                    <label class="">Reclamo</label>
+                    <input formControlName="producto" type="radio" class="" name="producto" value="prestamo">
+                    <label class="">Prestamo</label>
                 </div>
-
-                <div class=" mb-3 col-md-1">
-                    <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion" value="queja">
-                    <label class="">Queja</label>
+    
+                <div class="">
+                    <input formControlName="producto" type="radio" class="" name="producto" value="agente">
+                    <label class="">Agente</label>
                 </div>
+    
+                <div class="">
+                    <input formControlName="producto" type="radio" class="" name="producto" value="pago servicios">
+                    <label class="">Pago de servicios</label>
+                </div>
+    
+                <div class="">
+                    <input formControlName="producto" type="radio" class="" name="producto" value="otros">
+                    <label class="">Otros</label>
+                </div>
+    
+                <input formControlName="otrosProducto" type="text">
+    
             </div>
-
-
+    
+    
             <div class="">
-                <label>Detalles</label>
-                <textarea formControlName="detalleReclamacion" class="" rows="3" maxlength="800"
-                    form="reclamaciones-form"></textarea>
+                <div class="">
+                    <label>Detalle de reclamacion</label>
+    
+                    <div class="">
+                        <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion"
+                            value="reclamo">
+                        <label class="">Reclamo</label>
+                    </div>
+    
+                    <div class=" mb-3 col-md-1">
+                        <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion" value="queja">
+                        <label class="">Queja</label>
+                    </div>
+                </div>
+    
+    
+                <div class="">
+                    <label>Detalles</label>
+                    <textarea formControlName="detalleReclamacion" class="" rows="3" maxlength="800"
+                        form="reclamaciones-form"></textarea>
+                </div>
+    
+                <div class="">
+                    <input formControlCondiciones="condiciones" type="checkbox" class="">
+                    <label class="">Declaro expresamente haber leido y aceptado la informacion sobre el <a href="../../../assets/docs/tratamiento_de_datos_personales.pdf" target="_blank">tratamiento de datos personales</a>.</label>
+                    <span>Debe aceptar el tratamiento de información</span>
+                </div>
+    
+                <!--<button [disabled]="reclamacionesForm.invalid" type="submit" class="">Enviar</button>-->
+                <div class="reclamaciones-send">
+                    <button type="submit" class="">Enviar</button>
+                </div>
             </div>
-
-            <!--<button [disabled]="reclamacionesForm.invalid" type="submit" class="">Enviar</button>-->
-            <button type="submit" class="">Enviar</button>
         </div>
-    </div>
+    </form>
+</div>
 
-</form>

@@ -1,0 +1,87 @@
+.precalificador-content{
+    padding: 1% 3%;
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+
+.left-content{
+    font-family: 'Signika';
+    margin-right: 5%;
+    max-width: 100%;
+}
+
+.precalificador-field input, select{
+    display: inline-block;
+    padding: 2% 2%;
+    color: #384f85;
+    font-size: 1.5vw;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.right-content{
+    margin-left: 5%;
+}
+
+.right-content img{
+    width: 100%;
+    height: 100%;
+}
+
+.precalificador-field{
+    padding: 1% 0;
+}
+
+.precalificador-field label{
+    display: block;
+    padding: 1% 0;
+    font-size: 1.5vw;
+    font-style: normal;
+}
+
+.precalificador-send{
+    text-align: center;
+    margin-top: 2%;
+}
+
+h1{
+    font-size: 3vw;
+    text-align: center;
+    font-family: 'Signika';
+    margin: 1% 0%;
+}
+
+button:disabled{
+    width: 100%;
+    color: white;
+    font-size: 1.8vw;
+    font-family: "Signika", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: #ccc;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: .5rem;
+}
+
+button{
+    width: 100%;
+    color: white;
+    font-size: 1.8vw;
+    font-family: "Signika", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: #f4bc07;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: .5rem;
+}
+
+button:hover:enabled{
+    cursor: pointer;
+    color: rgb(1, 105, 192, 1);
+}

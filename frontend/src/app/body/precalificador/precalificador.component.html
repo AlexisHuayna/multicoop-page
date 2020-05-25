@@ -1,37 +1,54 @@
-<form [formGroup]="precalificadorForm" (ngSubmit)="precalificar(precalificadorForm.value)">
-    <div class="">
-        <label>Nombres</label>
-        <input formControlName="nombres" type="text" class="">
-    </div>
 
-    <div class="">
-        <label>Apellidos</label>
-        <input formControlName="apellidos" type="text" class="">
-    </div>
+<h1>Precalifica ahora</h1>
 
-    <div class="">
-        <label>DNI</label>
-        <input formControlName="dni" type="text" class="">
+<div class="precalificador-content">
+    <div class="left-content">
+        <form [formGroup]="precalificadorForm" (ngSubmit)="precalificar(precalificadorForm.value)">
+            <div class="precalificador-field">
+                <label>Nombres</label>
+                <input formControlName="nombres" type="text" class="" placeholder="Kleber">
+            </div>
+        
+            <div class="precalificador-field">
+                <label>Apellidos</label>
+                <input formControlName="apellidos" type="text" class="" placeholder="Carpio">
+            </div>
+        
+            <div class="precalificador-field">
+                <label>DNI</label>
+                <input formControlName="dni" type="text" class="" placeholder="45893264">
+            </div>
+        
+            <div class="precalificador-field">
+                <label>Telefono</label>
+                <input formControlName="telefono" type="text" class="" placeholder="999666333">
+            </div>
+        
+            <div class="precalificador-field">
+                <label>Localidad</label>
+                <select formControlName="localidad" id="">
+                    <option value="01">Arequipa</option>
+                    <option value="02">Juliaca</option>
+                    <option value="03">Puno</option>
+                    <option value="04">Moquegua</option>
+                    <option value="05">Ayaviri</option>
+                    <option value="06">Tacna</option>
+                    <option value="07">Cusco</option>
+                </select>
+            </div>
+        
+            <div class="precalificador-field">
+                <label>Monto solicitado en soles</label>
+                <input formControlName="monto" type="text" class="" placeholder="1500">
+            </div>
+        
+            <div class="precalificador-send">
+                <button [disabled]="precalificadorForm.invalid" type="submit" class="">Enviar</button>
+            </div>
+        </form>
     </div>
-
-    <div class="">
-        <label>Telefono</label>
-        <input formControlName="telefono" type="text" class="">
+    
+    <div class="right-content">
+        <img src="assets/images/fondo_pre_califica.jpg" alt="precalifica">
     </div>
-
-    <div class="">
-        <label>Localidad</label>
-        <input formControlName="localidad" type="text" class="">
-    </div>
-
-    <div class="">
-        <label>Monto solicitado en soles</label>
-        <input formControlName="monto" type="text" class="">
-    </div>
-
-    <div class="">
-        <div class="">
-            <button [disabled]="precalificadorForm.invalid" type="submit" class="">Enviar</button>
-        </div>
-    </div>
-</form>
+</div>

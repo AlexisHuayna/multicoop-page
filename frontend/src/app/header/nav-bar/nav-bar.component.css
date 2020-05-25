@@ -26,13 +26,13 @@
 
 .container-nav-bar li a {
     color: white;
-    font-size: 24px;
+    font-size: 1.6vw;
     font-family: "Signika", Arial, Helvetica, sans-serif;
     font-weight: 600;
     font-style: normal;
     text-decoration: none;
     line-height: 67px;
-    padding: 5px 18px;
+    padding: 2px 13px;
 }
 
 .nav-bar-item:hover{

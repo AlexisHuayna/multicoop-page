@@ -20,9 +20,13 @@ export class PrecalificadorComponent implements OnInit {
       apellidos: ['', Validators.compose([Validators.required])],
       dni: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{8}')])],
       telefono: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{9}')])],
-      localidad: ['', Validators.compose([Validators.required])],
+      localidad: ['01', Validators.compose([Validators.required])],
       monto: ['', Validators.compose([Validators.required, Validators.pattern('([5-9][0-9]{2,}|[1-9][0-9]{3,})')])]
     })
+  }
+
+  onFormValid(){
+
   }
 
   ngOnInit(): void {
