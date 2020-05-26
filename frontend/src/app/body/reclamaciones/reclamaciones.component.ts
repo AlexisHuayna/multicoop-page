@@ -9,9 +9,12 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class ReclamacionesComponent implements OnInit {
 
-  private departamentos_actuales: string
-  private provincias_actuales: string
-  private distritos_actuales: string
+  departamentos = departamentos
+  provincias = provincias
+  distritos = distritos
+
+  departamento_actual: string
+  provincia_actual: string
 
   reclamacionesForm: FormGroup
 
@@ -19,13 +22,12 @@ export class ReclamacionesComponent implements OnInit {
     private _builder: FormBuilder
   ) {
     this.reclamacionesForm = this._builder.group({
-      socio: ['',],
-      agencia: ['', Validators.compose([Validators.required])],
+      socio: [false,],
+      agencia: ['01', Validators.compose([Validators.required])],
       nombres: ['', Validators.compose([Validators.required])],
-      apellidoPaterno: ['', Validators.compose([Validators.required])],
-      apellidoMaterno: ['', Validators.compose([Validators.required])],
-      tipoDocumento: ['', Validators.compose([Validators.required])],
-      numeroDocumento: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{8}')])],
+      apellidos: ['', Validators.compose([Validators.required])],
+      tipoDocumento: ['dni', Validators.compose([Validators.required])],
+      numeroDocumento: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{8}|[0-9]{12}')])],
       direccion: ['', Validators.compose([Validators.required])],
       departamento: ['', Validators.compose([Validators.required])],
       provincia: ['', Validators.compose([Validators.required])],
@@ -37,11 +39,15 @@ export class ReclamacionesComponent implements OnInit {
       otrosProducto: [{ value: '', disabled: true }, Validators.compose([Validators.required])],
       tipoReclamacion: ['', Validators.compose([Validators.required])],
       detalleReclamacion: ['', Validators.compose([Validators.required])],
-      condiciones: ['', Validators.compose([Validators.required])]
+      condiciones: [false, Validators.compose([Validators.required])]
     })
   }
 
   ngOnInit(): void {
+  }
+
+  getDepartamentos(): Array<string> {
+    return Object.keys(departamentos)
   }
 
   getProvincias(dep) {
@@ -52,6 +58,35 @@ export class ReclamacionesComponent implements OnInit {
     return distritos[dep + prov]
   }
 
+  updateProvincias(e) {
+    var select_provincia = document.getElementById('selectProvincia')
+    select_provincia.innerHTML = ''
+
+    this.departamento_actual = e
+
+    var i = 0
+
+    for (let [prov_id, prov_value] of Object.entries(this.getProvincias(this.departamento_actual))) {
+      select_provincia.appendChild(this.createOptionItem(prov_id, prov_value));
+      if (i == 0) {
+        this.updateDistritos(prov_id)
+        i = i + 1
+      }
+    }
+  }
+
+  updateDistritos(e) {
+    var select_distrito = document.getElementById('selectDistrito')
+
+    select_distrito.innerHTML = '';
+
+    this.provincia_actual = e
+
+    for (let [dist_id, dist_value] of Object.entries(this.getDistritos(this.departamento_actual, this.provincia_actual))) {
+      select_distrito.appendChild(this.createOptionItem(dist_id, dist_value));
+    }
+  }
+
   createOptionItem(id_content, content) {
     let option = document.createElement('option');
     option.value = id_content;
@@ -59,41 +94,13 @@ export class ReclamacionesComponent implements OnInit {
     return option
   }
 
-  /*
-  updateProvincia() {
-
-    var select_provincia = document.getElementById('selectProvincia')
-
-    select_provincia.innerHTML = '';
-
-
-    var select_departamento = document.getElementById('selectDepartamento')
-    var id_dep = select_departamento.value;
-
-    for (let prov in getProvincias(id_dep)) {
-      select_provincia.appendChild(createOptionItem(prov, provincias[id_dep][prov]));
-    }
-
-    updateDistrito();
-
+  disableOtros() {
+    this.reclamacionesForm.get('otrosProducto').disable()
   }
 
-  updateDistrito() {
-    var select_distrito = document.getElementById('selectDistrito')
-
-    select_distrito.innerHTML = '';
-
-    var select_departamento = document.getElementById('selectDepartamento')
-    var id_dep = select_departamento.value
-
-    var select_provincia = document.getElementById('selectProvincia')
-    var id_prov = select_provincia.value
-
-    for (let dist in getDistritos(id_dep, id_prov)) {
-      select_distrito.appendChild(createOptionItem(dist, distritos[id_dep + id_prov][dist]))
-    }
-  }*/
-
+  enableOtros() {
+    this.reclamacionesForm.get('otrosProducto').enable()
+  }
 
   addReclamacion(reclamacion): void {
 

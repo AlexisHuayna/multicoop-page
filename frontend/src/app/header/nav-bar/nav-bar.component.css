@@ -3,6 +3,11 @@
     cursor: pointer;
 }
 
+.container-logo-nav-bar img{
+    padding-top: .3%;
+    width: 14.5%;
+}
+
 .container-nav-bar{
     background: rgb(1, 105, 192, 1);
     background: linear-gradient(90deg, rgba(1, 79, 152, 1) 0%, rgba(1, 105, 192, 1) 35%, rgba(1, 79, 152, 1) 100%);
@@ -54,7 +59,7 @@
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 12rem;
+    min-width: 13%;
     border: .15rem solid #f4bc07;
     border-radius: 16%;
     z-index: 1;
