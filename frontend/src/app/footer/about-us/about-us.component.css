@@ -4,18 +4,28 @@
     color: #0169c4;
 }
 
+.title-footer-item img{
+    width: 7%;
+}
+
+.mx-auto{
+    text-align: center;
+}
+
+
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+
+    grid-template-columns: auto auto 22% 22%;
     grid-gap: 2rem;
-    padding: 0 1.5rem;
+    margin: 0 5%;
     font-family: 'Signika';
 }
 
 .grid-item h3{
     display: inline;
     color: #f4bc07;
-    font-size: 33px;
+    font-size: 3vw;
 }
 
 .grid-item li a{
@@ -28,6 +38,6 @@
 }
 
 .grid-item ul{
-    padding: .2rem 1.1rem;
+    padding: .2% 1.1%;
 }
 
