@@ -8,6 +8,52 @@
     background-size: 100% 100%;
 }
 
+.reclamaciones-content form{
+    font-style: normal;
+    font-family: 'Signika';
+    font-size: 1.5vw;
+    width: 50%;
+    margin: auto;
+}
+
+.primera-fila{
+    margin: 1% 0;
+}
+
+.socio-field{
+    margin-right: 2%;
+    display: inline;
+}
+
+.agencia-field{
+    float: right;
+    display: inline;
+}
+
+.segunda-fila{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 1% 0;
+}
+
+.nombres-field{
+    margin-right: 2%;
+    display: inline;
+}
+
+.apellidos-field{
+    display: inline;
+}
+
+.tercera-fila {
+    margin: 1% 0;
+    width: 100%;
+}
+
+.tercera-fila select{
+    margin: 0 2%;
+}
+
 .reclamaciones-send{
     text-align: center;
     margin-top: 2%;

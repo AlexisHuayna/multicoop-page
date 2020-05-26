@@ -1,14 +1,14 @@
 <div class="reclamaciones-content">
     <form [formGroup]="reclamacionesForm" class="" (ngSubmit)="reclamar(reclamacionesForm.value)">
 
-        <div class="">
+        <div class="primera-fila">
 
-            <div class="">
+            <div class="socio-field">
                 <label class="">Socio Multicoop</label>
                 <input formControlName="socio" type="checkbox" class="" checked>
             </div>
 
-            <div class="">
+            <div class="agencia-field">
                 <label>Agencia</label>
                 <select class="" formControlName="agencia">
                     <option value="01">Arequipa</option>
@@ -22,30 +22,28 @@
             </div>
         </div>
 
-        <div class="">
+        <div class="segunda-fila">
 
-            <div class="">
+            <div class="nombres-field">
                 <label>Nombres</label>
                 <input formControlName="nombres" type="text" class="" placeholder="Diego Armando">
             </div>
 
-            <div class="">
+            <div class="apellidos-field">
                 <label for="inputApellidos">Apellidos</label>
                 <input formControlName="apellidos" type="text" class="" placeholder="Rivera Corrales">
             </div>
         </div>
 
-        <div>
-            <div class="">
-                <label>Documento</label>
+        <div class="tercera-fila">
+            <label>Documento</label>
 
-                <select formControlName="tipoDocumento" class="">
-                    <option value="dni">DNI</option>
-                    <option value="ce">Carnet de Extrangería</option>
-                </select>
+            <select formControlName="tipoDocumento" class="">
+                <option value="dni">DNI</option>
+                <option value="ce">Carnet de Extrangería</option>
+            </select>
 
-                <input formControlName="numeroDocumento" type="text" class="" placeholder="65841298">
-            </div>
+            <input formControlName="numeroDocumento" type="text" class="" placeholder="65841298">
         </div>
 
         <div class="">
