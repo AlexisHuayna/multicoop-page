@@ -29,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.component';
 import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.component';
+import { OportunidadesComponent } from './body/bolsa-trabajo/oportunidades/oportunidades.component';
+import { OportunidadDetallesComponent } from './body/bolsa-trabajo/oportunidad-detalles/oportunidad-detalles.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.compon
     PrecalificadorComponent,
     ReclamacionesComponent,
     BolsaTrabajoComponent,
+    OportunidadesComponent,
+    OportunidadDetallesComponent,
   ],
   imports: [
     BrowserModule,

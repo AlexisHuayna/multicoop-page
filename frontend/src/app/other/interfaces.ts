@@ -14,25 +14,24 @@ export interface Postulante {
     correo: string,
     edad: number,
     telefono: string
-
+    cv: any
 }
 
 export interface Reclamacion {
     socio: number,
     agencia: string,
     nombres: string,
-    apellido_paterno: string,
-    apellido_materno: string,
-    tipo_documento: string,
-    numero_documento: string,
+    apellidos: string,
+    tipoDocumento: string,
+    numeroDocumento: string,
     direccion: string,
     departamento: string,
     provincia: string,
     distrito: string,
     telefono: string,
     correo: string,
-    fecha_incidencia: string,
+    incidencia: string,
     producto: string,
-    tipo_reclamacion: string,
-    detalle_reclamacion: string
+    tipoReclamacion: string,
+    detalleReclamacion: string
 }

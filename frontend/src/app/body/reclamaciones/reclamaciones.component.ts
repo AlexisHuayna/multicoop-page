@@ -23,23 +23,23 @@ export class ReclamacionesComponent implements OnInit {
   ) {
     this.reclamacionesForm = this._builder.group({
       socio: [false,],
-      agencia: ['01', Validators.compose([Validators.required])],
+      agencia: ['01', ],
       nombres: ['', Validators.compose([Validators.required])],
       apellidos: ['', Validators.compose([Validators.required])],
       tipoDocumento: ['dni', Validators.compose([Validators.required])],
-      numeroDocumento: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{8}|[0-9]{12}')])],
+      numeroDocumento: ['', Validators.compose([Validators.required, Validators.pattern('([0-9]{8}|[0-9]{12})')])],
       direccion: ['', Validators.compose([Validators.required])],
-      departamento: ['', Validators.compose([Validators.required])],
-      provincia: ['', Validators.compose([Validators.required])],
-      distrito: ['', Validators.compose([Validators.required])],
+      departamento: ['', ],
+      provincia: ['', ],
+      distrito: ['', ],
       telefono: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{9}')])],
       correo: ['', Validators.compose([Validators.required, Validators.email])],
       incidencia: ['', Validators.compose([Validators.required])],
       producto: ['', Validators.compose([Validators.required])],
-      otrosProducto: [{ value: '', disabled: true }, Validators.compose([Validators.required])],
+      otrosProducto: [{ value: '', disabled: true },],
       tipoReclamacion: ['', Validators.compose([Validators.required])],
       detalleReclamacion: ['', Validators.compose([Validators.required])],
-      condiciones: [false, Validators.compose([Validators.required])]
+      condiciones: [false, Validators.compose([Validators.requiredTrue])]
     })
   }
 
@@ -70,6 +70,8 @@ export class ReclamacionesComponent implements OnInit {
       select_provincia.appendChild(this.createOptionItem(prov_id, prov_value));
       if (i == 0) {
         this.updateDistritos(prov_id)
+        this.reclamacionesForm.get('provincia').setValue(prov_id)
+        
         i = i + 1
       }
     }
@@ -81,9 +83,16 @@ export class ReclamacionesComponent implements OnInit {
     select_distrito.innerHTML = '';
 
     this.provincia_actual = e
+    
+    var i = 0
 
     for (let [dist_id, dist_value] of Object.entries(this.getDistritos(this.departamento_actual, this.provincia_actual))) {
       select_distrito.appendChild(this.createOptionItem(dist_id, dist_value));
+      if( i == 0){
+        this.reclamacionesForm.get('distrito').setValue(dist_id)
+        i = i + 1
+
+      }
     }
   }
 
@@ -103,11 +112,14 @@ export class ReclamacionesComponent implements OnInit {
   }
 
   addReclamacion(reclamacion): void {
-
+    console.log(reclamacion)
   }
 
   reclamar(values): void {
-    console.log(values)
+    if(values['producto'] === 'otros'){
+      values['producto'] = values['otrosProducto']
+    }
+
     this.addReclamacion(values)
   }
 
