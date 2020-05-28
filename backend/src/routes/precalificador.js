@@ -17,18 +17,9 @@ router.post('/api/precalificador', (req, res) => {
 
     mysqlConnection.query(query_add_pre_calificador, (err, rows, fields) => {
         if (!err) {
-            //enviaamos correo 
             emailController.sendEmail(req, res)
-
-            if(res.statusCode == 500){
-                console.log("Se agrego pero no se envio el correo hacer un log del precalificador para luego enviarlo");
-                res.status(500);
-            }else{
-                res.status(200);
-            }
         } else {
-            console.log("Intentar agregar de nuevo");
-            res.status(500);
+            res.status(500).send({ db: 0, email: 0 });
         }
     });
 
