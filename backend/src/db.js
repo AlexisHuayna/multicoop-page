@@ -1,13 +1,13 @@
 const mysql = require('mysql');
 
-const mysqlConnection = mysql.createConnection({
+const conexion_mysql = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'ServerMulti321@',
     database: 'multicoop_page'
 });
 
-mysqlConnection.connect((err) => {
+conexion_mysql.connect((err) => {
     if (err) {
         console.log(err);
         console.log('CONNECTION DEFUSED');
@@ -17,4 +17,4 @@ mysqlConnection.connect((err) => {
     }
 });
 
-module.exports = mysqlConnection;
+module.exports = conexion_mysql;
