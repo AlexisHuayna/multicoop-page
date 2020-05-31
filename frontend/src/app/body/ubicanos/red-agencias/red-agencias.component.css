@@ -1,7 +1,7 @@
 .head-information-content{
-    padding-left: 3.5rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-left: 3.5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     background-image: url('../../../../assets/images/background_red_agencias.jpg');
     background-repeat: no-repeat;
     background-color: #f2faed;
@@ -21,13 +21,20 @@
 }
 
 .agencias-information-content img{
-    width: 125px;
-    height: 125px;
+    width: 40%;
     border-radius: 50%;
     border: 3px solid #E7C11F;
 }
 
 .agencias-container-bottom{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 3%;
+}
+
+.agencias-container-top{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     margin-top: 3%;
 }
 

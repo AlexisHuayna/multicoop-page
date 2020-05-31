@@ -13,4 +13,14 @@ export class NavBarComponent implements OnInit {
   }
 
 
+  responsiveController() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "container-nav-bar") {
+      x.className += " responsive";
+    } else {
+      x.className = "container-nav-bar";
+    }
+  }
+
+
 }
