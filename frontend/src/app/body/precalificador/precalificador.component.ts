@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PreCalificador } from 'src/app/other/interfaces';
+import { PrecalificadorService } from 'src/app/services/precalificador.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-precalificador',
@@ -12,8 +14,9 @@ export class PrecalificadorComponent implements OnInit {
   precalificadorForm: FormGroup
 
   constructor(
-    private _api: ApiService,
-    private _builder: FormBuilder
+    public precalificadorService: PrecalificadorService,
+    private _builder: FormBuilder,
+    private router: Router
   ) {
     this.precalificadorForm = this._builder.group({
       nombres: ['', Validators.compose([Validators.required])],
@@ -25,22 +28,22 @@ export class PrecalificadorComponent implements OnInit {
     })
   }
 
-  onFormValid(){
+  onFormValid() {
 
   }
 
   ngOnInit(): void {
   }
 
-  addPreCalificador(precalificador) {
-    //get data from formulario
-
-    //this._api.addPreCalificador()
+  addPreCalificador(precalificador: PreCalificador) {
+    console.log(precalificador)
+    this.precalificadorService.addPrecalificador(precalificador);
   }
 
   precalificar(values) {
-    this.addPreCalificador(values)
-    console.log(values)
+    this.addPreCalificador(<PreCalificador>values)
+    alert("Gracias por precalificar estaremos en contacto.")
+    this.router.navigate(['/']);
   }
 
 }

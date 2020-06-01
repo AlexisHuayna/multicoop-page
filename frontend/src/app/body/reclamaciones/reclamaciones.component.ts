@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { departamentos, provincias, distritos } from '../../other/ubigeo';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reclamaciones',
@@ -19,19 +20,20 @@ export class ReclamacionesComponent implements OnInit {
   reclamacionesForm: FormGroup
 
   constructor(
-    private _builder: FormBuilder
+    private _builder: FormBuilder,
+
   ) {
     this.reclamacionesForm = this._builder.group({
       socio: [false,],
-      agencia: ['01', ],
+      agencia: ['01',],
       nombres: ['', Validators.compose([Validators.required])],
       apellidos: ['', Validators.compose([Validators.required])],
       tipoDocumento: ['dni', Validators.compose([Validators.required])],
       numeroDocumento: ['', Validators.compose([Validators.required, Validators.pattern('([0-9]{8}|[0-9]{12})')])],
       direccion: ['', Validators.compose([Validators.required])],
-      departamento: ['', ],
-      provincia: ['', ],
-      distrito: ['', ],
+      departamento: ['',],
+      provincia: ['',],
+      distrito: ['',],
       telefono: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{9}')])],
       correo: ['', Validators.compose([Validators.required, Validators.email])],
       incidencia: ['', Validators.compose([Validators.required])],
@@ -71,7 +73,7 @@ export class ReclamacionesComponent implements OnInit {
       if (i == 0) {
         this.updateDistritos(prov_id)
         this.reclamacionesForm.get('provincia').setValue(prov_id)
-        
+
         i = i + 1
       }
     }
@@ -83,12 +85,12 @@ export class ReclamacionesComponent implements OnInit {
     select_distrito.innerHTML = '';
 
     this.provincia_actual = e
-    
+
     var i = 0
 
     for (let [dist_id, dist_value] of Object.entries(this.getDistritos(this.departamento_actual, this.provincia_actual))) {
       select_distrito.appendChild(this.createOptionItem(dist_id, dist_value));
-      if( i == 0){
+      if (i == 0) {
         this.reclamacionesForm.get('distrito').setValue(dist_id)
         i = i + 1
 
@@ -116,7 +118,7 @@ export class ReclamacionesComponent implements OnInit {
   }
 
   reclamar(values): void {
-    if(values['producto'] === 'otros'){
+    if (values['producto'] === 'otros') {
       values['producto'] = values['otrosProducto']
     }
 

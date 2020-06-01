@@ -136,6 +136,7 @@
 @media screen and (max-width: 1000px){
     .container-nav-bar.responsive {
         position: relative;
+        z-index: 200;
     }
 
     .container-nav-bar.responsive a.icon {

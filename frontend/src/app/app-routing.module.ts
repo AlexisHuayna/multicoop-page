@@ -13,11 +13,11 @@ import { HistoriaComponent } from './body/conocenos/historia/historia.component'
 import { MisionVisionComponent } from './body/conocenos/mision-vision/mision-vision.component';
 import { RedAgenciasComponent } from './body/ubicanos/red-agencias/red-agencias.component';
 import { TelefonosContactoComponent } from './body/ubicanos/telefonos-contacto/telefonos-contacto.component';
-import { TransparenciaComponent } from './body/conocenos/transparencia/transparencia.component';
 import { HomeComponent } from './body/home/home.component';
 import { PrecalificadorComponent } from './body/precalificador/precalificador.component';
 import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.component';
 import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.component';
+import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-pasivas.component';
 
 
 const routes: Routes = [
@@ -69,10 +69,6 @@ const routes: Routes = [
     component: MisionVisionComponent,
     pathMatch: 'full'
   }, {
-    path: 'conocenos/transparencia',
-    component: TransparenciaComponent,
-    pathMatch: 'full'
-  }, {
     path: 'ubicanos/redAgencias',
     component: RedAgenciasComponent,
     pathMatch: 'full'
@@ -91,6 +87,10 @@ const routes: Routes = [
   }, {
     path: 'bolsaTrabajo',
     component: BolsaTrabajoComponent,
+    pathMatch: 'full'
+  }, {
+    path: 'transparencia/tasasPasivas',
+    component: TasasPasivasComponent,
     pathMatch: 'full'
   }
 ];

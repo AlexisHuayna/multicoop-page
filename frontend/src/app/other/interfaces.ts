@@ -18,7 +18,7 @@ export interface Postulante {
 }
 
 export interface Reclamacion {
-    socio: number,
+    socio: boolean,
     agencia: string,
     nombres: string,
     apellidos: string,

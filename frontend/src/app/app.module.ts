@@ -31,6 +31,7 @@ import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.compo
 import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.component';
 import { OportunidadesComponent } from './body/bolsa-trabajo/oportunidades/oportunidades.component';
 import { OportunidadDetallesComponent } from './body/bolsa-trabajo/oportunidad-detalles/oportunidad-detalles.component';
+import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-pasivas.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { OportunidadDetallesComponent } from './body/bolsa-trabajo/oportunidad-d
     BolsaTrabajoComponent,
     OportunidadesComponent,
     OportunidadDetallesComponent,
+    TasasPasivasComponent,
   ],
   imports: [
     BrowserModule,
