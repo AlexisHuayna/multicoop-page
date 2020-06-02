@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { departamentos, provincias, distritos } from '../../other/ubigeo';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { ReclamacionService } from 'src/app/services/reclamacion.service';
+import { Reclamacion } from 'src/app/other/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reclamaciones',
@@ -21,7 +23,8 @@ export class ReclamacionesComponent implements OnInit {
 
   constructor(
     private _builder: FormBuilder,
-
+    private reclamacionService: ReclamacionService,
+    private router: Router
   ) {
     this.reclamacionesForm = this._builder.group({
       socio: [false,],
@@ -113,8 +116,8 @@ export class ReclamacionesComponent implements OnInit {
     this.reclamacionesForm.get('otrosProducto').enable()
   }
 
-  addReclamacion(reclamacion): void {
-    console.log(reclamacion)
+  addReclamacion(reclamacion: Reclamacion): void {
+    this.reclamacionService.addReclamacion(reclamacion)
   }
 
   reclamar(values): void {
@@ -122,7 +125,10 @@ export class ReclamacionesComponent implements OnInit {
       values['producto'] = values['otrosProducto']
     }
 
-    this.addReclamacion(values)
+    this.addReclamacion(<Reclamacion>values)
+    alert("Estaremos en contacto")
+    this.router.navigate(['/']);
+
   }
 
 }

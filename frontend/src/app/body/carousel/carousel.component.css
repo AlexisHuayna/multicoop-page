@@ -1,7 +1,7 @@
 .carousel-item-0{
     background-image: url('../../../assets/images/bienvenida_carousel_item_0.jpg');
     background-repeat: no-repeat;
-    background-color: #f2faed;
+    background-color: #424240;
     background-size: 100% auto;
     border-radius: 2.5rem;
 }
@@ -9,7 +9,7 @@
 .carousel-item-1{
     background-image: url('../../../assets/images/bienvenida_carousel_item_1.jpg');
     background-repeat: no-repeat;
-    background-color: #f2faed;
+    background-color: #424240;
     background-size: 100% auto;
     border-radius: 2.5rem;
 }
@@ -17,7 +17,7 @@
 .carousel-item-2{
     background-image: url('../../../assets/images/bienvenida_carousel_item_2.jpg');
     background-repeat: no-repeat;
-    background-color: #f2faed;
+    background-color: #424240;
     background-size: 100% auto;
     border-radius: 2.5rem;
 }
