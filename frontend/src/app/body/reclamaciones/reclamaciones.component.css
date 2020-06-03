@@ -16,7 +16,7 @@
     margin: auto;
 }
 
-.reclamaciones-content input[type=text], select{
+.reclamaciones-content input[type=text], input[type=date], select{
     padding: .6% 1%;
     margin-left: 1%;
     color: #384f85;
