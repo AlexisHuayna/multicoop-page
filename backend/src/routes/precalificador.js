@@ -44,7 +44,7 @@ router.post('/api/precalificador', (req, res) => {
 
             correoControlador.enviarCorreo(req, res)
         } else {
-            res.status(500).send({ db: 0, email: 0 });
+            res.status(500).end();
         }
     });
 });

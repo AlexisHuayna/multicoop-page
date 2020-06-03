@@ -36,7 +36,6 @@ export class PrecalificadorComponent implements OnInit {
   }
 
   addPreCalificador(precalificador: PreCalificador) {
-    console.log(precalificador)
     this.precalificadorService.addPrecalificador(precalificador);
   }
 

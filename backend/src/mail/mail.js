@@ -32,9 +32,9 @@ exports.enviarCorreo = (req, res) => {
 
     transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
-            res.status(500).send({ email: 0 })
+            res.status(500).send()
         } else {
-            res.status(200).send({ email: 1 })
+            res.status(200).send()
         }
     });
 };
