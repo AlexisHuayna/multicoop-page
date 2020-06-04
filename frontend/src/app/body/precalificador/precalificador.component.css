@@ -85,3 +85,7 @@ button:hover:enabled{
     cursor: pointer;
     color: rgb(1, 105, 192, 1);
 }
+
+.helper-informacion{
+    font-weight: 300;
+}

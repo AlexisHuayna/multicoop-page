@@ -40,6 +40,7 @@
             <div class="precalificador-field">
                 <label>Monto solicitado en soles</label>
                 <input formControlName="monto" type="text" class="" placeholder="1500">
+                <div class="helper-informacion" *ngIf="!precalificadorForm.get('monto').value">El monto debe ser mayor a 500 y menor a 3000</div>
             </div>
         
             <div class="precalificador-send">
