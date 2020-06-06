@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Oportunidad } from 'src/app/other/interfaces';
 
 @Component({
   selector: 'app-bolsa-trabajo',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BolsaTrabajoComponent implements OnInit {
 
+  oportunidadSeleccionada: Oportunidad
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  actualizarOportunidad(oportunidad: Oportunidad){
+    this.oportunidadSeleccionada = oportunidad
   }
 
 }

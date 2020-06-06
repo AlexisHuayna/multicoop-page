@@ -1,1 +1,72 @@
-<p>oportunidad-detalles works!</p>
+<div *ngIf="oportunidad">
+
+    <div class="title-oportunidad">
+        <img src="assets/icons/right_arrow.svg" alt="5%">
+        <h1>{{oportunidad.cargo}}</h1>
+        <img src="assets/icons/left_arrow.svg" alt="5%">
+    </div>
+    
+    <div class="oportunidad">
+        <div class="campo">
+            <div class="campo-name">
+                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <span>Cargo</span>
+            </div>
+            <div class="campo-valor">{{oportunidad.cargo}}</div>
+        </div>
+    
+        <div class="campo">
+            <div class="campo-name">
+                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <span>Horario</span>
+            </div>
+            <div class="campo-valor">{{oportunidad.horario}}</div>
+        </div>
+    
+        <div class="campo">
+            <div class="campo-name">
+                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <span>Sueldo</span>
+            </div>
+            <div class="campo-valor">{{oportunidad.sueldo}}</div>
+        </div>
+    
+        <div class="campo">
+            <div class="campo-name">
+                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <span>Fecha Inicio</span>
+            </div>
+            <div class="campo-valor">{{oportunidad.fechaInicio}}</div>
+        </div>
+    
+        <div class="campo">
+            <div class="campo-name">
+                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <span>Beneficios</span>
+            </div>
+            <div class="campo-valor">{{oportunidad.beneficios}}</div>
+        </div>
+    
+        <div class="campo">
+            <div class="campo-name">
+                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <span>Vacantes</span>
+            </div>
+            <div class="campo-valor">{{oportunidad.vacantes}}</div>
+        </div>
+    
+        <button class="prestamo-yellow-button">Postula Aqui</button>
+    </div>
+    
+</div>
+
+
+
+<!--agenciaId: string,
+    cargo: string,
+    horario: string,
+    sueldo: string,
+    fechaInicio: string,
+    beneficios: string,
+    vacantes: number,
+-->

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Oportunidad } from 'src/app/other/interfaces';
 
 @Component({
   selector: 'app-oportunidad-detalles',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./oportunidad-detalles.component.css']
 })
 export class OportunidadDetallesComponent implements OnInit {
+
+  @Input() oportunidad: Oportunidad
 
   constructor() { }
 

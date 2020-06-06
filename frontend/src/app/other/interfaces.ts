@@ -7,6 +7,17 @@ export interface PreCalificador {
     monto: number,
 }
 
+export interface Oportunidad {
+    agenciaId: string,
+    cargo: string,
+    horario: string,
+    sueldo: string,
+    fechaInicio: string,
+    beneficios: string,
+    vacantes: number
+}
+
+
 export interface Postulante {
     nombres: string,
     apellidos: string,

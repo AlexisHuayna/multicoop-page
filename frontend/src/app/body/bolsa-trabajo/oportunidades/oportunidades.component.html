@@ -22,7 +22,7 @@
     </div>
 </div>
 
-<!--
+
 <div class="oportunidades-content">
 
     <h3>Oportunidades Multicoop</h3>
@@ -35,8 +35,8 @@
             <th>TIPO</th>
             <th>VACANTES</th>
         </tr>
-        <tr *ngFor="let oportunidad of oportunidades">
-            <td> <a routerLink="oportunidad/:id"></a> {{oportunidad.agencia}}</td>
+        <tr *ngFor="let oportunidad of oportunidades" (click)="selecionarOportunidad(oportunidad)">
+            <td>{{oportunidad.agencia}}</td>
             <td>{{oportunidad.agencia}}</td>
             <td>{{oportunidad.puesto}}</td>
             <td>{{oportunidad.tipo}}</td>
@@ -45,4 +45,3 @@
     </table>
 
 </div>
--->
