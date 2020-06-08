@@ -1,0 +1,70 @@
+#oportunidades tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#oportunidades tr:hover {
+    background-color: #ddd;
+}
+
+#oportunidades td:hover{
+    color: #f4bc07;
+}
+
+#oportunidades th {
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    font-size: 2vw;
+    font-family: 'Signika';
+    font-weight: 250;
+    font-style: normal;
+    background-color: #065297;
+    color: white;
+    border: 3px solid #f4bc07;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#oportunidades{
+    border: 3px solid #f4bc07;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 7%;
+}
+
+#oportunidades td{
+    border-left: 3px solid #f4bc07;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+    font-size: 1.5vw;
+    font-family: 'Signika';
+    font-weight: 250;
+    font-style: normal;
+}
+
+#oportunidades tr{
+    height: 100%;
+}
+
+.oportunidades-content{
+    text-align: center;
+}
+
+.oportunidad-title h3{
+    display: inline;
+    margin: 0 1%;
+    padding: 0;
+    color: #065297;
+    font-size: 2.5vw;
+    font-family: 'Signika';
+    font-weight: 350;
+    font-style: normal;
+    line-height: 1;
+}
+
+.oportunidad-title{
+    margin: 3% 0;
+}

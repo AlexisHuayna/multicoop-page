@@ -1,15 +1,16 @@
-<div *ngIf="oportunidad">
+<div *ngIf="oportunidad" class="oportunidad-detalle">
 
-    <div class="title-oportunidad">
-        <img src="assets/icons/right_arrow.svg" alt="5%">
+    <div class="oportunidad-title">
+        <img src="assets/icons/right_arrow.svg" width="2%" alt="">
         <h1>{{oportunidad.cargo}}</h1>
-        <img src="assets/icons/left_arrow.svg" alt="5%">
+        <img src="assets/icons/left_arrow.svg" width="2%" alt="">
     </div>
     
     <div class="oportunidad">
+
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <img src="assets/icons/right_arrow.svg" width="3%" alt="Cargo">
                 <span>Cargo</span>
             </div>
             <div class="campo-valor">{{oportunidad.cargo}}</div>
@@ -17,7 +18,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <img src="assets/icons/right_arrow.svg" width="3%" alt="Horario">
                 <span>Horario</span>
             </div>
             <div class="campo-valor">{{oportunidad.horario}}</div>
@@ -25,7 +26,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <img src="assets/icons/right_arrow.svg" width="3%" alt="Sueldo">
                 <span>Sueldo</span>
             </div>
             <div class="campo-valor">{{oportunidad.sueldo}}</div>
@@ -33,7 +34,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <img src="assets/icons/right_arrow.svg" width="3%" alt="Fecha de Inicio">
                 <span>Fecha Inicio</span>
             </div>
             <div class="campo-valor">{{oportunidad.fechaInicio}}</div>
@@ -41,7 +42,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <img src="assets/icons/right_arrow.svg" width="3%" alt="Beneficios">
                 <span>Beneficios</span>
             </div>
             <div class="campo-valor">{{oportunidad.beneficios}}</div>
@@ -49,24 +50,19 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" alt="5%">
+                <img src="assets/icons/right_arrow.svg" width="3%" alt="Vacantes">
                 <span>Vacantes</span>
             </div>
             <div class="campo-valor">{{oportunidad.vacantes}}</div>
         </div>
     
-        <button class="prestamo-yellow-button">Postula Aqui</button>
+        <div class="campo">
+            <div class="campo-actions">
+                <button class="prestamo-yellow-button">Postula Aqui</button>
+
+                <button class="prestamo-yellow-button" (click)="mostrarListaOportunidades()">Ver otras Oportunidades</button>
+            </div>
+        </div>
     </div>
     
 </div>
-
-
-
-<!--agenciaId: string,
-    cargo: string,
-    horario: string,
-    sueldo: string,
-    fechaInicio: string,
-    beneficios: string,
-    vacantes: number,
--->

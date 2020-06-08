@@ -5,6 +5,11 @@
 </div>
 
 
-<app-oportunidades (oportunidadSeleccionada)="actualizarOportunidad($event)"></app-oportunidades>
+<app-oportunidades (oportunidadSeleccionada)="actualizarOportunidad($event)"
+        [oportunidades]="oportunidades"
+        [estado]="listaOportunidades">
+</app-oportunidades>
 
-<app-oportunidad-detalles [oportunidad]="oportunidadSeleccionada"></app-oportunidad-detalles>
+<app-oportunidad-detalles [oportunidad]="oportunidadSeleccionada" 
+        (listaOportunidades)="mostrarListaOportunidades($event)">
+</app-oportunidad-detalles>
