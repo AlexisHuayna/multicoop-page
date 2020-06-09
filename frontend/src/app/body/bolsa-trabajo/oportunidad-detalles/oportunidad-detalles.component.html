@@ -10,7 +10,7 @@
 
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="3%" alt="Cargo">
+                <img src="assets/icons/right_arrow.svg" width="5%" alt="Cargo">
                 <span>Cargo</span>
             </div>
             <div class="campo-valor">{{oportunidad.cargo}}</div>
@@ -18,7 +18,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="3%" alt="Horario">
+                <img src="assets/icons/right_arrow.svg" width="5%" alt="Horario">
                 <span>Horario</span>
             </div>
             <div class="campo-valor">{{oportunidad.horario}}</div>
@@ -26,7 +26,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="3%" alt="Sueldo">
+                <img src="assets/icons/right_arrow.svg" width="5%" alt="Sueldo">
                 <span>Sueldo</span>
             </div>
             <div class="campo-valor">{{oportunidad.sueldo}}</div>
@@ -34,7 +34,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="3%" alt="Fecha de Inicio">
+                <img src="assets/icons/right_arrow.svg" width="5%" alt="Fecha de Inicio">
                 <span>Fecha Inicio</span>
             </div>
             <div class="campo-valor">{{oportunidad.fechaInicio}}</div>
@@ -42,7 +42,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="3%" alt="Beneficios">
+                <img src="assets/icons/right_arrow.svg" width="5%" alt="Beneficios">
                 <span>Beneficios</span>
             </div>
             <div class="campo-valor">{{oportunidad.beneficios}}</div>
@@ -50,7 +50,7 @@
     
         <div class="campo">
             <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="3%" alt="Vacantes">
+                <img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes">
                 <span>Vacantes</span>
             </div>
             <div class="campo-valor">{{oportunidad.vacantes}}</div>
@@ -58,11 +58,13 @@
     
         <div class="campo">
             <div class="campo-actions">
-                <button class="prestamo-yellow-button">Postula Aqui</button>
-
+                <button class="prestamo-yellow-button" (click)="postulanteForm()">Postula Aqui</button>
+ 
                 <button class="prestamo-yellow-button" (click)="mostrarListaOportunidades()">Ver otras Oportunidades</button>
+
             </div>
         </div>
     </div>
     
+
 </div>

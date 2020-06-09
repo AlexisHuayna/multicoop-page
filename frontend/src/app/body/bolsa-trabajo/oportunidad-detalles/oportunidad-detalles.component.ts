@@ -19,4 +19,8 @@ export class OportunidadDetallesComponent implements OnInit {
   mostrarListaOportunidades(){
     this.listaOportunidades.emit(true);
   }
+
+  postulanteForm(){
+    
+  }
 }

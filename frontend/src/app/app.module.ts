@@ -32,6 +32,7 @@ import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.compon
 import { OportunidadesComponent } from './body/bolsa-trabajo/oportunidades/oportunidades.component';
 import { OportunidadDetallesComponent } from './body/bolsa-trabajo/oportunidad-detalles/oportunidad-detalles.component';
 import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-pasivas.component';
+import { PostulanteComponent } from './body/bolsa-trabajo/postulante/postulante.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-
     OportunidadesComponent,
     OportunidadDetallesComponent,
     TasasPasivasComponent,
+    PostulanteComponent,
   ],
   imports: [
     BrowserModule,

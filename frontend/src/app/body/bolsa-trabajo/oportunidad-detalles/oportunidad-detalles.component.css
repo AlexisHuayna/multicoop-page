@@ -8,12 +8,33 @@ h1{
     margin: 0 1%;
 }
 
-.oportunidad-title{
+.oportunidad-detalle{
     text-align: center;
+    margin-bottom: 4%;
+    margin-top: 1%;
+}
+
+.oportunidad-title{
+    margin: 1% 0;
+}
+
+.campo-name, .campo-valor{
+    text-align: left;
+}
+
+.campo-valor{
+    padding-left: 10%;
+}
+
+.campo-actions{
+    grid-column: 1 / 3;
+    text-align: center;
+    
 }
 
 .oportunidad{
-    
+    display: block;
+    margin: 0 17%;
 }
 
 .campo{
@@ -21,11 +42,10 @@ h1{
     grid-template-columns: 35% auto;
     font-family: 'Signika';
     font-size: 2.5vw;
-    font-weight: 300;
+    font-weight: 250;
     font-style: normal;
-    text-align: left;
 }
 
-.campo button{
-    display: block;
+.campo-actions button{
+    margin: 0 8%
 }
