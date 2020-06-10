@@ -12,7 +12,7 @@
     font-style: normal;
     font-family: 'Signika';
     font-size: 1.5vw;
-    width: 80%;
+    width: 70%;
     margin: auto;
 }
 
@@ -25,14 +25,16 @@
     border-radius: 4px;
 }
 
-.primera-fila, .segunda-fila, .tercera-fila, .cuarta-fila, .quinta-fila{
+.primera-fila, .segunda-fila, .tercera-fila, .cuarta-fila, .quinta-fila, .sexta-fila{
     display: grid;
     column-gap: .1%;
-    grid-template-columns: 40% auto;
+    grid-template-columns: 30% auto;
     margin: 1% 0;
+    font-weight: 300;
 }
 
-.sexta-fila, .septima-fila, .octava-fila, .novena-fila{
+.septima-fila, .octava-fila, .novena-fila{
+    font-weight: 300;
     margin: 1% 0;
 }
 
@@ -63,9 +65,10 @@
     margin-top: 2%;
 }
 
-.ubigeo-field{
+.ubigeo-fila{
+    text-align: center;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 32% 32% auto;
 }
 
 .octava-fila input[type=radio], .septima-fila input[type=radio]{
@@ -84,9 +87,20 @@
     height: 20%;
 }
 
+.separador-title{
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 600;
+    font-style: normal;
+}
+
 .helper-informacion{
     font-size: 1vw;
     color: red;
+}
+
+.separador{
+    border: 1px solid black;
 }
 
 button:disabled{

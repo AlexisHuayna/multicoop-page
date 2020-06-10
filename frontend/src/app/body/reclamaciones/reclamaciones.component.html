@@ -1,15 +1,23 @@
 <div class="reclamaciones-content">
     <form [formGroup]="reclamacionesForm" class="" (ngSubmit)="reclamar(reclamacionesForm.value)">
 
-        <div class="primera-fila">
+        <div class="agencia-datos">
+            <p class="separador-title">Identificacion de la agencia</p>
 
-            <div class="socio-field">
-                <label class="">Socio Multicoop</label>
+            <div class="primera-fila">
+    
+                <div class="socio-field">
+                    <label class="">Socio Multicoop</label>
+                </div>
                 <input formControlName="socio" type="checkbox" class="" checked>
+                
             </div>
-
-            <div class="agencia-field">
-                <label>Agencia</label>
+            
+            <div class="segunda-fila">
+                
+                <div class="agencia-field">
+                    <label>Agencia</label>
+                </div>
                 <select class="" formControlName="agencia">
                     <option value="01">Arequipa</option>
                     <option value="02">Juliaca</option>
@@ -19,151 +27,184 @@
                     <option value="06">Tacna</option>
                     <option value="07">Cusco</option>
                 </select>
-            </div>
-        </div>
-
-        <div class="segunda-fila">
-
-            <div class="nombres-field">
-                <label>Nombres</label>
-                <input formControlName="nombres" type="text" class="" placeholder="Diego Armando">
-            </div>
-
-            <div class="apellidos-field">
-                <label for="inputApellidos">Apellidos</label>
-                <input formControlName="apellidos" type="text" class="" placeholder="Rivera Corrales">
-            </div>
-        </div>
-
-        <div class="tercera-fila">
-            <div class="tipo-documento">
-                <label>Documento</label>
     
+            </div>
+        </div>
+
+        <div class="reclamador-datos">
+            <p class="separador-title">Identificacion del consumidor reclamante</p>
+
+            <div class="segunda-fila">
+    
+                <div class="nombres-field">
+                    <label>Nombres</label>
+                </div>
+                <input formControlName="nombres" type="text" class="" placeholder="Diego Armando">            
+            
+            </div>
+            
+            <div class="tercera-fila">
+                <div class="apellidos-field">
+                    <label for="inputApellidos">Apellidos</label>
+                </div>
+                <input formControlName="apellidos" type="text" class="" placeholder="Rivera Corrales">
+            
+            </div>
+    
+            <div class="tercera-fila">
+                <div class="tipo-documento">
+                    <label>Documento</label>
+        
+                </div>
                 <select formControlName="tipoDocumento" class="">
                     <option value="dni">DNI</option>
                     <option value="ce">Carnet de Extrangería</option>
                 </select>
+    
             </div>
-
-            <div class="numero-documento">
-                <label>Número de documento</label>
+            
+            <div class="cuarta-fila">
+                <div class="numero-documento">
+                    <label>Número de documento</label>
+                </div>
                 <input formControlName="numeroDocumento" type="text" class="" placeholder="65841298">
+    
             </div>
-        </div>
-
-        <div class="cuarta-fila">
-
-            <div class="direccion-field">
-                <label>Direccion</label>
+    
+            <div class="cuarta-fila">
+    
+                <div class="direccion-field">
+                    <label>Direccion</label>
+                </div>
                 <input formControlName="direccion" type="text" class="" placeholder="Av. Los arces 1200">
+    
             </div>
-
-            <div class="ubigeo-field">
-                
-                    <label>Departamento</label>
-                    <label>Provincia</label>
-                    <label>Distrito</label>
-                
-                
-                    <select formControlName="departamento" (change)="updateProvincias($event.target.value)">
-                        <option *ngFor="let key of getDepartamentos()" [value]="key">{{departamentos[key]}}
-                        </option>
-                    </select>
-                    <select formControlName="provincia" class="" (change)="updateDistritos($event.target.value)"
-                        id="selectProvincia">
-                    </select>
-                    <select formControlName="distrito" class="" id="selectDistrito">
-                    </select>
+            
+            <div class="ubigeo-fila">
+                    
+                <label>Departamento</label>
+                <label>Provincia</label>
+                <label>Distrito</label>
                 
             </div>
-        </div>
-
-        <div class="quinta-fila">
-
-            <div class="telefono-field">
-                <label>Telefono</label>
+            
+            <div class="ubigeo-fila">
+                
+                <select formControlName="departamento" (change)="updateProvincias($event.target.value)">
+                    <option *ngFor="let key of getDepartamentos()" [value]="key">{{departamentos[key]}}
+                    </option>
+                </select>
+                
+                <select formControlName="provincia" class="" (change)="updateDistritos($event.target.value)"
+                    id="selectProvincia">
+                </select>
+                
+                <select formControlName="distrito" class="" id="selectDistrito">
+                </select>
+                
+            </div>
+    
+            <div class="quinta-fila">
+    
+                <div class="telefono-field">
+                    <label>Telefono</label>
+                </div>
                 <input formControlName="telefono" type="text" class="" placeholder="926485135">
+                
             </div>
-
-            <div class="correo-field">
-                <label>Correo</label>
+            
+            <div class="quinta-fila">
+                <div class="correo-field">
+                    <label>Correo</label>
+                </div>
                 <input formControlName="correo" type="text" class="" placeholder="socio01@gmail.com">
+                
             </div>
 
         </div>
 
-        <div class="sexta-fila">
-            <div class="">
-                <label>Fecha de Incidencia</label>
+        <div class="bien-contratado">
+            <p class="separador-title">Identificacion del bien contrato</p>
+
+            <div class="sexta-fila">
+                <div class="">
+                    <label>Fecha de Incidencia</label>
+                </div>
                 <input formControlName="incidencia" type="date">
             </div>
-        </div>
-
-        <div class="septima-fila">
-            <label>Producto</label>
-            <div class="">
-
+    
+            <div class="septima-fila">
+                <label>Producto</label>
                 <div class="">
-                    <input formControlName="producto" type="radio" class="" name="producto" value="prestamo"
-                        (click)="disableOtros()">
-                    <label class="">Prestamo</label>
-                </div>
-
-                <div class="">
-                    <input formControlName="producto" type="radio" class="" name="producto" value="agente"
-                        (click)="disableOtros()">
-                    <label class="">Agente</label>
-                </div>
-
-                <div class="">
-                    <input formControlName="producto" type="radio" class="" name="producto" value="pago de servicios"
-                        (click)="disableOtros()">
-                    <label class="">Pago de servicios</label>
-                </div>
-
-                <div class="">
-                    <input formControlName="producto" type="radio" class="" name="producto" value="otros"
-                        (click)="enableOtros()">
-                    <label class="">Otros</label>
-                    <input formControlName="otrosProducto" type="text">
-                </div>
-            </div>
-        </div>
-
-        <div class="octava-fila">
-            <div class="">
-                <label>Detalle de reclamacion</label>
-
-                <div class="">
-                    <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion"
-                        value="reclamo">
-                    <label class="">Reclamo</label>
-                </div>
-
-                <div class="">
-                    <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion" value="queja">
-                    <label class="">Queja</label>
+    
+                    <div class="">
+                        <input formControlName="producto" type="radio" class="" name="producto" value="prestamo"
+                            (click)="disableOtros()">
+                        <label class="">Prestamo</label>
+                    </div>
+    
+                    <div class="">
+                        <input formControlName="producto" type="radio" class="" name="producto" value="agente"
+                            (click)="disableOtros()">
+                        <label class="">Agente</label>
+                    </div>
+    
+                    <div class="">
+                        <input formControlName="producto" type="radio" class="" name="producto" value="pago de servicios"
+                            (click)="disableOtros()">
+                        <label class="">Pago de servicios</label>
+                    </div>
+    
+                    <div class="">
+                        <input formControlName="producto" type="radio" class="" name="producto" value="otros"
+                            (click)="enableOtros()">
+                        <label class="">Otros</label>
+                        <input formControlName="otrosProducto" type="text">
+                    </div>
                 </div>
             </div>
+
         </div>
 
-        <div class="novena-fila">
-            <label>Detalles</label>
-            <textarea formControlName="detalleReclamacion" class="" rows="3" maxlength="800"></textarea>
-        </div>
+        <div class="detalles-reclamo-queja">
+            <p class="separador-title">Detalle de la reclamacion y pedido del consumidor</p>
 
-        <div class="">
-            <input formControlName="condiciones" type="checkbox" class="">
-            <label class="">Declaro expresamente haber leido y aceptado la informacion sobre el <a
-                    href="../../../assets/docs/tratamiento_de_datos_personales.pdf" target="_blank">tratamiento
-                    de datos personales</a>.</label>
-            <div class="helper-informacion" *ngIf="!reclamacionesForm.get('condiciones').value">Debe aceptar el tratamiento de
-                información para poder enviar su reclamo</div>
-        </div>
+            <div class="octava-fila">
+                <div class="">
+                    <label>Detalle de reclamacion</label>
+    
+                    <div class="">
+                        <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion"
+                            value="reclamo">
+                        <label class="">Reclamo</label>
+                    </div>
+    
+                    <div class="">
+                        <input formControlName="tipoReclamacion" type="radio" class="" name="tipoReclamacion" value="queja">
+                        <label class="">Queja</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="novena-fila">
+                <label>Detalles</label>
+                <textarea formControlName="detalleReclamacion" class="" rows="3" maxlength="800"></textarea>
+            </div>
+    
+            <div class="">
+                <input formControlName="condiciones" type="checkbox" class="">
+                <label class="">Declaro expresamente haber leido y aceptado la informacion sobre el <a
+                        href="../../../assets/docs/tratamiento_de_datos_personales.pdf" target="_blank">tratamiento
+                        de datos personales</a>.</label>
+                <div class="helper-informacion" *ngIf="!reclamacionesForm.get('condiciones').value">Debe aceptar el tratamiento de
+                    información para poder enviar su reclamo</div>
+            </div>
+    
+            <!--<button [disabled]="reclamacionesForm.invalid" type="submit" class="">Enviar</button>-->
+            <div class="reclamaciones-send">
+                <button type="submit" [disabled]="reclamacionesForm.invalid" class="">Enviar</button>
+            </div>
 
-        <!--<button [disabled]="reclamacionesForm.invalid" type="submit" class="">Enviar</button>-->
-        <div class="reclamaciones-send">
-            <button type="submit" [disabled]="reclamacionesForm.invalid" class="">Enviar</button>
         </div>
 
     </form>
