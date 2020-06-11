@@ -11,10 +11,11 @@ export interface Oportunidad {
     agenciaId: string,
     cargo: string,
     horario: string,
-    sueldo: string,
-    fechaInicio: string,
     beneficios: string,
-    vacantes: number
+    vacantes: number,
+    requisitos: string,
+    funciones: string,
+    competencias: string
 }
 
 

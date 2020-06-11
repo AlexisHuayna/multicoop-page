@@ -14,20 +14,30 @@ export class BolsaTrabajoComponent implements OnInit {
   oportunidades = [
     <Oportunidad> { 
       agenciaId: "01",
-      cargo: "Analista",
+      cargo: "Ejecutivo Comercial",
       horario: "full time",
-      sueldo: "1600",
-      fechaInicio: "16-11-2020",
       beneficios: "planilla",
-      vacantes: 5
+      vacantes: 1,
+      requisitos: "Técnico, Bachiller o Titulado en Economía, Contabilidad, administración, Ingeniería Industrial y carreras relacionadas.<br>\
+      (06) meses de experiencia en el sector financiero como Promotor, Analista, Caja y cargos relacionados.<br>\
+      Mantener una adecuada situación crediticia en el sistema financiero.",
+      funciones: " Encargazdo de prospectar y buscar clientes potenciales a nivel corporativo y personal.<br>\
+      Encargado de la comercialización y promoción de los productos de la empresa.<br>\
+      Presentaciones de proyectos.<br>\
+      Seguimiento de clientes.<br>\
+      Capacidad de negociar y lograr cierres de contratos.<br>\
+      Alcanzar sus objetivos y metas de comerciales.",
+      competencias: "Comunicación efectiva\nOrientación al cliente\nTrabajo bajo presión"
+
     }, <Oportunidad> { 
       agenciaId: "02",
       cargo: "Programador",
       horario: "full time",
-      sueldo: "1800",
-      fechaInicio: "16-11-2020",
       beneficios: "planilla",
-      vacantes: 2
+      vacantes: 2,
+      requisitos: "requisitos",
+      funciones: "funciones",
+      competencias: "competencias"
     }
   ]
 
