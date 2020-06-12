@@ -11,7 +11,7 @@ export interface Oportunidad {
     agenciaId: string,
     cargo: string,
     horario: string,
-    beneficios: string,
+    beneficios: Array<string>,
     vacantes: number,
     requisitos: Array<string>,
     funciones: Array<string>,
