@@ -13,7 +13,7 @@
                 <img src="assets/icons/right_arrow.svg" width="5%" alt="Cargo">
                 <span>Agencia</span>
             </div>
-            <div class="campo-valor">{{oportunidad.agenciaId}}</div>
+            <div class="campo-valor">{{oportunidad.agenciaId | agenciaValor}}</div>
         </div>
     
         <div class="campo">
@@ -43,7 +43,9 @@
                     <span>Competencias</span>
                 -->
             </div>
-            <div class="campo-valor">{{oportunidad.beneficios}}</div>
+            <div class="campo-valor">
+                <p *ngFor="let beneficio of oportunidad.beneficios">{{beneficio}}</p>
+            </div>
         </div>
     
         <div class="campo">

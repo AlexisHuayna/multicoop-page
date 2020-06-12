@@ -13,9 +13,9 @@ export interface Oportunidad {
     horario: string,
     beneficios: string,
     vacantes: number,
-    requisitos: string,
-    funciones: string,
-    competencias: string
+    requisitos: Array<string>,
+    funciones: Array<string>,
+    competencias: Array<string>
 }
 
 

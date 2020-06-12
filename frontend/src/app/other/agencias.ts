@@ -1,4 +1,5 @@
 export const agencias = {
+    "00": "Todas",
     "01": "Arequipa",
     "02": "Juliaca",
     "03": "Puno",

@@ -18,34 +18,32 @@ export class BolsaTrabajoComponent implements OnInit {
       horario: "full time",
       beneficios: "planilla",
       vacantes: 1,
-      requisitos: "Técnico, Bachiller o Titulado en Economía, Contabilidad, administración, Ingeniería Industrial y carreras relacionadas.<br>\
-      (06) meses de experiencia en el sector financiero como Promotor, Analista, Caja y cargos relacionados.<br>\
-      Mantener una adecuada situación crediticia en el sistema financiero.",
-      funciones: " Encargazdo de prospectar y buscar clientes potenciales a nivel corporativo y personal.<br>\
-      Encargado de la comercialización y promoción de los productos de la empresa.<br>\
-      Presentaciones de proyectos.<br>\
-      Seguimiento de clientes.<br>\
-      Capacidad de negociar y lograr cierres de contratos.<br>\
-      Alcanzar sus objetivos y metas de comerciales.",
-      competencias: "Comunicación efectiva\nOrientación al cliente\nTrabajo bajo presión"
+      requisitos: ["Técnico, Bachiller o Titulado en Economía, Contabilidad, administración, Ingeniería Industrial y carreras relacionadas.",
+        "(06) meses de experiencia en el sector financiero como Promotor, Analista, Caja y cargos relacionados.",
+        "Mantener una adecuada situación crediticia en el sistema financiero."],
+      funciones: [" Encargazdo de prospectar y buscar clientes potenciales a nivel corporativo y personal.",
+        "Encargado de la comercialización y promoción de los productos de la empresa.",
+        "Presentaciones de proyectos.",
+        "Seguimiento de clientes.",
+        "Capacidad de negociar y lograr cierres de contratos.",
+        "Alcanzar sus objetivos y metas de comerciales."],
+      competencias: ["Comunicación efectiva",
+        "Orientación al cliente",
+        "Trabajo bajo presión"]
 
     }, <Oportunidad> { 
-      agenciaId: "02",
+      agenciaId: "00",
       cargo: "Programador",
       horario: "full time",
       beneficios: "planilla",
       vacantes: 2,
-      requisitos: "requisitos",
-      funciones: "funciones",
-      competencias: "competencias"
+      requisitos: ["requisitos"],
+      funciones: ["funciones"],
+      competencias: ["competencias"]
     }
   ]
 
   constructor() {
-    //Para castear de la base de datos
-    for(let oportunidad of this.oportunidades){
-      oportunidad['agenciaId'] = agencias[oportunidad['agenciaId']]
-    }
   }
 
   ngOnInit(): void {
