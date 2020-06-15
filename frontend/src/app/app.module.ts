@@ -34,6 +34,12 @@ import { OportunidadDetallesComponent } from './body/bolsa-trabajo/oportunidad-d
 import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-pasivas.component';
 import { PostulanteComponent } from './body/bolsa-trabajo/postulante/postulante.component';
 import { AgenciaValorPipe } from './pipes/agencia-valor.pipe';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { TarifarioConsumoMypeComponent } from './body/transparencia/tarifario-consumo-mype/tarifario-consumo-mype.component';
+import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/tarifario-grupal.component';
+import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
 
 @NgModule({
   declarations: [
@@ -66,14 +72,20 @@ import { AgenciaValorPipe } from './pipes/agencia-valor.pipe';
     TasasPasivasComponent,
     PostulanteComponent,
     AgenciaValorPipe,
+    NotFoundComponent,
+    TarifarioConsumoMypeComponent,
+    TarifarioGrupalComponent,
+    ProcedimientoAtencionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

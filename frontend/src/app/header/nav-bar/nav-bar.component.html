@@ -146,22 +146,32 @@
         </li>
 
         <li class="dropdown">
-            <a routerLink="transparencia" class="nav-bar-item">Transparencia</a>
+            <a class="nav-bar-item">Transparencia</a>
             <div class="dropdown-content">
                 <div class="dropdown-content-item logo">
                     <img src="assets/icons/ubicanos_logo.svg" width="23%" alt="ubicanos">
                 </div>
 
                 <div class="dropdown-content-item">
-                    <a routerLink="transparencia/tasasPasivas">
-                        <img src="assets/icons/right_arrow.svg" width="6%" alt="prestamo personal">
+                    <a>
+                        <img src="assets/icons/right_arrow.svg" width="6%" alt="Transparencia finaciera">
                         <span>Transparencia Financiera</span>
+
+                        <a class="sub-content" routerLink="transparencia/tarifarioConsumoMype">
+                            <img src="assets/icons/right_arrow.svg" width="6%" alt="Tarifario">
+                            <span>Tarifario Prestamo Consumo y Mype</span>
+                        </a>
+
+                        <a class="sub-content" routerLink="transparencia/tarifarioGrupal">
+                            <img src="assets/icons/right_arrow.svg" width="6%" alt="Tarifario">
+                            <span>Tarifario Credito Grupal</span>
+                        </a>
                     </a>
                 </div>
 
                 <div class="dropdown-content-item">
-                    <a href="../../../assets/docs/procedimiento_atencion_reclamos_quejas.pdf" target="_blank">
-                        <img src="assets/icons/right_arrow.svg" width="6%" alt="prestamo personal">
+                    <a routerLink="transparencia/procedimientoActencion" >
+                        <img src="assets/icons/right_arrow.svg" width="6%" alt="Atencion al cliente">
                         <span>Atención al cliente</span>
                     </a>
                 </div>

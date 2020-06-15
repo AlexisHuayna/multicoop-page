@@ -18,12 +18,17 @@ import { PrecalificadorComponent } from './body/precalificador/precalificador.co
 import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.component';
 import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.component';
 import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-pasivas.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/tarifario-grupal.component';
+import { TarifarioConsumoMypeComponent } from './body/transparencia/tarifario-consumo-mype/tarifario-consumo-mype.component';
+import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    pathMatch: 'full'
   }, {
     path: 'personas/prestamoPersonal',
     component: PrestamoPersonalComponent,
@@ -89,9 +94,20 @@ const routes: Routes = [
     component: BolsaTrabajoComponent,
     pathMatch: 'full'
   }, {
-    path: 'transparencia/tasasPasivas',
-    component: TasasPasivasComponent,
+    path: 'transparencia/procedimientoActencion',
+    component: ProcedimientoAtencionComponent,
     pathMatch: 'full'
+  }, {
+    path: 'transparencia/tarifarioGrupal',
+    component: TarifarioGrupalComponent,
+    pathMatch: 'full' 
+  }, {
+    path: 'transparencia/tarifarioConsumoMype',
+    component: TarifarioConsumoMypeComponent,
+    pathMatch: 'full' 
+  }, {
+    path: '**',
+    component: NotFoundComponent,
   }
 ];
 

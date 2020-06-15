@@ -7,3 +7,41 @@
     background-color: #f2faed;
     background-size: 100% 100%;
 }
+
+.wrapper-mision-vision-content{
+    display: grid;
+    grid-template-columns: auto 40%;
+    margin: 2% 4%;
+}
+
+.title-mision-vision{
+    font-size: 2.5vw;
+    font-weight: 500;
+    font-family: 'Signika';
+    font-style: normal;
+    color: #0540da;
+}
+
+h3 {
+    display: inline;
+    margin-left: .5%;
+}
+
+.title-mision-vision img{
+    width: 2%;
+}
+
+.mision-vision-text {
+    margin-left: 1%;
+    font-family: 'Signika';
+    font-size: 1.5vw;
+    font-weight: 450;
+    font-style: normal;
+    color: black;
+    text-align: justify;
+    width: 70%;
+}
+
+.mision-vision{
+    margin: auto 0;
+}
