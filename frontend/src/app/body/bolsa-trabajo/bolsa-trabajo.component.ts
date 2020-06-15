@@ -11,7 +11,8 @@ export class BolsaTrabajoComponent implements OnInit {
 
   oportunidadSeleccionada: Oportunidad
   listaOportunidades: Boolean
-  oportunidades = [
+  
+  oportunidades = [/*
     <Oportunidad> { 
       agenciaId: "00",
       cargo: "Ejecutivo Comercial",
@@ -31,8 +32,9 @@ export class BolsaTrabajoComponent implements OnInit {
         "Orientación al cliente",
         "Trabajo bajo presión"]
 
-    }
-  ]
+    }*/
+    ]
+   
 
   constructor() {
   }
