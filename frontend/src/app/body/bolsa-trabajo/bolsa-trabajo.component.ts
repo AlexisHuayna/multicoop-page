@@ -12,13 +12,13 @@ export class BolsaTrabajoComponent implements OnInit {
   oportunidadSeleccionada: Oportunidad
   listaOportunidades: Boolean
   
-  oportunidades = [/*
+  oportunidades = [
     <Oportunidad> { 
       agenciaId: "00",
       cargo: "Ejecutivo Comercial",
       horario: "Remoto",
       beneficios: ["Planilla"],
-      vacantes: 1,
+      vacantes: 10,
       requisitos: ["Técnico, Bachiller o Titulado en Economía, Contabilidad, administración, Ingeniería Industrial y carreras relacionadas.",
         "(06) meses de experiencia en el sector financiero como Promotor, Analista, Caja y cargos relacionados.",
         "Mantener una adecuada situación crediticia en el sistema financiero."],
@@ -31,8 +31,7 @@ export class BolsaTrabajoComponent implements OnInit {
       competencias: ["Comunicación efectiva",
         "Orientación al cliente",
         "Trabajo bajo presión"]
-
-    }*/
+      }
     ]
    
 

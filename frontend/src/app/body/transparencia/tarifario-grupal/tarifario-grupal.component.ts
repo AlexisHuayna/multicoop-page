@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TarifarioGrupalComponent implements OnInit {
 
-  pdfSrc = '../../../../assets/docs/tarifario_grupal.pdf'
+  pdfSrc = '../../../../assets/docs/tarifario_prestamo_grupal.pdf'
 
   constructor() { }
 
