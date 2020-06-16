@@ -16,7 +16,7 @@ export class PostulanteComponent implements OnInit {
 
   constructor(
     private _builder: FormBuilder,
-    private router: Router
+    private router: Router,
   ) { 
     this.postulanteForm = this._builder.group({
       nombres: ['', Validators.required],

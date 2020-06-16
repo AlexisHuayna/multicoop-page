@@ -10,9 +10,7 @@ export class PrecalificadorService {
   constructor(private http: HttpClient) { }
 
   addPrecalificador(precalificador: PreCalificador) {
-    this.http.post("http://multicoop.com.pe:8000/api/precalificador", precalificador).subscribe({
-      next: data => console.log(data)
-    });
+    this.http.post("http://multicoop.com.pe:8000/api/precalificador", precalificador);
   }
 
 }

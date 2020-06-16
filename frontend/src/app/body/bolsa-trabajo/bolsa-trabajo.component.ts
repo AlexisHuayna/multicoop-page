@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Oportunidad } from 'src/app/other/interfaces';
 import { agencias } from 'src/app/other/agencias';
+import { OportunidadesService } from 'src/app/services/oportunidades.service';
 
 @Component({
   selector: 'app-bolsa-trabajo',
@@ -35,7 +36,7 @@ export class BolsaTrabajoComponent implements OnInit {
     ]
    
 
-  constructor() {
+  constructor(private oportunidadesService: OportunidadesService) {
   }
 
   ngOnInit(): void {
@@ -53,7 +54,9 @@ export class BolsaTrabajoComponent implements OnInit {
   }
 
   getOportunidades(){
-    // obtenemos oportunidades del servidor
+    this.oportunidadesService.getOpotunidades().subscribe((oportunidadesList: Oportunidad[]) => {
+      this.oportunidades = oportunidadesList
+    })
   }
 
 }
