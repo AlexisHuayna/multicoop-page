@@ -70,7 +70,7 @@
     z-index: 1;
 }
   
-.dropdown-content a {
+.dropdown-content a.principal-content {
     color: black !important;
     font-size: 1.1vw !important;
     text-align: left !important;
@@ -198,5 +198,15 @@
 }
 
 .sub-content {
+    display: none;
+    color: black !important;
     margin-left: 6% !important;
+    margin-right: 0%;
+    font-size: 1.1vw !important;
+    text-align: left !important;
+    font-weight: 200 !important;
+    font-style: normal !important;
+    line-height: 2rem !important;
+    padding-left: 0% !important; 
+    padding-right: 0% !important; 
 }
