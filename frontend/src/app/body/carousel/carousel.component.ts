@@ -12,4 +12,9 @@ export class CarouselComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  animation(){
+    var description = document.getElementById('description');
+    
+  }
+
 }

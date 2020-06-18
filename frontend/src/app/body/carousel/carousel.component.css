@@ -45,12 +45,18 @@
     width: 300%;
     height: 100%;
     text-align: center;
-    animation: cambio 20s infinite;
+    animation: cambio 21s infinite;
 }
 
 .carousel-wrapper li{
     width: 90%;
     list-style-type: none;
+}
+
+#description {
+    position: absolute;
+    animation: bajon 6s infinite;
+    opacity: 1;
 }
 
 
@@ -63,4 +69,14 @@
 
     50%{margin-left: -200%;}
     75%{margin-left: -200%;}
+}
+
+@keyframes bajon{
+    0% {
+        top: 15%;
+    }
+
+    100%{
+        top: 55%
+    }
 }
