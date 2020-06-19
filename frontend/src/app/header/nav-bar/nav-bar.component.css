@@ -107,7 +107,7 @@
     border: none;
     display: inline-block;
     text-decoration: none;
-    border-radius: 2rem;
+    border-radius: 4px;
 }
 
 .dropdown-content-item button:hover{
