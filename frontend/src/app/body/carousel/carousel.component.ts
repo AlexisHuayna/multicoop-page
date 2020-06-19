@@ -13,6 +13,8 @@ export class CarouselComponent implements OnInit {
   }
 
   animation(){
+    //when element in window 
+      //execute animation once
     var description = document.getElementById('description');
     
   }
