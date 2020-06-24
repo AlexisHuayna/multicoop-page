@@ -32,6 +32,23 @@ export class BolsaTrabajoComponent implements OnInit {
       competencias: ["Comunicación efectiva",
         "Orientación al cliente",
         "Trabajo bajo presión"]
+      },
+    <Oportunidad> {
+      agenciaId: "01",
+      cargo: "Enfermera Ocupacional",
+      horario: "Remoto",
+      beneficios: ["Planilla"],
+      vacantes: 1,
+      requisitos: ["Bachiller o Titulado en enfermería.",
+        "Contar con experiencia en salud ocupacional."],
+      funciones: ["Realizar controles de temperatura.",
+        "Registrar, reportar y alertar sobre casos sospechosos de COVID -19.",
+        "Brindar seguimiento telefónico a casos COVID- 19.",
+        "Generar alertas de casos positivos y atípicos.",
+        "Brindar vigilancia médica dentro de la institución."],
+      competencias: ["Comunicación efectiva",
+        "Orientación al cliente",
+        "Trabajo bajo presión"]
       }
     ]
    
