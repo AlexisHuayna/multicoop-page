@@ -1,0 +1,25 @@
+.postulante-field{
+    display: grid;
+    grid-template-columns: 30% auto;
+    text-align: left;
+    font-size: 2vw;
+}
+
+.container-form{
+    margin-top: 10%;
+}
+
+form {
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: 'Signika';
+}
+
+.postulante-field, .postulante-send{
+    margin: 3% 0;
+}
+
+input, .oportunidad-details{
+    font-weight: 300;
+    font-style: normal;
+}

@@ -1,41 +1,38 @@
 <div *ngIf="oportunidad" class="oportunidad-detalle">
+	<div class="oportunidad-title">
+		<img src="assets/icons/right_arrow.svg" width="2%" alt="" />
+		<h1>{{ oportunidad.cargo }}</h1>
+		<img src="assets/icons/left_arrow.svg" width="2%" alt="" />
+	</div>
 
-    <div class="oportunidad-title">
-        <img src="assets/icons/right_arrow.svg" width="2%" alt="">
-        <h1>{{oportunidad.cargo}}</h1>
-        <img src="assets/icons/left_arrow.svg" width="2%" alt="">
-    </div>
-    
-    <div class="oportunidad">
+	<div class="oportunidad">
+		<div class="campo">
+			<div class="campo-name">
+				<img src="assets/icons/right_arrow.svg" width="5%" alt="Cargo" />
+				<span>Agencias</span>
+			</div>
+			<div class="campo-valor">
+				{{ oportunidad.agenciaId | agenciaValor }}
+			</div>
+		</div>
 
-        <div class="campo">
-            <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="5%" alt="Cargo">
-                <span>Agencias</span>
-            </div>
-            <div class="campo-valor">{{oportunidad.agenciaId | agenciaValor}}</div>
-        </div>
-    
-        <div class="campo">
-            <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="5%" alt="Horario">
-                <span>Horario</span>
-            </div>
-            <div class="campo-valor">{{oportunidad.horario}}</div>
-        </div>
-    
-        <div class="campo">
-            <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="5%" alt="Sueldo">
-                <span>Cargo</span>
-                <!--
-                    <span>Requisitos</span>
-                -->
-            </div>
-            <div class="campo-valor">{{oportunidad.cargo}}</div>
-        </div>
+		<div class="campo">
+			<div class="campo-name">
+				<img src="assets/icons/right_arrow.svg" width="5%" alt="Horario" />
+				<span>Horario</span>
+			</div>
+			<div class="campo-valor">{{ oportunidad.horario }}</div>
+		</div>
 
-        <!--
+		<div class="campo">
+			<div class="campo-name">
+				<img src="assets/icons/right_arrow.svg" width="5%" alt="Sueldo" />
+				<span>Cargo</span>
+			</div>
+			<div class="campo-valor">{{ oportunidad.cargo }}</div>
+		</div>
+
+		<!--
     
         <div class="campo">
             <div class="campo-name">
@@ -51,68 +48,77 @@
         </div>
 
         -->
-        
-        <div class="campo">
-            <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes">
-                <span>Requisitos</span>
-            </div>
-            <div class="campo-valor">
-                <ul>
-                    <li *ngFor="let requisito of oportunidad.requisitos">{{requisito}}</li>
-                </ul>
-            </div>
-        </div>
-    
-        <div class="campo">
-            <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes">
-                <span>Funciones</span>
-            </div>
-            <div class="campo-valor">
-                <ul>
-                    <li *ngFor="let funcion of oportunidad.funciones">{{funcion}}</li>
-                </ul>    
-            </div>
-        </div>
 
-        <div class="campo">
-            <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes">
-                <span>Competencias</span>
-            </div>
-            <div class="campo-valor">
-                <ul>
-                    <li *ngFor="let competencia of oportunidad.competencias">{{competencia}}</li>
-                </ul>
-            </div>
-        </div>
+		<div class="campo">
+			<div class="campo-name">
+				<img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes" />
+				<span>Requisitos</span>
+			</div>
+			<div class="campo-valor">
+				<ul>
+					<li *ngFor="let requisito of oportunidad.requisitos">
+						{{ requisito }}
+					</li>
+				</ul>
+			</div>
+		</div>
 
-        <div class="campo">
-            <div class="campo-name">
-                <img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes">
-                <span>Vacantes</span>
-            </div>
-            <div class="campo-valor"><p>{{oportunidad.vacantes}}</p></div>
-        </div>
+		<div class="campo">
+			<div class="campo-name">
+				<img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes" />
+				<span>Funciones</span>
+			</div>
+			<div class="campo-valor">
+				<ul>
+					<li *ngFor="let funcion of oportunidad.funciones">
+						{{ funcion }}
+					</li>
+				</ul>
+			</div>
+		</div>
 
+		<div class="campo">
+			<div class="campo-name">
+				<img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes" />
+				<span>Competencias</span>
+			</div>
+			<div class="campo-valor">
+				<ul>
+					<li *ngFor="let competencia of oportunidad.competencias">
+						{{ competencia }}
+					</li>
+				</ul>
+			</div>
+		</div>
 
-        <div class="campo">
-            <div class="campo-actions">
-                <button class="prestamo-yellow-button" (click)="mostrarListaOportunidades()">Ver otras Oportunidades</button>
-                
-                <button class="prestamo-yellow-button" (click)="postulanteForm()">Postula Aqui</button>
-            </div>
-        </div>
-    </div>
+		<div class="campo">
+			<div class="campo-name">
+				<img src="assets/icons/right_arrow.svg" width="5%" alt="Vacantes" />
+				<span>Vacantes</span>
+			</div>
+			<div class="campo-valor">
+				<p>{{ oportunidad.vacantes }}</p>
+			</div>
+		</div>
 
-    <div id="modalPostulante" class="modal">
-        <div class="modal-content">
-            <span class="close" (click)="closeForm()">&times;</span>
-            <p>Enviar cv a:</p>
-            <p>ecruz@multicoop.com.pe</p>
-        </div>
-    </div>
+		<div class="campo">
+			<div class="campo-actions">
+				<button
+					class="prestamo-yellow-button"
+					(click)="mostrarListaOportunidades()"
+				>
+					Ver otras Oportunidades
+				</button>
 
+				<button class="prestamo-yellow-button" (click)="postulanteForm()">
+					Postula Aqui
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<app-postulante
+		[display]="displayForm"
+		[oportunidad]="oportunidad"
+	></app-postulante>
 </div>
-

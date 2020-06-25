@@ -1,47 +1,39 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewChecked} from '@angular/core';
-import { Oportunidad } from 'src/app/other/interfaces';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewChecked,
+} from "@angular/core";
+import { Oportunidad } from "src/app/other/interfaces";
+import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-oportunidad-detalles',
-  templateUrl: './oportunidad-detalles.component.html',
-  styleUrls: ['./oportunidad-detalles.component.css']
+  selector: "app-oportunidad-detalles",
+  templateUrl: "./oportunidad-detalles.component.html",
+  styleUrls: ["./oportunidad-detalles.component.css"],
 })
-export class OportunidadDetallesComponent implements OnInit, AfterViewChecked{
-
-  @Input() oportunidad: Oportunidad
-  @Output() listaOportunidades = new EventEmitter <Boolean>();
+export class OportunidadDetallesComponent implements OnInit {
   
- modal : HTMLElement;
+  @Input() oportunidad: Oportunidad;
+  @Output() listaOportunidades = new EventEmitter<Boolean>();
+  
+  displayForm: Boolean = false;
 
   constructor() { 
-    
   }
 
-  ngAfterViewChecked(): void {
+  ngOnInit(): void {}
 
-    if(this.oportunidad){
-      this.modal = document.getElementById('modalPostulante');
-      window.onclick = (event) => {
-        if(event.target == this.modal) {
-          this.modal.style.display = "none";
-        }
-      }
-    }
-    
-  }
-
-  ngOnInit(): void {
-  }
-  
-  mostrarListaOportunidades(){
+  mostrarListaOportunidades() {
+    this.displayForm = false;
     this.listaOportunidades.emit(true);
   }
 
-  postulanteForm(){
-    this.modal.style.display = "block";
+  postulanteForm() {
+    this.displayForm = true;
   }
 
-  closeForm(){
-    this.modal.style.display = "none";
-  }
 }

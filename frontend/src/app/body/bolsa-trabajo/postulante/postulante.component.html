@@ -1,33 +1,52 @@
-<div *ngIf="oportunidad">
-    <form [formGroup]="postulanteForm" (ngSubmit)="postular(postulanteForm.value)">
-        <div class="postulante-field">
-            <label>Nombres</label>
-            <input formControlName="nombres" type="text" class="" placeholder="Kleber">
-        </div>
+<div *ngIf="statusView" class="container-form">
     
-        <div class="postulante-field">
-            <label>Apellidos</label>
-            <input formControlName="apellidos" type="text" class="" placeholder="Carpio Ramos">
-        </div>
-    
-        <div class="postulante-field">
-            <label>Puesto al que postula</label>
-            <input formControlName="puesto" type="text" class="" disabled>
-        </div>
-    
-        <div class="postulante-field">
-            <label>Agencia</label>
-            <input formControlName="agencia" type="text" class="" disabled>
-        </div>
+	<form
+		[formGroup]="postulanteForm"
+		(ngSubmit)="postular(postulanteForm.value)"
+	>
+		<div class="postulante-field">
+			<label>Nombres</label>
+			<input
+				formControlName="nombres"
+				type="text"
+				class=""
+				placeholder="Diego Ernesto"
+			/>
+		</div>
 
-        <div class="postulante-field">
-            <label>Adjuntar mi CV</label>
-            <input formControlName="curriculum" type="text" class="" placeholder="999666333">
-        </div>
+		<div class="postulante-field">
+			<label>Apellidos</label>
+			<input
+				formControlName="apellidos"
+				type="text"
+				class=""
+				placeholder="Mendoza Pinedo"
+			/>
+		</div>
 
-        <div class="postulante-send">
-            <button [disabled]="postulanteForm.invalid" type="submit" class="">Enviar</button>
-        </div>
+		<div class="postulante-field">
+			<label>Puesto al que postula</label>
+			<div class="oportunidad-details">
+				{{ oportunidad.cargo }}
+			</div>
+		</div>
 
-    </form>
+		<div class="postulante-field">
+			<label>Agencias</label>
+			<div class="oportunidad-details">
+				{{ oportunidad.agenciaId | agenciaValor }}
+			</div>
+		</div>
+
+		<div class="postulante-field">
+			<label>Adjuntar mi CV</label>
+			<input formControlName="curriculum" type="file" class="" />
+		</div>
+
+		<div class="postulante-send">
+			<button [disabled]="postulanteForm.invalid" type="submit" class="prestamo-yellow-button">
+				Enviar
+			</button>
+		</div>
+	</form>
 </div>
