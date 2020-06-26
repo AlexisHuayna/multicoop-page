@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Oportunidad } from 'src/app/other/interfaces';
-import { agencias } from 'src/app/other/agencias';
 import { OportunidadesService } from 'src/app/services/oportunidades.service';
 
 @Component({
@@ -13,50 +12,14 @@ export class BolsaTrabajoComponent implements OnInit {
   oportunidadSeleccionada: Oportunidad
   listaOportunidades: Boolean
   
-  oportunidades = [
-    <Oportunidad> { 
-      agenciaId: "00",
-      cargo: "Ejecutivo Comercial",
-      horario: "Remoto",
-      beneficios: ["Planilla"],
-      vacantes: 10,
-      requisitos: ["Técnico, Bachiller o Titulado en Economía, Contabilidad, administración, Ingeniería Industrial y carreras relacionadas.",
-        "(06) meses de experiencia en el sector financiero como Promotor, Analista, Caja y cargos relacionados.",
-        "Mantener una adecuada situación crediticia en el sistema financiero."],
-      funciones: [" Encargazdo de prospectar y buscar clientes potenciales a nivel corporativo y personal.",
-        "Encargado de la comercialización y promoción de los productos de la empresa.",
-        "Presentaciones de proyectos.",
-        "Seguimiento de clientes.",
-        "Capacidad de negociar y lograr cierres de contratos.",
-        "Alcanzar sus objetivos y metas de comerciales."],
-      competencias: ["Comunicación efectiva",
-        "Orientación al cliente",
-        "Trabajo bajo presión"]
-      },
-    <Oportunidad> {
-      agenciaId: "01",
-      cargo: "Enfermera Ocupacional",
-      horario: "Remoto",
-      beneficios: ["Planilla"],
-      vacantes: 1,
-      requisitos: ["Bachiller o Titulado en enfermería.",
-        "Contar con experiencia en salud ocupacional."],
-      funciones: ["Realizar controles de temperatura.",
-        "Registrar, reportar y alertar sobre casos sospechosos de COVID -19.",
-        "Brindar seguimiento telefónico a casos COVID- 19.",
-        "Generar alertas de casos positivos y atípicos.",
-        "Brindar vigilancia médica dentro de la institución."],
-      competencias: ["Comunicación efectiva",
-        "Orientación al cliente",
-        "Trabajo bajo presión"]
-      }
-    ]
+  oportunidades = []
    
 
   constructor(private oportunidadesService: OportunidadesService) {
   }
 
   ngOnInit(): void {
+    this.getOportunidades();
     this.listaOportunidades = true
   }
 
@@ -71,9 +34,16 @@ export class BolsaTrabajoComponent implements OnInit {
   }
 
   getOportunidades(){
-    this.oportunidadesService.getOpotunidades().subscribe((oportunidadesList: Oportunidad[]) => {
+    this.oportunidadesService.getOportunidades().subscribe((oportunidadesList: Oportunidad[]) => {
+      oportunidadesList.forEach(oportunidad => {
+        oportunidad['requisitos'] = (<any>oportunidad['requisitos']).split('|');
+        oportunidad['beneficios'] = (<any>oportunidad['beneficios']).split('|') ;
+        oportunidad['funciones'] = (<any>oportunidad['funciones']).split('|'); 
+        oportunidad['competencias'] = (<any>oportunidad['competencias']).split('|');
+      });
+
       this.oportunidades = oportunidadesList
-    })
+    });
   }
 
 }

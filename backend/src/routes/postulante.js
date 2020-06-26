@@ -1,4 +1,4 @@
-const correo_controlador = require('../mail');
+const correo_controlador = require('../mail/mail');
 
 const express = require('express');
 const router = express.Router();

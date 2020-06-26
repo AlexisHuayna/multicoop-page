@@ -10,6 +10,7 @@ app.use(cors());
 app.use(require('./routes/precalificador'));
 app.use(require('./routes/oportunidad'));
 app.use(require('./routes/reclamacion'));
+app.use(require('./routes/postulante'));
 
 app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'));
