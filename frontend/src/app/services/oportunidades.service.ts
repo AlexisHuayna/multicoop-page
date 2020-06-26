@@ -11,6 +11,6 @@ export class OportunidadesService {
   constructor(private http: HttpClient) { }
 
   getOportunidades(){
-    return this.http.get<Oportunidad[]>("http://multicoop.com.pe:8000/api/oportunidad")
+    return this.http.get<Oportunidad[]>("http://multicoop.com.pe:8000/api/oportunidades")
   }
 }
