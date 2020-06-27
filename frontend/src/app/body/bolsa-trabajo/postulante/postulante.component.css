@@ -1,7 +1,10 @@
 .postulante-field{
     display: grid;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 30% 60%;
     text-align: left;
+}
+
+.postulante-field label, .oportunidad-details, input{
     font-size: 2vw;
 }
 
@@ -15,11 +18,18 @@ form {
     font-family: 'Signika';
 }
 
+p{
+    margin: 0;
+}
+
 .postulante-field, .postulante-send{
     margin: 3% 0;
 }
 
 input, .oportunidad-details{
     font-weight: 300;
-    font-style: normal;
+}
+
+input{
+    display: block;
 }

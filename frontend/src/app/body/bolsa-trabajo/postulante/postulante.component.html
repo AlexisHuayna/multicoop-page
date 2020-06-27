@@ -5,17 +5,21 @@
 		(ngSubmit)="postular(postulanteForm.value)"
 	>
 		<div class="postulante-field">
-			<label>Nombres</label>
-			<input
-				formControlName="nombres"
-				type="text"
-				class=""
-				placeholder="Diego Ernesto"
-			/>
+			<div>
+				<label>Nombres</label>
+			</div>
+				<input
+					formControlName="nombres"
+					type="text"
+					class=""
+					placeholder="Diego Ernesto"
+				/>
 		</div>
 
 		<div class="postulante-field">
-			<label>Apellidos</label>
+			<div>
+				<label>Apellidos</label>
+			</div>
 			<input
 				formControlName="apellidos"
 				type="text"
@@ -25,22 +29,34 @@
 		</div>
 
 		<div class="postulante-field">
-			<label>Puesto al que postula</label>
+			<div>
+				<label>Puesto al que postula</label>
+			</div>
 			<div class="oportunidad-details">
-				{{ oportunidad.cargo }}
+				<p>
+					{{ oportunidad.cargo }}
+				</p>
 			</div>
 		</div>
 
 		<div class="postulante-field">
-			<label>Agencias</label>
+			<div>
+				<label>Agencias</label>
+			</div>
 			<div class="oportunidad-details">
-				{{ oportunidad.agenciaId | agenciaValor }}
+				<p>
+					{{ oportunidad.codigo | agenciaValor }}
+				</p>
 			</div>
 		</div>
 
 		<div class="postulante-field">
-			<label>Adjuntar mi CV</label>
-			<input formControlName="curriculum" type="file" class="" />
+			<div>
+				<label>Adjuntar mi CV</label>
+			</div>
+			<div>
+				<input formControlName="curriculum" type="file" class="" />
+			</div>
 		</div>
 
 		<div class="postulante-send">

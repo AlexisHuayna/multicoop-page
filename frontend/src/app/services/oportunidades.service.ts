@@ -13,4 +13,5 @@ export class OportunidadesService {
   getOportunidades(){
     return this.http.get<Oportunidad[]>("http://multicoop.com.pe:8000/api/oportunidades")
   }
+  
 }

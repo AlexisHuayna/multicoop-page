@@ -34,6 +34,9 @@ export class OportunidadDetallesComponent implements OnInit {
 
   postulanteForm() {
     this.displayForm = true;
+    setTimeout(()=>{
+      window.scrollBy(0, 600)
+    }, 50);
   }
 
 }

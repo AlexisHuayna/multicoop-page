@@ -40,7 +40,7 @@
                 <th>VACANTES</th>
             </tr>
             <tr *ngFor="let oportunidad of oportunidades" (click)="selecionarOportunidad(oportunidad)">
-                <td>{{oportunidad.agenciaId == '00'? "Todas" : oportunidad.agenciaId | agenciaValor}}</td>
+                <td>{{oportunidad.codigo == '00'? "Todas" : oportunidad.codigo | agenciaValor}}</td>
                 <td>{{oportunidad.cargo}}</td>
                 <td>{{oportunidad.horario}}</td>
                 <td>{{oportunidad.vacantes}}</td>

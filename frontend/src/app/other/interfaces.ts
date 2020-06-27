@@ -8,7 +8,7 @@ export interface PreCalificador {
 }
 
 export interface Oportunidad {
-    agenciaId: string,
+    codigo: string,
     cargo: string,
     horario: string,
     beneficios: Array<string>,
