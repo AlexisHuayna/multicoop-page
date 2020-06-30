@@ -32,9 +32,9 @@
 			<div class="campo-valor">{{ oportunidad.cargo }}</div>
 		</div>
 
-		<!--
+		
     
-        <div class="campo">
+        <div *ngIf="oportunidad.beneficios.length > 1" class="campo">
             <div class="campo-name">
                 <img src="assets/icons/right_arrow.svg" width="5%" alt="Beneficios">
                 <span>Beneficios</span>
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        -->
+        
 
 		<div class="campo">
 			<div class="campo-name">

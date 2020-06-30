@@ -35,6 +35,7 @@ h1{
 
 .campo-valor li {
     margin: 1% 0;
+    text-align: justify;
 }
 
 .campo-actions{

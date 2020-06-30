@@ -1,3 +1,10 @@
+h1 {
+    font-weight: 300;
+    font-size: 2.5vw;
+    font-family: 'Signika';
+    color: rgb(6, 82, 151, 1);
+}
+
 .postulante-field{
     display: grid;
     grid-template-columns: 30% 60%;
