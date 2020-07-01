@@ -13,6 +13,7 @@ export class PostulanteComponent implements OnInit {
 	@Input("display") statusView: Boolean;
 
 	postulanteForm: FormGroup;
+	file_name = "Adjuntar mi CV"
 
 	constructor(private _builder: FormBuilder, private router: Router) {
 		this.postulanteForm = this._builder.group({
@@ -34,5 +35,9 @@ export class PostulanteComponent implements OnInit {
     alert("Gracias por postular estaremos en contacto")
     this.router.navigate(['/'])
     */
+	}
+
+	updateFileName(file){
+		this.file_name = file[0]['name']	
 	}
 }

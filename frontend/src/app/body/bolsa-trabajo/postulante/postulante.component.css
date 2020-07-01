@@ -40,3 +40,27 @@ input, .oportunidad-details{
 input{
     display: block;
 }
+
+.inputfile{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.postulante-send img{
+    width: 8%;
+    margin-left: 1%;
+}
+
+.cv-label {
+    display: inline-block;
+    font-size: 2vw;
+    color: #E7C11F;
+}
+
+#fileName{
+    float: inline-start;
+}

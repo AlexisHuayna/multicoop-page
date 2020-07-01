@@ -1,36 +1,35 @@
 <div *ngIf="statusView" class="container-form">
-	
 	<h1>Enviar CV a ecruz@multicoop.com.pe</h1>
-
+	
 	<!--
-	<form
+		<form
 		[formGroup]="postulanteForm"
 		(ngSubmit)="postular(postulanteForm.value)"
-	>
+		>
 		<div class="postulante-field">
 			<div>
 				<label>Nombres</label>
 			</div>
-				<input
-					formControlName="nombres"
-					type="text"
-					class=""
-					placeholder="Diego Ernesto"
-				/>
+			<input
+			formControlName="nombres"
+			type="text"
+			class=""
+			placeholder="Diego Ernesto"
+			/>
 		</div>
-
+		
 		<div class="postulante-field">
 			<div>
 				<label>Apellidos</label>
 			</div>
 			<input
-				formControlName="apellidos"
-				type="text"
-				class=""
-				placeholder="Mendoza Pinedo"
+			formControlName="apellidos"
+			type="text"
+			class=""
+			placeholder="Mendoza Pinedo"
 			/>
 		</div>
-
+		
 		<div class="postulante-field">
 			<div>
 				<label>Puesto al que postula</label>
@@ -41,7 +40,7 @@
 				</p>
 			</div>
 		</div>
-
+		
 		<div class="postulante-field">
 			<div>
 				<label>Agencias</label>
@@ -52,21 +51,36 @@
 				</p>
 			</div>
 		</div>
-
-		<div class="postulante-field">
+		
+		<div class="postulante-send">
 			<div>
-				<label>Adjuntar mi CV</label>
-			</div>
-			<div>
-				<input formControlName="curriculum" type="file" class="" />
+				<input
+				formControlName="curriculum"
+				name="file"
+				type="file"
+				id="file"
+				class="inputfile"
+					accept="application/pdf, application/vnd.ms-excel"
+					(change)="updateFileName($event.target.files)"
+					/>
+					<label for="file">
+						<div class="cv-label">
+							<p id="fileName">{{file_name}}</p>
+						</div>
+					<img src="assets/icons/adjuntar_cv.svg" alt="cv">
+				</label>
 			</div>
 		</div>
-
+		
 		<div class="postulante-send">
-			<button [disabled]="postulanteForm.invalid" type="submit" class="prestamo-yellow-button">
+			<button
+				[disabled]="postulanteForm.invalid"
+				type="submit"
+				class="prestamo-yellow-button"
+				>
 				Enviar
 			</button>
 		</div>
 	</form>
-	-->
+-->
 </div>
