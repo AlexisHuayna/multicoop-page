@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from "@angular/core";
 import { Oportunidad } from "src/app/other/interfaces";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { PostulanteService } from 'src/app/services/postulante.service';
 
 @Component({
 	selector: "app-postulante",
@@ -13,12 +14,13 @@ export class PostulanteComponent implements OnInit {
 	@Input("display") statusView: Boolean;
 
 	postulanteForm: FormGroup;
-	file_name = "Adjuntar mi CV"
+	fileSelected: File = null;
+	file_name = "Adjuntar mi CV";
 
-	constructor(private _builder: FormBuilder, private router: Router) {
+	constructor(public postulanteService: PostulanteService,private _builder: FormBuilder, private router: Router) {
 		this.postulanteForm = this._builder.group({
-			nombres: ["", Validators.required],
-			apellidos: ["", Validators.required],
+			nombres: ["", Validators.compose([Validators.required, Validators.minLength(2)])],
+			apellidos: ["", Validators.compose([Validators.required, Validators.minLength(2)])],
 			curriculum: ["", Validators.required],
 		});
 	}
@@ -26,7 +28,7 @@ export class PostulanteComponent implements OnInit {
 	ngOnInit(): void {}
 
 	addPostulante(postulante) {
-		console.log(postulante);
+		this.postulanteService.agregarPostulante(this.fileSelected, postulante);
 	}
 
 	postular(values) {
@@ -38,6 +40,7 @@ export class PostulanteComponent implements OnInit {
 	}
 
 	updateFileName(file){
-		this.file_name = file[0]['name']	
+		this.file_name = file[0]['name']
+		this.fileSelected = file.item(0)
 	}
 }

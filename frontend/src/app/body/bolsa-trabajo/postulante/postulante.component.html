@@ -1,7 +1,9 @@
 <div *ngIf="statusView" class="container-form">
+
+<!--
 	<h1>Enviar CV a ecruz@multicoop.com.pe</h1>
+-->
 	
-	<!--
 		<form
 		[formGroup]="postulanteForm"
 		(ngSubmit)="postular(postulanteForm.value)"
@@ -76,11 +78,10 @@
 			<button
 				[disabled]="postulanteForm.invalid"
 				type="submit"
-				class="prestamo-yellow-button"
+				class="enviar"
 				>
 				Enviar
 			</button>
 		</div>
 	</form>
--->
 </div>
