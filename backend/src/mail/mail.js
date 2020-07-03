@@ -1,12 +1,12 @@
 const nodemailer = require('nodemailer');
 
-exports.enviarCorreo = (req, res) => {
+exports.enviarCorreo = (req, res, mail_content) => {
 
-    var remitentes = req.body.remitentes
-    var subject = req.body.subject
-    var text = req.body.text
-    var html = req.body.html
-    var attachments = req.body.attachments
+    var remitentes = mail_content.remitentes
+    var subject = mail_content.subject
+    var text = mail_content.text
+    var html = mail_content.html
+    var attachments = mail_content.attachments
 
     var transporter = nodemailer.createTransport({
         host: 'mail.multicoop.com.pe',
@@ -32,6 +32,7 @@ exports.enviarCorreo = (req, res) => {
 
     transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
+            console.log(err)
             res.status(500).send()
         } else {
             res.status(200).send()

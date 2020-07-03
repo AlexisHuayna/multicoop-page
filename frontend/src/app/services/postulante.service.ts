@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +8,13 @@ export class PostulanteService {
 
   constructor(private http: HttpClient) { }
 
-  agregarPostulante(file: File, postulante){
-    const endpoint = 'http://multicoop.com.pe:8000/api/postulante';
-    const formData: FormData = new FormData();
-    formData.append('fileKey', file, file.name);
-    console.log(formData)
-    console.log(postulante)
+  agregarPostulante(postulante){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'multipart/form-data',
+      })
+    };
 
-    //return this.http.post(endpoint, formData)
+    return this.http.post<String>('http://127.0.0.1:8000/api/postulantes', postulante, httpOptions);
   }
 }

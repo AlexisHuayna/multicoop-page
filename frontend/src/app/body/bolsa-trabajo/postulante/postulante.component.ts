@@ -21,22 +21,28 @@ export class PostulanteComponent implements OnInit {
 		this.postulanteForm = this._builder.group({
 			nombres: ["", Validators.compose([Validators.required, Validators.minLength(2)])],
 			apellidos: ["", Validators.compose([Validators.required, Validators.minLength(2)])],
-			curriculum: ["", Validators.required],
+			curriculum: [null, Validators.required],
 		});
 	}
 
 	ngOnInit(): void {}
 
-	addPostulante(postulante) {
-		this.postulanteService.agregarPostulante(this.fileSelected, postulante);
+	postular(values) {
+		this.postulanteService.agregarPostulante(this.joinData(values, this.fileSelected)).subscribe(response => console.log(), err => console.log());	
+    	alert("Gracias por postular estaremos en contacto");
+    	this.router.navigate(['/']);
 	}
 
-	postular(values) {
-		this.addPostulante(values);
-		/*
-    alert("Gracias por postular estaremos en contacto")
-    this.router.navigate(['/'])
-    */
+	joinData<T>(formdata: T, file: File){
+		const postulante = new FormData();
+
+		postulante.append('nombres', formdata['nombres'])
+		postulante.append('apellidos', formdata['apellidos'])
+		postulante.append('cargo', this.oportunidad.cargo)
+		postulante.append('agencia', this.oportunidad.codigo)
+		postulante.append('curriculum', file)
+		
+		return postulante
 	}
 
 	updateFileName(file){

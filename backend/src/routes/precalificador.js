@@ -34,7 +34,7 @@ router.post('/api/precalificador', (req, res) => {
     conexion_msql.query(query_agregar_pre_calificador, (err, rows, fields) => {
         if (!err) {
 
-            req.body = {
+            mail_content = {
                 remitentes: obtenerCorreoAdministrador(localidad),
                 subject: "Precalificador Web",
                 text: "Datos de precalificador",
@@ -42,7 +42,7 @@ router.post('/api/precalificador', (req, res) => {
                 attachments: []
             }
 
-            correoControlador.enviarCorreo(req, res)
+            correoControlador.enviarCorreo(req, res, mail_content)
         } else {
             res.status(500).end();
         }
