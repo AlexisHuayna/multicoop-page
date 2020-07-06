@@ -17,7 +17,7 @@ export class PrecalificadorService {
       })
     };
 
-    return this.http.post<String>("http://127.0.0.1:8000/api/precalificador", precalificador, httpOptions);
+    return this.http.post<String>("http://multicoop.com.pe:8000/api/precalificador", precalificador, httpOptions);
   }
 
 }
