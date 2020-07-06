@@ -72,6 +72,7 @@
 					<img src="assets/icons/adjuntar_cv.svg" alt="cv">
 				</label>
 			</div>
+			<div class="helper-informacion" *ngIf="!postulanteForm.get('curriculum').value">El archivo no debe pesar mas de 2Mb</div>
 		</div>
 		
 		<div class="postulante-send">

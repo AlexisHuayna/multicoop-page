@@ -11,6 +11,27 @@ function crearContenidoCorreo(nombres, apellidos, cargo, agencia) {
         "<p>En la agencia: " + agencia + "</p>";
 }
 
+function agenciaValor(agenciaId){
+    var agencia_valor = ''
+    if(agenciaId == '01'){
+        agencia_valor = 'Arequipa'
+    }else if (agenciaId == '02'){
+        agencia_valor = 'Juliaca'
+    }else if (agenciaId == '03'){
+        agencia_valor = 'Puno'
+    }else if(agenciaId == '04'){
+        agencia_valor = 'Moquegua'
+    }else if(agenciaId == '05'){
+        agencia_valor = 'Ayaviri'
+    }else if(agenciaId == '06'){
+        agencia_valor = 'Tacna'
+    }else if(agenciaId == '07'){
+        agencia_valor = 'Cusco'
+    }else{
+        agencia_valor = 'Todas'
+    }
+    return agencia_valor
+}
 
 router.post('/api/postulantes', (req, res) => {
     try{
@@ -31,7 +52,7 @@ router.post('/api/postulantes', (req, res) => {
             var agencia = req.body.agencia
 
             mail_content = {
-                remitentes: "ahuayna@multicoop.com.pe",
+                remitentes: "ecruz@multicoop.com.pe",
                 subject: "Nuevo postulante",
                 text: "Nuevo postulante a " + cargo + " en " + agencia,
                 html: crearContenidoCorreo(nombres, apellidos, cargo, agencia),
@@ -49,35 +70,8 @@ router.post('/api/postulantes', (req, res) => {
         res.status(500).end();
     }
 
-/*
-    var nombres = req.body.nombres
-    var apellidos = req.body.apellidos
-    var cargo = req.body.cargo
-    var agencia = req.body.agencia
-    var cv_ruta = "por verse"
-    var cv_nombre = "por verse"
-
-    res.json({
-        remitentes: "ahuayna@multicoop.com.pe",
-        subject: "Nuevo postulante",
-        text: "Nuevo postulante a " + cargo + " en " + agencia,
-        html: crearContenidoCorreo(nombres, apellidos, cargo, agencia),
-        attachments: [{
-            filename: cv_nombre,
-            path: cv_ruta,
-            contentType: 'application/pdf'
-        }]
-    })
-
-    correo_controlador.enviarCorreo(req, res)
-
-    res.status(200).json({ postulante: 1 });
-*/
 });
 
-router.get('/api/postulantes', (req, res) => {
-
-});
 
 
 module.exports = router;
