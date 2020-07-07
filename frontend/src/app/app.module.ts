@@ -40,6 +40,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { TarifarioConsumoMypeComponent } from './body/transparencia/tarifario-consumo-mype/tarifario-consumo-mype.component';
 import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/tarifario-grupal.component';
 import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
+import { HelpersComponent } from './helpers/helpers.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ProcedimientoAtencionComponent } from './body/transparencia/procedimien
     TarifarioConsumoMypeComponent,
     TarifarioGrupalComponent,
     ProcedimientoAtencionComponent,
+    HelpersComponent,
   ],
   imports: [
     BrowserModule,

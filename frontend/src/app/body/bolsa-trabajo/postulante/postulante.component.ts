@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output } from "@angular/core";
+import { Component, OnInit, Input, Output, ViewChild } from "@angular/core";
 import { Oportunidad } from "src/app/other/interfaces";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { PostulanteService } from 'src/app/services/postulante.service';
+import { HelpersComponent } from 'src/app/helpers/helpers.component';
 
 @Component({
 	selector: "app-postulante",
@@ -12,6 +13,11 @@ import { PostulanteService } from 'src/app/services/postulante.service';
 export class PostulanteComponent implements OnInit {
 	@Input("oportunidad") oportunidad: Oportunidad;
 	@Input("display") statusView: Boolean;
+
+	@ViewChild(HelpersComponent)
+	private mensajeExito: HelpersComponent;
+
+	propsHelper = {mensaje : 'Gracias por postular estaremos en contacto.', titulo : null, ruta: '/'}
 
 	postulanteForm: FormGroup;
 	fileSelected: File = null;
@@ -29,8 +35,7 @@ export class PostulanteComponent implements OnInit {
 
 	postular(values) {
 		this.postulanteService.agregarPostulante(this.joinData(values, this.fileSelected)).subscribe(response => console.log(), err => console.log());	
-    	alert("Gracias por postular estaremos en contacto");
-    	this.router.navigate(['/']);
+		this.mensajeExito.show();
 	}
 
 	joinData<T>(formdata: T, file: File){

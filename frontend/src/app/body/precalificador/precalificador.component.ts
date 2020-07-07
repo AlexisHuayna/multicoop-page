@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PreCalificador } from 'src/app/other/interfaces';
 import { PrecalificadorService } from 'src/app/services/precalificador.service';
 import { Router } from '@angular/router';
+import { HelpersComponent } from 'src/app/helpers/helpers.component';
 
 @Component({
   selector: 'app-precalificador',
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 })
 export class PrecalificadorComponent implements OnInit {
 
+  @ViewChild(HelpersComponent)
+  private mensajeExito: HelpersComponent;
+
   precalificadorForm: FormGroup
+  propsHelper = {mensaje : 'Gracias por precalificar estaremos en contacto.', titulo : null, ruta: '/'}
 
   constructor(
     public precalificadorService: PrecalificadorService,
@@ -41,8 +46,7 @@ export class PrecalificadorComponent implements OnInit {
 
   precalificar(values) {
     this.addPreCalificador(<PreCalificador>values)
-    alert("Gracias por precalificar estaremos en contacto.")
-    this.router.navigate(['/']);
+    this.mensajeExito.show();
   }
 
 }

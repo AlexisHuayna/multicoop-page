@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { departamentos, provincias, distritos } from '../../other/ubigeo';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ReclamacionService } from 'src/app/services/reclamacion.service';
 import { Reclamacion } from 'src/app/other/interfaces';
 import { Router } from '@angular/router';
+import { HelpersComponent } from 'src/app/helpers/helpers.component';
 
 @Component({
   selector: 'app-reclamaciones',
@@ -12,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class ReclamacionesComponent implements OnInit {
 
+  @ViewChild(HelpersComponent)
+  private mensajeExito: HelpersComponent;
+  
   departamentos = departamentos
   provincias = provincias
   distritos = distritos
@@ -20,6 +24,9 @@ export class ReclamacionesComponent implements OnInit {
   provincia_actual: string
 
   reclamacionesForm: FormGroup
+
+  propsHelper = {mensaje : 'Estaremos en contacto.', titulo : null, ruta: '/'}
+
 
   constructor(
     private _builder: FormBuilder,
@@ -126,8 +133,7 @@ export class ReclamacionesComponent implements OnInit {
     }
 
     this.addReclamacion(<Reclamacion>values)
-    alert("Estaremos en contacto")
-    this.router.navigate(['/']);
+    this.mensajeExito.show();
 
   }
 
