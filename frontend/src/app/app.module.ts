@@ -80,7 +80,7 @@ import { HelpersComponent } from './helpers/helpers.component';
     HelpersComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
