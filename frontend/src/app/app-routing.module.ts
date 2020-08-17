@@ -100,11 +100,14 @@ const routes: Routes = [
   }, {
     path: 'transparencia/tarifarioGrupal',
     component: TarifarioGrupalComponent,
-    pathMatch: 'full' 
+    pathMatch: 'full'
   }, {
     path: 'transparencia/tarifarioConsumoMype',
     component: TarifarioConsumoMypeComponent,
-    pathMatch: 'full' 
+    pathMatch: 'full'
+  }, {
+    path: 'interno',
+    loadChildren: () => import('./interno/interno.module').then(m => m.InternoModule)
   }, {
     path: '**',
     component: NotFoundComponent,
