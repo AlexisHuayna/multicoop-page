@@ -1,5 +1,6 @@
 const correo_controlador = require('../mail/mail');
 const path = require('path')
+const multer = require('multer');
 const express = require('express');
 const router = express.Router();
 
@@ -30,17 +31,23 @@ function agenciaValor(agenciaId){
     }else{
         agencia_valor = 'Todas'
     }
-    return agencia_valor
+    return agencia_valor;
 }
 
+router.get('/api/postulantes', (req, res) => {
+	res.send('works')   
+});
+
 router.post('/api/postulantes', (req, res) => {
-    try{
+    	
+	try{
         if(!req.files){
             res.send({
                 status: false,
                 message: 'No file upload'
             })
         }else{
+		
             let cv = req.files.curriculum
             let cv_path = path.join(__dirname, '../temp/' + cv.name)
 
@@ -69,9 +76,7 @@ router.post('/api/postulantes', (req, res) => {
     } catch (err) {
         res.status(500).end();
     }
-
+	
 });
-
-
 
 module.exports = router;

@@ -1,8 +1,130 @@
-<h1>
-    Ficha de sintomatologia COVID-19 Para regreso al trabajo Declaracion Jurada
-</h1>
-<form>
-    <label for="">Apellidos y nombres</label>
-    <label>Area de trabajo</label>
-    <label>dni</label>
-</form>
+<div class="container">
+    <h1>
+        Ficha de sintomatologia COVID-19 Para regreso al trabajo
+    </h1>
+    <h3>He recibido explicación del objetivo de esta evaluación y me comprometo a responder con la verdad.</h3>
+   
+    <form [formGroup]="sintomatologiaForm" (ngSubmit)="enviar(sintomatologiaForm.value)">
+      <div class="row">
+        <div class="col-40">
+          <label for="apellidosNombres">Apellidos y Nombres</label>
+        </div>
+        <div class="col-60">
+          <input type="text" formControlName="apellidosNombres" name="apellidosNombres" placeholder="Apellidos y nombres..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-40">
+          <label for="area">Area de trabajo</label>
+        </div>
+        <div class="col-60">
+          <input type="text" formControlName="area" name="area" placeholder="Area de trabajo..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-40">
+          <label for="dni">DNI</label>
+        </div>
+        <div class="col-60">
+          <input type="text" formControlName="dni" name="dni" placeholder="DNI..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-40">
+          <label for="direccion">Direccion</label>
+        </div>
+        <div class="col-60">
+          <input type="text" formControlName="direccion" name="direccion" placeholder="Direccion..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-40">
+          <label for="celular">Numero Celular</label>
+        </div>
+        <div class="col-60">
+          <input type="text" formControlName="celular" name="celular" placeholder="Numero de celular..">
+        </div>
+      </div>
+      <h3>En los ultimos 14 dias calendario ha tenido uno de los sintomas siguientes</h3>
+      <div class="row">
+        <div class="col-70">
+          <label for="country">Sensacion de alza térmica o fiebre.</label>
+        </div>
+        <div class="col-30">
+            <input type="radio" formControlName="primera" value="Si" name="primera">Si<br>
+            <input type="radio" formControlName="primera" value="No" name="primera">No<br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-70">
+          <label for="country">Tos, estornudos o dificultad para respirar.</label>
+        </div>
+        <div class="col-30">
+            <input type="radio" formControlName="segunda" value="Si" name="segunda">Si<br>
+            <input type="radio" formControlName="segunda" value="No" name="segunda">No<br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-70">
+          <label for="country">Expectoracion o flema amarilla o verdosa.</label>
+        </div>
+        <div class="col-30">
+            <input type="radio" formControlName="tercera" value="Si" name="tercera">Si<br>
+            <input type="radio" formControlName="tercera" value="No" name="tercera">No<br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-70">
+          <label for="country">Contacto con persona(s) con un caso confirmado de COVID-19.</label>
+        </div>
+        <div class="col-30">
+            <input type="radio" formControlName="cuarta" value="Si" name="cuarta">Si<br>
+            <input type="radio" formControlName="cuarta" value="No" name="cuarta">No<br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-70">
+          <label for="country">Está tomando alguna medicación (detallar cuál o cuáles).</label>
+        </div>
+        <div class="col-30">
+            <input type="radio" formControlName="quinta" value="Si" name="quinta" (click)="medicacion(true)">Si<br>
+            <input type="radio" formControlName="quinta" value="No" name="quinta" (click)="medicacion(false)">No<br>
+        </div>
+        <div *ngIf="medicacionFlag">
+            <input type="text" formControlName="textQuinta" name="textQuinta" placeholder="Detallar..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-70">
+          <label for="country">Sufre alguna enfermedad crónica (Diabetes, asma, Hipertensión arterial, etc.) cuál o cuales.</label>
+        </div>
+        <div class="col-30">
+            <input type="radio" formControlName="sexta" value="Si" name="sexta" (click)="enfermedad(true)">Si<br>
+            <input type="radio" formControlName="sexta" value="No" name="sexta" (click)="enfermedad(false)">No<br>
+        </div>
+        <div *ngIf="enfermedadFlag">
+            <input type="text" formControlName="textSexta" name="textSexta" placeholder="Detallar..">
+        </div>
+      </div>
+      <p id="detalles">
+        Todos los datos expresados en esta ficha constituyen declaración jurada de mi parte.<br/>
+        He sido informado que de omitir o falsear información puedo perjudicar la salud de mis compañeros, y la mía propia, lo cual de constituir una falta grave a la salud pública, asumo sus consecuencias.
+      </p>
+      <div class="row">
+        <div class="col-70">
+          <label for="country">Fecha</label>
+        </div>
+        <div class="col-30">
+            <label for="country">{{fecha|date}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <input [disabled]="sintomatologiaForm.invalid" type="submit" value="Enviar">
+      </div>
+    </form>
+
+  </div>
+
+<!--
+<app-helpers [props]="propsHelper"></app-helpers>
+-->
