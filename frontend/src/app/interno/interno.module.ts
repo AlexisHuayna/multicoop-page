@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     InternoRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class InternoModule { }

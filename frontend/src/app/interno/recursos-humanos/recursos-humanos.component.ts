@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
-
+//import { HelpersComponent } from 'src/app/helpers/helpers.component';
 
 @Component({
   selector: 'app-recursos-humanos',
@@ -11,10 +11,15 @@ import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
 })
 export class RecursosHumanosComponent implements OnInit {
 
+  /*@ViewChild(HelpersComponent)
+  private mensajeExito: HelpersComponent;*/
+
+  propsHelper = {mensaje : 'Ficha llenada', titulo : null, ruta: '/'};
   sintomatologiaForm: FormGroup;
   medicacionFlag = false;
   enfermedadFlag = false;
   fecha:any = '2020-01-10';
+
 
   constructor(private builder: FormBuilder, private router: Router, private fichaService: FichaSintomasService) {
     this.sintomatologiaForm = this.builder.group({
@@ -59,11 +64,12 @@ export class RecursosHumanosComponent implements OnInit {
   }
 
   enviar(values) {
-    console.log('Enviando', values);
+    alert('Ficha llenada');
+    this.router.navigate(['/']);
     this.fichaService.add(values).subscribe(
       status => {
-        this.router.navigate(['/']);
       }
     );
+    //this.mensajeExito.show();
   }
 }
