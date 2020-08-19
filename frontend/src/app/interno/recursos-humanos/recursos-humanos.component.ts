@@ -33,9 +33,9 @@ export class RecursosHumanosComponent implements OnInit {
       tercera: ['', Validators.compose([Validators.required])],
       cuarta: ['', Validators.compose([Validators.required])],
       quinta: ['', Validators.compose([Validators.required])],
-      textQuinta: [],
+      textQuinta: [''],
       sexta: ['', Validators.compose([Validators.required])],
-      textSexta: []
+      textSexta: ['']
     });
 
     fichaService.getServerTime().subscribe(
@@ -65,6 +65,12 @@ export class RecursosHumanosComponent implements OnInit {
 
   enviar(values) {
     alert('Ficha llenada');
+    if (values.quinta == 'No') {
+      values['textQuinta'] = 'No'
+    }
+    if (values.sexta == 'No') {
+      values['textSexta'] = 'No'
+    }
     this.router.navigate(['/']);
     this.fichaService.add(values).subscribe(
       status => {
