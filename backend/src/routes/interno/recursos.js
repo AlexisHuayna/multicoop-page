@@ -1,4 +1,4 @@
-const conexion_mysql = require('../db');
+const conexion_mysql = require('../../db');
 
 const express = require('express');
 const router = express.Router();
@@ -70,23 +70,32 @@ router.post('/api/interno/rh/ficha', (req, res) => {
             const datTime = new Date();
             const fecha = datTime.toISOString().slice(0,10);
             const query_add_ficha = "INSERT INTO ficha(idColaborador, fecha, detalle) VALUES ('" + id_colaborador + "','" + fecha + "','test')";
-            conexion_mysql.query(query_add_ficha, (err, result) => {
+            conexion_mysql.query(query_add_ficha, (err, result2) => {
                 if(!err) {
-                    const id = result.insertId;
-                    const query_add_respuestas = "INSERT INTO respuesta(idficha, nombrePregunta, detalle) VALUES ?";
-                    const values = [
-                        ["'" + id + "'", 'primera', "'" + primera + "'"],
-                        ["'" + id + "'", 'segunda', "'" + segunda + "'"],
-                        ["'" + id + "'", 'tercera', "'" + tercera + "'"],
-                        ["'" + id + "'", 'cuarta', "'" + cuarta + "'"],
-                        ["'" + id + "'", 'quinta', "'" + quinta + "'"],
-                        ["'" + id + "'", 'sexta', "'" + sexta + "'"],
-                    ]
-                    conexion_mysql.query(query_add_respuestas, [values], (err, result) => {
-                        if(!err) {
-                            res.status(200).json({finish: 'true'});
-                        }
-                    });
+                    const id_ficha = result2.insertId;
+                    const query_add_respuestas_primera = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','primera','" + primera + "')";
+                    const query_add_respuestas_segunda = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','segunda','" + segunda + "')";
+                    const query_add_respuestas_tercera = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','tercera','" + tercera + "')";
+                    const query_add_respuestas_cuarta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','cuarta','" + cuarta + "')";
+                    const query_add_respuestas_quinta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','quinta','" + quinta + "')";
+                    const query_add_respuestas_sexta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + sexta + "')";
+                   
+                    conexion_mysql.query(query_add_respuestas_primera, (err, result3) => {});
+
+                    conexion_mysql.query(query_add_respuestas_segunda, (err, result3) => {});
+
+                    conexion_mysql.query(query_add_respuestas_tercera, (err, result3) => {});
+
+                    conexion_mysql.query(query_add_respuestas_cuarta, (err, result3) => {});
+
+                    conexion_mysql.query(query_add_respuestas_quinta, (err, result3) => {});
+
+                    conexion_mysql.query(query_add_respuestas_sexta, (err, result3) => {});
+
+
+                    if(!err) {
+                        res.status(200).json({finish: 'true'});
+                    }
                 }              
             });
         } else {
