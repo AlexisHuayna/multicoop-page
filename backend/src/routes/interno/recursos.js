@@ -6,7 +6,10 @@ const router = express.Router();
 const colaboradoresTotal = require('./colaboradores');
 
 router.get('/api/time', (req, res) => {
-    res.send({time: Date.now()});
+    const datTime = new Date();
+    const fecha = datTime.toISOString().slice(0,10);
+
+    res.status(200).send({time: fecha});
 });
 
 router.get('/api/interno/rh/validate', (req, res) => {
@@ -24,6 +27,7 @@ router.get('/api/interno/rh/validate', (req, res) => {
 
 router.get('/api/interno/rh/ficha/lista', (req, res) => {
     
+    const datTime = new Date();
     const current_dia = datTime.toISOString().slice(0,10);
     const query_fichas_dia = "SELECT dni FROM ficha INNER JOIN colaborador ON ficha.idColaborador = colaborador.id WHERE fecha = " + current_dia;
     
@@ -43,13 +47,14 @@ router.get('/api/interno/rh/ficha/lista', (req, res) => {
 });
 
 router.post('/api/interno/rh/ficha', (req, res) => {
-    /*
+    
     const apellidosNombres = req.body.apellidosNombres;
     const dni = req.body.dni;
-    */
+
     const area = req.body.area;
     const direccion = req.body.direccion;
     const celular = req.body.celular;
+
     const primera = req.body.primera;
     const segunda = req.body.segunda;
     const tercera = req.body.tercera;
@@ -57,20 +62,36 @@ router.post('/api/interno/rh/ficha', (req, res) => {
     const quinta = req.body.textQuinta;
     const sexta = req.body.textSexta;
 
-    const query_add_colaborador = "INSERT INTO";
-    const query_add_ficha = "";
-    const query_add_respuestas = "";
-
-    conexion_mysql.query(query_add_colaborador, (err, row, fields) => {
+    const query_add_colaborador = "INSERT INTO colaborador(nombresApellidos, area, dni, direccion, celular) VALUES ('" + apellidosNombres + "','" + area + "','" + dni + "','" + direccion + "','" + celular + "')";
+    
+    conexion_mysql.query(query_add_colaborador, (err, result) => {
         if (!err) {
-
+            const id_colaborador = result.insertId;
+            const datTime = new Date();
+            const fecha = datTime.toISOString().slice(0,10);
+            const query_add_ficha = "INSERT INTO ficha(idColaborador, fecha, detalle) VALUES ('" + id_colaborador + "','" + fecha + "','test')";
+            conexion_mysql.query(query_add_ficha, (err, result) => {
+                if(!err) {
+                    const id = result.insertId;
+                    const query_add_respuestas = "INSERT INTO respuesta(idficha, nombrePregunta, detalle) VALUES ?";
+                    const values = [
+                        ["'" + id + "'", 'primera', "'" + primera + "'"],
+                        ["'" + id + "'", 'segunda', "'" + segunda + "'"],
+                        ["'" + id + "'", 'tercera', "'" + tercera + "'"],
+                        ["'" + id + "'", 'cuarta', "'" + cuarta + "'"],
+                        ["'" + id + "'", 'quinta', "'" + quinta + "'"],
+                        ["'" + id + "'", 'sexta', "'" + sexta + "'"],
+                    ]
+                    conexion_mysql.query(query_add_respuestas, [values], (err, result) => {
+                        if(!err) {
+                            res.status(200).json({finish: 'true'});
+                        }
+                    });
+                }              
+            });
         } else {
-
+            res.status(500).send();
         }
-    });
-
-    res.send({
-        message: 'success'
     });
 })
 
