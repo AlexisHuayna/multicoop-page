@@ -46,9 +46,26 @@
     margin-top: 2%;
 }
 
+.helper-informacion {
+    font-size: 1.15vw;
+}
+
 h1{
     font-size: 3vw;
     text-align: center;
     font-family: 'Signika';
     margin: 1% 0%;
+}
+
+@media screen and (max-width: 400px) {
+
+    .right-content {
+        display: none;
+    }
+    
+    .precalificador-content{
+        padding: 1% 5%;
+        display: grid;
+        grid-template-columns: 100%;
+    }
 }
