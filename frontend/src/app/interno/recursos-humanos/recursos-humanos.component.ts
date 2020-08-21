@@ -18,7 +18,7 @@ export class RecursosHumanosComponent implements OnInit {
   sintomatologiaForm: FormGroup;
   medicacionFlag = false;
   enfermedadFlag = false;
-  fecha:any = '2020-01-10';
+  fecha: any;
 
 
   constructor(private builder: FormBuilder, private router: Router, private fichaService: FichaSintomasService) {
@@ -38,13 +38,16 @@ export class RecursosHumanosComponent implements OnInit {
       textSexta: ['']
     });
 
-    fichaService.getServerTime().subscribe(
-      time => {
-        this.fecha = time;
-      }
-    );
+    try {
+      fichaService.getServerTime().subscribe(
+        timeReponse => {
+          this.fecha = timeReponse.time;
+        }
+      );
+    } catch (error) {
+      this.fecha = Date.now();
+    }
 
-    this.fecha = Date.now();
   }
 
   ngOnInit(): void {

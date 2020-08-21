@@ -5,6 +5,24 @@ const router = express.Router();
 
 const colaboradoresTotal = require('./colaboradores');
 
+function removeColaborador(dni, colaboradores) {
+    if(dni in colaboradores[1]) {
+        delete colaboradores[1][dni];
+    } else if(dni in colaboradores[2]) {
+        delete colaboradores[2][dni];
+    } else if(dni in colaboradores[3]) {
+        delete colaboradores[3][dni];
+    } else if(dni in colaboradores[4]) {
+        delete colaboradores[4][dni];
+    } else if(dni in colaboradores[5]) {
+        delete colaboradores[5][dni];
+    } else if(dni in colaboradores[6]) {
+        delete colaboradores[6][dni];
+    } else if(dni in colaboradores[7]) {
+        delete colaboradores[7][dni];
+    }
+}
+
 router.get('/api/time', (req, res) => {
     const datTime = new Date();
     const fecha = datTime.toISOString().slice(0,10);
@@ -29,16 +47,17 @@ router.get('/api/interno/rh/ficha/lista', (req, res) => {
     
     const datTime = new Date();
     const current_dia = datTime.toISOString().slice(0,10);
-    const query_fichas_dia = "SELECT dni FROM ficha INNER JOIN colaborador ON ficha.idColaborador = colaborador.id WHERE fecha = " + current_dia;
-    
-    conexion_mysql.query(query_fichas_dia, (err, colaboradoresQueLlenaron, fields) => {
+    const query_fichas_dia = "SELECT dni FROM ficha INNER JOIN colaborador ON ficha.idColaborador = colaborador.id WHERE ficha.fecha = '" + current_dia + "'";    
+    conexion_mysql.query(query_fichas_dia, (err, fichasLlenadas, fields) => {
         if(!err) {
-            for(let i = 0; i < colaboradoresQueLlenaron.length; ++i) {
-                if(colaboradoresQueLlenaron[i].dni in colaboradoresTotal) {
-                    delete colaboradoresTotal[colaboradoresQueLlenaron[i].dni];
-                }
+            let colaboradores = colaboradoresTotal.colaboradoresTotal;
+
+            for(let i = 0; i < fichasLlenadas.length; ++i) {
+                let dni = fichasLlenadas[i].dni;
+
+                removeColaborador(dni, colaboradores);
             }
-            res.status(200).json(colaboradoresTotal);
+            res.status(200).json(colaboradores);
         } else {
             res.status(500).json({ status: 'error' })
         }

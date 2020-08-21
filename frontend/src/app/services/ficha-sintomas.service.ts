@@ -15,4 +15,8 @@ export class FichaSintomasService {
   add(ficha){
     return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/ficha", ficha);
   }
+
+  getRemaining() {
+    return this.http.get("http://multicoop.com.pe:8000/api/interno/rh/ficha/lista");
+  }
 }
