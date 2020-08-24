@@ -18,6 +18,8 @@ export class RecursosHumanosComponent implements OnInit {
   sintomatologiaForm: FormGroup;
   medicacionFlag = false;
   enfermedadFlag = false;
+  enContacto = false;
+  otrosContacto = false;
   fecha: any;
 
 
@@ -32,6 +34,7 @@ export class RecursosHumanosComponent implements OnInit {
       segunda: ['', Validators.compose([Validators.required])],
       tercera: ['', Validators.compose([Validators.required])],
       cuarta: ['', Validators.compose([Validators.required])],
+      textCuarta: ['', ],
       quinta: ['', Validators.compose([Validators.required])],
       textQuinta: [''],
       sexta: ['', Validators.compose([Validators.required])],
@@ -40,8 +43,8 @@ export class RecursosHumanosComponent implements OnInit {
 
     try {
       fichaService.getServerTime().subscribe(
-        timeReponse => {
-          this.fecha = timeReponse.time;
+        timeResponse => {
+          this.fecha = timeResponse.time;
         }
       );
     } catch (error) {
@@ -80,5 +83,13 @@ export class RecursosHumanosComponent implements OnInit {
       }
     );
     //this.mensajeExito.show();
+  }
+
+  contacto(value) {
+    this.enContacto = value;
+  }
+
+  contactoDetalle(value) {
+    this.otrosContacto = value;
   }
 }

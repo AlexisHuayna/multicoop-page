@@ -45,7 +45,9 @@
           <input type="text" formControlName="celular" name="celular" placeholder="Numero de celular..">
         </div>
       </div>
+
       <h3>En los ultimos 14 dias calendario ha tenido uno de los sintomas siguientes</h3>
+      
       <div class="row">
         <div class="col-70">
           <label for="country">Sensacion de alza térmica o fiebre.</label>
@@ -78,9 +80,17 @@
           <label for="country">Contacto con persona(s) con un caso confirmado de COVID-19.</label>
         </div>
         <div class="col-30">
-            <input type="radio" formControlName="cuarta" value="Si" name="cuarta">Si<br>
-            <input type="radio" formControlName="cuarta" value="No" name="cuarta">No<br>
+            <input type="radio" formControlName="cuarta" value="Si" name="cuarta" (click)="contacto(true)">Si<br>
+            <input type="radio" formControlName="cuarta" value="No" name="cuarta" (click)="contacto(false)">No<br>
         </div>
+        <div *ngIf="enContacto">
+          <input type="radio" formControlName="textCuarta" value="Familiar" name="contacto" (click)="contactoDetalle(false)">Familiar<br>
+          <input type="radio" formControlName="textCuarta" value="Centro de trabajo" name="contacto" (click)="contactoDetalle(false)">Centro de trabajo<br>
+          <input type="radio" formControlName="textCuarta" value="Otros" name="contacto" (click)="contactoDetalle(true)">Otros<br>
+        </div>
+        <div *ngIf="otrosContacto">
+          <input type="text" formControlName="textQuinta" name="otrosContacto" placeholder="Detallar..">
+      </div>
       </div>
       <div class="row">
         <div class="col-70">

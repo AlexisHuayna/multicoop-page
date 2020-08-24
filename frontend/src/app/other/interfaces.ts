@@ -47,3 +47,8 @@ export interface Reclamacion {
     tipoReclamacion: string,
     detalleReclamacion: string
 }
+
+export interface ServerInformation {
+    time?: string,
+    date?: string,
+}
