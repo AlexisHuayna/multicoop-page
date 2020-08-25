@@ -18,7 +18,6 @@ export interface Oportunidad {
     competencias: Array<string>
 }
 
-
 export interface Postulante {
     nombres: string,
     apellidos: string,
@@ -54,6 +53,34 @@ export interface ServerInformation {
 }
 
 export interface FichaCabecera {
+    data?: FichaDetail[];
+}
+
+export interface FichaDetail {
+    colaborador?: Colaborador,
+    ficha?: Ficha,
+    respuesta?: Respuesta,
+}
+
+export interface Respuesta {
+    id?: number,
+    idFicha?: number,
+    nombrePregunta?: string,
+    detalle?: string,
+}
+
+export interface Colaborador {
+    id?: number,
+    nombresApellidos?: string,
+    area?: string,
     dni?: string,
-    apellidosNombres?: string;
+    direccion?: string,
+    celular?: string,
+}
+
+export interface Ficha {
+    id?: number,
+    idColaborador?: number,
+    fecha?: string,
+    detalle?: string,
 }
