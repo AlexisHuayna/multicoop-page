@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Oportunidad } from 'src/app/other/interfaces';
 
-
 @Component({
   selector: 'app-oportunidades',
   templateUrl: './oportunidades.component.html',

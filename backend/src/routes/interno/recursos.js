@@ -77,9 +77,11 @@ router.post('/api/interno/rh/ficha', (req, res) => {
     const primera = req.body.primera;
     const segunda = req.body.segunda;
     const tercera = req.body.tercera;
-    const cuarta = req.body.cuarta;
+    const cuarta = req.body.otrosCuarta;
     const quinta = req.body.textQuinta;
     const sexta = req.body.textSexta;
+    const septima = req.body.septima;
+    const octava = req.body.octava ? req.body.octava : "";
 
     const query_add_colaborador = "INSERT INTO colaborador(nombresApellidos, area, dni, direccion, celular) VALUES ('" + apellidosNombres + "','" + area + "','" + dni + "','" + direccion + "','" + celular + "')";
     
@@ -98,6 +100,8 @@ router.post('/api/interno/rh/ficha', (req, res) => {
                     const query_add_respuestas_cuarta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','cuarta','" + cuarta + "')";
                     const query_add_respuestas_quinta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','quinta','" + quinta + "')";
                     const query_add_respuestas_sexta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + sexta + "')";
+                    const query_add_respuestas_septima = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + septima + "')";
+                    const query_add_respuestas_octava = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + octava + "')";
                    
                     conexion_mysql.query(query_add_respuestas_primera, (err, result3) => {});
 
@@ -111,6 +115,9 @@ router.post('/api/interno/rh/ficha', (req, res) => {
 
                     conexion_mysql.query(query_add_respuestas_sexta, (err, result3) => {});
 
+                    conexion_mysql.query(query_add_respuestas_septima, (err, result3) => {});
+
+                    conexion_mysql.query(query_add_respuestas_octava, (err, result3) => {});
 
                     if(!err) {
                         res.status(200).json({finish: 'true'});

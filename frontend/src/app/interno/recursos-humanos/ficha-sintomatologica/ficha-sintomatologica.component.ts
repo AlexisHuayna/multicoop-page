@@ -2,17 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
-//import { HelpersComponent } from 'src/app/helpers/helpers.component';
 
 @Component({
-  selector: 'app-recursos-humanos',
-  templateUrl: './recursos-humanos.component.html',
-  styleUrls: ['./recursos-humanos.component.css']
+  selector: 'app-ficha-sintomatologica',
+  templateUrl: './ficha-sintomatologica.component.html',
+  styleUrls: ['./ficha-sintomatologica.component.css']
 })
-export class RecursosHumanosComponent implements OnInit {
-
-  /*@ViewChild(HelpersComponent)
-  private mensajeExito: HelpersComponent;*/
+export class FichaSintomatologicaComponent implements OnInit {
 
   propsHelper = {mensaje : 'Ficha llenada', titulo : null, ruta: '/'};
   sintomatologiaForm: FormGroup;
@@ -103,4 +99,5 @@ export class RecursosHumanosComponent implements OnInit {
   contactoDetalle(value) {
     this.otrosContacto = value;
   }
+
 }

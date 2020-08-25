@@ -86,6 +86,9 @@ import { HelpersComponent } from './helpers/helpers.component';
     ReactiveFormsModule,
     PdfViewerModule
   ],
+  exports : [
+    AgenciaValorPipe
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

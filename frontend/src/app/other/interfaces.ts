@@ -52,3 +52,8 @@ export interface ServerInformation {
     time?: string,
     date?: string,
 }
+
+export interface FichaCabecera {
+    dni?: string,
+    apellidosNombres?: string;
+}
