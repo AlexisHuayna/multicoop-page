@@ -113,7 +113,7 @@
             <input type="radio" formControlName="sexta" value="No" name="sexta" (click)="enfermedad(false)">No<br>
         </div>
         <div *ngIf="enfermedadFlag">
-            <input type="text" formControlName="textSexta" name="textSexta" placeholder="Detallar..">
+            <input type="text" formControlName="textSexta" name="textSexta" placeholder="Detallar.." disabled>
         </div>
       </div>
       <h4>
@@ -124,7 +124,7 @@
           <label for="septima">Hora en entrada</label>
         </div>
         <div class="col-30">
-          <input type="text" formControlName="septima" name="septima" placeholder="36.0">
+          <input type="text" formControlName="septima" name="septima" placeholder="36.0" >
         </div>
       </div>
       <div class="row subsection">

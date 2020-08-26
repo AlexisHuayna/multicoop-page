@@ -53,6 +53,7 @@ export class RecursosHumanosComponent implements OnInit {
     } catch (error) {
       this.fecha = Date.now();
     }
+    this.fecha = Date.now();
 
   }
 
