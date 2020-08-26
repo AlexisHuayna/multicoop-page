@@ -13,11 +13,11 @@ export class ListaFichasComponent implements OnInit {
   fichas: FichaCabecera[] = [];
 
   constructor(private fichaService: FichaSintomasService) {
-    this.fichaService.getRemaining().subscribe(
+    /*this.fichaService.getRemaining().subscribe(
       fichasResponse => {
         
       }
-    );
+    );*/
   }
 
   ngOnInit(): void {

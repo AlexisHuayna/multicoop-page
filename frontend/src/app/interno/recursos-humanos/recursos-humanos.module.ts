@@ -6,10 +6,11 @@ import { FichaSintomatologicaComponent } from './ficha-sintomatologica/ficha-sin
 import { ListaFichasComponent } from './lista-fichas/lista-fichas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppModule } from '../../app.module';
+import { TestingComponent } from './testing/testing.component';
 
 
 @NgModule({
-  declarations: [FichaSintomatologicaComponent, ListaFichasComponent],
+  declarations: [FichaSintomatologicaComponent, ListaFichasComponent, TestingComponent],
   imports: [
     CommonModule,
     RecursosHumanosRoutingModule,
