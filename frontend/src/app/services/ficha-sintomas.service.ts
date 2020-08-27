@@ -21,7 +21,7 @@ export class FichaSintomasService {
     return this.http.put(`http://multicoop.com.pe:8000/api/interno/rh/ficha/respuesta/${idRespuesta}`, values);
   }
 
-  getRemaining() {
+  getFaltantes() {
     return this.http.get("http://multicoop.com.pe:8000/api/interno/rh/ficha/lista");
   }
 

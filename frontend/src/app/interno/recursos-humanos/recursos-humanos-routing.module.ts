@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { ListaFichasComponent } from './lista-fichas/lista-fichas.component';
 import { FichaSintomatologicaComponent } from './ficha-sintomatologica/ficha-sintomatologica.component';
 import { TestingComponent } from './testing/testing.component';
@@ -19,7 +20,6 @@ const routes: Routes = [
     path: 'test',
     component: TestingComponent
   }
-
 ];
 
 @NgModule({
