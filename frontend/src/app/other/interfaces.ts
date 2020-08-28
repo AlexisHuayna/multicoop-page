@@ -66,6 +66,7 @@ export interface Respuesta {
     id?: number,
     idFicha?: number,
     nombrePregunta?: string,
+    respuestaPregunta?: string,
     detalle?: string,
 }
 
@@ -78,9 +79,43 @@ export interface Colaborador {
     celular?: string,
 }
 
+/*
 export interface Ficha {
     id?: number,
     idColaborador?: number,
     fecha?: string,
     detalle?: string,
+}
+*/
+
+export interface Personal {
+    id?: number,
+    idAgencia?: number,
+    apellidoPaterno?: string,
+    apellidoMaterno?: string,
+    nombres?: string,
+    dni?: string,
+    cargo?: string,
+    area?: string,
+    celular?: string,
+    direccion?: string,
+}
+
+export interface PersonalFicha {
+    id?: number,
+    idAgencia?: number,
+    apellidoPaterno?: string,
+    apellidoMaterno?: string,
+    nombres?: string,
+    dni?: string,
+    cargo?: string,
+    area?: string,
+    celular?: string,
+    direccion?: string,
+    idFicha?: number,
+}
+
+
+export interface Ficha {
+    
 }

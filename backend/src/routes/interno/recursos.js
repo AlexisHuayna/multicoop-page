@@ -23,6 +23,10 @@ function removeColaborador(dni, colaboradores) {
     }
 }
 
+function convertirMes(mes) {
+    return new Date(Date.parse(mes + "1, 2020")).getMonth() + 1;
+}
+
 router.get('/api/time', (req, res) => {
     const datTime = new Date();
     const fecha = datTime.toISOString().slice(0,10);
@@ -45,8 +49,8 @@ router.get('/api/interno/rh/validate', (req, res) => {
 
 router.get('/api/interno/rh/ficha/lista', (req, res) => {
     
-    const datTime = new Date();
-    const current_dia = datTime.toISOString().slice(0,10);
+    const datTime = new Date().toString().split(' ', 5);
+    const current_dia =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
     const query_fichas_dia = "SELECT dni FROM ficha INNER JOIN colaborador ON ficha.idColaborador = colaborador.id WHERE ficha.fecha = '" + current_dia + "'";    
     conexion_mysql.query(query_fichas_dia, (err, fichasLlenadas, fields) => {
         if(!err) {
@@ -88,8 +92,8 @@ router.post('/api/interno/rh/ficha', (req, res) => {
     conexion_mysql.query(query_add_colaborador, (err, result) => {
         if (!err) {
             const id_colaborador = result.insertId;
-            const datTime = new Date();
-            const fecha = datTime.toISOString().slice(0,10);
+            const datTime = new Date().toString().split(' ', 5);
+            const fecha =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
             const query_add_ficha = "INSERT INTO ficha(idColaborador, fecha, detalle) VALUES ('" + id_colaborador + "','" + fecha + "','test')";
             conexion_mysql.query(query_add_ficha, (err, result2) => {
                 if(!err) {
@@ -100,8 +104,8 @@ router.post('/api/interno/rh/ficha', (req, res) => {
                     const query_add_respuestas_cuarta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','cuarta','" + cuarta + "')";
                     const query_add_respuestas_quinta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','quinta','" + quinta + "')";
                     const query_add_respuestas_sexta = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + sexta + "')";
-                    const query_add_respuestas_septima = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + septima + "')";
-                    const query_add_respuestas_octava = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + octava + "')";
+                    const query_add_respuestas_septima = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','setpima','" + septima + "')";
+                    const query_add_respuestas_octava = "INSERT INTO respuesta (idficha, nombrePregunta, detalle) VALUES ('" + id_ficha + "','octava','" + octava + "')";
                    
                     conexion_mysql.query(query_add_respuestas_primera, (err, result3) => {});
 
@@ -128,6 +132,27 @@ router.post('/api/interno/rh/ficha', (req, res) => {
             res.status(500).send();
         }
     });
-})
+});
+
+router.get('/api/interno/rh/fichas/faltantesEntrada/:idAgencia', (req, res) => {
+    const datTime = new Date().toString().split(' ', 5);
+    const currentDia =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
+    const currentHora = datTime[4];
+    const codigoAgencia = req.params.idAgencia
+
+    const query = "SELECT personal.* FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia + "' AND personal.idAgencia = agencia.id WHERE personal.id NOT IN ( SELECT fichaSintomatologica.idPersonal FROM fichaSintomatologica WHERE fichaSintomatologica.fecha = '" + currentDia + "' )";
+    
+    conexion_mysql.query(query, (err, personalFaltante) => {
+        if(!err) {
+            res.status(200).send(personalFaltante);
+        } else {
+            res.status(500).json({ status: 'error' })
+        }
+    });
+});
+
+router.get('/api/interno/rh/fichas/faltantesSalida/:idAgencia', (req, res) => {
+    res.send('working dude');
+});
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServerInformation, FichaCabecera } from '../other/interfaces';
+import { ServerInformation, FichaCabecera, Personal, PersonalFicha } from '../other/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,14 @@ export class FichaSintomasService {
 
   getFaltantes() {
     return this.http.get("http://multicoop.com.pe:8000/api/interno/rh/ficha/lista");
+  }
+
+  getFaltantesEntrada(idAgencia) {
+    return this.http.get<Personal[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesEntrada/${idAgencia}`);
+  }
+
+  getFaltantesSalida(idAgencia) {
+    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesSalida/${idAgencia}`);
   }
 
   getLastFicha(idColaborador) {

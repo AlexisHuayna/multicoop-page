@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
-import { FichaCabecera } from 'src/app/other/interfaces';
+import { FichaCabecera, PersonalFicha, Personal } from 'src/app/other/interfaces';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-lista-fichas',
@@ -10,17 +11,29 @@ import { FichaCabecera } from 'src/app/other/interfaces';
 export class ListaFichasComponent implements OnInit {
 
   @Input() idAgencia: string;
-  fichas: FichaCabecera[] = [];
+  @Input() tipoFicha: number;
 
+  personalFaltante: Personal[];
   constructor(private fichaService: FichaSintomasService) {
-    this.fichaService.getFaltantes().subscribe(
-      fichasResponse => {
-        console.log(fichasResponse)
-      }
-    );
+    this.personalFaltante = [];
+
   }
 
   ngOnInit(): void {
+    let fichaObservable: Observable<Personal[]>;
+
+    if (this.tipoFicha == 0) {
+      fichaObservable = this.fichaService.getFaltantesEntrada(this.idAgencia);
+    } else {
+      fichaObservable = this.fichaService.getFaltantesSalida(this.idAgencia);
+    }
+
+    fichaObservable.subscribe(
+      personalFaltanteResponse => {
+        this.personalFaltante = personalFaltanteResponse;
+        console.log(this.personalFaltante)
+      }
+    );
   }
 
 }

@@ -45,3 +45,7 @@ query para sacar personal que lleno entrada pero no salida
 
 query para sacar personal que termino sus fichas
 
+
+http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesEntrada/${idAgencia}
+http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesSalida/${idAgencia}
+

@@ -1,1 +1,7 @@
 <p>{{idAgencia}}</p>
+<ul>
+    <li *ngFor="let personal of personalFaltante">
+        <a *ngIf="personal.idFicha" [routerLink]="['/ficha']">{{personal.dni}}</a>
+        <a *ngIf="personal.idFicha" [routerLink]="['/ficha', personal.idFicha]">{{personal.dni}}</a>
+    </li>
+</ul>
