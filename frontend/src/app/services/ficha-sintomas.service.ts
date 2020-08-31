@@ -21,12 +21,8 @@ export class FichaSintomasService {
     return this.http.put(`http://multicoop.com.pe:8000/api/interno/rh/ficha/respuesta/${idRespuesta}`, values);
   }
 
-  getFaltantes() {
-    return this.http.get("http://multicoop.com.pe:8000/api/interno/rh/ficha/lista");
-  }
-
   getFaltantesEntrada(idAgencia) {
-    return this.http.get<Personal[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesEntrada/${idAgencia}`);
+    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesEntrada/${idAgencia}`);
   }
 
   getFaltantesSalida(idAgencia) {
@@ -39,5 +35,9 @@ export class FichaSintomasService {
 
   getFicha(idColaborador, fecha) {
     return this.http.get<FichaCabecera>(`htttp://multicoop.com.pe:8000/api/interno/rh/ficha/${idColaborador}/${fecha}`);
+  }
+
+  getEmpleado(idEmpleado) {
+    return this.http.get<PersonalFicha>(`http://multicoop.com.pe:8000/api/interno/rh/empleados/${idEmpleado}`);
   }
 }

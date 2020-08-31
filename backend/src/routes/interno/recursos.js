@@ -155,4 +155,29 @@ router.get('/api/interno/rh/fichas/faltantesSalida/:idAgencia', (req, res) => {
     res.send('working dude');
 });
 
+
+router.get('/api/interno/rh/ficha/:idFicha', (req, res) => {
+    const idFicha = req.param.idFicha;
+    const query = "SELECT * FROM respuestaFicha WHERE respuestaFicha.idFicha = " + idFicha;
+
+    conexion_mysql.query(query, (err, respuestas) => {
+        if(!err) {
+            res.status(200).send(respuestas);
+        } else {
+            res.status(500).json({status: 'error'});
+        }
+    })
+});
+
+router.put('/api/interno/rh/fichas/:idFicha', (req, res) => {
+    const a = req.body.idFicha; //update estado de la ficha
+    const b = req.body.idPregunta; //update pregunta de temperatura
+});
+
+router.put('/api/interno/rh/empleados/', (req, res) => {
+    const a = req.body.numero;
+    const b = req.body.direccion;
+    const c = req.body.idEmpleado;
+})
+
 module.exports = router;

@@ -13,7 +13,7 @@ export class ListaFichasComponent implements OnInit {
   @Input() idAgencia: string;
   @Input() tipoFicha: number;
 
-  personalFaltante: Personal[];
+  personalFaltante: PersonalFicha[];
   constructor(private fichaService: FichaSintomasService) {
     this.personalFaltante = [];
 
@@ -31,7 +31,6 @@ export class ListaFichasComponent implements OnInit {
     fichaObservable.subscribe(
       personalFaltanteResponse => {
         this.personalFaltante = personalFaltanteResponse;
-        console.log(this.personalFaltante)
       }
     );
   }

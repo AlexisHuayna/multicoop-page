@@ -13,8 +13,8 @@ const routes: Routes = [
     component: RecursosHumanosComponent
   },
   {
-    path: 'ficha/:idColaborador',
-    component: FichaSintomatologicaComponent
+    path: 'ficha/:empleado/:status',
+    component: FichaSintomatologicaComponent,
   },
   {
     path: 'test',

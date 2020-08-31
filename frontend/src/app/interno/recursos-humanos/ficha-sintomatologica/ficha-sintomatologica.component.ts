@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
-import { FichaCabecera,  Colaborador, Respuesta } from 'src/app/other/interfaces';
+import { FichaCabecera,  Colaborador, Respuesta, PersonalFicha, ServerInformation } from 'src/app/other/interfaces';
 
 @Component({
   selector: 'app-ficha-sintomatologica',
@@ -16,9 +16,13 @@ export class FichaSintomatologicaComponent implements OnInit {
   enfermedadFlag = false;
   enContacto = false;
   otrosContacto = false;
+
   fecha: any;
-  idColaborador: string;
+  serverTime: ServerInformation;
+  
   ficha: FichaCabecera;
+  empleado: PersonalFicha;
+  ficha_estatus: string;
 
   constructor(private builder: FormBuilder,
               private router: Router,
@@ -29,14 +33,30 @@ export class FichaSintomatologicaComponent implements OnInit {
       fichaService.getServerTime().subscribe(
         timeResponse => {
           this.fecha = timeResponse.time;
+          this.serverTime = timeResponse;
         }
       );
     } catch (error) {
       this.fecha = Date.now();
     }
 
-    if (this.route.snapshot.paramMap.has('idColaborador')) {
-      this.getFicha(this.route.snapshot.paramMap.get('idColaborador'));
+    if (this.route.snapshot.paramMap.has('empleado')) {
+      let empleado_id = this.route.snapshot.paramMap.get('empleado');
+      this.ficha_estatus = this.route.snapshot.paramMap.get('status');
+      fichaService.getEmpleado(empleado_id).subscribe(
+        empleadoResponse => {
+          this.empleado = empleadoResponse;
+        }
+      );
+
+      if(this.ficha_estatus == '1') {
+        fichaService.getLastFicha(empleado_id).subscribe(
+          fichaResponse => {
+            this.ficha = fichaResponse;
+          }
+        )
+      }
+
     } else {
       this.sintomatologiaForm = this.createForm(true);
     }
@@ -65,15 +85,6 @@ export class FichaSintomatologicaComponent implements OnInit {
 
   contactoDetalle(value) {
     this.otrosContacto = value;
-  }
-
-  getFicha(idColaborador) {
-    this.fichaService.getLastFicha(idColaborador).subscribe(
-      fichaResponse => {
-        this.ficha = fichaResponse;
-        this.sintomatologiaForm = this.createForm(false);
-      }
-    );
   }
 
   createForm(empty): FormGroup {
