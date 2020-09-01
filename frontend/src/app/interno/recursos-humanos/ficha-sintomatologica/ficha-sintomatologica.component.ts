@@ -28,6 +28,27 @@ export class FichaSintomatologicaComponent implements OnInit {
               private router: Router,
               private fichaService: FichaSintomasService,
               private route: ActivatedRoute) {
+
+    //creating empty form
+    this.sintomatologiaForm = this.builder.group({
+      apellidosNombres: ['', Validators.compose([Validators.required])],
+      area: ['', Validators.compose([Validators.required])],
+      dni: ['', Validators.compose([Validators.required])],
+      direccion: ['', Validators.compose([Validators.required])],
+      celular: ['', Validators.compose([Validators.required])],
+      primera: ['', Validators.compose([Validators.required])],
+      segunda: ['', Validators.compose([Validators.required])],
+      tercera: ['', Validators.compose([Validators.required])],
+      cuarta: ['', Validators.compose([Validators.required])],
+      textCuarta: ['', ],
+      otrosCuarta: ['', ],
+      quinta: ['', Validators.compose([Validators.required])],
+      textQuinta: [''],
+      sexta: ['', Validators.compose([Validators.required])],
+      textSexta: [''],
+      septima: ['', Validators.compose([Validators.required])],
+      octava: ['']
+    });
                 
     try {
       fichaService.getServerTime().subscribe(
@@ -53,12 +74,11 @@ export class FichaSintomatologicaComponent implements OnInit {
         fichaService.getLastFicha(empleado_id).subscribe(
           fichaResponse => {
             this.ficha = fichaResponse;
+            this.llenarForm();
           }
         )
       }
 
-    } else {
-      this.sintomatologiaForm = this.createForm(true);
     }
     
   }
@@ -87,70 +107,8 @@ export class FichaSintomatologicaComponent implements OnInit {
     this.otrosContacto = value;
   }
 
-  createForm(empty): FormGroup {
-    let form: FormGroup;
+  llenarForm(){
 
-    if (empty) {
-      form = this.builder.group({
-        apellidosNombres: ['', Validators.compose([Validators.required])],
-        area: ['', Validators.compose([Validators.required])],
-        dni: ['', Validators.compose([Validators.required])],
-        direccion: ['', Validators.compose([Validators.required])],
-        celular: ['', Validators.compose([Validators.required])],
-        primera: ['', Validators.compose([Validators.required])],
-        segunda: ['', Validators.compose([Validators.required])],
-        tercera: ['', Validators.compose([Validators.required])],
-        cuarta: ['', Validators.compose([Validators.required])],
-        textCuarta: ['', ],
-        otrosCuarta: ['', ],
-        quinta: ['', Validators.compose([Validators.required])],
-        textQuinta: [''],
-        sexta: ['', Validators.compose([Validators.required])],
-        textSexta: [''],
-        septima: ['', Validators.compose([Validators.required])],
-        octava: ['']
-      });
-    } else {
-      let colaborador: Colaborador;
-      let respuestas: Respuesta[];
-      
-      this.ficha.data.forEach(fichaDetail => {
-        if(!colaborador) {
-          colaborador = fichaDetail.colaborador;
-        }
-        
-        if(!respuestas) {
-          respuestas = [];
-          respuestas.push(fichaDetail.respuesta);
-        } else {
-          respuestas.push(fichaDetail.respuesta);
-        }
-
-      });
-
-      let data = this.parsingRespuestas(respuestas);
-
-      form = this.builder.group({
-        apellidosNombres: [colaborador.nombresApellidos, Validators.compose([Validators.required])],
-        area: [colaborador.area, Validators.compose([Validators.required])],
-        dni: [colaborador.dni, Validators.compose([Validators.required])],
-        direccion: [colaborador.direccion, Validators.compose([Validators.required])],
-        celular: [colaborador.celular, Validators.compose([Validators.required])],
-        primera: [data.primera, Validators.compose([Validators.required])],
-        segunda: [data.segunda, Validators.compose([Validators.required])],
-        tercera: [data.tercera, Validators.compose([Validators.required])],
-        cuarta: [data.cuarta, Validators.compose([Validators.required])],
-        textCuarta: [data.textCuarta, ],
-        otrosCuarta: [data.otrosCuarta, ],
-        quinta: [data.quinta, Validators.compose([Validators.required])],
-        textQuinta: [data.textQuinta],
-        sexta: [data.sexta, Validators.compose([Validators.required])],
-        textSexta: [data.textSexta],
-        septima: [data.septima, Validators.compose([Validators.required])],
-        octava: [data.otrosCuarta]
-      });
-    }
-    return form;
   }
 
   parsingRespuestas(respuestas: Respuesta[]) {
