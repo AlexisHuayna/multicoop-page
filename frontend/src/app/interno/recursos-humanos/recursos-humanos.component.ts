@@ -40,8 +40,8 @@ export class RecursosHumanosComponent implements OnInit {
       textQuinta: [''],
       sexta: ['', Validators.compose([Validators.required])],
       textSexta: [''],
-      septima: ['', Validators.compose([Validators.required])],
-      octava: ['']
+      septima: [''],
+      octava: ['', Validators.compose([Validators.required])]
     });
 
     try {
