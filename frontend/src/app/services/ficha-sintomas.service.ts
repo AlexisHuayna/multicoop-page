@@ -33,11 +33,15 @@ export class FichaSintomasService {
     return this.http.get<FichaCabecera>(`htttp://multicoop.com.pe:8000/api/interno/rh/ficha/${idColaborador}`);
   }
 
-  getFicha(idColaborador, fecha) {
+  /*getFicha(idColaborador, fecha) {
     return this.http.get<FichaCabecera>(`htttp://multicoop.com.pe:8000/api/interno/rh/ficha/${idColaborador}/${fecha}`);
-  }
+  }*/
 
   getEmpleado(idEmpleado) {
     return this.http.get<PersonalFicha>(`http://multicoop.com.pe:8000/api/interno/rh/empleados/${idEmpleado}`);
+  }
+
+  getFicha(idFicha) {
+    return this.http.get<FichaCabecera>(`htttp://multicoop.com.pe:8000/api/interno/rh/fichas/${idFicha}`);
   }
 }

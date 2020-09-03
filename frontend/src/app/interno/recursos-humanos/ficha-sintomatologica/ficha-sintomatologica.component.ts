@@ -22,7 +22,6 @@ export class FichaSintomatologicaComponent implements OnInit {
   
   ficha: FichaCabecera;
   empleado: PersonalFicha;
-  ficha_estatus: string;
 
   constructor(private builder: FormBuilder,
               private router: Router,
@@ -63,21 +62,18 @@ export class FichaSintomatologicaComponent implements OnInit {
 
     if (this.route.snapshot.paramMap.has('empleado')) {
       let empleado_id = this.route.snapshot.paramMap.get('empleado');
-      this.ficha_estatus = this.route.snapshot.paramMap.get('status');
+
       fichaService.getEmpleado(empleado_id).subscribe(
         empleadoResponse => {
           this.empleado = empleadoResponse;
+
+          this.llenarEmpleado();
+
+          if (this.empleado.idFicha) {
+            this.getFicha(); 
+          } 
         }
       );
-
-      if(this.ficha_estatus == '1') {
-        fichaService.getLastFicha(empleado_id).subscribe(
-          fichaResponse => {
-            this.ficha = fichaResponse;
-            this.llenarForm();
-          }
-        )
-      }
 
     }
     
@@ -107,7 +103,19 @@ export class FichaSintomatologicaComponent implements OnInit {
     this.otrosContacto = value;
   }
 
-  llenarForm(){
+  getFicha() {
+    this.fichaService.getFicha(this.empleado.idFicha).subscribe(
+      fichaResponse=> {
+        this.llenarFicha();
+      }
+    )
+  }
+
+  llenarFicha(){
+
+  }
+
+  llenarEmpleado() {
 
   }
 
