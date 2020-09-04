@@ -31,7 +31,6 @@ export class ListaFichasComponent implements OnInit {
     fichaObservable.subscribe(
       personalFaltanteResponse => {
         this.personalFaltante = personalFaltanteResponse;
-        console.log(this.personalFaltante[0].idFicha);
       }
     );
   }

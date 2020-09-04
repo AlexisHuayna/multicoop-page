@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServerInformation, FichaCabecera, Personal, PersonalFicha } from '../other/interfaces';
+import { ServerInformation, FichaCabecera, Personal, PersonalFicha, Ficha } from '../other/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -29,19 +29,11 @@ export class FichaSintomasService {
     return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesSalida/${idAgencia}`);
   }
 
-  getLastFicha(idColaborador) {
-    return this.http.get<FichaCabecera>(`htttp://multicoop.com.pe:8000/api/interno/rh/ficha/${idColaborador}`);
-  }
-
-  /*getFicha(idColaborador, fecha) {
-    return this.http.get<FichaCabecera>(`htttp://multicoop.com.pe:8000/api/interno/rh/ficha/${idColaborador}/${fecha}`);
-  }*/
-
   getEmpleado(idEmpleado) {
-    return this.http.get<PersonalFicha>(`http://multicoop.com.pe:8000/api/interno/rh/empleados/${idEmpleado}`);
+    return this.http.get<Personal>(`http://multicoop.com.pe:8000/api/interno/rh/empleados/${idEmpleado}`);
   }
 
   getFicha(idFicha) {
-    return this.http.get<FichaCabecera>(`htttp://multicoop.com.pe:8000/api/interno/rh/fichas/${idFicha}`);
+    return this.http.get<Ficha>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/${idFicha}`);
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
-import { FichaCabecera,  Colaborador, Respuesta, PersonalFicha, ServerInformation } from 'src/app/other/interfaces';
+import { FichaCabecera,  Colaborador, Respuesta, PersonalFicha, ServerInformation, Personal, Ficha } from 'src/app/other/interfaces';
 
 @Component({
   selector: 'app-ficha-sintomatologica',
@@ -20,8 +20,8 @@ export class FichaSintomatologicaComponent implements OnInit {
   fecha: any;
   serverTime: ServerInformation;
   
-  ficha: FichaCabecera;
-  empleado: PersonalFicha;
+  ficha: Ficha;
+  empleado: Personal;
 
   constructor(private builder: FormBuilder,
               private router: Router,
@@ -57,21 +57,23 @@ export class FichaSintomatologicaComponent implements OnInit {
         }
       );
     } catch (error) {
+      console.log('time');
       this.fecha = Date.now();
     }
 
     if (this.route.snapshot.paramMap.has('empleado')) {
-      let empleado_id = this.route.snapshot.paramMap.get('empleado');
-
-      fichaService.getEmpleado(empleado_id).subscribe(
+      let id_empleado = this.route.snapshot.paramMap.get('empleado');
+      let id_ficha = this.route.snapshot.paramMap.get('ficha');
+      
+      fichaService.getEmpleado(id_empleado).subscribe(
         empleadoResponse => {
-          this.empleado = empleadoResponse;
+          this.empleado = empleadoResponse[0];
 
           this.llenarEmpleado();
 
-          if (this.empleado.idFicha) {
-            this.getFicha(); 
-          } 
+          if(id_ficha != '-1') {
+            this.getFicha(id_ficha); 
+          }
         }
       );
 
@@ -83,40 +85,21 @@ export class FichaSintomatologicaComponent implements OnInit {
     this.deleteAllDOM();
   }
 
-  deleteAllDOM() {
-    document.getElementById('shared').remove();
-  }
-
-  enfermedad(value) {
-    this.enfermedadFlag = value;
-  }
-
-  medicacion(value){
-    this.medicacionFlag = value;
-  }
-
-  contacto(value) {
-    this.enContacto = value;
-  }
-
-  contactoDetalle(value) {
-    this.otrosContacto = value;
-  }
-
-  getFicha() {
-    this.fichaService.getFicha(this.empleado.idFicha).subscribe(
+  getFicha(id_ficha) {
+    this.fichaService.getFicha(id_ficha).subscribe(
       fichaResponse=> {
+        this.ficha = fichaResponse;
         this.llenarFicha();
       }
     )
   }
 
   llenarFicha(){
-
+    console.log(this.ficha);
   }
 
   llenarEmpleado() {
-
+    console.log(this.empleado);
   }
 
   parsingRespuestas(respuestas: Respuesta[]) {
@@ -194,7 +177,7 @@ export class FichaSintomatologicaComponent implements OnInit {
     }
 
     this.router.navigate(['/']);
-
+/*
     if(this.ficha) {
       const idPregunta = this.ficha.data[this.ficha.data.length - 1].respuesta.id;
       
@@ -206,7 +189,29 @@ export class FichaSintomatologicaComponent implements OnInit {
         }
       );
     }
+*/
+  }
 
+
+
+  deleteAllDOM() {
+    document.getElementById('shared').remove();
+  }
+
+  enfermedad(value) {
+    this.enfermedadFlag = value;
+  }
+
+  medicacion(value){
+    this.medicacionFlag = value;
+  }
+
+  contacto(value) {
+    this.enContacto = value;
+  }
+
+  contactoDetalle(value) {
+    this.otrosContacto = value;
   }
 
 }

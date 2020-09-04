@@ -29,9 +29,9 @@ function convertirMes(mes) {
 
 router.get('/api/time', (req, res) => {
     const datTime = new Date();
-    const fecha = datTime.toISOString().slice(0,10);
+    const time = datTime.toString();
 
-    res.status(200).send({time: fecha});
+    res.status(200).send({time: time});
 });
 
 router.get('/api/interno/rh/validate', (req, res) => {
@@ -156,20 +156,28 @@ router.get('/api/interno/rh/fichas/faltantesSalida/:idAgencia', (req, res) => {
 });
 
 
-router.get('/api/interno/rh/ficha/:idFicha', (req, res) => {
-    const idFicha = req.param.idFicha;
-    const query = "SELECT * FROM respuestaFicha WHERE respuestaFicha.idFicha = " + idFicha;
+router.get('/api/interno/rh/fichas/:idFicha', (req, res) => {
+    const idFicha = req.params.idFicha;
+    const query_ficha = "SELECT * FROM fichaSintomatologica WHERE fichaSintomatologica.id = '" + idFicha + "'";
+    const query_respuestas = "SELECT * FROM respuestaFicha WHERE respuestaFicha.idFicha = '" + idFicha + "'";
 
-    conexion_mysql.query(query, (err, respuestas) => {
+    conexion_mysql.query(query_ficha, (err, ficha) => {
         if(!err) {
-            res.status(200).send(respuestas);
+            conexion_mysql.query(query_respuestas, (err, respuestas) => {
+                if(!err){
+                    res.status(200).send({
+                        ficha: ficha[0],
+                        respuestas: respuestas
+                    })
+                }
+            })
         } else {
             res.status(500).json({status: 'error'});
         }
     })
 });
 
-router.put('/api/interno/rh/fichas/:idFicha', (req, res) => {
+router.put('/api/interno/rh/fichas/', (req, res) => {
     const a = req.body.idFicha; //update estado de la ficha
     const b = req.body.idPregunta; //update pregunta de temperatura
 });
@@ -178,6 +186,19 @@ router.put('/api/interno/rh/empleados/', (req, res) => {
     const a = req.body.numero;
     const b = req.body.direccion;
     const c = req.body.idEmpleado;
+})
+
+router.get('/api/interno/rh/empleados/:idEmpleado', (req, res) => {
+    const id_empleado = req.params.idEmpleado;
+    const query = "SELECT * FROM personal WHERE personal.id = '"+id_empleado+"'";
+
+    conexion_mysql.query(query, (err, personal) => {
+        if(!err){
+            res.send(personal);
+        } else {
+            res.status(500).json({status: 'error'});
+        }
+    })
 })
 
 module.exports = router;

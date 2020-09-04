@@ -53,7 +53,12 @@ export interface ServerInformation {
 }
 
 export interface FichaCabecera {
-    data?: FichaDetail[];
+    id?: number,
+    idPersonal?: number,
+    estado?: number,
+    hora?: string,
+    fecha?: string,
+    detalle?: string,
 }
 
 export interface FichaDetail {
@@ -79,14 +84,6 @@ export interface Colaborador {
     celular?: string,
 }
 
-/*
-export interface Ficha {
-    id?: number,
-    idColaborador?: number,
-    fecha?: string,
-    detalle?: string,
-}
-*/
 
 export interface Personal {
     id?: number,
@@ -117,5 +114,6 @@ export interface PersonalFicha {
 
 
 export interface Ficha {
-    
+    ficha: FichaCabecera,
+    respuestas: Respuesta[],   
 }

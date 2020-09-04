@@ -1,6 +1,6 @@
 <p>{{idAgencia}}</p>
 <ul>
     <li *ngFor="let personal of personalFaltante">
-        <a [routerLink]="['/interno/rh/ficha', personal.id]">{{personal.dni}}</a>
+        <a [routerLink]="['/interno/rh/ficha', personal.id, personal.idFicha ? personal.idFicha : -1 ]">{{personal.dni}}</a>
     </li>
 </ul>
