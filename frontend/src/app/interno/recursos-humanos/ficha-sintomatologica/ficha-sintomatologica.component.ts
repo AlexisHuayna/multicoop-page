@@ -99,7 +99,21 @@ export class FichaSintomatologicaComponent implements OnInit {
   }
 
   llenarEmpleado() {
-    console.log(this.empleado);
+    let full_name = this.empleado.apellidoPaterno + ' ' + this.empleado.apellidoMaterno + ' ' + this.empleado.nombres;
+    this.sintomatologiaForm.patchValue({
+      apellidosNombres: this.toCapital(full_name),
+      area: this.toCapital(this.empleado.area),
+      dni: this.empleado.dni,
+      direccion: this.empleado.direccion,
+      celular: this.empleado.celular
+    })
+
+    this.sintomatologiaForm.controls['apellidosNombres'].disable();
+    this.sintomatologiaForm.controls['area'].disable();
+    this.sintomatologiaForm.controls['dni'].disable();
+    this.sintomatologiaForm.controls['direccion'].disable();
+    this.sintomatologiaForm.controls['celular'].disable();
+
   }
 
   parsingRespuestas(respuestas: Respuesta[]) {
@@ -161,6 +175,8 @@ export class FichaSintomatologicaComponent implements OnInit {
   }
 
   enviar(values) {
+    console.log(values);
+    /*
     alert('Ficha llenada');
     if (values.cuarta == 'No') {
       values['otrosCuarta'] = 'No';
@@ -212,6 +228,14 @@ export class FichaSintomatologicaComponent implements OnInit {
 
   contactoDetalle(value) {
     this.otrosContacto = value;
+  }
+
+  toCapital(string:string){
+    let words = string.split(' ');
+    for (let i = 0; i < words.length; ++i) {
+      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
+    return words.join(' ');
   }
 
 }

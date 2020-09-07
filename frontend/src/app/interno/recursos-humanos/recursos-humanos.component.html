@@ -5,9 +5,9 @@
         <img src="../../../assets/icons/multicoop_yellow_covid.svg">
     </h1>
   </div>
-    <h3>He recibido explicación del objetivo de esta evaluación y me comprometo a responder con la verdad.</h3>
-   
-    <form [formGroup]="sintomatologiaForm" (ngSubmit)="enviar(sintomatologiaForm.value)">
+  <h3>He recibido explicación del objetivo de esta evaluación y me comprometo a responder con la verdad.</h3>
+  
+  <form [formGroup]="sintomatologiaForm" (ngSubmit)="enviar(sintomatologiaForm.value)">
       <div class="row">
         <div class="col-40">
           <label for="apellidosNombres">Apellidos y Nombres</label>
@@ -127,7 +127,7 @@
           <label for="septima">Hora en entrada</label>
         </div>
         <div class="col-30">
-          <input type="text" formControlName="septima" name="septima" placeholder="36.0" >
+          <input type="text" formControlName="septima" name="septima" placeholder="36.0" disabled>
         </div>
       </div>
       <div class="row subsection">
@@ -135,7 +135,7 @@
           <label for="septima">Hora de salida</label>
         </div>
         <div class="col-30">
-          <input type="text" formControlName="octava" name="octava" placeholder="36.0" disabled>
+          <input type="text" formControlName="octava" name="octava" placeholder="36.0" >
         </div>
       </div>
       <p id="detalles">
@@ -153,9 +153,9 @@
       <div class="row">
         <input [disabled]="sintomatologiaForm.invalid" type="submit" value="Enviar">
       </div>
-    </form>
+  </form>
 
-  </div>
+</div>
 <!--
 <app-helpers [props]="propsHelper"></app-helpers>
 -->
