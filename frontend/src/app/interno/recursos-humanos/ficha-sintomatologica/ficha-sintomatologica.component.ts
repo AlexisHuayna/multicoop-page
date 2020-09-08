@@ -10,6 +10,7 @@ import { FichaCabecera,  Colaborador, Respuesta, PersonalFicha, ServerInformatio
   styleUrls: ['./ficha-sintomatologica.component.css']
 })
 export class FichaSintomatologicaComponent implements OnInit {
+  
 
   sintomatologiaForm: FormGroup;
   medicacionFlag = false;
@@ -30,11 +31,12 @@ export class FichaSintomatologicaComponent implements OnInit {
 
     //creating empty form
     this.sintomatologiaForm = this.builder.group({
-      apellidosNombres: ['', Validators.compose([Validators.required])],
-      area: ['', Validators.compose([Validators.required])],
-      dni: ['', Validators.compose([Validators.required])],
-      direccion: ['', Validators.compose([Validators.required])],
-      celular: ['', Validators.compose([Validators.required])],
+      idPersonal: [],
+      apellidosNombres: [''],
+      area: [''],
+      dni: [''],
+      direccion: [''],
+      celular: [''],
       primera: ['', Validators.compose([Validators.required])],
       segunda: ['', Validators.compose([Validators.required])],
       tercera: ['', Validators.compose([Validators.required])],
@@ -45,8 +47,8 @@ export class FichaSintomatologicaComponent implements OnInit {
       textQuinta: [''],
       sexta: ['', Validators.compose([Validators.required])],
       textSexta: [''],
-      septima: ['', Validators.compose([Validators.required])],
-      octava: ['']
+      septima: [],
+      octava: []
     });
                 
     try {
@@ -72,8 +74,24 @@ export class FichaSintomatologicaComponent implements OnInit {
           this.llenarEmpleado();
 
           if(id_ficha != '-1') {
-            this.getFicha(id_ficha); 
+            this.getFicha(id_ficha);
+            this.sintomatologiaForm.get('octava').setValidators([Validators.required]);
+            this.sintomatologiaForm.get('octava').updateValueAndValidity();
+            this.sintomatologiaForm.controls['septima'].disable();
+            this.sintomatologiaForm.patchValue({
+              octava: '36.5'
+            });
+
+          } else {
+            this.sintomatologiaForm.get('septima').setValidators([Validators.required]);
+            this.sintomatologiaForm.get('septima').updateValueAndValidity();
+            this.sintomatologiaForm.controls['octava'].disable();
+            this.sintomatologiaForm.patchValue({
+              septima: '36.5'
+            })
+
           }
+
         }
       );
 
@@ -83,7 +101,60 @@ export class FichaSintomatologicaComponent implements OnInit {
 
   ngOnInit(): void {
     this.deleteAllDOM();
+    this.sintomatologiaForm.get('cuarta').valueChanges.subscribe(
+      value => {
+        if (value == 'Si') {
+
+          this.sintomatologiaForm.get('textCuarta').setValidators(Validators.required);
+          this.sintomatologiaForm.get('textCuarta').updateValueAndValidity();
+
+          this.sintomatologiaForm.get('textCuarta').valueChanges.subscribe(
+            value2 => {
+              if (value2 == 'Otros') {
+                console.log(value2);
+                this.sintomatologiaForm.get('otrosCuarta').setValidators(Validators.required);
+                this.sintomatologiaForm.get('otrosCuarta').updateValueAndValidity();
+
+              } else {
+                this.sintomatologiaForm.get('otrosCuarta').clearValidators();
+                this.sintomatologiaForm.get('otrosCuarta').updateValueAndValidity();
+
+              }
+            }
+          );
+
+        } else {
+          this.sintomatologiaForm.get('textCuarta').clearValidators();
+          this.sintomatologiaForm.get('textCuarta').updateValueAndValidity();
+        }
+      }
+    )
+
+    this.sintomatologiaForm.get('quinta').valueChanges.subscribe(
+      value => {
+        if (value == 'Si') {
+          this.sintomatologiaForm.get('textQuinta').setValidators(Validators.required);
+          this.sintomatologiaForm.get('textQuinta').updateValueAndValidity();
+        } else {
+          this.sintomatologiaForm.get('textQuinta').clearValidators();
+          this.sintomatologiaForm.get('textQuinta').updateValueAndValidity();
+        }
+      }
+    )
+
+    this.sintomatologiaForm.get('sexta').valueChanges.subscribe(
+      value => {
+        if (value == 'Si') {
+          this.sintomatologiaForm.get('textSexta').setValidators(Validators.required)
+          this.sintomatologiaForm.get('textSexta').updateValueAndValidity();
+        } else {
+          this.sintomatologiaForm.get('textSexta').clearAsyncValidators();
+          this.sintomatologiaForm.get('textSexta').updateValueAndValidity();
+        }
+      }
+    )
   }
+
 
   getFicha(id_ficha) {
     this.fichaService.getFicha(id_ficha).subscribe(
@@ -175,7 +246,35 @@ export class FichaSintomatologicaComponent implements OnInit {
   }
 
   enviar(values) {
-    console.log(values);
+    if (this.ficha){
+      console.log('Actualizar Respuesta');
+      // Update Respuesta de ficha
+
+    } else {
+      
+      this.sintomatologiaForm.patchValue({
+        idPersonal: this.empleado.id
+      });
+
+      if (values.cuarta == 'No') {
+        values['otrosCuarta'] = 'No';
+      } else if (values.textCuarta != 'Otros') {
+        values['otrosCuarta'] = values.textCuarta;
+      }
+  
+      if (values.quinta == 'No') {
+        values['textQuinta'] = 'No';
+      }
+  
+      if (values.sexta == 'No') {
+        values['textSexta'] = 'No';
+      }
+
+      console.log('Crear ficha');
+      // Create Ficha
+    }
+
+    console.log(values)
     /*
     alert('Ficha llenada');
     if (values.cuarta == 'No') {
@@ -193,18 +292,7 @@ export class FichaSintomatologicaComponent implements OnInit {
     }
 
     this.router.navigate(['/']);
-/*
-    if(this.ficha) {
-      const idPregunta = this.ficha.data[this.ficha.data.length - 1].respuesta.id;
-      
-      this.fichaService.updateTemperatura(idPregunta, values.octava);
-    } else {
-      this.fichaService.add(values).subscribe(
-        status => {
-  
-        }
-      );
-    }
+
 */
   }
 

@@ -8,6 +8,19 @@ input[type=text], select, textarea{
     font-family: 'Signika';
 }
 
+input[type=text]:disabled {
+  /*background: white;*/
+  font-weight: 700;
+  color: black;
+}
+
+input[type=number]:disabled {
+  
+}
+
+input[type=number]:enabled{
+}
+
 input[type=radio]{
   font-family: 'Signika';
 }

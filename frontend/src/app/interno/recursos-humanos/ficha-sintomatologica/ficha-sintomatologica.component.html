@@ -84,9 +84,9 @@
             <input type="radio" formControlName="cuarta" value="No" name="cuarta" (click)="contacto(false)">No<br>
         </div>
         <div class="col-100" *ngIf="enContacto">
-          <input type="radio" formControlName="textCuarta" value="Familiar" name="contacto" (click)="contactoDetalle(false)">Familiar<br>
-          <input type="radio" formControlName="textCuarta" value="Centro de trabajo" name="contacto" (click)="contactoDetalle(false)">Centro de trabajo<br>
-          <input type="radio" formControlName="textCuarta" value="Otros" name="contacto" (click)="contactoDetalle(true)">Otros<br>
+          <input type="radio" formControlName="textCuarta" value="Familiar" name="textCuarta" (click)="contactoDetalle(false)">Familiar<br>
+          <input type="radio" formControlName="textCuarta" value="Centro de trabajo" name="textCuarta" (click)="contactoDetalle(false)">Centro de trabajo<br>
+          <input type="radio" formControlName="textCuarta" value="Otros" name="textCuarta" (click)="contactoDetalle(true)">Otros<br>
         </div>
         <div *ngIf="otrosContacto">
           <input type="text" formControlName="otrosCuarta" name="otrosContacto" placeholder="Detallar..">
@@ -124,7 +124,7 @@
           <label for="septima">Hora en entrada</label>
         </div>
         <div class="col-30">
-          <input type="text" formControlName="septima" name="septima" placeholder="36.0">
+          <input type="number" step="0.1" formControlName="septima" name="septima" >
         </div>
       </div>
       <div class="row subsection">
@@ -132,7 +132,7 @@
           <label for="septima">Hora de salida</label>
         </div>
         <div class="col-30">
-          <input type="text" formControlName="octava" name="octava" placeholder="36.0" >
+          <input type="number" step="0.1" formControlName="octava" name="octava"  >
         </div>
       </div>
       <p id="detalles">
@@ -144,7 +144,7 @@
           <label for="country">Fecha</label>
         </div>
         <div class="col-30">
-            <label for="country">{{fecha|date}}</label>
+            <label for="country">{{fecha | date : 'medium'}}</label>
         </div>
       </div>
       <div class="row">
