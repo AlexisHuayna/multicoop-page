@@ -140,7 +140,7 @@ router.get('/api/interno/rh/fichas/faltantesEntrada/:idAgencia', (req, res) => {
     const currentHora = datTime[4];
     const codigoAgencia = req.params.idAgencia
 
-    const query = "SELECT personal.* FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia + "' AND personal.idAgencia = agencia.id WHERE personal.id NOT IN ( SELECT fichaSintomatologica.idPersonal FROM fichaSintomatologica WHERE fichaSintomatologica.fecha = '" + currentDia + "' )";
+    const query = "SELECT personal.* FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia + "' AND personal.idAgencia = agencia.id WHERE personal.estado = 1 AND personal.id NOT IN ( SELECT fichaSintomatologica.idPersonal FROM fichaSintomatologica WHERE fichaSintomatologica.fecha = '" + currentDia + "' )";
     
     conexion_mysql.query(query, (err, personalFaltante) => {
         if(!err) {
@@ -153,6 +153,8 @@ router.get('/api/interno/rh/fichas/faltantesEntrada/:idAgencia', (req, res) => {
 
 router.get('/api/interno/rh/fichas/faltantesSalida/:idAgencia', (req, res) => {
     res.send('working dude');
+
+    const query = "SELECT personal.*, fichaSintomatologica.* FROM personal INNER JOIN agencia ON agencia.codigo = "01" AND personal.idAgencia = agencia.id INNER JOIN fichaSintomatologica ON fichaSintomatologica.idPersonal = personal.id AND fichaSintomatologica.fecha = "2020-08-27" AND fichaSintomatologica.estado = 1 WHERE personal.estado = 1 "
 });
 
 
@@ -186,7 +188,7 @@ router.put('/api/interno/rh/empleados/', (req, res) => {
     const a = req.body.numero;
     const b = req.body.direccion;
     const c = req.body.idEmpleado;
-})
+});
 
 router.get('/api/interno/rh/empleados/:idEmpleado', (req, res) => {
     const id_empleado = req.params.idEmpleado;
@@ -199,6 +201,58 @@ router.get('/api/interno/rh/empleados/:idEmpleado', (req, res) => {
             res.status(500).json({status: 'error'});
         }
     })
-})
+});
+
+
+router.post('/api/interno/rh/fichaSintomatologica', (req, res) => {
+    const id_personal = req.body.idPersonal;
+
+    const primera = req.body.primera;
+    const segunda = req.body.segunda;
+    const tercera = req.body.tercera;
+    const cuarta = req.body.otrosCuarta;
+    const quinta = req.body.textQuinta;
+    const sexta = req.body.textSexta;
+    const septima = req.body.septima;
+    const octava = req.body.octava ? req.body.octava : "";
+
+
+    const datTime = new Date().toString().split(' ', 5);
+    const fecha =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
+    const hora = datTime[4];
+
+    const query_add_ficha = "INSERT INTO fichaSintomatologica(idPersonal, estado, hora, fecha, detalle) VALUES ('" + id_personal + "','1','" + hora + "','" + fecha + "','entrada')";
+    
+    conexion_mysql.query(query_add_ficha, (err, result2) => {
+        if(!err) {
+            const id_ficha = result2.insertId;
+
+            const query_respuesta_primera = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','primera','" + primera + "', '')";
+            const query_respuesta_segunda = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','segunda','" + segunda + "', '')";
+            const query_respuesta_tercera = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','tercera','" + tercera + "', '')";
+            const query_respuesta_cuarta = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','cuarta','" + cuarta + "', '')";
+            const query_respuesta_quinta = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','quinta','" + quinta + "', '')";
+            const query_respuesta_sexta = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + sexta + "', '')";
+            const query_respuesta_septima = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','setpima','" + septima + "', '')";
+            const query_respuesta_octava = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','octava','" + octava + "', '')";
+           
+            conexion_mysql.query(query_respuesta_primera, (err, result3) => {})
+            conexion_mysql.query(query_respuesta_segunda, (err, result3) => {})
+            conexion_mysql.query(query_respuesta_tercera, (err, result3) => {})
+            conexion_mysql.query(query_respuesta_cuarta, (err, result3) => {})
+            conexion_mysql.query(query_respuesta_quinta, (err, result3) => {})
+            conexion_mysql.query(query_respuesta_sexta, (err, result3) => {})
+            conexion_mysql.query(query_respuesta_septima, (err, result3) => {})
+            conexion_mysql.query(query_respuesta_octava, (err, result3) => {})
+
+            if(!err) {
+                res.status(200).json({finish: 'true'});
+            }
+        } else {
+            res.status(500).json({status: 'error'});
+        }        
+    });
+
+});
 
 module.exports = router;

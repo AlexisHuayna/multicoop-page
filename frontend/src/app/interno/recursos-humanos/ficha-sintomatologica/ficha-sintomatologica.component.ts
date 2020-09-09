@@ -59,7 +59,6 @@ export class FichaSintomatologicaComponent implements OnInit {
         }
       );
     } catch (error) {
-      console.log('time');
       this.fecha = Date.now();
     }
 
@@ -176,7 +175,8 @@ export class FichaSintomatologicaComponent implements OnInit {
       area: this.toCapital(this.empleado.area),
       dni: this.empleado.dni,
       direccion: this.empleado.direccion,
-      celular: this.empleado.celular
+      celular: this.empleado.celular,
+      idPersonal: this.empleado.id
     })
 
     this.sintomatologiaForm.controls['apellidosNombres'].disable();
@@ -251,10 +251,6 @@ export class FichaSintomatologicaComponent implements OnInit {
       // Update Respuesta de ficha
 
     } else {
-      
-      this.sintomatologiaForm.patchValue({
-        idPersonal: this.empleado.id
-      });
 
       if (values.cuarta == 'No') {
         values['otrosCuarta'] = 'No';
@@ -270,30 +266,21 @@ export class FichaSintomatologicaComponent implements OnInit {
         values['textSexta'] = 'No';
       }
 
+      this.fichaService.crearFicha(values).subscribe(
+        ficha => {
+
+        }
+      );
+
       console.log('Crear ficha');
       // Create Ficha
     }
 
     console.log(values)
-    /*
-    alert('Ficha llenada');
-    if (values.cuarta == 'No') {
-      values['otrosCuarta'] = 'No';
-    } else if (values.textCuarta != 'Otros') {
-      values['otrosCuarta'] = values.textCuarta;
-    }
 
-    if (values.quinta == 'No') {
-      values['textQuinta'] = 'No';
-    }
+    //this.router.navigate(['/']);
 
-    if (values.sexta == 'No') {
-      values['textSexta'] = 'No';
-    }
 
-    this.router.navigate(['/']);
-
-*/
   }
 
 

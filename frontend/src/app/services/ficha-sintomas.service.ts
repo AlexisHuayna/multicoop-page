@@ -36,4 +36,8 @@ export class FichaSintomasService {
   getFicha(idFicha) {
     return this.http.get<Ficha>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/${idFicha}`);
   }
+
+  crearFicha(ficha) {
+    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica", ficha);
+  }
 }

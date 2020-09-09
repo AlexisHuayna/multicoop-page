@@ -1,6 +1,13 @@
-<p>{{idAgencia}}</p>
-<ul>
-    <li *ngFor="let personal of personalFaltante">
-        <a [routerLink]="['/interno/rh/ficha', personal.id, personal.idFicha ? personal.idFicha : -1 ]">{{personal.dni}}</a>
-    </li>
-</ul>
+<div >
+    <div class="collapsible">
+        <button type="button" >{{agencia}}</button>
+    </div>
+    
+    <div class="content">
+      <ul>
+          <li *ngFor="let personal of personalFaltante" [routerLink]="['/interno/rh/ficha', personal.id, personal.idFicha ? personal.idFicha : -1 ]">
+              <a>{{personal.dni}}</a>
+          </li>
+      </ul>
+    </div>
+</div>

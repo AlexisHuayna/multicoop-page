@@ -12,8 +12,10 @@ export class ListaFichasComponent implements OnInit {
 
   @Input() idAgencia: string;
   @Input() tipoFicha: number;
+  agencia: string;
 
   personalFaltante: PersonalFicha[];
+  
   constructor(private fichaService: FichaSintomasService) {
     this.personalFaltante = [];
 
@@ -33,6 +35,43 @@ export class ListaFichasComponent implements OnInit {
         this.personalFaltante = personalFaltanteResponse;
       }
     );
+    this.collapse();
+    this.parseAgencia(this.idAgencia);
+  }
+
+  parseAgencia(id) {
+    if ( id == '01' ) {
+      this.agencia = 'Arequipa';
+    } else if ( id == '02' ) {
+      this.agencia = 'Juliaca';
+    } else if ( id == '03' ) {
+      this.agencia = 'Puno';
+    } else if ( id == '04' ) {
+      this.agencia = 'Moquegua';
+    } else if ( id == '05' ) {
+      this.agencia = 'Ayaviri';
+    } else if ( id == '06' ) {
+      this.agencia = 'Tacna';
+    } else if ( id == '07' ) {
+      this.agencia = 'Cusco';
+    }
+  }
+
+  collapse() {
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    } 
   }
 
 }
