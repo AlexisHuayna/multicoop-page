@@ -152,9 +152,14 @@ router.get('/api/interno/rh/fichas/faltantesEntrada/:idAgencia', (req, res) => {
 });
 
 router.get('/api/interno/rh/fichas/faltantesSalida/:idAgencia', (req, res) => {
-    res.send('working dude');
+    const codigoAgencia = req.params.idAgencia;
+    const datTime = new Date().toString().split(' ', 5);
+    const currentDia =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
+    const currentHora = datTime[4];
 
-    const query = "SELECT personal.*, fichaSintomatologica.* FROM personal INNER JOIN agencia ON agencia.codigo = "01" AND personal.idAgencia = agencia.id INNER JOIN fichaSintomatologica ON fichaSintomatologica.idPersonal = personal.id AND fichaSintomatologica.fecha = "2020-08-27" AND fichaSintomatologica.estado = 1 WHERE personal.estado = 1 "
+    const query = "SELECT personal.*, fichaSintomatologica.* FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia
+            + "' AND personal.idAgencia = agencia.id INNER JOIN fichaSintomatologica ON fichaSintomatologica.idPersonal = personal.id AND fichaSintomatologica.fecha = '" + currentDia
+            + "' AND fichaSintomatologica.estado = 1 WHERE personal.estado = 1 "
 });
 
 
@@ -180,8 +185,33 @@ router.get('/api/interno/rh/fichas/:idFicha', (req, res) => {
 });
 
 router.put('/api/interno/rh/fichas/', (req, res) => {
-    const a = req.body.idFicha; //update estado de la ficha
-    const b = req.body.idPregunta; //update pregunta de temperatura
+    const datTime = new Date().toString().split(' ', 5);
+    const currentDia =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
+    const currentHora = datTime[4];
+    
+    const idFicha= req.body.idFicha; 
+    const idRespuesta = req.body.idPregunta;
+    const octava = req.body.octava;
+
+    if(idFicha && idRespuesta && octava) {
+        const update_ficha = "UPDATE fichaSintomatologica SET estado = '2', hora = '" + currentHora + "' WHERE id = '" + idFicha + "'";
+        const update_respuesta = "UPDATE respuestaFicha SET respuestaPregunta = '" + octava + "' WHERE id = '" + idRespuesta + "'";
+    
+        conexion_mysql.query(update_ficha, (err, ficha) => {
+            if (!err) {
+                conexion_mysql.query(update_respuesta, (err, respuesta) => {
+                    if (!err) {
+                        res.status(200).send({end: ''});
+                    }
+                });
+            } else {
+                res.status(500).send({err:'error'});
+            }
+        });
+    } else {
+        res.status(500).send({err:'error'});
+    }
+
 });
 
 router.put('/api/interno/rh/empleados/', (req, res) => {
