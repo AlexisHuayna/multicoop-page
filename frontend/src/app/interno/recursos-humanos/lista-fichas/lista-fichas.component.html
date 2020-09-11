@@ -1,9 +1,9 @@
 <div >
-    <div class="collapsible">
+    <div class="collapsible" (click)="displayContent($event)">
         <button type="button" >{{agencia}}</button>
     </div>
     
-    <div class="content">
+    <div id="{{idAgencia+tipoFicha}}" class="content">
       <ul>
           <li *ngFor="let personal of personalFaltante" [routerLink]="['/interno/rh/ficha', personal.id, personal.idFicha ? personal.idFicha : -1 ]">
               <a>{{personal.dni}}</a>

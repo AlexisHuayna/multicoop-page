@@ -157,9 +157,19 @@ router.get('/api/interno/rh/fichas/faltantesSalida/:idAgencia', (req, res) => {
     const currentDia =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
     const currentHora = datTime[4];
 
-    const query = "SELECT personal.*, fichaSintomatologica.* FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia
+    const query = "SELECT personal.*, fichaSintomatologica.id AS idFicha FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia
             + "' AND personal.idAgencia = agencia.id INNER JOIN fichaSintomatologica ON fichaSintomatologica.idPersonal = personal.id AND fichaSintomatologica.fecha = '" + currentDia
-            + "' AND fichaSintomatologica.estado = 1 WHERE personal.estado = 1 "
+            + "' AND fichaSintomatologica.estado = 1 WHERE personal.estado = 1 ";
+
+    conexion_mysql.query(query, (err, fichas) => {
+        if(!err) {
+            res.status(200).send(
+                fichas
+            );
+        }else {
+            res.status(500).send({err: 'err'});
+        }
+    })
 });
 
 
@@ -263,7 +273,7 @@ router.post('/api/interno/rh/fichaSintomatologica', (req, res) => {
             const query_respuesta_cuarta = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','cuarta','" + cuarta + "', '')";
             const query_respuesta_quinta = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','quinta','" + quinta + "', '')";
             const query_respuesta_sexta = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','sexta','" + sexta + "', '')";
-            const query_respuesta_septima = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','setpima','" + septima + "', '')";
+            const query_respuesta_septima = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','septima','" + septima + "', '')";
             const query_respuesta_octava = "INSERT INTO respuestaFicha (idficha, nombrePregunta, respuestaPregunta, detalle) VALUES ('" + id_ficha + "','octava','" + octava + "', '')";
            
             conexion_mysql.query(query_respuesta_primera, (err, result3) => {})

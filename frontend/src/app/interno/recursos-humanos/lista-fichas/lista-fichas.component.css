@@ -1,28 +1,26 @@
  /* Style the button that is used to open and close the collapsible content */
- .collapsible {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    text-align: center;
-  }
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .collapsible:hover {
-    background-color: #ccc;
-  }
-  
-  /* Style the collapsible content. Note: hidden by default */
-  .content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-  }
+.collapsible {
+  /*background-color: #eee;*/
+  color: #444;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  text-align: center;
+}
+ 
+ /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+ 
+ /* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
 
 ul {
     padding: 0%;
@@ -33,8 +31,7 @@ ul {
 li {
     list-style: none;
     padding-left: 0%;
-    margin-top: 0.5%;
-    margin-bottom: 0.5%;
+    margin: .5% 0;
     text-align: center;
 }
 
@@ -48,9 +45,11 @@ button {
     width: 100%;
     border: none;
     background: none;
+    padding: .5% 0;
 }
 
 a {
+  font-size: 20px;
     text-decoration: none;
     color: black;
 }

@@ -84,7 +84,6 @@ export interface Colaborador {
     celular?: string,
 }
 
-
 export interface Personal {
     id?: number,
     idAgencia?: number,

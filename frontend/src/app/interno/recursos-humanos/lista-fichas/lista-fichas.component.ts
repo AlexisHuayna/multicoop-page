@@ -22,7 +22,7 @@ export class ListaFichasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let fichaObservable: Observable<Personal[]>;
+    let fichaObservable: Observable<PersonalFicha[]>;
 
     if (this.tipoFicha == 0) {
       fichaObservable = this.fichaService.getFaltantesEntrada(this.idAgencia);
@@ -35,7 +35,7 @@ export class ListaFichasComponent implements OnInit {
         this.personalFaltante = personalFaltanteResponse;
       }
     );
-    this.collapse();
+
     this.parseAgencia(this.idAgencia);
   }
 
@@ -57,21 +57,17 @@ export class ListaFichasComponent implements OnInit {
     }
   }
 
-  collapse() {
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
 
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
-    } 
+  displayContent(evt) {
+    console.log(evt);
+    evt.target.classList.toggle('active');
+    var content = document.getElementById(this.idAgencia + this.tipoFicha);
+    if (content.style.display === "block"){
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
   }
+
 
 }

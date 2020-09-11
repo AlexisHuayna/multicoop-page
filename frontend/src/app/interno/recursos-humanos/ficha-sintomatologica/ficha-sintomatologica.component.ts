@@ -37,6 +37,7 @@ export class FichaSintomatologicaComponent implements OnInit {
       dni: [''],
       direccion: [''],
       celular: [''],
+      idFicha: [],
       primera: ['', Validators.compose([Validators.required])],
       segunda: ['', Validators.compose([Validators.required])],
       tercera: ['', Validators.compose([Validators.required])],
@@ -48,6 +49,7 @@ export class FichaSintomatologicaComponent implements OnInit {
       sexta: ['', Validators.compose([Validators.required])],
       textSexta: [''],
       septima: [],
+      idPregunta: [],
       octava: []
     });
                 
@@ -76,7 +78,6 @@ export class FichaSintomatologicaComponent implements OnInit {
             this.getFicha(id_ficha);
             this.sintomatologiaForm.get('octava').setValidators([Validators.required]);
             this.sintomatologiaForm.get('octava').updateValueAndValidity();
-            this.sintomatologiaForm.controls['septima'].disable();
             this.sintomatologiaForm.patchValue({
               octava: '36.5'
             });
@@ -87,7 +88,7 @@ export class FichaSintomatologicaComponent implements OnInit {
             this.sintomatologiaForm.controls['octava'].disable();
             this.sintomatologiaForm.patchValue({
               septima: '36.5'
-            })
+            });
 
           }
 
@@ -165,7 +166,35 @@ export class FichaSintomatologicaComponent implements OnInit {
   }
 
   llenarFicha(){
-    console.log(this.ficha);
+    let respuestas_parsed = this.parsingRespuestas(this.ficha.respuestas);
+    this.sintomatologiaForm.patchValue({
+      idFicha: this.ficha.ficha.id,
+      primera: respuestas_parsed.primera,
+      segunda: respuestas_parsed.segunda,
+      tercera: respuestas_parsed.tercera,
+      cuarta: respuestas_parsed.cuarta,
+      textCuarta: respuestas_parsed.textCuarta,
+      otrosCuarta: respuestas_parsed.otrosCuarta,
+      quinta: respuestas_parsed.quinta,
+      textQuinta: respuestas_parsed.textQuinta,
+      sexta: respuestas_parsed.sexta,
+      textSexta: respuestas_parsed.textSexta,
+      septima: respuestas_parsed.septima,
+      idPregunta: respuestas_parsed.octava
+    });
+
+    this.sintomatologiaForm.get('primera').disable();
+    this.sintomatologiaForm.get('segunda').disable();
+    this.sintomatologiaForm.get('tercera').disable();
+    this.sintomatologiaForm.get('cuarta').disable();
+    this.sintomatologiaForm.get('textCuarta').disable();
+    this.sintomatologiaForm.get('otrosCuarta').disable();
+    this.sintomatologiaForm.get('quinta').disable();
+    this.sintomatologiaForm.get('textQuinta').disable();
+    this.sintomatologiaForm.get('sexta').disable();
+    this.sintomatologiaForm.get('textSexta').disable();
+    this.sintomatologiaForm.get('septima').disable();
+
   }
 
   llenarEmpleado() {
@@ -191,43 +220,50 @@ export class FichaSintomatologicaComponent implements OnInit {
     let primera, segunda, tercera, cuarta, textCuarta, otrosCuarta,
         quinta, textQuinta, sexta, textSexta, septima, octava;
 
-    primera = respuestas[0].detalle;
-    segunda = respuestas[1].detalle;
-    tercera = respuestas[2].detalle;
-
-    if (respuestas[3].detalle == 'No') {
-      cuarta = 'No'
-      textCuarta = ''
-      otrosCuarta = ''
-    } else {
-      cuarta = 'Si'
-      if(respuestas[3].detalle != 'Otros') {
-        textCuarta = respuestas[3].detalle
-        otrosCuarta = ''
+    respuestas.forEach(respuesta => {
+      if(respuesta.nombrePregunta == 'primera') {
+        primera = respuesta.respuestaPregunta;
+      } else if (respuesta.nombrePregunta == 'segunda') {
+        segunda = respuesta.respuestaPregunta;
+      } else if (respuesta.nombrePregunta == 'tercera') {
+        tercera = respuesta.respuestaPregunta;
+      } else if (respuesta.nombrePregunta == 'cuarta') {
+        if (respuesta.respuestaPregunta == 'No') {
+          cuarta = 'No'
+          textCuarta = ''
+          otrosCuarta = ''
+        } else {
+          cuarta = 'Si'
+          if(respuesta.respuestaPregunta != 'Otros') {
+            textCuarta = respuesta.respuestaPregunta
+            otrosCuarta = ''
+          } else {
+            textCuarta = 'Otros'
+            otrosCuarta = respuesta.respuestaPregunta
+          }
+        }
+      } else if (respuesta.nombrePregunta == 'quinta') {
+        if(respuesta.respuestaPregunta == 'No') {
+          quinta = 'No';
+          textQuinta = '';
+        } else {
+          quinta = 'Si';
+          textQuinta = respuesta.respuestaPregunta;
+        }
+      } else if (respuesta.nombrePregunta == 'sexta') {
+        if(respuesta.respuestaPregunta == 'No') {
+          sexta = 'No';
+          textSexta = '';
+        } else {
+          sexta = 'Si';
+          textSexta = respuesta.respuestaPregunta;
+        }
+      } else if (respuesta.nombrePregunta == 'septima') {
+        septima = respuesta.respuestaPregunta;
       } else {
-        textCuarta = 'Otros'
-        otrosCuarta = respuestas[3].detalle
+        octava = respuesta.id
       }
-    }
-
-    if(respuestas[4].detalle == 'No') {
-      quinta = 'No';
-      textQuinta = '';
-    } else {
-      quinta = 'Si';
-      textQuinta = respuestas[4].detalle;
-    }
-
-    if(respuestas[5].detalle == 'No') {
-      sexta = 'No';
-      textSexta = '';
-    } else {
-      sexta = 'Si';
-      textSexta = respuestas[5].detalle;
-    }
-
-    septima = respuestas[6].detalle;
-    octava = respuestas[7].detalle;
+    });
 
     return {
       primera: primera,
@@ -246,12 +282,16 @@ export class FichaSintomatologicaComponent implements OnInit {
   }
 
   enviar(values) {
+    let ruta;
+
     if (this.ficha){
-      console.log('Actualizar Respuesta');
+      this.fichaService.updateFicha(values).subscribe(
+        response => {
+        }
+      )
       // Update Respuesta de ficha
-
+      ruta = '/';
     } else {
-
       if (values.cuarta == 'No') {
         values['otrosCuarta'] = 'No';
       } else if (values.textCuarta != 'Otros') {
@@ -268,18 +308,14 @@ export class FichaSintomatologicaComponent implements OnInit {
 
       this.fichaService.crearFicha(values).subscribe(
         ficha => {
-
+          console.log('ficha creada');
         }
       );
-
-      console.log('Crear ficha');
-      // Create Ficha
+        
+      ruta = '/interno/rh/test'
     }
-
-    console.log(values)
-
-    //this.router.navigate(['/']);
-
+      
+    this.router.navigate([ruta]);
 
   }
 

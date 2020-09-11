@@ -17,10 +17,6 @@ export class FichaSintomasService {
     return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/ficha", ficha);
   }
   
-  updateTemperatura(idRespuesta: number, values: any) {
-    return this.http.put(`http://multicoop.com.pe:8000/api/interno/rh/ficha/respuesta/${idRespuesta}`, values);
-  }
-
   getFaltantesEntrada(idAgencia) {
     return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesEntrada/${idAgencia}`);
   }
@@ -39,5 +35,9 @@ export class FichaSintomasService {
 
   crearFicha(ficha) {
     return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica", ficha);
+  }
+
+  updateFicha(ficha) {
+    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica/u", ficha)
   }
 }
