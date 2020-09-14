@@ -104,28 +104,32 @@ export class FichaSintomatologicaComponent implements OnInit {
     this.sintomatologiaForm.get('cuarta').valueChanges.subscribe(
       value => {
         if (value == 'Si') {
-
+          this.enContacto = true;
           this.sintomatologiaForm.get('textCuarta').setValidators(Validators.required);
           this.sintomatologiaForm.get('textCuarta').updateValueAndValidity();
 
           this.sintomatologiaForm.get('textCuarta').valueChanges.subscribe(
             value2 => {
               if (value2 == 'Otros') {
-                console.log(value2);
+                this.otrosContacto = true;
                 this.sintomatologiaForm.get('otrosCuarta').setValidators(Validators.required);
                 this.sintomatologiaForm.get('otrosCuarta').updateValueAndValidity();
-
               } else {
+                this.otrosContacto = false;
                 this.sintomatologiaForm.get('otrosCuarta').clearValidators();
                 this.sintomatologiaForm.get('otrosCuarta').updateValueAndValidity();
-
               }
             }
           );
 
         } else {
+          this.enContacto = false;
           this.sintomatologiaForm.get('textCuarta').clearValidators();
           this.sintomatologiaForm.get('textCuarta').updateValueAndValidity();
+
+          this.otrosContacto = false;
+          this.sintomatologiaForm.get('otrosCuarta').clearValidators();
+          this.sintomatologiaForm.get('otrosCuarta').updateValueAndValidity();
         }
       }
     )
@@ -133,11 +137,13 @@ export class FichaSintomatologicaComponent implements OnInit {
     this.sintomatologiaForm.get('quinta').valueChanges.subscribe(
       value => {
         if (value == 'Si') {
+          this.medicacionFlag = true;
           this.sintomatologiaForm.get('textQuinta').setValidators(Validators.required);
           this.sintomatologiaForm.get('textQuinta').updateValueAndValidity();
         } else {
           this.sintomatologiaForm.get('textQuinta').clearValidators();
           this.sintomatologiaForm.get('textQuinta').updateValueAndValidity();
+          this.medicacionFlag = false;
         }
       }
     )
@@ -145,11 +151,13 @@ export class FichaSintomatologicaComponent implements OnInit {
     this.sintomatologiaForm.get('sexta').valueChanges.subscribe(
       value => {
         if (value == 'Si') {
+          this.enfermedadFlag = true;
           this.sintomatologiaForm.get('textSexta').setValidators(Validators.required)
           this.sintomatologiaForm.get('textSexta').updateValueAndValidity();
         } else {
           this.sintomatologiaForm.get('textSexta').clearAsyncValidators();
           this.sintomatologiaForm.get('textSexta').updateValueAndValidity();
+          this.enfermedadFlag = false;
         }
       }
     )
@@ -166,7 +174,9 @@ export class FichaSintomatologicaComponent implements OnInit {
   }
 
   llenarFicha(){
+    console.log(this.ficha.respuestas)
     let respuestas_parsed = this.parsingRespuestas(this.ficha.respuestas);
+    console.log(respuestas_parsed);
     this.sintomatologiaForm.patchValue({
       idFicha: this.ficha.ficha.id,
       primera: respuestas_parsed.primera,
@@ -203,7 +213,7 @@ export class FichaSintomatologicaComponent implements OnInit {
       apellidosNombres: this.toCapital(full_name),
       area: this.toCapital(this.empleado.area),
       dni: this.empleado.dni,
-      direccion: this.empleado.direccion,
+      direccion: this.empleado.direccion.toUpperCase(),
       celular: this.empleado.celular,
       idPersonal: this.empleado.id
     })
@@ -234,7 +244,7 @@ export class FichaSintomatologicaComponent implements OnInit {
           otrosCuarta = ''
         } else {
           cuarta = 'Si'
-          if(respuesta.respuestaPregunta != 'Otros') {
+          if(respuesta.respuestaPregunta == 'Familiar' || respuesta.respuestaPregunta == 'Centro de trabajo') {
             textCuarta = respuesta.respuestaPregunta
             otrosCuarta = ''
           } else {
@@ -287,9 +297,9 @@ export class FichaSintomatologicaComponent implements OnInit {
     if (this.ficha){
       this.fichaService.updateFicha(values).subscribe(
         response => {
+          alert('ficha actualizada');
         }
       )
-      // Update Respuesta de ficha
       ruta = '/';
     } else {
       if (values.cuarta == 'No') {
@@ -308,23 +318,28 @@ export class FichaSintomatologicaComponent implements OnInit {
 
       this.fichaService.crearFicha(values).subscribe(
         ficha => {
-          console.log('ficha creada');
+          alert('ficha creada');
         }
       );
         
       ruta = '/interno/rh/test'
     }
+
+    setTimeout(() => {
+      this.router.navigate([ruta]);
+    }, 500);
       
-    this.router.navigate([ruta]);
 
   }
 
 
 
   deleteAllDOM() {
-    document.getElementById('shared').remove();
+    if(document.getElementById('shared')){
+      document.getElementById('shared').remove();
+    }
   }
-
+/*
   enfermedad(value) {
     this.enfermedadFlag = value;
   }
@@ -340,7 +355,7 @@ export class FichaSintomatologicaComponent implements OnInit {
   contactoDetalle(value) {
     this.otrosContacto = value;
   }
-
+*/
   toCapital(string:string){
     let words = string.split(' ');
     for (let i = 0; i < words.length; ++i) {

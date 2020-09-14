@@ -1,3 +1,24 @@
-h2 {
+h2, p {
     text-align: center;
+}
+
+* {
+    font-family: 'Signika';
+}
+
+.container {
+    margin: 0 2%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.item {
+    margin: 1%;
+}
+
+@media screen and (max-width: 800px){
+    .container {
+        display: grid;
+        grid-template-columns: 100%;
+    }
 }

@@ -14,6 +14,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hamburguesaController() {
+    this.responsiveController();
+  }
 
   responsiveController() {
     var x = document.getElementById("myTopnav");

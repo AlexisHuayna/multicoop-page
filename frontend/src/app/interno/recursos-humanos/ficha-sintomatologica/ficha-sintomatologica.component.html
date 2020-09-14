@@ -80,13 +80,13 @@
           <label for="country">Contacto con persona(s) con un caso confirmado de COVID-19.</label>
         </div>
         <div class="col-30">
-            <input type="radio" formControlName="cuarta" value="Si" name="cuarta" (click)="contacto(true)">Si<br>
-            <input type="radio" formControlName="cuarta" value="No" name="cuarta" (click)="contacto(false)">No<br>
+            <input type="radio" formControlName="cuarta" value="Si" name="cuarta" >Si<br>
+            <input type="radio" formControlName="cuarta" value="No" name="cuarta" >No<br>
         </div>
         <div class="col-100" *ngIf="enContacto">
-          <input type="radio" formControlName="textCuarta" value="Familiar" name="textCuarta" (click)="contactoDetalle(false)">Familiar<br>
-          <input type="radio" formControlName="textCuarta" value="Centro de trabajo" name="textCuarta" (click)="contactoDetalle(false)">Centro de trabajo<br>
-          <input type="radio" formControlName="textCuarta" value="Otros" name="textCuarta" (click)="contactoDetalle(true)">Otros<br>
+          <input type="radio" formControlName="textCuarta" value="Familiar" name="textCuarta" >Familiar<br>
+          <input type="radio" formControlName="textCuarta" value="Centro de trabajo" name="textCuarta" >Centro de trabajo<br>
+          <input type="radio" formControlName="textCuarta" value="Otros" name="textCuarta" >Otros<br>
         </div>
         <div *ngIf="otrosContacto">
           <input type="text" formControlName="otrosCuarta" name="otrosContacto" placeholder="Detallar..">
@@ -97,8 +97,8 @@
           <label for="quinta">Está tomando alguna medicación (detallar cuál o cuáles).</label>
         </div>
         <div class="col-30">
-            <input type="radio" formControlName="quinta" value="Si" name="quinta" (click)="medicacion(true)">Si<br>
-            <input type="radio" formControlName="quinta" value="No" name="quinta" (click)="medicacion(false)">No<br>
+            <input type="radio" formControlName="quinta" value="Si" name="quinta" >Si<br>
+            <input type="radio" formControlName="quinta" value="No" name="quinta" >No<br>
         </div>
         <div *ngIf="medicacionFlag">
             <input type="text" formControlName="textQuinta" name="textQuinta" placeholder="Detallar..">
@@ -109,8 +109,8 @@
           <label for="sexta">Sufre alguna enfermedad crónica (Diabetes, asma, Hipertensión arterial, etc.) cuál o cuales.</label>
         </div>
         <div class="col-30">
-            <input type="radio" formControlName="sexta" value="Si" name="sexta" (click)="enfermedad(true)">Si<br>
-            <input type="radio" formControlName="sexta" value="No" name="sexta" (click)="enfermedad(false)">No<br>
+            <input type="radio" formControlName="sexta" value="Si" name="sexta" >Si<br>
+            <input type="radio" formControlName="sexta" value="No" name="sexta" >No<br>
         </div>
         <div *ngIf="enfermedadFlag">
             <input type="text" formControlName="textSexta" name="textSexta" placeholder="Detallar..">

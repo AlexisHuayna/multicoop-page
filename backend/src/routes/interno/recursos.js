@@ -194,7 +194,7 @@ router.get('/api/interno/rh/fichas/:idFicha', (req, res) => {
     })
 });
 
-router.put('/api/interno/rh/fichas/', (req, res) => {
+router.post('/api/interno/rh/fichaSintomatologica/u', (req, res) => {
     const datTime = new Date().toString().split(' ', 5);
     const currentDia =  datTime[3] + convertirMes(datTime[1]) + datTime[2];
     const currentHora = datTime[4];
@@ -222,12 +222,6 @@ router.put('/api/interno/rh/fichas/', (req, res) => {
         res.status(500).send({err:'error'});
     }
 
-});
-
-router.put('/api/interno/rh/empleados/', (req, res) => {
-    const a = req.body.numero;
-    const b = req.body.direccion;
-    const c = req.body.idEmpleado;
 });
 
 router.get('/api/interno/rh/empleados/:idEmpleado', (req, res) => {

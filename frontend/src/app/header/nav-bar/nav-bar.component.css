@@ -5,8 +5,8 @@
 
 .container-logo-nav-bar img{
     padding-top: .3%;
-    width: 20%;
-    max-width: 25%;
+    width: 15%;
+    max-width: 20%;
 }
 
 .container-nav-bar{
@@ -116,6 +116,12 @@
 }
 
 @media screen and (max-width: 500px){
+    .container-logo-nav-bar img{
+        padding-top: .3%;
+        width: 20%;
+        max-width: 25%;
+    }
+
     .container-nav-bar ul{
         display: none;
     }
@@ -132,6 +138,12 @@
 }
 
 @media screen and (max-width: 1240px){
+    .container-logo-nav-bar img{
+        padding-top: .3%;
+        width: 20%;
+        max-width: 25%;
+    }
+    
     .container-nav-bar ul{
         display: none;
     }

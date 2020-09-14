@@ -53,11 +53,13 @@
     list-style-type: none;
 }
 
+/*
 .description {
     position: relative;
     animation: bajon 5s;
     z-index: 0;
 }
+*/
 
 @keyframes cambio{
     0% {margin-left: 0;}
