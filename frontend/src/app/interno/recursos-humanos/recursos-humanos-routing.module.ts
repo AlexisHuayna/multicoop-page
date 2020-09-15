@@ -9,7 +9,7 @@ import { RecursosHumanosComponent } from './recursos-humanos.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'test',
     component: RecursosHumanosComponent
   },
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     component: FichaSintomatologicaComponent,
   },
   {
-    path: 'test',
+    path: '',
     component: TestingComponent
   }
 ];

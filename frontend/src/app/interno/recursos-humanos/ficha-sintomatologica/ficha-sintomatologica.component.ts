@@ -297,7 +297,7 @@ export class FichaSintomatologicaComponent implements OnInit {
     if (this.ficha){
       this.fichaService.updateFicha(values).subscribe(
         response => {
-          alert('ficha actualizada');
+          alert('ficha completada');
         }
       )
       ruta = '/';
@@ -318,11 +318,11 @@ export class FichaSintomatologicaComponent implements OnInit {
 
       this.fichaService.crearFicha(values).subscribe(
         ficha => {
-          alert('ficha creada');
+          alert('ficha creada no se olvide de completar con su temperatura en la hora de salida');
         }
       );
         
-      ruta = '/interno/rh/test'
+      ruta = '/interno/rh/'
     }
 
     setTimeout(() => {

@@ -204,7 +204,7 @@ router.post('/api/interno/rh/fichaSintomatologica/u', (req, res) => {
     const octava = req.body.octava;
 
     if(idFicha && idRespuesta && octava) {
-        const update_ficha = "UPDATE fichaSintomatologica SET estado = '2', hora = '" + currentHora + "' WHERE id = '" + idFicha + "'";
+        const update_ficha = "UPDATE fichaSintomatologica SET estado = '2', detalle = 'completado', hora = '" + currentHora + "', WHERE id = '" + idFicha + "'";
         const update_respuesta = "UPDATE respuestaFicha SET respuestaPregunta = '" + octava + "' WHERE id = '" + idRespuesta + "'";
     
         conexion_mysql.query(update_ficha, (err, ficha) => {
