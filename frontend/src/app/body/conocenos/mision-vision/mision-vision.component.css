@@ -14,7 +14,7 @@
     margin: 2% 4%;
 }
 
-.title-mision-vision{
+.title-mision-vision {
     font-size: 2.5vw;
     font-weight: 500;
     font-family: 'Signika';
@@ -44,4 +44,23 @@ h3 {
 
 .mision-vision{
     margin: auto 0;
+}
+
+@media screen and (max-width: 800px) {
+    .mision-vision-text {
+        font-size: 3.1vw;
+        width: 100%;
+    }
+
+    .title-mision-vision {
+        font-size: 4.1vw;
+    }
+
+    .image-container img {
+        display: none;
+    }
+
+    .wrapper-mision-vision-content {
+        grid-template-columns: 90%;
+    }
 }

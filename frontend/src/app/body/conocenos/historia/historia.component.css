@@ -40,10 +40,31 @@
 .image-container{
     display: inline-block;
     min-width: 60%;
-    float: right;
 }
 
 .image-container img{
     width: 50%;
     margin-left: 20%;
+}
+
+@media screen and (max-width: 800px) {
+    .historia {
+        font-size: 2.9vw;
+        max-width: 90%;
+    }
+
+    .historia h1 {
+        font-size: 3.1vw !important;
+    }
+
+    .image-container img{
+        display: none;
+    }
+/*
+    .image-container img{
+        width: 80%;
+        margin-left: 10%;
+        padding-bottom: 30%;
+    }
+*/
 }

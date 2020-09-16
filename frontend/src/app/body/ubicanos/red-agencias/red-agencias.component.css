@@ -88,3 +88,38 @@
     font-size: 1.5vw;
     font-weight: 500;
 }
+
+@media screen and (max-width: 800px) {
+    .horario h6 {
+        font-size: 3.1vw;
+    }
+
+    .horario-agencias {
+        font-size: 3.6vw;
+    }
+
+    .agencia h5 {
+        font-size: 3.1vw !important;
+    }
+
+    .agencias-information-content {
+        font-size: 3.6vw;
+    }
+
+    .agencias-container-bottom, .agencias-container-top, .horario {
+        grid-template-columns: 50% 50%;
+    }
+
+    .horario img {
+        width: 45%;
+    }
+
+    #only {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #only img {
+        width: 20%;
+    }
+}

@@ -257,3 +257,74 @@ body{
 .helper-informacion{
     font-weight: 300;
 }
+
+
+@media screen and (max-width: 800px) {
+    .blue-title{
+        font-size: 5.6vw;
+    }
+
+    .enviar {
+        font-size: 3.4vw;
+    }
+
+    .enviar:disabled {
+        font-size: 3.4vw;
+    }
+
+    .tail-information-content h3{
+        font-size: 4.6vw;
+    }
+    
+    .prestamo-yellow-button, .simula-yellow-button {
+        font-size: 3.4vw;
+    }
+
+    .beneficios-item h5 {
+        font-size: 3.3vw;
+    }
+
+    .beneficios-item p{
+        font-size: 3.1vw;
+    }
+
+    .white-text {
+        font-size: 2.9vw;
+    }
+
+    .bold-text-blue {
+        font-size: 3.1vw;
+    }
+
+    .text-blue {
+        font-size: 2.9vw;
+    }
+
+    .req-li span {
+        font-size: 3.3vw;
+    }    
+
+    .req-blue {
+        font-size: 11.6vw;
+    }
+
+    .blue-sub-title {
+        font-size: 3.1vw;
+    }
+
+    .blue-multi {
+        font-size: 4.1vw;
+    }
+
+    .yellow-title {
+        font-size: 5.6vw;
+    }
+
+    .white-title {
+        font-size: 5.6vw;
+    }
+
+    .blue-title {
+        font-size: 5.6vw;
+    }
+}

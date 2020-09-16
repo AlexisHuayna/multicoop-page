@@ -53,7 +53,7 @@
     text-align: center;
 }
 
-.oportunidad-title h3{
+.oportunidad-title h3 {
     display: inline;
     margin: 0 1%;
     padding: 0;
@@ -67,4 +67,18 @@
 
 .oportunidad-title{
     margin: 3% 0;
+}
+
+@media screen and (max-width: 800px) {
+    .oportunidad-title h3 {
+        font-size: 4.1vw;
+    }
+
+    #oportunidades td {
+        font-size: 3.1vw;
+    }
+
+    #oportunidades th {
+        font-size: 3.6vw;
+    }
 }

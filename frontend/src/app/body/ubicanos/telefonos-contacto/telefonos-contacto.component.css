@@ -92,3 +92,26 @@
 .telefonos-item{
     text-align: center;
 }
+
+@media screen and (max-width: 800px) {
+    .telefonos span {
+        font-size: 3.3vw;
+    }
+    
+    .telefonos h4{ 
+        font-size: 3.6vw;
+    }
+
+    .wrapper-right p {
+        font-size: 3.1vw;
+    }
+    
+    .wrapper-right {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .wrapper-left {
+        display: none;
+    }
+}
