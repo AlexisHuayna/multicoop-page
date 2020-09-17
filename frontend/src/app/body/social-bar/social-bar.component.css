@@ -75,6 +75,7 @@
 		flex-direction: column;
 		align-items: flex-end;
 		z-index: 80;
+		width: 5%;
 	}
 
 	img {
@@ -86,11 +87,6 @@
 		padding: 0;
 	}
 
-	ul {
-		width: 50%;
-		margin: 0;
-		padding: 0;
-	}
 	
 	.social ul li a {
 		padding: 1%;
