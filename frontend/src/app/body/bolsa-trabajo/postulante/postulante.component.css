@@ -11,7 +11,7 @@ h1 {
     text-align: left;
 }
 
-.postulante-field label, .oportunidad-details, input{
+.postulante-field label, .oportunidad-details, input {
     font-size: 2vw;
 }
 
@@ -63,4 +63,18 @@ input{
 
 #fileName{
     float: inline-start;
+}
+
+@media screen and (max-width: 800px) {
+    .cv-label {
+        font-size: 3.6vw;
+    }
+
+    .postulante-field label, .oportunidad-details, input {
+        font-size: 3.6vw;        
+    }
+
+    h1 {
+        font-size: 4.1vw;
+    }
 }
