@@ -5,9 +5,14 @@ import { ListaFichasComponent } from './lista-fichas/lista-fichas.component';
 import { FichaSintomatologicaComponent } from './ficha-sintomatologica/ficha-sintomatologica.component';
 import { TestingComponent } from './testing/testing.component';
 import { RecursosHumanosComponent } from './recursos-humanos.component';
+import { EvaluacionComponent } from './evaluacion/evaluacion.component';
 
 
 const routes: Routes = [
+  {
+    path: '',
+    component: TestingComponent
+  },
   {
     path: 'test',
     component: RecursosHumanosComponent
@@ -17,8 +22,8 @@ const routes: Routes = [
     component: FichaSintomatologicaComponent,
   },
   {
-    path: '',
-    component: TestingComponent
+    path: 'evaluacion',
+    component: EvaluacionComponent,
   }
 ];
 

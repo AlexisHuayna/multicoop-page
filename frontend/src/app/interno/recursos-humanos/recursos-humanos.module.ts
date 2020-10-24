@@ -7,6 +7,7 @@ import { ListaFichasComponent } from './lista-fichas/lista-fichas.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TestingComponent } from './testing/testing.component';
 import { RecursosHumanosComponent } from './recursos-humanos.component';
+import { EvaluacionComponent } from './evaluacion/evaluacion.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { RecursosHumanosComponent } from './recursos-humanos.component';
     RecursosHumanosComponent,
     FichaSintomatologicaComponent,
     ListaFichasComponent,
-    TestingComponent
+    TestingComponent,
+    EvaluacionComponent
   ],
   imports: [
     CommonModule,
