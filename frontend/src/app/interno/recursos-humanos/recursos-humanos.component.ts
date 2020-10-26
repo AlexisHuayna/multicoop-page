@@ -11,12 +11,37 @@ import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
 })
 export class RecursosHumanosComponent implements OnInit {
 
+  public sst = true
+  public rit = true
 
-  constructor() {
-
+  constructor(private fichaService: FichaSintomasService,) {
+    try {
+      fichaService.getServerTime().subscribe(
+        timeResponse => {
+          let timeServer = new Date(timeResponse.time);
+          timeServer.getHours()
+          this.validateSst(timeServer)
+          this.validateRit(timeResponse)
+        }
+      );
+    } catch (error) {
+    }
   }
 
   ngOnInit(): void {
+  }
+
+  validateSst(time){
+    if(time.getHours() - 9 == 0 && time.getMinutes() - 19 > 0 && 41 - time.getMinutes() > 0){
+      this.sst = true
+    }
+  }
+
+  validateRit(time){
+    if((time.getHours() - 8 == 0 && time.getMinutes() - 49 > 0 && 61 - time.getMinutes() > 0) ||
+      time.getHours() - 9 == 0 && 11 - time.getMinutes() > 0 ){
+      this.rit = true
+    }
   }
 
 }

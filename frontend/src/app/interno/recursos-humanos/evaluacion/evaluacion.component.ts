@@ -17,31 +17,11 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
   
   public subscription
   public restTime:number
-  public maxTime
+  public timeOut
 
   public nombreEvaluacion
   public nombreEmpleado
-
-  public p1
-  public p2
-  public p3
-  public p4
-  public p5
-  public p6
-  public p7
-  public p8
-  public p9
-  public p10
-  public p11
-  public p12
-  public p13
-  public p14
-  public p15
-  public p16
-  public p17
-  public p18
-  public p19
-  public p20
+  public tipoEval
 
   constructor (
     private builder: FormBuilder,
@@ -80,6 +60,7 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
     if (this.route.snapshot.paramMap.has('empleado')) {
       let id_empleado = this.route.snapshot.paramMap.get('empleado');
       let id_ficha = this.route.snapshot.paramMap.get('ficha');
+      this.tipoEval = id_ficha
       
       fichaService.getEmpleado(id_empleado).subscribe(
         empleadoResponse => {
@@ -99,25 +80,27 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
         this.evaluacionForm.patchValue({
           tipo: 'sst',
         });
-        this.sst();
       } else {
         this.nombreEvaluacion = 'PRIMERA EVALUACION DE REGLAMENTO INTERNO DE TRABAJO'
         this.evaluacionForm.patchValue({
           tipo: 'rit'
         });
-        this.rit();
       }
 
     }
     
-    this.restTime = 1200;
-    this.maxTime = "09:20"
     try {
       fichaService.getServerTime().subscribe(
         timeResponse => {
           let timeServer = new Date(timeResponse.time);
-          console.log(timeServer.getHours() + ' ' + timeServer.getMinutes() + ' ' + timeServer.getSeconds());
-          console.log(timeResponse);
+
+          if(this.tipoEval == '3' ) {
+            this.restTime = (40 - timeServer.getMinutes()) * 60000
+          } else{
+            this.restTime =  (60 - timeServer.getMinutes()) * 60000
+          } 
+
+          this.timeOut = setTimeout(this.finishExam, this.restTime)
         }
       );
     } catch (error) {
@@ -126,30 +109,27 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    setTimeout(this.finishExam, 60000)
-    //setInterval(this.updateTime, 1000)
     this.subscription = interval(1000).subscribe( some => {
-      this.restTime = this.restTime - 1;
+      this.restTime = this.restTime - 1000;
     })
   }
   
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    clearTimeout(this.timeOut);
   }
 
   finishExam(){
-    alert("Idea");
+    var a = document.getElementById("enviarButton")
+    a.click();
   }
 
   secondsToTime(time){
-    let minutes = Math.floor(time / 60);
-    let seconds = time % 60;
+    let timeOnSeconds = Math.floor(time / 1000)
+    let minutes = Math.floor(timeOnSeconds / 60);
+    let seconds = timeOnSeconds % 60;
 
     return minutes + ':' + (seconds.toString().length == 1 ? '0' + seconds : seconds); 
-  }
-
-  getRestTime(time) {
-    
   }
 
   toCapital(string:string){
@@ -161,12 +141,24 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
   }
 
   enviar(values){
-    console.log(values)
-  }
+    clearTimeout(this.timeOut);
+    
+    if(this.tipoEval == '4'){
+      values.p5 = values.p5a + '|' + values.p5b + '|' + values.p5c
+    }
 
-  sst(){
-  }
+    this.fichaService.crearEvaluacion(values).subscribe(r => {
+    });
 
-  rit() {
+    if(this.tipoEval == '3') {
+      alert("Evaluacion SST terminada");
+      this.router.navigate(['/interno/rh/evaluacion']);
+
+    } else {
+      alert("Evaluacion RIT terminada");
+      this.router.navigate(['/']);
+    }
+
+    clearTimeout(this.timeOut);
   }
 }
