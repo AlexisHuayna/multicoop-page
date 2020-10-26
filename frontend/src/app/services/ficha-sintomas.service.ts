@@ -40,4 +40,16 @@ export class FichaSintomasService {
   updateFicha(ficha) {
     return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica/u", ficha)
   }
+
+  getSst(idAgencia) {
+    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/sst/${idAgencia}`);
+  }
+
+  getRit(idAgencia) {
+    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/rit/${idAgencia}`);
+  }
+
+  crearEvaluacion(evaluacion) {
+    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/evaluacion", evaluacion)
+  }
 }

@@ -1,7 +1,10 @@
 <div class="container">
+  <div class="cabecera">
     <h1>
         Ficha de sintomatologia COVID-19
+        <img src="../../../assets/icons/multicoop_yellow_covid.svg">
     </h1>
+  </div>
     <h3>He recibido explicación del objetivo de esta evaluación y me comprometo a responder con la verdad.</h3>
    
     <form [formGroup]="sintomatologiaForm" (ngSubmit)="enviar(sintomatologiaForm.value)">

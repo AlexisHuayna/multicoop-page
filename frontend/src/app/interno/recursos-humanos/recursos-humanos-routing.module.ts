@@ -14,7 +14,7 @@ const routes: Routes = [
     component: TestingComponent
   },
   {
-    path: 'test',
+    path: 'evaluacion',
     component: RecursosHumanosComponent
   },
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
     component: FichaSintomatologicaComponent,
   },
   {
-    path: 'evaluacion',
-    component: EvaluacionComponent,
+    path: 'reglamento/:empleado/:ficha',
+    component: EvaluacionComponent
   }
 ];
 

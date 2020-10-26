@@ -1,161 +1,29 @@
 <div class="container">
-  <div class="cabecera">
-    <h1>
-        Ficha de sintomatologia COVID-19
-        <img src="../../../assets/icons/multicoop_yellow_covid.svg">
-    </h1>
+  <div class="item">
+      <h2>EVALUACION DE REGLAMENTO DE SEGURIDAD Y SALUD EN EL TRABAJO</h2>
+      <p>Busque su numero de dni en la agencia que le correspode</p>
+      <div class="listas">
+          <app-lista-fichas idAgencia="01" tipoFicha=3 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="02" tipoFicha=3 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="03" tipoFicha=3 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="04" tipoFicha=3 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="05" tipoFicha=3 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="06" tipoFicha=3 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="07" tipoFicha=3 ruta="/interno/rh/reglamento"></app-lista-fichas>
+      </div>
   </div>
-  <h3>He recibido explicación del objetivo de esta evaluación y me comprometo a responder con la verdad.</h3>
   
-  <form [formGroup]="sintomatologiaForm" (ngSubmit)="enviar(sintomatologiaForm.value)">
-      <div class="row">
-        <div class="col-40">
-          <label for="apellidosNombres">Apellidos y Nombres</label>
-        </div>
-        <div class="col-60">
-          <input type="text" formControlName="apellidosNombres" name="apellidosNombres" placeholder="Apellidos y nombres..">
-        </div>
+  <div class="item">
+      <h2>EVALUACION DE REGLAMENTO INTERNO DE TRABAJO</h2>
+      <p>Busque su numero de dni en la agencia que le correspode</p>
+      <div class="listas">
+          <app-lista-fichas idAgencia="01" tipoFicha=4 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="02" tipoFicha=4 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="03" tipoFicha=4 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="04" tipoFicha=4 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="05" tipoFicha=4 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="06" tipoFicha=4 ruta="/interno/rh/reglamento"></app-lista-fichas>
+          <app-lista-fichas idAgencia="07" tipoFicha=4 ruta="/interno/rh/reglamento"></app-lista-fichas>
       </div>
-      <div class="row">
-        <div class="col-40">
-          <label for="area">Area de trabajo</label>
-        </div>
-        <div class="col-60">
-          <input type="text" formControlName="area" name="area" placeholder="Area de trabajo..">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-40">
-          <label for="dni">DNI</label>
-        </div>
-        <div class="col-60">
-          <input type="text" formControlName="dni" name="dni" placeholder="DNI..">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-40">
-          <label for="direccion">Direccion</label>
-        </div>
-        <div class="col-60">
-          <input type="text" formControlName="direccion" name="direccion" placeholder="Direccion..">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-40">
-          <label for="celular">Numero Celular</label>
-        </div>
-        <div class="col-60">
-          <input type="text" formControlName="celular" name="celular" placeholder="Numero de celular..">
-        </div>
-      </div>
-
-      <h3>En los ultimos 14 dias calendario ha tenido uno de los sintomas siguientes</h3>
-      
-      <div class="row">
-        <div class="col-70">
-          <label for="country">Sensacion de alza térmica o fiebre.</label>
-        </div>
-        <div class="col-30">
-            <input type="radio" formControlName="primera" value="Si" name="primera">Si<br>
-            <input type="radio" formControlName="primera" value="No" name="primera">No<br>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-70">
-          <label for="country">Tos, estornudos o dificultad para respirar.</label>
-        </div>
-        <div class="col-30">
-            <input type="radio" formControlName="segunda" value="Si" name="segunda">Si<br>
-            <input type="radio" formControlName="segunda" value="No" name="segunda">No<br>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-70">
-          <label for="country">Expectoracion o flema amarilla o verdosa.</label>
-        </div>
-        <div class="col-30">
-            <input type="radio" formControlName="tercera" value="Si" name="tercera">Si<br>
-            <input type="radio" formControlName="tercera" value="No" name="tercera">No<br>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-70">
-          <label for="country">Contacto con persona(s) con un caso confirmado de COVID-19.</label>
-        </div>
-        <div class="col-30">
-            <input type="radio" formControlName="cuarta" value="Si" name="cuarta" (click)="contacto(true)">Si<br>
-            <input type="radio" formControlName="cuarta" value="No" name="cuarta" (click)="contacto(false)">No<br>
-        </div>
-        <div class="col-100" *ngIf="enContacto">
-          <input type="radio" formControlName="textCuarta" value="Familiar" name="contacto" (click)="contactoDetalle(false)">Familiar<br>
-          <input type="radio" formControlName="textCuarta" value="Centro de trabajo" name="contacto" (click)="contactoDetalle(false)">Centro de trabajo<br>
-          <input type="radio" formControlName="textCuarta" value="Otros" name="contacto" (click)="contactoDetalle(true)">Otros<br>
-        </div>
-        <div *ngIf="otrosContacto">
-          <input type="text" formControlName="otrosCuarta" name="otrosContacto" placeholder="Detallar..">
-      </div>
-      </div>
-      <div class="row">
-        <div class="col-70">
-          <label for="quinta">Está tomando alguna medicación (detallar cuál o cuáles).</label>
-        </div>
-        <div class="col-30">
-            <input type="radio" formControlName="quinta" value="Si" name="quinta" (click)="medicacion(true)">Si<br>
-            <input type="radio" formControlName="quinta" value="No" name="quinta" (click)="medicacion(false)">No<br>
-        </div>
-        <div *ngIf="medicacionFlag">
-            <input type="text" formControlName="textQuinta" name="textQuinta" placeholder="Detallar..">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-70">
-          <label for="sexta">Sufre alguna enfermedad crónica (Diabetes, asma, Hipertensión arterial, etc.) cuál o cuales.</label>
-        </div>
-        <div class="col-30">
-            <input type="radio" formControlName="sexta" value="Si" name="sexta" (click)="enfermedad(true)">Si<br>
-            <input type="radio" formControlName="sexta" value="No" name="sexta" (click)="enfermedad(false)">No<br>
-        </div>
-        <div *ngIf="enfermedadFlag">
-            <input type="text" formControlName="textSexta" name="textSexta" placeholder="Detallar..">
-        </div>
-      </div>
-      <h4>
-        Control de temperatura
-      </h4>
-      <div class="row subsection">
-        <div class="col-70">
-          <label for="septima">Hora en entrada</label>
-        </div>
-        <div class="col-30">
-          <input type="text" formControlName="septima" name="septima" placeholder="36.0" disabled>
-        </div>
-      </div>
-      <div class="row subsection">
-        <div class="col-70">
-          <label for="septima">Hora de salida</label>
-        </div>
-        <div class="col-30">
-          <input type="text" formControlName="octava" name="octava" placeholder="36.0" >
-        </div>
-      </div>
-      <p id="detalles">
-        Todos los datos expresados en esta ficha constituyen declaración jurada de mi parte.<br/>
-        He sido informado que de omitir o falsear información puedo perjudicar la salud de mis compañeros, y la mía propia, lo cual de constituir una falta grave a la salud pública, asumo sus consecuencias.
-      </p>
-      <div class="row">
-        <div class="col-70">
-          <label for="country">Fecha</label>
-        </div>
-        <div class="col-30">
-            <label for="country">{{fecha|date}}</label>
-        </div>
-      </div>
-      <div class="row">
-        <input [disabled]="sintomatologiaForm.invalid" type="submit" value="Enviar">
-      </div>
-  </form>
-
+  </div>
 </div>
-<!--
-<app-helpers [props]="propsHelper"></app-helpers>
--->

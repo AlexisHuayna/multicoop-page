@@ -16,13 +16,8 @@ h1 {
   text-align: center;
 }
 
-h1, p, h3, h4 {
+h1, h2, p, h3, h4 {
   font-family: 'Signika';
-}
-
-img {
-  float: right;
-  width: 10%;
 }
   
 /* Style the label to display next to the inputs */

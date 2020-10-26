@@ -216,7 +216,7 @@ export class FichaSintomatologicaComponent implements OnInit {
       direccion: this.empleado.direccion.toUpperCase(),
       celular: this.empleado.celular,
       idPersonal: this.empleado.id
-    })
+    });
 
     this.sintomatologiaForm.controls['apellidosNombres'].disable();
     this.sintomatologiaForm.controls['area'].disable();

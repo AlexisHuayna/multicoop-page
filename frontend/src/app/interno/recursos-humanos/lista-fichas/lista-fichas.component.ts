@@ -12,6 +12,8 @@ export class ListaFichasComponent implements OnInit {
 
   @Input() idAgencia: string;
   @Input() tipoFicha: number;
+  @Input() ruta: string;
+
   agencia: string;
 
   personalFaltante: PersonalFicha[];
@@ -26,6 +28,10 @@ export class ListaFichasComponent implements OnInit {
 
     if (this.tipoFicha == 0) {
       fichaObservable = this.fichaService.getFaltantesEntrada(this.idAgencia);
+    } else if (this.tipoFicha == 3) {
+      fichaObservable = this.fichaService.getSst(this.idAgencia);
+    } else if (this.tipoFicha == 4) {
+      fichaObservable = this.fichaService.getRit(this.idAgencia);
     } else {
       fichaObservable = this.fichaService.getFaltantesSalida(this.idAgencia);
     }
@@ -59,7 +65,6 @@ export class ListaFichasComponent implements OnInit {
 
 
   displayContent(evt) {
-    console.log(evt);
     evt.target.classList.toggle('active');
     var content = document.getElementById(this.idAgencia + this.tipoFicha);
     if (content.style.display === "block"){

@@ -237,7 +237,6 @@ router.get('/api/interno/rh/empleados/:idEmpleado', (req, res) => {
     })
 });
 
-
 router.post('/api/interno/rh/fichaSintomatologica', (req, res) => {
     const id_personal = req.body.idPersonal;
 
@@ -287,6 +286,69 @@ router.post('/api/interno/rh/fichaSintomatologica', (req, res) => {
         }        
     });
 
+});
+
+router.get('/api/interno/rh/sst/:idAgencia', (req, res) => {
+    const codigoAgencia = req.params.idAgencia
+    const query = "SELECT personal.* FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia + "' AND personal.idAgencia = agencia.id  WHERE personal.estado = 1 AND personal.id NOT IN (SELECT idPersonal FROM evaluacion WHERE evaluacion.tipo = 'sst')";
+
+    conexion_mysql.query(query, (err, personal) => {
+        if(!err) {
+            res.send(personal);
+        }else {
+            res.status(500).json({status: 'error'});
+        }
+    });
+});
+
+router.get('/api/interno/rh/rit/:idAgencia', (req, res) => {
+    const codigoAgencia = req.params.idAgencia
+
+    const query = "SELECT personal.* FROM personal INNER JOIN agencia ON agencia.codigo = '" + codigoAgencia + "' AND personal.idAgencia = agencia.id  WHERE personal.estado = 1 AND personal.id NOT IN (SELECT idPersonal FROM evaluacion WHERE evaluacion.tipo = 'rit')";
+    
+    conexion_mysql.query(query, (err, personal) => {
+        if(!err) {
+            res.send(personal);
+        }else {
+            res.status(500).json({status: 'error'});
+        }
+    });
+});
+
+router.post('/api/interno/rh/evaluacion', (req, res) => {
+    
+    const idPersonal = req.body.idPersonal;
+    const tipo = req.body.tipo;
+    const p1 = req.body.p1;
+    const p2 = req.body.p2;
+    const p3 = req.body.p3;
+    const p4 = req.body.p4;
+    const p5 = req.body.p6;
+    const p6 = req.body.p6;
+    const p7 = req.body.p7;
+    const p8 = req.body.p8;
+    const p9 = req.body.p9;
+    const p10 = req.body.p10;
+    const p11 = req.body.p11;
+    const p12 = req.body.p12;
+    const p13 = req.body.p13;
+    const p14 = req.body.p14;
+    const p15 = req.body.p15;
+    const p16 = req.body.p16;
+    const p17 = req.body.p17;
+    const p18 = req.body.p18;
+    const p19 = req.body.p19;
+    const p20 = req.body.p20;
+
+    const query = "INSERT INTO evaluacion (idPersonal, tipo, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20) VALUES ('" + idPersonal + "', '" + tipo + "', '" + p1 + "', '"+ p2 +"', '" + p3 + "', '" + p4 + "', '" + p5 + "', '" + p6 + "', '" + p7 + "', '" + p8 + "', '" + p9 + "', '" + p10 + "', '" + p11 + "', '" + p12 + "', '" + p13 + "', '" + p14 + "', '" + p15 + "', '" + p16 + "', '" + p17 + "', '" + p18 + "', '" + p19 + "', '" + p20 + "')";
+
+    conexion_mysql.query(query, (err, result) => {
+        if(!err) {
+            res.status(200).json({finish: 'true'});
+        }else {
+            res.status(500).json({status: 'error'});
+        }
+    })
 });
 
 module.exports = router;

@@ -1,2 +1,325 @@
+<h1>{{nombreEvaluacion}}</h1>
+<h2>{{nombreEmpleado}}</h2>
+<h3>Tiempo restante {{secondsToTime(restTime)}}</h3>
 
-<h1>Tiempo restante {{secondsToTime(restTime)}}</h1>
+<div *ngIf="nombreEvaluacion == 'PRIMERA EVALUACIONDE REGLAMENTO DE SEGURIDAD Y SALUD EN EL TRABAJO'; else elseBlock">
+    <form [formGroup]="evaluacionForm" (ngSubmit)="enviar(evaluacionForm.value)">
+
+        <label for="p1">1. Indique cuál delas alternativas es un registro de RSST:</label>
+        <div>
+            <input type="radio" formControlName="p1" value="a" name="p1">a) Cuaderno de registros de accidentes.<br>
+            <input type="radio" formControlName="p1" value="b" name="p1">b) Registro de inspecciones internas de seguridad y salud en el trabajo.<br>
+            <input type="radio" formControlName="p1" value="c" name="p1">c)Registro de incidencias del CIP.<br>
+        </div>
+
+        <label for="p2">2. Indique la acción que se debe de tomar en caso se ocurrir un accidentefatal:</label>
+        <div>
+            <input type="radio" formControlName="p2" value="a" name="p2">a)Comunicarse con los bomberos de manera inmediata.<br>
+            <input type="radio" formControlName="p2" value="b" name="p2">b)Coordinar   con   los   jefes   y/o   administradores   para   iniciar   los   trámites   legales correspondientes (denuncia policial y solicitar la presencia de un fiscal).<br>
+            <input type="radio" formControlName="p2" value="c" name="p2">c)Trasladar al accidentado al centro de salud más cercano.<br>
+        </div>
+
+        <label for="p3">3. Indique como se debe de actuar en un terremoto:</label>
+        <div>
+            <input type="radio" formControlName="p3" value="a" name="p3">a) Correr por los pasillos hacia la salida.<br>
+            <input type="radio" formControlName="p3" value="b" name="p3">b) Alejarse de las ventanas y puertas de vidrio.<br>
+            <input type="radio" formControlName="p3" value="c" name="p3">c) Salir por la ventana más cercana.<br>
+        </div>
+        
+        <label for="p4">4. Indique como debe de actuar en caso de una hemorragia.</label>
+        <div>
+            <input type="radio" formControlName="p4" value="a" name="p4">a) Presionar con fuerza la herida y asegurase que no sangre.<br>
+            <input type="radio" formControlName="p4" value="b" name="p4">b) Colocar una venda o pañuelo limpio sobre la herida, presionando moderadamente.<br>
+            <input type="radio" formControlName="p4" value="c" name="p4">c) Lavar la herida con agua oxigenada.<br>
+        </div>
+    
+        <label for="p5">5. Indicar como debe de actuar ante una quemadura.</label>
+        <div>
+            <input type="radio" formControlName="p5" value="a" name="p5">a)Para quemaduras de 1er grado aplicar cremas y ser cubierta por una gasa esterilizada.<br>
+            <input type="radio" formControlName="p5" value="b" name="p5">b)Lavar la quemadura para evitar infecciones.<br>
+            <input type="radio" formControlName="p5" value="c" name="p5">c) Tapar la quemadura con gasa.<br>
+
+        </div>
+    
+        <label for="p6">6. Indique eltratamiento de emergencia de Primeros Auxilios.</label>
+        <div>
+            <input type="radio" formControlName="p6" value="a" name="p6">a) Levante la cabeza del accidentado para que pueda respirar.<br>
+            <input type="radio" formControlName="p6" value="b" name="p6">b) Nunca  mueva  a  la  persona  lesionada  a  menos  que  sea  absolutamente  necesario  para retirarla del peligro.<br>
+            <input type="radio" formControlName="p6" value="c" name="p6">c) Tape al accidentado con una manta para mantenerlo caliente.<br>
+
+        </div>
+    
+        <label for="p7">7. Indique el tratamiento de para Shock.</label>
+        <div>
+            <input type="radio" formControlName="p7" value="a" name="p7">a) Constatar que la boca esté libre de cuerpos extraños y que la lengua esté hacia adelante.<br>
+            <input type="radio" formControlName="p7" value="b" name="p7">b) No suministrarle abundante cantidad de aire fresco u oxígeno si existe disponible.<br>
+            <input type="radio" formControlName="p7" value="c" name="p7">c)Dejarlo solo para que pueda contar con aire<br>
+
+        </div>
+    
+        <label for="p8">8. ¿Cómo debe de actuar ante una fractura?</label>
+        <div>
+            <input type="radio" formControlName="p8" value="a" name="p8">a) Levante el miembro fracturado y colóquelo en posición recta.<br>
+            <input type="radio" formControlName="p8" value="b" name="p8">b) No mueva al paciente y llame al médico<br>
+            <input type="radio" formControlName="p8" value="c" name="p8">c) No doble, ni tuerza, ni jale el miembro fracturado.<br>
+
+        </div>
+    
+        <label for="p9">9. En que caso se debe brindar la respiración boca a boca.</label>
+        <div>
+            <input type="radio" formControlName="p9" value="a" name="p9">a) Cuando una persona no puede respirar por sí misma.<br>
+            <input type="radio" formControlName="p9" value="b" name="p9">b) Cuando el colaborador está tosiendo sin parar.<br>
+            <input type="radio" formControlName="p9" value="c" name="p9">c) Cuando la persona no se mueve y tiene los ojos cerrados<br>
+
+        </div>
+    
+        <label for="p10">10. Quienes son los encargados de sancionar el incumplimiento del RSST.</label>
+        <div>
+            <input type="radio" formControlName="p10" value="a" name="p10">a)  Recursos Humanos y el Comte de SST.<br>
+            <input type="radio" formControlName="p10" value="b" name="p10">b)Administrador.<br>
+            <input type="radio" formControlName="p10" value="c" name="p10">c)Gerencia.<br>
+
+        </div>
+    
+        <label for="p11">11. El  administrador  fomenta la  participación  para  los  simulacros,  capacitaciones  de  primeros    auxilios</label>
+        <div>
+            <input type="radio" formControlName="p11" value="a" name="p11">a) Si<br>
+            <input type="radio" formControlName="p11" value="b" name="p11">b) No<br>
+            <input type="radio" formControlName="p11" value="c" name="p11">c) A veces.<br>
+
+        </div>
+    
+        <label for="p12">12. Su centro de trabajo cuenta señales de seguridad.</label>
+        <div>
+            <input type="radio" formControlName="p12" value="a" name="p12">a) Si<br>
+            <input type="radio" formControlName="p12" value="b" name="p12">b) No<br>
+            <input type="radio" formControlName="p12" value="c" name="p12">c) Muy poco<br>
+
+        </div>
+    
+        <label for="p13">13.  Usted participaen charlas de seguridad y salud en el trabajo dado por SUNAFIL u otra entidad.</label>
+        <div>
+            <input type="radio" formControlName="p13" value="a" name="p13">a) Si<br>
+            <input type="radio" formControlName="p13" value="b" name="p13">b) No<br>
+            <input type="radio" formControlName="p13" value="c" name="p13">c) Muy poco<br>
+
+        </div>
+        
+        <label for="p14">14. ¿Qué es una evaluación de la línea base?</label>
+        <div>
+            <input type="text" formControlName="p14" name="p14"><br>            
+        </div>
+    
+        <label for="p15">15. ¿Usted que entiende por IPER y para qué sirve?</label>
+        <div>
+            <input type="text" formControlName="p15" name="p15"><br>
+
+        </div>
+    
+        <label for="p16">16. ¿Qué son los exámenes ocupacionales?</label>
+        <div>
+            <input type="text" formControlName="p16" name="p16"><br>
+
+        </div>
+    
+        <label for="p17">17. ¿Cuál es el objetivo de SST?</label>
+        <div>
+            <input type="text" formControlName="p17" name="p17"><br>
+
+        </div>
+    
+        <label for="p18">18. La empresa le brindo Equipos protección personal contra el COVID –19.</label>
+        <div>
+            <input type="radio" formControlName="p18" value="a" name="p18">a) Si<br>
+            <input type="radio" formControlName="p18" value="b" name="p18">b) No<br>
+            <input type="radio" formControlName="p18" value="c" name="p18">c) Solo 01 vez<br>
+
+        </div>
+    
+        <label for="p19">19. Conoce el Manuel de protocolo de Seguridad y Salud contra el COVID –19 de la Cooperativa.</label>
+        <div>
+            <input type="radio" formControlName="p19" value="a" name="p19">a) Si<br>
+            <input type="radio" formControlName="p19" value="b" name="p19">b) No<br>
+            <input type="radio" formControlName="p19" value="c" name="p19">c) Lo he visto pero no lo he leido<br>
+
+        </div>
+    
+        <label for="p20">20. La cooperativa cuenta con INFOGRMAS para la prevención del COVID –19.</label>
+        <div>
+            <input type="radio" formControlName="p20" value="a" name="p20">a) Si<br>
+            <input type="radio" formControlName="p20" value="b" name="p20">b) No<br>
+            <input type="radio" formControlName="p20" value="c" name="p20">c) Solo en el baño<br>
+
+        </div>
+    
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+
+
+</div>
+<ng-template #elseBlock>
+    <form [formGroup]="evaluacionForm" (ngSubmit)="enviar(evaluacionForm.value)">
+
+        <label for="p1">1. El propósito del reglamento interno del trabajo es:</label>
+        <div>
+            <input type="radio" formControlName="p1" value="a" name="p1">a) Que los trabajadores tengan pleno conocimiento de sus derechos; afin de propiciar su propio bienestar y rendimiento eficiente en la institución.<br>
+            <input type="radio" formControlName="p1" value="b" name="p1">b) Promover,  estimular  y  desarrollar  el  interés  de  sus  trabajadores  en  logar  elevados niveles de eficiencia y rendimiento laboral.<br>
+            <input type="radio" formControlName="p1" value="c" name="p1">c) Regular las relaciones entre la Cooperativa y sus trabajadores, a efecto de mantener y fomentar la armonía y la disciplina en el trabajo.<br>
+            <input type="radio" formControlName="p1" value="d" name="p1">d) Alternativa a) y c)<br>
+        </div>
+    
+        <label for="p2">2. El periodo de prueba establecida por las normas laborales vigentes, es:</label>
+        <div>
+            <input type="radio" formControlName="p2" value="a" name="p2">a) 06 meses<br>
+            <input type="radio" formControlName="p2" value="b" name="p2">b) 03 meses<br>
+            <input type="radio" formControlName="p2" value="c" name="p2">c) 01 a 03 meses <br>
+            <input type="radio" formControlName="p2" value="d" name="p2">d) Alternativas b) y c)<br>
+        </div>
+    
+        <label for="p3">3. En cuál de los casos no se consideran horas extras:</label>
+        <div>
+            <input type="radio" formControlName="p3" value="a" name="p3">a) Tiempo adicional para cumplir trabajo habitual.<br>
+            <input type="radio" formControlName="p3" value="b" name="p3">b) Trabajos después de la hora de salida.<br>
+            <input type="radio" formControlName="p3" value="c" name="p3">c) Trabajo fuera de horario que no cuenten con autorización.<br>
+            <input type="radio" formControlName="p3" value="d" name="p3">d) Alternativa a) y c).<br>
+        </div>
+        
+        <label for="p4">4. ¿Cuál es la sanción que se impone al colaborador que incurre 03 veces reiterativos en tardanza?</label>
+        <div>
+            <input type="radio" formControlName="p4" value="a" name="p4">a) Despido inmediato.<br>
+            <input type="radio" formControlName="p4" value="b" name="p4">b) Amonestación escrita por R.R.H.H.<br>
+            <input type="radio" formControlName="p4" value="c" name="p4">c) Suspensión por 03 días.<br>
+            <input type="radio" formControlName="p4" value="d" name="p4">d) Todas las alternativas.<br>
+        </div>
+    
+        <label for="p5a">5. Teniendo   en   cuenta   los   valores   de   la   Cooperativa   menciones   03   derechos   para   los colaboradores:</label>
+        <div>
+            <input type="text" formControlName="p5a" name="p5a"><br>
+            <input type="text" formControlName="p5b" name="p5b"><br>
+            <input type="text" formControlName="p5c" name="p5c"><br>
+        </div>
+    
+        <label for="p6">6. ¿Es un deber del colaborador respetar a sus compañeros de trabajo manteniendo compostura y trato correcto, dentro y fuera de la institución?</label>
+        <div>
+            <input type="radio" formControlName="p6" value="a" name="p6">a) Si<br>
+            <input type="radio" formControlName="p6" value="b" name="p6">b) No<br>
+            <input type="radio" formControlName="p6" value="c" name="p6">c) Ninguna de las alternativas<br>
+        </div>
+    
+        <label for="p7">7. Indique  cual  de  las  siguientes  son  no prohibiciones  del  colaborador (marque una  o  varias alternativas):</label>
+        <div>
+            <input type="radio" formControlName="p7" value="a" name="p7">a) Sustraer documentos.<br>
+            <input type="radio" formControlName="p7" value="b" name="p7">b) Hablar en el horario de trabajo.<br>
+            <input type="radio" formControlName="p7" value="c" name="p7">c) Asistir en estado de ebriedad o con síntomas de haber ingerido bebidas alcohólicas u otras sustancias como drogas.<br>
+            <input type="radio" formControlName="p7" value="d" name="p7">d) Dormir en horario de trabajo.<br>
+            <input type="radio" formControlName="p7" value="e" name="p7">e) Faltar injustificadamente sin previo aviso.<br>
+        </div>
+    
+        <label for="p8">8. ¿Cuál es la sanción por tener 03 faltas injustificadas con amonestación?</label>
+        <div>
+            <input type="radio" formControlName="p8" value="a" name="p8">a) Suspensión de 06 días.<br>
+            <input type="radio" formControlName="p8" value="b" name="p8">b) Despido justificado.<br>
+            <input type="radio" formControlName="p8" value="c" name="p8">c) Llamada de atención por parte del administrador.<br>
+            <input type="radio" formControlName="p8" value="d" name="p8">d) Ninguna de las alternativas.<br>
+        </div>
+    
+        <label for="p9">9. ¿Cuál es la forma correcta de solicitar licencias o permisos personales?</label>
+        <div>
+            <input type="radio" formControlName="p9" value="a" name="p9">a) De manera verbal con el administrados.<br>
+            <input type="radio" formControlName="p9" value="b" name="p9">b) De manera escrita con el área de RRHH.<br>
+            <input type="radio" formControlName="p9" value="c" name="p9">c) De manera escrita con un día de anticipación a su jefe inmediato.<br>
+            <input type="radio" formControlName="p9" value="d" name="p9">d) Alternativa b) y c)<br>
+        </div>
+    
+        <label for="p10">10. Todos los colaboradores tienen la obligación de:</label>
+        <div>
+            <input type="radio" formControlName="p10" value="a" name="p10">a) Concurrir puntualmente a su centro laboral.<br>
+            <input type="radio" formControlName="p10" value="b" name="p10">b) Respetar el horario de ingreso.<br>
+            <input type="radio" formControlName="p10" value="c" name="p10">c) Asistir con uniforme a su centro de labores.<br>
+            <input type="radio" formControlName="p10" value="d" name="p10">d) Todas las anteriores.<br>
+        </div>
+    
+        <label for="p11">11. No se considera horas extras:</label>
+        <div>
+            <input type="radio" formControlName="p11" value="a" name="p11">a) Tiempo adicional para cumplir trabajo habitual.<br>
+            <input type="radio" formControlName="p11" value="b" name="p11">b)Trabajo fuera de horario que no cuenten con autorización.<br>
+            <input type="radio" formControlName="p11" value="c" name="p11">c) Trabajo realizado en el campo.<br>
+        </div>
+
+        <label for="p12">12. Indicar en que caso se considera licencia con goce de haber.</label>
+        <div>
+            <input type="radio" formControlName="p12" value="a" name="p12">a) Fallecimiento deunfamiliar.<br>
+            <input type="radio" formControlName="p12" value="b" name="p12">b) Tramites personales.<br>
+            <input type="radio" formControlName="p12" value="c" name="p12">c) Viajes personales.<br>
+            <input type="radio" formControlName="p12" value="d" name="p12">d) Ninguna de las alternativas.<br>
+        </div>
+    
+        <label for="p13">13. Cuanto tiempo de servicio debe de contar un colaborador para gozar devacaciones.</label>
+        <div>
+            <input type="radio" formControlName="p13" value="a" name="p13">a) 06 meses.<br>
+            <input type="radio" formControlName="p13" value="b" name="p13">b) 12 meses.<br>
+            <input type="radio" formControlName="p13" value="c" name="p13">c) 365 días.<br>
+            <input type="radio" formControlName="p13" value="d" name="p13">d) Alternativa b) y c)<br>
+        </div>
+        
+        <label for="p14">14. ¿Cuál de las siguientes actividades se considera como actividad riesgosa con amonestación?</label>
+        <div>
+            <input type="radio" formControlName="p14" value="a" name="p14">a) Distraer la atención de otro colaborador que lo exponga aun accidente.<br>
+            <input type="radio" formControlName="p14" value="b" name="p14">b) Conservar el lugar donde trabaja limpio y ordenado en todo momento.<br>
+            <input type="radio" formControlName="p14" value="c" name="p14">c) Fumar en las áreas libres de las instalaciones de la Cooperativa.<br>
+            <input type="radio" formControlName="p14" value="d" name="p14">d) Ingresar alcohol y asistir en estado de ebriedad al centro laboral.<br>
+            <input type="radio" formControlName="p14" value="e" name="p14">e) Todas las anteriores.<br>
+            <input type="radio" formControlName="p14" value="f" name="p14">f) Alternativa a). y d).<br>
+        </div>
+    
+        <label for="p15">15. Indique en que caso se considera falta disciplinaria del colaborador:</label>
+        <div>
+            <input type="radio" formControlName="p15" value="a" name="p15">a) No Recibir recompensas, regalos, divisas o prestamos de personas, que comprometieran el ejercicio de sus funciones.<br>
+            <input type="radio" formControlName="p15" value="b" name="p15">b) Usar el uniforme otorgado por la institución y portar el respectivo fococheck en un lugar visible de su vestimenta, mientras permanezca en el centro de trabajo.<br>
+            <input type="radio" formControlName="p15" value="c" name="p15">c) icarse a labores ajenas a las funciones encomendadasdurante su jornada de trabajo.<br>
+            <input type="radio" formControlName="p15" value="d" name="p15">d) Alternativa a). y b).<br>
+        </div>
+    
+        <label for="p16">16. Indique la falta grave que conlleva al despido del colaborador:</label>
+        <div>
+            <input type="radio" formControlName="p16" value="a" name="p16">a) Romper material de trabajo bajo su cargo.<br>
+            <input type="radio" formControlName="p16" value="b" name="p16">b) No mandar información verídica cuando se le solicita.<br>
+            <input type="radio" formControlName="p16" value="c" name="p16">c) Participar de manera directa e indirecta  en actos fraudulentos que pongan en riesgo y afecten los intereses de Multicoop Perú, de sus colaboradores y clientes.<br>
+            <input type="radio" formControlName="p16" value="d" name="p16">d) Ausentarse por más de 03 horas de su centro de trabajo.<br>
+        </div>
+    
+        <label for="p17">17. Indique si es verdadero o falso “El trabajador podrá solicitar la exoneración de los 30 días del plazo previsto por Ley, quedando la Cooperativa la potestad de evaluar su carta de renuncia y su aceptación. La solicitud se entenderá aceptada, si no es rechazada, por escrito, dentro del tercer día”</label>
+        <div>
+            <input type="radio" formControlName="p17" value="a" name="p17">a) Verdadero<br>
+            <input type="radio" formControlName="p17" value="b" name="p17">b) Falso<br>
+        </div>
+    
+        <label for="p18">18. En que caso se considera abandono de trabajo:</label>
+        <div>
+            <input type="radio" formControlName="p18" value="a" name="p18">a) No presentar carta renuncia.<br>
+            <input type="radio" formControlName="p18" value="b" name="p18">b) La falta injustificada por más de 03 días.<br>
+            <input type="radio" formControlName="p18" value="c" name="p18">c) No reportarse en horario de trabajo por 01 día.<br>
+        </div>
+    
+        <label for="p19">19. ¿Cuál es la jornada laboral de la Cooperativa?</label>
+        <div>
+            <input type="radio" formControlName="p19" value="a" name="p19">a) 07 días a la semana 01 día de descanso.<br>
+            <input type="radio" formControlName="p19" value="b" name="p19">b) (8) horas diarias,cuarenta y ocho (48) horas semanales.<br>
+            <input type="radio" formControlName="p19" value="c" name="p19">c) Alternativa a) y b)<br>
+        </div>
+    
+        <label for="p20">20. ¿Qué documento se debe presentar para la sustentación de ausencia por salud?</label>
+        <div>
+            <input type="radio" formControlName="p20" value="a" name="p20">a) Constancia médica.<br>
+            <input type="radio" formControlName="p20" value="b" name="p20">b) Descanso médico.<br>
+            <input type="radio" formControlName="p20" value="c" name="p20">c) solicitud de permiso por enfermedad.<br>
+        </div>
+    
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
+    </form>   
+ 
+</ng-template>

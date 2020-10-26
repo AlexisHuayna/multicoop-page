@@ -5,7 +5,7 @@
     
     <div id="{{idAgencia+tipoFicha}}" class="content">
       <ul>
-          <li *ngFor="let personal of personalFaltante" [routerLink]="['/interno/rh/ficha', personal.id, personal.idFicha ? personal.idFicha : -1 ]">
+          <li *ngFor="let personal of personalFaltante" [routerLink]="[ruta, personal.id, tipoFicha == 3 || tipoFicha == 4 ? tipoFicha : personal.idFicha ? personal.idFicha : -1 ]">
               <a>{{personal.dni}}</a>
           </li>
       </ul>

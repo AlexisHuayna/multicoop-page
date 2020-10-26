@@ -15,7 +15,6 @@ input[type=text]:disabled {
 }
 
 input[type=number]:disabled {
-  
 }
 
 input[type=number]:enabled{
@@ -31,6 +30,11 @@ h1 {
 
 h1, p, h3, h4 {
   font-family: 'Signika';
+}
+
+img {
+  float: right;
+  width: 10%;
 }
   
 /* Style the label to display next to the inputs */
