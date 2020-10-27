@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { interval } from 'rxjs';
+import { interval, timer } from 'rxjs';
 import { Personal } from 'src/app/other/interfaces';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
 
@@ -16,7 +16,7 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
   public empleado: Personal
   
   public subscription
-  public restTime:number
+  public restTime = 600000
   public timeOut
 
   public nombreEvaluacion
@@ -97,7 +97,11 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
           if(this.tipoEval == '3' ) {
             this.restTime = (40 - timeServer.getMinutes()) * 60000
           } else{
-            this.restTime =  (60 - timeServer.getMinutes()) * 60000
+            if(timeServer.getHours() == 8) {
+              this.restTime =  (70 - timeServer.getMinutes()) * 60000
+            } else {
+              this.restTime =  (10 - timeServer.getMinutes()) * 60000
+            }
           } 
 
           this.timeOut = setTimeout(this.finishExam, this.restTime)
@@ -129,6 +133,17 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
     let minutes = Math.floor(timeOnSeconds / 60);
     let seconds = timeOnSeconds % 60;
 
+    if(minutes < 0 && seconds < 0) {
+      this.finishExam();
+    }
+
+    if(minutes < 0){
+      minutes = 0
+    }
+    if(seconds < 0) {
+      seconds = 0
+    }
+
     return minutes + ':' + (seconds.toString().length == 1 ? '0' + seconds : seconds); 
   }
 
@@ -159,6 +174,7 @@ export class EvaluacionComponent implements OnInit, OnDestroy {
       this.router.navigate(['/']);
     }
 
+    this.subscription.unsubscribe();
     clearTimeout(this.timeOut);
   }
 }
