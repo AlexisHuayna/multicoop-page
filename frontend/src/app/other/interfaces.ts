@@ -141,3 +141,10 @@ export interface Evaluacion {
     p19: string,
     p20: string,
 }
+
+export interface Familiar {
+    nombresApellidos: string,
+    dni: string,
+    ocupacion: string,
+    pertenencia: string,
+}

@@ -6,6 +6,7 @@ import { FichaSintomatologicaComponent } from './ficha-sintomatologica/ficha-sin
 import { TestingComponent } from './testing/testing.component';
 import { RecursosHumanosComponent } from './recursos-humanos.component';
 import { EvaluacionComponent } from './evaluacion/evaluacion.component';
+import { DeclaracionComponent } from './declaracion/declaracion.component';
 
 
 const routes: Routes = [
@@ -14,8 +15,8 @@ const routes: Routes = [
     component: TestingComponent
   },
   {
-    path: 'evaluacion',
-    component: RecursosHumanosComponent
+    path: 'declaracionFamiliares',
+    component: DeclaracionComponent
   },
   {
     path: 'ficha/:empleado/:ficha',

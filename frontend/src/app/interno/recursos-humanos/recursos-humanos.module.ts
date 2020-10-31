@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TestingComponent } from './testing/testing.component';
 import { RecursosHumanosComponent } from './recursos-humanos.component';
 import { EvaluacionComponent } from './evaluacion/evaluacion.component';
+import { DeclaracionComponent } from './declaracion/declaracion.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { EvaluacionComponent } from './evaluacion/evaluacion.component';
     FichaSintomatologicaComponent,
     ListaFichasComponent,
     TestingComponent,
-    EvaluacionComponent
+    EvaluacionComponent,
+    DeclaracionComponent
   ],
   imports: [
     CommonModule,

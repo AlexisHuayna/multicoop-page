@@ -1,0 +1,162 @@
+<h2>DECLARACION JURADA DE FAMILIRES</h2>
+
+<form [formGroup]="declaracionForm" (ngSubmit)="enviar(declaracionForm.value)">
+    <h3>Declarante</h3>
+    <div>
+        <div>
+            <label for="">Nombres y Apellidos</label>
+            <input type="text" name="" >
+        </div>
+
+        <div>
+            <label for="">DNI</label>
+            <input type="text" name="" >
+        </div>
+        
+        <div>
+            <label for="">Docimilio</label>
+            <input type="text" name="" >
+        </div>
+        
+        <div>
+            <label for="">Departamento</label>
+            <select name="departamento" >
+            </select>
+        </div>
+
+        <div>
+            <label for="">Provincia</label>
+            <select name="provincia" >
+            </select>
+        </div>
+
+        <div>
+            <label for="">Distrito</label>
+            <select name="distrito" >
+            </select>
+        </div>
+        
+    </div>
+
+    <h3>PRIMER GRADO</h3>
+    <div>
+        <div class="familiar">
+            <h4>Padre y Madre</h4>
+            <ul id="padresLista">
+    
+            </ul>
+            <div>
+                <button id="padres" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+
+        <div class="familiar">
+            <h4>Hijos</h4>
+            <ul id="hijosLista">
+    
+            </ul>
+            <div>
+                <button id="hijos" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+
+        <div class="familiar">
+            <h4>Suegros</h4>
+            <ul id="suegrosLista">
+    
+            </ul>
+            <div>
+                <button id="suegros" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+
+        <div class="familiar">
+            <h4>Yerno/Nuera</h4>
+            <ul id="yernosLista">
+    
+            </ul>
+            <div>
+                <button id="yernos" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+
+    </div>
+
+    <h3>SEGUNDO GRADO</h3>
+    <div>
+        <div class="familiar">            
+            <h4>Abuelos</h4>
+            <ul id="abuelosLista">
+                <li *ngFor="let familiar of abuelosLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
+            </ul>
+            <div>
+                <button id="abuelos" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+
+        <div class="familiar">
+            <h4>Hermanos</h4>
+            <ul id="hermanosLista">
+
+            </ul>
+            <div>
+                <button id="hermanos" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+
+        <div class="familiar">
+            <h4>Nietos</h4>
+            <ul id="nietosLista">
+
+            </ul>
+            <div>
+                <button id="nietos" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+
+        <div class="familiar">
+            <h4>Cuñados</h4>
+            <ul id="cunadosLista">
+
+            </ul>
+            <div>
+                <button id="cunados" type="button" (click)="add($event)">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">Enviar</button>
+    </div>
+</form>
+
+<div class="modal" id="formAdd">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" (click)="closeForm($event)">&times;</span>
+            <h2>{{opcionFamiliar}}</h2>
+        </div>
+        <div class="modal-body">
+            <div>
+                <label for="nombres">Nombres y Apellidos</label>
+                <input type="text" name="nombres" >
+            </div>
+            <div>
+                <label for="">DNI</label>
+                <input type="text" name="" >
+            </div>
+            <div>
+                <label for="">Ocupacion</label>
+                <input type="text" name="" >
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" (click)="addFamiliar($event)">Agregar</button>
+        </div>
+    </div>
+</div>
