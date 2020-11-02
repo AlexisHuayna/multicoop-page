@@ -52,4 +52,8 @@ export class FichaSintomasService {
   crearEvaluacion(evaluacion) {
     return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/evaluacion", evaluacion)
   }
+
+  crearDeclaracion(declaracion) {
+    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/declaracion", declaracion)
+  }
 }

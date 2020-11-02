@@ -351,4 +351,46 @@ router.post('/api/interno/rh/evaluacion', (req, res) => {
     })
 });
 
+router.post('/api/interno/rh/declaracion', (req, res) => {
+    const nombre = req.body.nombresApellidos;
+    const dni = req.body.dni;
+    const departamento = req.body.departamento;
+    const provincia = req.body.provincia;
+    const distrito = req.body.distrito;
+    const direccion = req.body.direccion;
+    const familiares = req.body.familiares;
+
+    const query = "INSERT INTO personaDeclaracion (nombre, dni, departamento, provincia, distrito, domicilio) VALUES ('" + nombre + "','" + dni + "','" + departamento + "','" + provincia + "','" + distrito + "','" + direccion + "')";
+    
+    conexion_mysql.query(query, (err, declarante) => {
+        if(!err) {
+            familiares.foreach(
+                familiar => {
+                    let famNombres = familiar.nombresApellidos
+                    let famDni = familiar.dni
+                    let famOcupacion = familiar.ocupacion
+                    let famRelacion = familiar.relacion
+                    let famFamDni = dni
+                    
+                    let query_familiar = "INSERT INTO familiar (nombresApellidos, dni, ocupacion, relacion, familiarDNI) VALUES ('" + famNombres + "', '" + famDni + "', '" + famOcupacion + "', '" + famRelacion + "', '" + famFamDni + "')";
+
+                    conexion_mysql.query(query_familiar, (err, fam) => {
+                        if(!err) {
+                            res.status(200);
+                        }
+                    });
+        
+                }
+            )
+
+            res.status(200).json({finish: 'true'});
+
+        } else {
+            res.status(500).json(err);
+        }
+    })
+
+});
+
+
 module.exports = router;

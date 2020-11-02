@@ -146,5 +146,5 @@ export interface Familiar {
     nombresApellidos: string,
     dni: string,
     ocupacion: string,
-    pertenencia: string,
+    relacion?: string
 }

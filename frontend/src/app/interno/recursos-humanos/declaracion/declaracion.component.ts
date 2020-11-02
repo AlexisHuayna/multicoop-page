@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Familiar } from 'src/app/other/interfaces';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
@@ -12,20 +12,19 @@ import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
 export class DeclaracionComponent implements OnInit {
 
   public declaracionForm: FormGroup
-  public opcionFamiliar = " "
+  public opcionFamiliar = ''
   public opcion
+
+  public familiares = []
+  public familiarNombresApellidos
+  public familiarDni
+  public familiarOcupacion
 
   public padresLista = []
   public hijosLista = []
   public suegrosLista = []
   public yernosLista = []
-  public abuelosLista = [ <Familiar>{
-    nombresApellidos: "pepito mendez",
-    dni: "12345678",
-    ocupacion: "doctor",
-    pertenencia: "abuelosLista"
-    }
-  ]
+  public abuelosLista = []
   public hermanosLista = []
   public nietosLista = []
   public cunadosLista = []
@@ -34,6 +33,11 @@ export class DeclaracionComponent implements OnInit {
     private fichaService: FichaSintomasService,
     private router: Router,
     private route: ActivatedRoute) {
+
+      this.familiarNombresApellidos = ''
+      this.familiarDni = ''
+      this.familiarOcupacion = ''
+
       this.declaracionForm = this.builder.group({
         nombresApellidos: ['', Validators.compose([Validators.required])],
         dni: ['', Validators.compose([Validators.required])],
@@ -96,52 +100,114 @@ export class DeclaracionComponent implements OnInit {
   }
 
   enviar(data) {
+
+    this.padresLista.forEach(
+      familiar  => {
+        familiar.relacion = 'padres'
+        this.familiares.push(familiar)
+      }
+    );
+
+    this.hijosLista.forEach(
+      familiar  => {
+        familiar.relacion = 'hijos'
+        this.familiares.push(familiar)
+      }
+    );
+
+    this.suegrosLista.forEach(
+      familiar  => {
+        familiar.relacion = 'suegros'
+        this.familiares.push(familiar)
+      }
+    )
+
+    this.yernosLista.forEach(
+      familiar  => {
+        familiar.relacion = 'yernos'
+        this.familiares.push(familiar)
+      }
+    )
+
+    this.abuelosLista.forEach(
+      familiar  => {
+        familiar.relacion = 'abuelos'
+        this.familiares.push(familiar)
+      }
+    )
+
+    this.hermanosLista.forEach(
+      familiar  => {
+        familiar.relacion = 'hermanos'
+        this.familiares.push(familiar)
+      }
+    )
+    
+    this.nietosLista.forEach(
+      familiar  => {
+        familiar.relacion = 'nietos'
+        this.familiares.push(familiar)
+      }
+    )
+
+    this.cunadosLista.forEach(
+      familiar  => {
+        familiar.relacion = 'cunados'
+        this.familiares.push(familiar)
+      }
+    )
+
+    data.familiares = this.familiares
+    
     console.log(data)
+    
+    this.fichaService.crearDeclaracion(data).subscribe(
+      res => {}
+    )
+    
   }
 
   addFamiliar(event){
 
-    let familiar = <Familiar>{}
+    let familiar = <Familiar>{
+      nombresApellidos: this.familiarNombresApellidos,
+      dni: this.familiarDni,
+      ocupacion: this.familiarOcupacion
+    }
     
     if( this.opcion === 1){
-      console.log("Padres")
       this.padresLista.push(familiar)
     }else if( this.opcion === 2 ){
-      console.log("hijos")
       this.hijosLista.push(familiar)
     }else if( this.opcion === 3 ){      
-      console.log("suegros")
       this.suegrosLista.push(familiar)
     }else if (this.opcion === 4 ){  
-      console.log("yernos")
       this.yernosLista.push(familiar)
     }else if( this.opcion === 5 ){
-      console.log("abuelos")
       this.abuelosLista.push(familiar)
     }else if( this.opcion === 6 ){
-      console.log("hermanos")
       this.hermanosLista.push(familiar)
     }else if( this.opcion === 7 ){
-      console.log("nietos")
       this.nietosLista.push(familiar)
     }else {
-      console.log("cunados")
       this.cunadosLista.push(familiar)
     }
 
     this.closeForm(null);
   }
 
-
-
   closeForm(event) {
     let modal = document.getElementById("formAdd");
 
     modal.style.display = "none";
+
+    this.familiarOcupacion = ''
+    this.familiarNombresApellidos = ''
+    this.familiarDni = ''
   }
 
   removeFamiliar(familiar) {
-    
     this.abuelosLista.splice(familiar, 1);
   }
+
 }

@@ -4,38 +4,35 @@
     <h3>Declarante</h3>
     <div>
         <div>
-            <label for="">Nombres y Apellidos</label>
-            <input type="text" name="" >
+            <label for="nombresApellidos">Nombres y Apellidos</label>
+            <input type="text" formControlName="nombresApellidos" name="nombresApellidos" >
         </div>
 
         <div>
-            <label for="">DNI</label>
-            <input type="text" name="" >
+            <label for="dni">Dni</label>
+            <input type="text" formControlName="dni" name="dni">
         </div>
         
         <div>
-            <label for="">Docimilio</label>
-            <input type="text" name="" >
+            <label for="departamento">Departamento</label>
+            <input type="text" formControlName="departamento" name="departamento">
         </div>
         
         <div>
-            <label for="">Departamento</label>
-            <select name="departamento" >
-            </select>
+            <label for="provincia">Provincia</label>
+            <input type="text" formControlName="provincia" name="provincia">
+        </div>
+        
+        <div>
+            <label for="distrito">Distrito</label>
+            <input type="text" formControlName="distrito" name="distrito">
+        </div>
+        
+        <div>
+            <label for="direccion">Docimilio</label>
+            <input type="text" formControlName="direccion" name="direccion">
         </div>
 
-        <div>
-            <label for="">Provincia</label>
-            <select name="provincia" >
-            </select>
-        </div>
-
-        <div>
-            <label for="">Distrito</label>
-            <select name="distrito" >
-            </select>
-        </div>
-        
     </div>
 
     <h3>PRIMER GRADO</h3>
@@ -43,7 +40,12 @@
         <div class="familiar">
             <h4>Padre y Madre</h4>
             <ul id="padresLista">
-    
+                <li *ngFor="let familiar of padresLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
             </ul>
             <div>
                 <button id="padres" type="button" (click)="add($event)">Add</button>
@@ -53,7 +55,12 @@
         <div class="familiar">
             <h4>Hijos</h4>
             <ul id="hijosLista">
-    
+                <li *ngFor="let familiar of hijosLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
             </ul>
             <div>
                 <button id="hijos" type="button" (click)="add($event)">Add</button>
@@ -63,7 +70,12 @@
         <div class="familiar">
             <h4>Suegros</h4>
             <ul id="suegrosLista">
-    
+                <li *ngFor="let familiar of suegrosLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
             </ul>
             <div>
                 <button id="suegros" type="button" (click)="add($event)">Add</button>
@@ -73,7 +85,12 @@
         <div class="familiar">
             <h4>Yerno/Nuera</h4>
             <ul id="yernosLista">
-    
+                <li *ngFor="let familiar of yernosLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
             </ul>
             <div>
                 <button id="yernos" type="button" (click)="add($event)">Add</button>
@@ -102,7 +119,12 @@
         <div class="familiar">
             <h4>Hermanos</h4>
             <ul id="hermanosLista">
-
+                <li *ngFor="let familiar of hermanosLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
             </ul>
             <div>
                 <button id="hermanos" type="button" (click)="add($event)">Add</button>
@@ -112,7 +134,12 @@
         <div class="familiar">
             <h4>Nietos</h4>
             <ul id="nietosLista">
-
+                <li *ngFor="let familiar of nietosLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
             </ul>
             <div>
                 <button id="nietos" type="button" (click)="add($event)">Add</button>
@@ -122,7 +149,12 @@
         <div class="familiar">
             <h4>Cuñados</h4>
             <ul id="cunadosLista">
-
+                <li *ngFor="let familiar of cunadosLista; index as i">
+                    <span>{{familiar.nombresApellidos}}</span>
+                    <span>{{familiar.ocupacion}}</span>
+                    <span>{{familiar.dni}}</span>
+                    <button type="button" (click)="removeFamiliar(i)" >X</button>
+                </li>
             </ul>
             <div>
                 <button id="cunados" type="button" (click)="add($event)">Add</button>
@@ -144,15 +176,15 @@
         <div class="modal-body">
             <div>
                 <label for="nombres">Nombres y Apellidos</label>
-                <input type="text" name="nombres" >
+                <input type="text" [(ngModel)]="familiarNombresApellidos" >
             </div>
             <div>
                 <label for="">DNI</label>
-                <input type="text" name="" >
+                <input type="text" [(ngModel)]="familiarDni" >
             </div>
             <div>
                 <label for="">Ocupacion</label>
-                <input type="text" name="" >
+                <input type="text" [(ngModel)]="familiarOcupacion" >
             </div>
         </div>
         <div class="modal-footer">
