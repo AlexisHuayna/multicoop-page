@@ -14,23 +14,22 @@
 
 /* The Close Button */
 .close {
-  color: #aaa;
+  color: black;
   float: right;
-  font-size: 28px;
+  font-size: 32px;
+  padding-top: 1%;
   font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color:#E0C028;
   text-decoration: none;
   cursor: pointer;
 }
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
 }
 
 /* Modal Body */
@@ -40,19 +39,18 @@
 
 /* Modal Footer */
 .modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  text-align: center;
+  padding: 3% 0;
 }
 
 /* Modal Content */
 .modal-content {
   position: relative;
   background-color: #fefefe;
-  margin: auto;
+  margin: 5% auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -68,4 +66,138 @@
     top: 0;
     opacity: 1;
   }
+}
+
+button {
+  border: none;
+}
+
+* {
+  font-family: 'Signika';
+}
+
+h2 {
+  text-align: center;
+}
+
+.container {
+  margin: 1% 10%;
+}
+
+input {
+  display: block;
+  border: 1px solid #5c5c5c;
+  border-radius: 5px;
+  margin: 1% 0;
+  padding: 1%;
+  font-size: 15px;
+  font-weight: 150;
+}
+
+input:focus {
+  border-color: #E0C028;
+}
+
+h4 {
+  font-size: 19px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+label {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.sub-content {
+  margin-left: 2%;
+}
+
+ul {
+  list-style: none;
+}
+
+.submit-content {
+  text-align: center;
+  padding: 3% 0;
+}
+
+.agregar {
+  border-radius: 10px;
+  padding: 1%;
+  color: black;
+  background-color: white;
+  border: 1.5px solid #E0C028;
+  font-weight: 100;
+  font-size: 15px;
+}
+
+.agregar2 {
+  border-radius: 10px;
+  padding: 1%;
+  color: black;
+  background-color: white;
+  border: 1.5px solid #E0C028;
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.remove {
+  border-radius: 50%;
+  background-color: white;
+ /* border: 1.5px solid #E0C028;*/
+  color: #E0C028;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+p {
+  display: inline-block;
+  margin: 0;
+  font-weight: 400;
+}
+
+.nombres {
+  width: 48%;
+}
+
+.ocupacion {
+  width: 28%;
+}
+
+.dni {
+  width: 10%;
+}
+
+#declaranteNom, #declaranteDir {
+  width: 30%;
+}
+
+#declaranteDni, #declaranteDep, #declarantePro {
+  width: 8%;
+}
+
+#declaranteDis {
+  width: 19%;
+}
+
+
+#famNom {
+  width: 55%;
+}
+
+#famOcu {
+  width: 27%;
+}
+
+#famDni {
+  width: 12%
 }

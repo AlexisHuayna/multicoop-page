@@ -1,171 +1,173 @@
 <h2>DECLARACION JURADA DE FAMILIRES</h2>
 
-<form [formGroup]="declaracionForm" (ngSubmit)="enviar(declaracionForm.value)">
-    <h3>Declarante</h3>
-    <div>
-        <div>
-            <label for="nombresApellidos">Nombres y Apellidos</label>
-            <input type="text" formControlName="nombresApellidos" name="nombresApellidos" >
-        </div>
-
-        <div>
-            <label for="dni">Dni</label>
-            <input type="text" formControlName="dni" name="dni">
-        </div>
-        
-        <div>
-            <label for="departamento">Departamento</label>
-            <input type="text" formControlName="departamento" name="departamento">
-        </div>
-        
-        <div>
-            <label for="provincia">Provincia</label>
-            <input type="text" formControlName="provincia" name="provincia">
-        </div>
-        
-        <div>
-            <label for="distrito">Distrito</label>
-            <input type="text" formControlName="distrito" name="distrito">
-        </div>
-        
-        <div>
-            <label for="direccion">Docimilio</label>
-            <input type="text" formControlName="direccion" name="direccion">
-        </div>
-
-    </div>
-
-    <h3>PRIMER GRADO</h3>
-    <div>
-        <div class="familiar">
-            <h4>Padre y Madre</h4>
-            <ul id="padresLista">
-                <li *ngFor="let familiar of padresLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
+<div class="container">
+    <form [formGroup]="declaracionForm" (ngSubmit)="enviar(declaracionForm.value)">
+        <h3>Declarante</h3>
+        <div class="sub-content">
             <div>
-                <button id="padres" type="button" (click)="add($event)">Add</button>
+                <label for="nombresApellidos">Nombres y Apellidos</label>
+                <input id="declaranteNom" type="text" formControlName="nombresApellidos" name="nombresApellidos" >
+            </div>
+    
+            <div>
+                <label for="dni">Dni</label>
+                <input id="declaranteDni" type="text" formControlName="dni" name="dni" maxlength="8">
+            </div>
+            
+            <div>
+                <label for="departamento">Departamento</label>
+                <input id="declaranteDep" type="text" formControlName="departamento" name="departamento">
+            </div>
+            
+            <div>
+                <label for="provincia">Provincia</label>
+                <input id="declarantePro" type="text" formControlName="provincia" name="provincia">
+            </div>
+            
+            <div>
+                <label for="distrito">Distrito</label>
+                <input id="declaranteDis" type="text" formControlName="distrito" name="distrito">
+            </div>
+            
+            <div>
+                <label for="direccion">Domicilio</label>
+                <input id="declaranteDir" type="text" formControlName="direccion" name="direccion">
+            </div>
+    
+        </div>
+    
+        <h3>PRIMER GRADO</h3>
+        <div class="sub-content">
+            <div class="familiar">
+                <h4>Padre y Madre</h4>
+                <ul id="padresLista">
+                    <li *ngFor="let familiar of padresLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,1)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="padres" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+    
+            <div class="familiar">
+                <h4>Hijos</h4>
+                <ul id="hijosLista">
+                    <li *ngFor="let familiar of hijosLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,2)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="hijos" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+    
+            <div class="familiar">
+                <h4>Suegros</h4>
+                <ul id="suegrosLista">
+                    <li *ngFor="let familiar of suegrosLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,3)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="suegros" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+    
+            <div class="familiar">
+                <h4>Yerno/Nuera</h4>
+                <ul id="yernosLista">
+                    <li *ngFor="let familiar of yernosLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,4)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="yernos" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+    
+        </div>
+    
+        <h3>SEGUNDO GRADO</h3>
+        <div class="sub-content">
+            <div class="familiar">            
+                <h4>Abuelos</h4>
+                <ul id="abuelosLista">
+                    <li *ngFor="let familiar of abuelosLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,5)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="abuelos" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+    
+            <div class="familiar">
+                <h4>Hermanos</h4>
+                <ul id="hermanosLista">
+                    <li *ngFor="let familiar of hermanosLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,6)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="hermanos" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+    
+            <div class="familiar">
+                <h4>Nietos</h4>
+                <ul id="nietosLista">
+                    <li *ngFor="let familiar of nietosLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,7)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="nietos" type="button"  class="agregar" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+    
+            <div class="familiar">
+                <h4>Cuñados</h4>
+                <ul id="cunadosLista">
+                    <li *ngFor="let familiar of cunadosLista; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,8)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="cunados" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
             </div>
         </div>
-
-        <div class="familiar">
-            <h4>Hijos</h4>
-            <ul id="hijosLista">
-                <li *ngFor="let familiar of hijosLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
-            <div>
-                <button id="hijos" type="button" (click)="add($event)">Add</button>
-            </div>
+    
+        <div class="submit-content">
+            <button class="agregar2" type="submit">Enviar</button>
         </div>
-
-        <div class="familiar">
-            <h4>Suegros</h4>
-            <ul id="suegrosLista">
-                <li *ngFor="let familiar of suegrosLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
-            <div>
-                <button id="suegros" type="button" (click)="add($event)">Add</button>
-            </div>
-        </div>
-
-        <div class="familiar">
-            <h4>Yerno/Nuera</h4>
-            <ul id="yernosLista">
-                <li *ngFor="let familiar of yernosLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
-            <div>
-                <button id="yernos" type="button" (click)="add($event)">Add</button>
-            </div>
-        </div>
-
-    </div>
-
-    <h3>SEGUNDO GRADO</h3>
-    <div>
-        <div class="familiar">            
-            <h4>Abuelos</h4>
-            <ul id="abuelosLista">
-                <li *ngFor="let familiar of abuelosLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
-            <div>
-                <button id="abuelos" type="button" (click)="add($event)">Add</button>
-            </div>
-        </div>
-
-        <div class="familiar">
-            <h4>Hermanos</h4>
-            <ul id="hermanosLista">
-                <li *ngFor="let familiar of hermanosLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
-            <div>
-                <button id="hermanos" type="button" (click)="add($event)">Add</button>
-            </div>
-        </div>
-
-        <div class="familiar">
-            <h4>Nietos</h4>
-            <ul id="nietosLista">
-                <li *ngFor="let familiar of nietosLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
-            <div>
-                <button id="nietos" type="button" (click)="add($event)">Add</button>
-            </div>
-        </div>
-
-        <div class="familiar">
-            <h4>Cuñados</h4>
-            <ul id="cunadosLista">
-                <li *ngFor="let familiar of cunadosLista; index as i">
-                    <span>{{familiar.nombresApellidos}}</span>
-                    <span>{{familiar.ocupacion}}</span>
-                    <span>{{familiar.dni}}</span>
-                    <button type="button" (click)="removeFamiliar(i)" >X</button>
-                </li>
-            </ul>
-            <div>
-                <button id="cunados" type="button" (click)="add($event)">Add</button>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <button type="submit">Enviar</button>
-    </div>
-</form>
+    </form>
+</div>
 
 <div class="modal" id="formAdd">
     <div class="modal-content">
@@ -176,19 +178,19 @@
         <div class="modal-body">
             <div>
                 <label for="nombres">Nombres y Apellidos</label>
-                <input type="text" [(ngModel)]="familiarNombresApellidos" >
-            </div>
-            <div>
-                <label for="">DNI</label>
-                <input type="text" [(ngModel)]="familiarDni" >
+                <input id="famNom" type="text" [(ngModel)]="familiarNombresApellidos" >
             </div>
             <div>
                 <label for="">Ocupacion</label>
-                <input type="text" [(ngModel)]="familiarOcupacion" >
+                <input id="famOcu" type="text" [(ngModel)]="familiarOcupacion" >
+            </div>
+            <div>
+                <label for="">Dni</label>
+                <input id="famDni" type="text" [(ngModel)]="familiarDni"  maxlength="8">
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" (click)="addFamiliar($event)">Agregar</button>
+            <button class="agregar2" type="button" (click)="addFamiliar($event)">Agregar</button>
         </div>
     </div>
 </div>

@@ -53,8 +53,7 @@ export class DeclaracionComponent implements OnInit {
 
   add(evt) {
     let opcion = evt.target.id
-    let modal = document.getElementById("formAdd");
-
+    
     if(opcion === "padres"){
       this.opcionFamiliar = "Padre/Madre"
       this.opcion = 1
@@ -64,7 +63,7 @@ export class DeclaracionComponent implements OnInit {
       this.opcionFamiliar = "Hijos"
       this.opcion = 2
     }
-
+    
     if(opcion === "suegros"){
       this.opcionFamiliar = "Suegros"
       this.opcion = 3
@@ -74,27 +73,28 @@ export class DeclaracionComponent implements OnInit {
       this.opcionFamiliar = "Yerno/Nuera"
       this.opcion = 4
     }
-
+    
     if(opcion === "abuelos"){
       this.opcionFamiliar = "Abuelos"
       this.opcion = 5
     }
-
+    
     if(opcion === "hermanos"){
       this.opcionFamiliar = "Hermanos"
       this.opcion = 6
     }
-
+    
     if(opcion === "nietos"){
       this.opcionFamiliar = "Nietos"
       this.opcion = 7
     }
-
+    
     if(opcion === "cunados"){
       this.opcionFamiliar = "Cuñados"
       this.opcion = 8
     }
-
+    
+    let modal = document.getElementById("formAdd");
     modal.style.display = "block"
 
   }
@@ -159,11 +159,13 @@ export class DeclaracionComponent implements OnInit {
 
     data.familiares = this.familiares
     
-    console.log(data)
-    
     this.fichaService.crearDeclaracion(data).subscribe(
       res => {}
     )
+
+    alert('Declaracion llenada');
+
+    this.router.navigate(['/'])
     
   }
 
@@ -206,8 +208,26 @@ export class DeclaracionComponent implements OnInit {
     this.familiarDni = ''
   }
 
-  removeFamiliar(familiar) {
-    this.abuelosLista.splice(familiar, 1);
+  removeFamiliar(familiar, opcion) {
+
+    if (opcion === 1) {
+      this.padresLista.splice(familiar, 1);
+    } else if (opcion === 2) {
+      this.hijosLista.splice(familiar, 1);
+    } else if (opcion === 3) {
+      this.suegrosLista.splice(familiar, 1);
+    } else if (opcion === 4) {
+      this.yernosLista.splice(familiar, 1);
+    } else if (opcion === 5) {
+      this.abuelosLista.splice(familiar, 1);
+    } else if (opcion === 6) {
+      this.hermanosLista.splice(familiar, 1);
+    } else if (opcion === 7) {
+      this.nietosLista.splice(familiar, 1);
+    } else {
+      this.cunadosLista.splice(familiar, 1);
+    }
+
   }
 
 }
