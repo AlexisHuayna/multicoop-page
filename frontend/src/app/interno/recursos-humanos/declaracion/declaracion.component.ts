@@ -29,6 +29,7 @@ export class DeclaracionComponent implements OnInit {
   public hermanosLista = []
   public nietosLista = []
   public cunadosLista = []
+  public conyugue = []
 
   constructor(private builder: FormBuilder,
     private fichaService: FichaSintomasService,
@@ -54,6 +55,11 @@ export class DeclaracionComponent implements OnInit {
 
   add(evt) {
     let opcion = evt.target.id
+
+    if(opcion == "conyugue" ) {
+      this.opcionFamiliar = 'Conyugue'
+      this.opcion = 0
+    }
 
     if(opcion === "padres"){
       this.opcionFamiliar = "Padre/Madre"
@@ -177,8 +183,9 @@ export class DeclaracionComponent implements OnInit {
       dni: this.familiarDni,
       ocupacion: this.familiarOcupacion
     }
-    
-    if( this.opcion === 1){
+    if(this.opcion === 0){
+      this.conyugue.push(familiar)
+    } else if( this.opcion === 1){
       this.padresLista.push(familiar)
     }else if( this.opcion === 2 ){
       this.hijosLista.push(familiar)
@@ -211,7 +218,9 @@ export class DeclaracionComponent implements OnInit {
 
   removeFamiliar(familiar, opcion) {
 
-    if (opcion === 1) {
+    if (opcion === 0){
+      this.conyugue.splice(familiar, 1)
+    } else if (opcion === 1) {
       this.padresLista.splice(familiar, 1);
     } else if (opcion === 2) {
       this.hijosLista.splice(familiar, 1);
@@ -325,6 +334,16 @@ export class DeclaracionComponent implements OnInit {
     data.push(
       [{ text: 'PRIMER GRADO', style: 'tableHeader', alignment: 'center', bold: true, colSpan: 3}, {}, {}]
     )
+
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS DE CONYUGUE', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+    for(let i = 0; i < this.conyugue.length; ++i){
+      let fam = <Familiar> this.conyugue[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
 
     data.push(
       [{ text: 'NOMBRES Y APELLIDOS DE PADRE Y MADRE', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]

@@ -39,6 +39,21 @@
         <h3>PRIMER GRADO</h3>
         <div class="sub-content">
             <div class="familiar">
+                <h4>Conyugue</h4>
+                <ul id="conyugueLista">
+                    <li *ngFor="let familiar of conyugue; index as i">
+                        <p class="nombres">{{familiar.nombresApellidos}}</p>
+                        <p class="ocupacion">{{familiar.ocupacion}}</p>
+                        <p class="dni">{{familiar.dni}}</p>
+                        <button class="remove" type="button" (click)="removeFamiliar(i,0)" >X</button>
+                    </li>
+                </ul>
+                <div>
+                    <button id="conyugue" class="agregar" type="button" (click)="add($event)">Agregar</button>
+                </div>
+            </div>
+
+            <div class="familiar">
                 <h4>Padre y Madre</h4>
                 <ul id="padresLista">
                     <li *ngFor="let familiar of padresLista; index as i">
