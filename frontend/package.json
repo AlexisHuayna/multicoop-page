@@ -29,12 +29,14 @@
     "express": "^4.15.2",
     "jquery": "^3.5.1",
     "ng2-pdf-viewer": "^6.3.0",
+    "pdfmake": "^0.1.68",
+    "pdfmake-wrapper": "^2.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.5",
+    "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "~9.1.5",
     "@angular/compiler-cli": "~9.1.6",
     "@nguniversal/builders": "^9.1.1",

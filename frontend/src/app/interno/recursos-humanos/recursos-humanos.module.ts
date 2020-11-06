@@ -9,6 +9,11 @@ import { TestingComponent } from './testing/testing.component';
 import { RecursosHumanosComponent } from './recursos-humanos.component';
 import { EvaluacionComponent } from './evaluacion/evaluacion.component';
 import { DeclaracionComponent } from './declaracion/declaracion.component';
+import { PdfComponent } from './pdf/pdf.component';
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "pdfmake/build/vfs_fonts";
+
+PdfMakeWrapper.setFonts(pdfFonts);
 
 
 @NgModule({
@@ -18,7 +23,8 @@ import { DeclaracionComponent } from './declaracion/declaracion.component';
     ListaFichasComponent,
     TestingComponent,
     EvaluacionComponent,
-    DeclaracionComponent
+    DeclaracionComponent,
+    PdfComponent
   ],
   imports: [
     CommonModule,

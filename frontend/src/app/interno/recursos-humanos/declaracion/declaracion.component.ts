@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Familiar } from 'src/app/other/interfaces';
 import { FichaSintomasService } from 'src/app/services/ficha-sintomas.service';
+import { PdfMakeWrapper, Txt} from 'pdfmake-wrapper';
 
 @Component({
   selector: 'app-declaracion',
@@ -53,7 +54,7 @@ export class DeclaracionComponent implements OnInit {
 
   add(evt) {
     let opcion = evt.target.id
-    
+
     if(opcion === "padres"){
       this.opcionFamiliar = "Padre/Madre"
       this.opcion = 1
@@ -100,6 +101,7 @@ export class DeclaracionComponent implements OnInit {
   }
 
   enviar(data) {
+    this.generarPdf(data);
 
     this.padresLista.forEach(
       familiar  => {
@@ -159,11 +161,10 @@ export class DeclaracionComponent implements OnInit {
 
     data.familiares = this.familiares
     
+    
     this.fichaService.crearDeclaracion(data).subscribe(
       res => {}
     )
-
-    alert('Declaracion llenada');
 
     this.router.navigate(['/'])
     
@@ -228,6 +229,208 @@ export class DeclaracionComponent implements OnInit {
       this.cunadosLista.splice(familiar, 1);
     }
 
+  }
+
+  generarPdf(data){
+    const pdfController = new PdfMakeWrapper();
+
+    pdfController.pageSize('A4');
+
+    pdfController.pageMargins([70, 50]);
+
+    pdfController.info({
+      title: data.nombresApellidos,
+      author: 'multicoop',
+      subject: 'declaracion jurada'
+    })
+
+    pdfController.add(
+      new Txt('DECLARACION JURADA DE FAMILIARES').alignment('center').bold().fontSize(14).end
+    );
+
+    pdfController.add(
+      pdfController.ln(2)
+    )
+
+    pdfController.add([
+      {
+        text: [
+          'Yo, ',
+          {
+            text: data.nombresApellidos,
+            bold: true,
+            decoration: 'underline'
+          },
+          '  identificado con DNI Nº ',
+          {
+            text: data.dni,
+            bold: true,
+            decoration: 'underline'
+          },
+          ', con domicilio en ',
+          {
+            text: data.direccion,
+            bold: true,
+            decoration: 'underline'
+          },
+          ' distrito de ',
+          {
+            text: data.distrito,
+            bold: true,
+            decoration: 'underline'
+          },
+          ' departamento de ',
+          {
+            text: data.departamento,
+            bold: true,
+            decoration: 'underline'
+          },
+          ', declaro bajo juramento que todos los datos que coloco en el presente documento es verdad, en caso contrario me someto a las sanciones de acuerdo a la ley vigente.'
+        ],
+        fontSize: 11,
+        alignment: 'justify'
+      }
+    ])
+
+    pdfController.add(
+      pdfController.ln(2)
+    )
+
+    pdfController.add(
+      {
+        style: 'tableExample',
+        fontSize: 10,
+        table: {
+          widths: [235, 60, 135],
+          body: this.getTable()
+        }
+      }
+    );
+
+    pdfController.add(
+      pdfController.ln(2)
+    )
+
+    pdfController.add(
+      new Txt(this.espacioFirma(data.nombresApellidos.length) + '\n' + data.nombresApellidos + '\n' + data.dni).alignment('center').fontSize(11).end
+    )
+
+    pdfController.create().open();
+  }
+
+  getTable() {
+
+    var data = []
+    
+    data.push(
+      [{ text: 'PRIMER GRADO', style: 'tableHeader', alignment: 'center', bold: true, colSpan: 3}, {}, {}]
+    )
+
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS DE PADRE Y MADRE', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+
+    //pushing padres
+    for(let i = 0; i < this.padresLista.length; ++i){
+      let fam = <Familiar> this.padresLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+
+    //pushing hijos
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS HIJOS', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+    for(let i = 0; i < this.hijosLista.length; ++i){
+      let fam = <Familiar> this.hijosLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+
+    //push suegros
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS SUEGROS', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+    for(let i = 0; i < this.suegrosLista.length; ++i){
+      let fam = <Familiar> this.suegrosLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+
+    //push yernos
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS YERNO/NUERA', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+    for(let i = 0; i < this.yernosLista.length; ++i){
+      let fam = <Familiar> this.yernosLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+    
+    //push segundo grado space
+    data.push(
+      [{ text: 'SEGUNDO GRADO', style: 'tableHeader', alignment: 'center', bold: true, colSpan: 3}, {}, {}]
+    )
+
+    //push abuelos
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS DE ABUELOS', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+    for(let i = 0; i < this.abuelosLista.length; ++i){
+      let fam = <Familiar> this.abuelosLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+
+    //push hermano
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS HERMANOS', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+    for(let i = 0; i < this.hermanosLista.length; ++i){
+      let fam = <Familiar> this.hermanosLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+
+    //push nietos
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS NIETOS', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]      
+    )
+    for(let i = 0; i < this.nietosLista.length; ++i){
+      let fam = <Familiar> this.nietosLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+
+    //push cunados
+    data.push(
+      [{ text: 'NOMBRES Y APELLIDOS CUÑADOS', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+    )
+    for(let i = 0; i < this.cunadosLista.length; ++i){
+      let fam = <Familiar> this.cunadosLista[i]
+      data.push(
+        [{ text: (i + 1) + '.   ' + fam.nombresApellidos, alignment: 'left'}, { text: fam.dni, alignment: 'center'}, { text: fam.ocupacion, alignment: 'center'}]
+      )
+    }
+
+    return data;
+  }
+
+  espacioFirma(len){
+    var espacio = ''
+    
+    for(let i = -1; i < len + 1; ++i){
+      espacio = espacio + '_'
+    }
+
+    return espacio
   }
 
 }

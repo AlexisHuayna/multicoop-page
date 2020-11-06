@@ -7,6 +7,7 @@ import { TestingComponent } from './testing/testing.component';
 import { RecursosHumanosComponent } from './recursos-humanos.component';
 import { EvaluacionComponent } from './evaluacion/evaluacion.component';
 import { DeclaracionComponent } from './declaracion/declaracion.component';
+import { PdfComponent } from './pdf/pdf.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'reglamento/:empleado/:ficha',
     component: EvaluacionComponent
+  },
+  {
+    path: 'pdf',
+    component: PdfComponent
   }
 ];
 
