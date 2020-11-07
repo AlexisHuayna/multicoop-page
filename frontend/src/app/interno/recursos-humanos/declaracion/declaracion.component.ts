@@ -102,12 +102,21 @@ export class DeclaracionComponent implements OnInit {
     }
     
     let modal = document.getElementById("formAdd");
-    modal.style.display = "block"
+    modal.style.
+    
+    display = "block"
 
   }
 
   enviar(data) {
     this.generarPdf(data);
+
+    this.conyugue.forEach(
+      familiar  => {
+        familiar.relacion = 'conyugue'
+        this.familiares.push(familiar)
+      }
+    );
 
     this.padresLista.forEach(
       familiar  => {
