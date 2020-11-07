@@ -57,7 +57,7 @@ export class DeclaracionComponent implements OnInit {
     let opcion = evt.target.id
 
     if(opcion == "conyugue" ) {
-      this.opcionFamiliar = 'Conyugue'
+      this.opcionFamiliar = 'Conyuge'
       this.opcion = 0
     }
 
@@ -345,7 +345,7 @@ export class DeclaracionComponent implements OnInit {
     )
 
     data.push(
-      [{ text: 'NOMBRES Y APELLIDOS DE CONYUGUE', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
+      [{ text: 'NOMBRES Y APELLIDOS DE CONYUGE', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'DNI', style: 'tableHeader', alignment: 'center', bold: true}, {text: 'ACTIVIDAD DE TRABAJO', style: 'tableHeader', alignment: 'center', bold: true}]
     )
     for(let i = 0; i < this.conyugue.length; ++i){
       let fam = <Familiar> this.conyugue[i]
