@@ -35,7 +35,7 @@ router.post('/api/reclamacion', (req, res) => {
             codigo_hoja = agencia + "-" + ('000000' + (numero_hojas_libro + 1)).slice(-5)
 
 
-            query_agregar_reclamacion = "INSERT INTO hojaReclamacion(es_socio, nombres" +
+            query_agregar_reclamacion = "INSERT INTO hojaReclamacion(es_socio, nombre" +
                 ", apellidos, tipo_documento, num_documento, direccion, ubigeo, telefono" +
                 ", correo, fec_incidencia, producto, tipo_reclamacion, detalle_reclamacion" +
                 ", id_libro, codigo_hoja) VALUES ('" + es_socio + "','" + nombres + "','"
@@ -52,15 +52,15 @@ router.post('/api/reclamacion', (req, res) => {
                         if (!err) {
                             res.status(200).send({ reclamacion: 1 })
                         } else {
-                            res.status(500).send({ reclamacion: 0 })
+                            res.status(500).send({ reclamacion: 2 })
                         }
                     });
                 } else {
-                    res.status(500).send({ reclamacion: 0 })
+                    res.status(500).send({ reclamacion: 3 })
                 }
             });
         } else {
-            res.status(500).send({ reclamacion: 0 })
+            res.status(500).send({ reclamacion: 4 })
         }
     });
 });
