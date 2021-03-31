@@ -16,6 +16,10 @@ const routes: Routes = [
       {
         path: 'rh',
         loadChildren: () => import('./recursos-humanos/recursos-humanos.module').then(m => m.RecursosHumanosModule)
+      },
+      {
+        path: 'denuncias',
+        loadChildren: () => import('./control-interno/control-interno.module').then(m => m.ControlInternoModule)
       }
     ]
   }

@@ -4,6 +4,7 @@ export interface PreCalificador {
     dni: string,
     telefono: string,
     localidad: string,
+    email: string,
     monto: number,
 }
 

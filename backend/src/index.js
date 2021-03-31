@@ -17,6 +17,7 @@ app.use(require('./routes/oportunidad'));
 app.use(require('./routes/reclamacion'));
 app.use(require('./routes/postulante'));
 app.use(require('./routes/interno/recursos'));
+app.use(require('./routes/interno/control'));
 app.use(require('./routes/legal/cartera'));
 
 app.listen(app.get('port'), () => {

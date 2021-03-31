@@ -33,12 +33,12 @@
         
             <div class="precalificador-field">
                 <label>DNI</label>
-                <input formControlName="dni" type="text" class="" placeholder="45893264">
+                <input formControlName="dni" type="number" class="" placeholder="45893264" maxlength="8">
             </div>
         
             <div class="precalificador-field">
                 <label>Telefono</label>
-                <input formControlName="telefono" type="text" class="" placeholder="999666333">
+                <input formControlName="telefono" type="number" class="" placeholder="999666333" maxlength="9">
             </div>
         
             <div class="precalificador-field">
@@ -55,8 +55,13 @@
             </div>
         
             <div class="precalificador-field">
+                <label>Correo</label>
+                <input formControlName="email" type="email" class="" placeholder="precalificado@gmail.com">
+            </div>
+        
+            <div class="precalificador-field">
                 <label>Monto solicitado en soles</label>
-                <input formControlName="monto" type="text" class="" placeholder="1500">
+                <input formControlName="monto" type="number" class="" placeholder="1500">
                 <div class="helper-informacion" *ngIf="!precalificadorForm.get('monto').value">El monto debe ser mayor a 500 y menor a 3000</div>
             </div>
         

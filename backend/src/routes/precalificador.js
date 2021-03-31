@@ -11,12 +11,13 @@ function obtenerCorreoAdministrador(localidad) {
     return email
 }
 
-function crearContenidoCorreo(nombres, apellidos, dni, telefono, monto) {
+function crearContenidoCorreo(nombres, apellidos, dni, telefono, monto, correo) {
     return "<h1>Nuevo precalificador web</h1>" +
         "<p>Nombres: " + nombres + "</p>" +
         "<p>Apellidos: " + apellidos + "</p>" +
         "<p>Numero de DNI: " + dni + "</p>" +
         "<p>Teléfono: " + telefono + "</p>" +
+        "<p>Correo: " + correo + "</p>" +
         "<p>Monto solicitado: " + monto + "</p>";
 }
 
@@ -27,9 +28,10 @@ router.post('/api/precalificador', (req, res) => {
     var dni = req.body.dni
     var telefono = req.body.telefono
     var localidad = req.body.localidad
+    var correo = req.body.email
     var monto = req.body.monto
 
-    query_agregar_pre_calificador = "INSERT INTO preCalificador(nombres, apellidos, dni, telefono, localidad, monto) VALUES ('" + nombres + "','" + apellidos + "','" + dni + "','" + telefono + "','" + localidad + "','" + monto + "')";
+    query_agregar_pre_calificador = "INSERT INTO preCalificador(nombres, apellidos, dni, telefono, localidad, monto, correo) VALUES ('" + nombres + "','" + apellidos + "','" + dni + "','" + telefono + "','" + localidad + "','" + monto + "','" + correo + "')";
 
     conexion_msql.query(query_agregar_pre_calificador, (err, rows, fields) => {
         if (!err) {
@@ -38,7 +40,7 @@ router.post('/api/precalificador', (req, res) => {
                 remitentes: obtenerCorreoAdministrador(localidad),
                 subject: "Precalificador Web",
                 text: "Datos de precalificador",
-                html: crearContenidoCorreo(nombres, apellidos, dni, telefono, monto),
+                html: crearContenidoCorreo(nombres, apellidos, dni, telefono, monto, correo),
                 attachments: []
             }
 

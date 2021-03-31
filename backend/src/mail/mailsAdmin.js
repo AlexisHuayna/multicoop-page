@@ -1,6 +1,6 @@
 
 exports.Administradores = {
-    '01': 'mhuacho@multicoop.com.pe, hmercado@multicoop.com.pe',
+    '01': 'mhuacho@multicoop.com.pe, fcornejo@multicoop.com.pe',
     '02': 'rquispe@multicoop.com.pe',
     '03': 'dcastilla@multicoop.com.pe',
     '04': 'ebarboza@multicoop.com.pe',

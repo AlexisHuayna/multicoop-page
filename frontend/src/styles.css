@@ -31,6 +31,27 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'GothamBook';
+    src: url('assets/fonts/GothamBook.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'GothamLight';
+    src: url('assets/fonts/GothamLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'GothamMedium';
+    src: url('assets/fonts/GothamMedium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'GothamBold';
+    src: url('assets/fonts/GothamBold.woff') format('woff');
+}
+
+
 html{
     scroll-behavior: smooth;
 }
@@ -328,3 +349,5 @@ body{
         font-size: 5.6vw;
     }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

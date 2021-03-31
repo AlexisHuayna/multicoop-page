@@ -17,11 +17,11 @@ import { HomeComponent } from './body/home/home.component';
 import { PrecalificadorComponent } from './body/precalificador/precalificador.component';
 import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.component';
 import { BolsaTrabajoComponent } from './body/bolsa-trabajo/bolsa-trabajo.component';
-import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-pasivas.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/tarifario-grupal.component';
 import { TarifarioConsumoMypeComponent } from './body/transparencia/tarifario-consumo-mype/tarifario-consumo-mype.component';
 import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
+import { SorteoComponent } from './sorteo/sorteo.component';
 
 
 const routes: Routes = [
@@ -105,6 +105,10 @@ const routes: Routes = [
     path: 'transparencia/tarifarioConsumoMype',
     component: TarifarioConsumoMypeComponent,
     pathMatch: 'full'
+  }, {
+    path:'sorteo',
+    component: SorteoComponent,
+    pathMatch: 'full',
   }, {
     path: 'interno',
     loadChildren: () => import('./interno/interno.module').then(m => m.InternoModule)

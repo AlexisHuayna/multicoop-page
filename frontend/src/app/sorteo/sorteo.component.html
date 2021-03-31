@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="col-1">
+        <img src="../../assets/images/arte_sorteo.png" alt="Multicoop Peru te premia"/>
+    </div>
+    <div class="col-2">
+        <div class="black-title">
+            <span>Déjanos tus datos</span>
+            <div></div>
+            <span>y averigua como puedes</span>
+            <div></div>
+            <span>participar del sorteo</span>
+        </div>
+        <div class="yellow-title">
+            <span>nos comunicaremos</span>
+            <div></div>
+            <span>contigo enseguida</span>
+        </div>
+        <form [formGroup]="sorteoForm" class="" (ngSubmit)="enviar(sorteoForm.value)">
+            <div class="input-container">
+                <mat-form-field class="inputs" appearance="standard">
+                    <mat-label>NOMBRES</mat-label>
+                    <input
+                        formControlName="nombres"
+                        matInput/>
+                </mat-form-field>
+            </div>
+            <div class="input-container">
+                <mat-form-field class="inputs" appearance="standard">
+                    <mat-label>APELLIDOS</mat-label>
+                    <input
+                        formControlName="apellidos"
+                        matInput/>
+                </mat-form-field>
+            </div>
+            <div class="input-container">
+                <mat-form-field class="inputs" appearance="standard">
+                    <mat-label>TELÉFONO</mat-label>
+                    <input
+                        formControlName="telefono"
+                        matInput/>
+                </mat-form-field>
+            </div>
+            <div class="input-container">
+                <mat-form-field class="inputs" appearance="standard">
+                    <mat-label>CORREO ELECTRONICO</mat-label>
+                    <input
+                        formControlName="correo"
+                        matInput/>
+                </mat-form-field>
+            </div>
+            <div class="input-container">
+                <mat-form-field class="inputs" appearance="standard">
+                    <mat-label>CIUDAD</mat-label>
+                    <input
+                        formControlName="ciudad"
+                        matInput/>
+                </mat-form-field>
+            </div>
+        <!--
+            <div>
+                <mat-checkbox>
+                    Privacidad 1
+                </mat-checkbox>
+            </div>
+
+            <div>
+                <mat-checkbox>
+                    Privacidad 2
+                </mat-checkbox>
+            </div>
+        -->
+            <div class="button-container">
+                <button 
+                    class="enviar"
+                    mat-flat-button>
+                    <span >
+                        QUIERO PARTICIPAR
+                    </span>
+                    <div></div>
+                    <span>
+                        DEL SORTEO
+                    </span>
+
+                    <span class="participantes">
+                        10 personas están participando
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

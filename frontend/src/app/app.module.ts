@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './header/nav-bar/nav-bar.component';
@@ -24,7 +23,6 @@ import { TelefonosContactoComponent } from './body/ubicanos/telefonos-contacto/t
 import { HomeComponent } from './body/home/home.component';
 import { PersonasComponent } from './body/personas/personas.component';
 import { PrecalificadorComponent } from './body/precalificador/precalificador.component';
-
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReclamacionesComponent } from './body/reclamaciones/reclamaciones.component';
@@ -35,12 +33,17 @@ import { TasasPasivasComponent } from './body/transparencia/tasas-pasivas/tasas-
 import { PostulanteComponent } from './body/bolsa-trabajo/postulante/postulante.component';
 import { AgenciaValorPipe } from './pipes/agencia-valor.pipe';
 import { NotFoundComponent } from './not-found/not-found.component';
-
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { TarifarioConsumoMypeComponent } from './body/transparencia/tarifario-consumo-mype/tarifario-consumo-mype.component';
 import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/tarifario-grupal.component';
 import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
 import { HelpersComponent } from './helpers/helpers.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SorteoComponent } from './sorteo/sorteo.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -78,13 +81,19 @@ import { HelpersComponent } from './helpers/helpers.component';
     TarifarioGrupalComponent,
     ProcedimientoAtencionComponent,
     HelpersComponent,
+    SorteoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   exports : [
     AgenciaValorPipe
