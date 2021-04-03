@@ -1,14 +1,15 @@
 .container {
     display: flex;
+    margin: 0% 1%;
 }
 
 .col-1 {
-    width: 45%;
-    padding: 1%;
+    width: 48%;
+    padding: 1% 0% 1% 1%;
 }
 
 .col-2 {
-    width: 55%;
+    width: 52%;
     padding: 1%;
 }
 
@@ -37,12 +38,12 @@
 
 .enviar {
     background-color: rgb(53, 104, 45);
+    transition: background-color .5s ease-out 100ms;
 }
-
 
 img{
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 button{
@@ -50,6 +51,7 @@ button{
     display: inline-block;
     font-size: 1.5vw;
     width: 55%;
+    border-radius: 2vw;
 }
 
 .participantes {
@@ -62,7 +64,33 @@ button{
 }
 
 .enviar:hover{
-    color: rgb(231,193,31);
+    background-color: #004879;
+    color: white;
+}
+
+.separator {
+    height: .5vw;
+}
+
+.enviar:active{
+    background-color: #005085;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.fields{
+    padding-bottom: 1vw;
+}
+
+@media (max-width: 1026px) {
+    .container{
+        background-color: red;
+    }
 }
 
 
+@media (max-width: 513px) {
+    .container{
+        background-color: yellow;
+    }
+}

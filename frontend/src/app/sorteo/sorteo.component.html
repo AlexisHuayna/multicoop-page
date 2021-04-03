@@ -5,9 +5,9 @@
     <div class="col-2">
         <div class="black-title">
             <span>Déjanos tus datos</span>
-            <div></div>
+            <div class="separator"></div>
             <span>y averigua como puedes</span>
-            <div></div>
+            <div class="separator"></div>
             <span>participar del sorteo</span>
         </div>
         <div class="yellow-title">
@@ -16,45 +16,48 @@
             <span>contigo enseguida</span>
         </div>
         <form [formGroup]="sorteoForm" class="" (ngSubmit)="enviar(sorteoForm.value)">
-            <div class="input-container">
-                <mat-form-field class="inputs" appearance="standard">
-                    <mat-label>NOMBRES</mat-label>
-                    <input
-                        formControlName="nombres"
-                        matInput/>
-                </mat-form-field>
-            </div>
-            <div class="input-container">
-                <mat-form-field class="inputs" appearance="standard">
-                    <mat-label>APELLIDOS</mat-label>
-                    <input
-                        formControlName="apellidos"
-                        matInput/>
-                </mat-form-field>
-            </div>
-            <div class="input-container">
-                <mat-form-field class="inputs" appearance="standard">
-                    <mat-label>TELÉFONO</mat-label>
-                    <input
-                        formControlName="telefono"
-                        matInput/>
-                </mat-form-field>
-            </div>
-            <div class="input-container">
-                <mat-form-field class="inputs" appearance="standard">
-                    <mat-label>CORREO ELECTRONICO</mat-label>
-                    <input
-                        formControlName="correo"
-                        matInput/>
-                </mat-form-field>
-            </div>
-            <div class="input-container">
-                <mat-form-field class="inputs" appearance="standard">
-                    <mat-label>CIUDAD</mat-label>
-                    <input
-                        formControlName="ciudad"
-                        matInput/>
-                </mat-form-field>
+            <div class="fields">
+
+                <div class="input-container">
+                    <mat-form-field class="inputs" appearance="standard">
+                        <mat-label>NOMBRES</mat-label>
+                        <input
+                            formControlName="nombres"
+                            matInput/>
+                    </mat-form-field>
+                </div>
+                <div class="input-container">
+                    <mat-form-field class="inputs" appearance="standard">
+                        <mat-label>APELLIDOS</mat-label>
+                        <input
+                            formControlName="apellidos"
+                            matInput/>
+                    </mat-form-field>
+                </div>
+                <div class="input-container">
+                    <mat-form-field class="inputs" appearance="standard">
+                        <mat-label>TELÉFONO</mat-label>
+                        <input
+                            formControlName="telefono"
+                            matInput/>
+                    </mat-form-field>
+                </div>
+                <div class="input-container">
+                    <mat-form-field class="inputs" appearance="standard">
+                        <mat-label>CORREO ELECTRONICO</mat-label>
+                        <input
+                            formControlName="correo"
+                            matInput/>
+                    </mat-form-field>
+                </div>
+                <div class="input-container">
+                    <mat-form-field class="inputs" appearance="standard">
+                        <mat-label>CIUDAD</mat-label>
+                        <input
+                            formControlName="ciudad"
+                            matInput/>
+                    </mat-form-field>
+                </div>
             </div>
         <!--
             <div>
