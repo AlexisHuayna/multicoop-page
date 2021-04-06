@@ -1,3 +1,13 @@
+<div class="home" >
+    <button
+        class="home-button"
+        (click)="goHome()"
+        mat-button>
+        <img class="logo" src="../../assets/images/vertical_full_color_sin_slogan.png" />
+        <mat-icon>arrow_back</mat-icon>
+        Inicio
+    </button>
+</div>
 <div class="container">
     <div class="col-1">
         <img src="../../assets/images/arte_sorteo.png" alt="Multicoop Peru te premia"/>
@@ -6,7 +16,7 @@
         <div class="black-title">
             <span>Déjanos tus datos</span>
             <div class="separator"></div>
-            <span>y averigua como puedes</span>
+            <span>y averigua cómo puedes</span>
             <div class="separator"></div>
             <span>participar del sorteo</span>
         </div>
@@ -73,7 +83,7 @@
             </div>
         -->
             <div class="button-container">
-                <button 
+                <button
                     class="enviar"
                     mat-flat-button>
                     <span >
@@ -85,7 +95,7 @@
                     </span>
 
                     <span class="participantes">
-                        10 personas están participando
+                        {{participantes}} personas están participando
                     </span>
                 </button>
             </div>

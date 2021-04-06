@@ -44,6 +44,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { GraciasComponent } from './gracias/gracias.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
     ProcedimientoAtencionComponent,
     HelpersComponent,
     SorteoComponent,
+    GraciasComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -93,7 +96,8 @@ import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatIconModule
   ],
   exports : [
     AgenciaValorPipe

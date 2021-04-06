@@ -3,6 +3,11 @@
     margin: 0% 1%;
 }
 
+.logo {
+    width: 31%;
+    margin-right: 10%;
+}
+
 .col-1 {
     width: 48%;
     padding: 1% 0% 1% 1%;
@@ -38,15 +43,15 @@
 
 .enviar {
     background-color: rgb(53, 104, 45);
-    transition: background-color .5s ease-out 100ms;
+    transition: background-color .5s ease-out 10ms;
 }
 
-img{
+img {
     width: 100%;
     height: 100%;
 }
 
-button{
+.enviar{
     font-family: 'GothamMedium';
     display: inline-block;
     font-size: 1.5vw;
@@ -55,8 +60,9 @@ button{
 }
 
 .participantes {
+    font-family: 'GothamBook' !important;
     display: block;
-    font-size: 50%;
+    font-size: 75%;
 }
 
 .input-container {
@@ -82,15 +88,114 @@ button{
     padding-bottom: 1vw;
 }
 
-@media (max-width: 1026px) {
+.home-button {
+    text-align: left;
+    width: 15%;
+}
+
+@media (max-width: 800px) {
+    .home-button {
+        width: 25%;
+    }
+
+    .col-1 {
+        width: 50%;
+    }
+
+    .col-2 {
+        width: 50%;
+    }
+
+    .logo {
+        width: 23%;
+    }
+
+    .enviar {
+        font-size: 2vw;
+    }
+
+    .yellow-title {
+        font-size: 2vw;
+    }
+
+    .black-title {
+        font-size: 3vw;
+    }
+
+    .participantes {
+        font-size: 67%;
+    }
+}
+
+@media (max-width: 650px) {
     .container{
-        background-color: red;
+        display: block;
+    }
+
+    .col-1 {
+        width: 97%;
+    }
+
+    .col-2{
+        width: 100%;
+    }
+    
+    .home-button {
+        width: 25%;
+    }
+
+    .logo {
+        width: 31%;
+    }
+
+    .enviar {
+        font-size: 2.5vw;
+    }
+
+    .yellow-title {
+        font-size: 2.5vw;
+    }
+
+    .black-title {
+        font-size: 3.5vw;
     }
 }
 
 
 @media (max-width: 513px) {
     .container{
-        background-color: yellow;
+        display: block;
+    }
+
+    .col-1 {
+        width: 100%;
+    }
+
+    .col-2 {
+        width: 100%;
+    }
+
+    .home-button {
+        width: 30%;
+    }
+
+    .logo {
+        width: 31%;
+    }
+
+    .enviar {
+        font-size: 3vw;
+    }
+
+    .yellow-title {
+        font-size: 3vw;
+    }
+
+    .black-title {
+        font-size: 4vw;
+    }
+
+    img {
+        width: 97%;
     }
 }

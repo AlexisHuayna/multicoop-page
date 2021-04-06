@@ -22,6 +22,7 @@ import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/
 import { TarifarioConsumoMypeComponent } from './body/transparencia/tarifario-consumo-mype/tarifario-consumo-mype.component';
 import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
 import { SorteoComponent } from './sorteo/sorteo.component';
+import { GraciasComponent } from './gracias/gracias.component';
 
 
 const routes: Routes = [
@@ -109,6 +110,10 @@ const routes: Routes = [
     path:'sorteo',
     component: SorteoComponent,
     pathMatch: 'full',
+  }, {
+    path: 'ok',
+    component: GraciasComponent,
+    pathMatch: 'full'
   }, {
     path: 'interno',
     loadChildren: () => import('./interno/interno.module').then(m => m.InternoModule)
