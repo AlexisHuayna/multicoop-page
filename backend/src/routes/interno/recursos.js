@@ -360,6 +360,8 @@ router.post('/api/interno/rh/declaracion', (req, res) => {
     const direccion = req.body.direccion;
     const familiares = req.body.familiares;
 
+    console.log(familiares)
+
     const query = "INSERT INTO personaDeclaracion (nombre, dni, departamento, provincia, distrito, domicilio) VALUES ('" + nombre + "','" + dni + "','" + departamento + "','" + provincia + "','" + distrito + "','" + direccion + "')";
     
     conexion_mysql.query(query, (err, declarante) => {

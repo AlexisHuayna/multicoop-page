@@ -13,8 +13,8 @@ exports.enviarCorreo = (req, res, mail_content) => {
         port: 465,
         secure: true,
         auth: {
-            user: 'servermulticoop@multicoop.com.pe',
-            pass: 'Server123@'
+            user: 'webmulti@multicoop.com.pe',
+            pass: 'x34115624Multi*'
         },
         tls: {
             rejectUnauthorized: false
@@ -22,7 +22,7 @@ exports.enviarCorreo = (req, res, mail_content) => {
     });
 
     var mailOptions = {
-        from: '"Correo Servidor" <servermulticoop@multicoop.com.pe>',
+        from: '"Correo Servidor" <webmulti@multicoop.com.pe>',
         to: remitentes,
         subject: subject,
         text: text,

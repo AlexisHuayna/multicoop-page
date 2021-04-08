@@ -9,13 +9,14 @@ router.post('/api/sorteo', (req, res) => {
     const correo = req.body.correo;
     const ciudad = req.body.ciudad;
 
-    const query = "INSERT INTO sorteo (nombres, apellios, telefono, correo, ciudad) VALUES ('NULL', '" + nombres + "','" + apellidos + "','" + telefono + "','" + correo + "','" + ciudad + "')";
+    const query = "INSERT INTO sorteo (nombres, apellidos, telefono, correo, ciudad) VALUES ('" + nombres + "','" + apellidos + "','" + telefono + "','" + correo + "','" + ciudad + "')";
     
     conexion_mysql.query(query, (err, declarante) => {
         if(!err) {
             res.status(200).json({resp: '1'});
 
         } else {
+	    console.log(err);
             res.status(500).json({resp: '0'});
         }
     })

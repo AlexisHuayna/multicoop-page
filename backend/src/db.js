@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const conexion_mysql = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'ServerMulti321@',
+    password: 'Cucvcn115',
     database: 'multicoop_page'
 });
 

@@ -30,7 +30,7 @@ router.post('/api/denuncias', (req, res) => {
         } else {
             res.status(500).end();
         }
-    });
+    })
 });
 
 router.get('/api/interno/personal', (req, res) => {

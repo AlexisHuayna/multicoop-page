@@ -52,7 +52,7 @@ router.post('/api/reclamacion', (req, res) => {
                         if (!err) {
                             res.status(200).send({ reclamacion: 1 })
                         } else {
-                            res.status(500).send({ reclamacion: 2 })
+			    res.status(500).send({ reclamacion: 2 })
                         }
                     });
                 } else {
