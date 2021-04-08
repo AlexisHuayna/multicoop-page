@@ -10,50 +10,50 @@ export class FichaSintomasService {
   constructor(private http: HttpClient) { }
   
   getServerTime() {
-    return this.http.get<ServerInformation>("http://multicoop.com.pe:8000/api/time");
+    return this.http.get<ServerInformation>("https://www.multicoop.com.pe:8000/api/time");
   }
   
   add(ficha){
-    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/ficha", ficha);
+    return this.http.post("https://www.multicoop.com.pe:8000/api/interno/rh/ficha", ficha);
   }
   
   getFaltantesEntrada(idAgencia) {
-    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesEntrada/${idAgencia}`);
+    return this.http.get<PersonalFicha[]>(`https://www.multicoop.com.pe:8000/api/interno/rh/fichas/faltantesEntrada/${idAgencia}`);
   }
 
   getFaltantesSalida(idAgencia) {
-    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/faltantesSalida/${idAgencia}`);
+    return this.http.get<PersonalFicha[]>(`https://www.multicoop.com.pe:8000/api/interno/rh/fichas/faltantesSalida/${idAgencia}`);
   }
 
   getEmpleado(idEmpleado) {
-    return this.http.get<Personal>(`http://multicoop.com.pe:8000/api/interno/rh/empleados/${idEmpleado}`);
+    return this.http.get<Personal>(`https://www.multicoop.com.pe:8000/api/interno/rh/empleados/${idEmpleado}`);
   }
 
   getFicha(idFicha) {
-    return this.http.get<Ficha>(`http://multicoop.com.pe:8000/api/interno/rh/fichas/${idFicha}`);
+    return this.http.get<Ficha>(`https://www.multicoop.com.pe:8000/api/interno/rh/fichas/${idFicha}`);
   }
 
   crearFicha(ficha) {
-    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica", ficha);
+    return this.http.post("https://www.multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica", ficha);
   }
 
   updateFicha(ficha) {
-    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica/u", ficha)
+    return this.http.post("https://www.multicoop.com.pe:8000/api/interno/rh/fichaSintomatologica/u", ficha)
   }
 
   getSst(idAgencia) {
-    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/sst/${idAgencia}`);
+    return this.http.get<PersonalFicha[]>(`https://www.multicoop.com.pe:8000/api/interno/rh/sst/${idAgencia}`);
   }
 
   getRit(idAgencia) {
-    return this.http.get<PersonalFicha[]>(`http://multicoop.com.pe:8000/api/interno/rh/rit/${idAgencia}`);
+    return this.http.get<PersonalFicha[]>(`https://www.multicoop.com.pe:8000/api/interno/rh/rit/${idAgencia}`);
   }
 
   crearEvaluacion(evaluacion) {
-    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/evaluacion", evaluacion)
+    return this.http.post("https://www.multicoop.com.pe:8000/api/interno/rh/evaluacion", evaluacion)
   }
 
   crearDeclaracion(declaracion) {
-    return this.http.post("http://multicoop.com.pe:8000/api/interno/rh/declaracion", declaracion)
+    return this.http.post("https://www.multicoop.com.pe:8000/api/interno/rh/declaracion", declaracion)
   }
 }

@@ -11,6 +11,6 @@ export class PostulanteService {
 
   agregarPostulante(postulante){
 
-    return this.http.post<String>('http://multicoop.com.pe:8000/api/postulantes', postulante);
+    return this.http.post<String>('https://www.multicoop.com.pe:8000/api/postulantes', postulante);
   }
 }

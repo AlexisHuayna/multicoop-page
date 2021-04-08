@@ -9,10 +9,10 @@ export class DenunciasService {
   constructor(private http: HttpClient) { }
   
   addDenuncia(denuncia){
-    return this.http.post("http://multicoop.com.pe:8000/api/denuncias", denuncia);
+    return this.http.post("https://www.multicoop.com.pe:8000/api/denuncias", denuncia);
   }
 
   getPersonal(){
-    return this.http.get("http://multicoop.com.pe:8000/api/interno/personal");
+    return this.http.get("https://www.multicoop.com.pe:8000/api/interno/personal");
   }
 }

@@ -5,6 +5,7 @@ import { interval, range } from 'rxjs';
 import { SorteoService } from '../services/sorteo.service';
 import { timer, } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 
 interface server {
   resp: number;
@@ -22,11 +23,14 @@ export class SorteoComponent implements OnInit {
   sorteoForm: FormGroup
   participantes = 5
   dis = false
+  loader: any
+
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private sorteoService: SorteoService
+    private sorteoService: SorteoService,
+    public dialog: MatDialog
   ) {
     this.deleteAllDOM();
     this.sorteoForm  = this.formBuilder.group({
@@ -58,21 +62,26 @@ export class SorteoComponent implements OnInit {
   }
 
   enviar(values){
+    this.launchLoader();
     if(this.sorteoForm.invalid) {
       alert('Llene todos los campos');
+      this.closeLoader();
     } else {
       this.sorteoService.addParticipante(values).subscribe(
       response => {
         var serverRespose = <server>response
         if(serverRespose.resp == 1) {
           this.router.navigate(['/ok']);
+          this.closeLoader();
         } else {
           console.log(response);
+          this.closeLoader();
           alert('Ops! Vuelva ha intentarlo');
         }
       }, err => {
-        alert('Ops! Vuelva ha intentarlo');
-        console.log(err);
+          alert('Ops! Vuelva ha intentarlo');
+          this.closeLoader();
+          console.log(err);
       });
     }
   }
@@ -82,4 +91,20 @@ export class SorteoComponent implements OnInit {
     document.getElementById('shared').style.display = 'block';
   }
 
+  launchLoader(){
+    this.dis = true;
+    //this.loader = this.dialog.open(DialogLoader)
+  }
+
+  closeLoader(){
+    this.dis = false;
+    //this.loader.close()
+  }
 }
+
+
+@Component({
+  selector: 'dialog-loader',
+  templateUrl: 'dialog-loader.html'
+})
+export class DialogLoader {}

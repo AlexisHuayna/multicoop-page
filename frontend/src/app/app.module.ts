@@ -39,13 +39,15 @@ import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/
 import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
 import { HelpersComponent } from './helpers/helpers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SorteoComponent } from './sorteo/sorteo.component';
+import { SorteoComponent, DialogLoader } from './sorteo/sorteo.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { GraciasComponent } from './gracias/gracias.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { MatIconModule } from '@angular/material/icon';
     ProcedimientoAtencionComponent,
     HelpersComponent,
     SorteoComponent,
+    DialogLoader,
     GraciasComponent,
   ],
   imports: [
@@ -97,7 +100,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   exports : [
     AgenciaValorPipe
