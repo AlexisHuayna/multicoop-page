@@ -49,4 +49,8 @@ export class PrecalificadorComponent implements OnInit {
     this.mensajeExito.show();
   }
 
+  resolved(captchaResponse: string){
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
+
 }
