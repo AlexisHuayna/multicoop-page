@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TarifarioGrupalComponent } from './tarifario-grupal.component';
 
@@ -6,7 +6,7 @@ describe('TarifarioGrupalComponent', () => {
   let component: TarifarioGrupalComponent;
   let fixture: ComponentFixture<TarifarioGrupalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TarifarioGrupalComponent ]
     })
