@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PreCalificador } from 'src/app/other/interfaces';
 import { PrecalificadorService } from 'src/app/services/precalificador.service';
 import { Router } from '@angular/router';
-import { HelpersComponent } from 'src/app/helpers/helpers.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-precalificador',
@@ -12,15 +12,14 @@ import { HelpersComponent } from 'src/app/helpers/helpers.component';
 })
 export class PrecalificadorComponent implements OnInit {
 
-  @ViewChild(HelpersComponent)
-  private mensajeExito: HelpersComponent;
-
   precalificadorForm: FormGroup
   propsHelper = {mensaje : 'Gracias por precalificar estaremos en contacto.', titulo : null, ruta: '/'}
 
   constructor(
     public precalificadorService: PrecalificadorService,
-    private _builder: FormBuilder
+    private _builder: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {
     this.precalificadorForm = this._builder.group({
       nombres: ['', Validators.compose([Validators.required])],
@@ -29,7 +28,8 @@ export class PrecalificadorComponent implements OnInit {
       telefono: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{9}')])],
       localidad: ['01', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required])],
-      monto: ['', Validators.compose([Validators.required, Validators.pattern('([5-9][0-9]{2,}|[1-9][0-9]{3,})')])]
+      monto: ['', Validators.compose([Validators.required, Validators.pattern('([5-9][0-9]{2,}|[1-9][0-9]{3,})')])],
+      captcha: new FormControl(null, Validators.required)
     })
   }
 
@@ -40,13 +40,17 @@ export class PrecalificadorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addPreCalificador(precalificador: PreCalificador) {
-    this.precalificadorService.addPrecalificador(precalificador).subscribe(response => console.log(), err => console.log());
-  }
-
   precalificar(values) {
-    this.addPreCalificador(<PreCalificador>values)
-    this.mensajeExito.show();
+    this.precalificadorService.addPrecalificador(<PreCalificador>values)
+      .subscribe(response => {
+        this._snackBar.open('Estaremos en contacto contigo', 'cerrar',{
+          duration: 5000,
+          verticalPosition: 'top'
+        });
+        this.router.navigate(['/']);
+      }, err => {
+        console.log()
+      });
   }
 
   resolved(captchaResponse: string){

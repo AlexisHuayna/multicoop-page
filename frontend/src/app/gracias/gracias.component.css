@@ -1,9 +1,8 @@
-.container {
+.cont {
     height: 100%;
-    position: relative;
 }
   
-.center {
+.cent {
     margin: 0;
     position: absolute;
     top: 50%;

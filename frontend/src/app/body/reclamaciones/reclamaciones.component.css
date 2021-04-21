@@ -133,3 +133,7 @@ button:hover:enabled{
     cursor: pointer;
     color: rgb(1, 105, 192, 1);
 }
+
+.captcha {
+    color: red;
+}

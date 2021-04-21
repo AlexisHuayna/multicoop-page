@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { ReclamacionService } from 'src/app/services/reclamacion.service';
 import { Reclamacion } from 'src/app/other/interfaces';
 import { Router } from '@angular/router';
-import { HelpersComponent } from 'src/app/helpers/helpers.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reclamaciones',
@@ -12,9 +12,6 @@ import { HelpersComponent } from 'src/app/helpers/helpers.component';
   styleUrls: ['./reclamaciones.component.css']
 })
 export class ReclamacionesComponent implements OnInit {
-
-  @ViewChild(HelpersComponent)
-  private mensajeExito: HelpersComponent;
   
   departamentos = departamentos
   provincias = provincias
@@ -31,7 +28,8 @@ export class ReclamacionesComponent implements OnInit {
   constructor(
     private _builder: FormBuilder,
     private reclamacionService: ReclamacionService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.reclamacionesForm = this._builder.group({
       socio: [false,],
@@ -51,7 +49,9 @@ export class ReclamacionesComponent implements OnInit {
       otrosProducto: [{ value: '', disabled: true },],
       tipoReclamacion: ['', Validators.compose([Validators.required])],
       detalleReclamacion: ['', Validators.compose([Validators.required])],
-      condiciones: [false, Validators.compose([Validators.requiredTrue])]
+      condiciones: [false, Validators.compose([Validators.requiredTrue])],
+      captcha: new FormControl(null, Validators.required)
+
     })
   }
 
@@ -124,7 +124,22 @@ export class ReclamacionesComponent implements OnInit {
   }
 
   addReclamacion(reclamacion: Reclamacion): void {
-    this.reclamacionService.addReclamacion(reclamacion)
+    this.reclamacionService.addReclamacion(reclamacion).subscribe(
+      res => {
+        this._snackBar.open('Estaremos en contacto contigo', 'cerrar',{
+          duration: 5000,
+          verticalPosition: 'top'
+        });
+        this.router.navigate(['/']);
+      },
+      error => {
+        this._snackBar.open('Ups! Ocurrio un error, vuelva ha intentarlo', 'cerrar',{
+          duration: 5000,
+          verticalPosition: 'top'
+        });
+        this.router.navigate(['/']);
+      }
+    )
   }
 
   reclamar(values): void {
@@ -133,8 +148,10 @@ export class ReclamacionesComponent implements OnInit {
     }
 
     this.addReclamacion(<Reclamacion>values)
-    this.mensajeExito.show();
+  }
 
+  resolved(captchaResponse: string){
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 
 }

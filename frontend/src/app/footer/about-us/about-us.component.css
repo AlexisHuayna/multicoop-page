@@ -8,6 +8,15 @@
     width: 7%;
 }
 
+button:disabled{
+    color: black !important;
+}
+
+button {
+    font-family: "Signika";
+    overflow: unset;
+}
+
 .mx-auto{
     text-align: center;
 }
@@ -15,8 +24,8 @@
 .grid-container {
     display: grid;
 
-    grid-template-columns: auto auto 22% 22%;
-    grid-gap: 2rem;
+    grid-template-columns: 21% 15% 20% 22% 22%;
+    grid-gap: 1%;
     margin: 0 5%;
     font-family: 'Signika';
 }
@@ -24,7 +33,7 @@
 .grid-item h3{
     display: inline;
     color: #E7C11F;
-    font-size: 3vw;
+    font-size: 2.2vw;
 }
 
 .grid-item li a{
@@ -34,6 +43,7 @@
 .grid-item li{
     list-style: none;
     padding: 0rem;
+    font-size: 1vw;
 }
 
 .grid-item ul{

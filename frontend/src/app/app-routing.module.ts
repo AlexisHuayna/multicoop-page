@@ -118,6 +118,9 @@ const routes: Routes = [
     path: 'interno',
     loadChildren: () => import('./interno/interno.module').then(m => m.InternoModule)
   }, {
+    path: 'operaciones',
+    loadChildren: ()=> import('./operaciones/operaciones.module').then(m => m.OperacionesModule)
+  }, {
     path: '**',
     component: NotFoundComponent,
   }

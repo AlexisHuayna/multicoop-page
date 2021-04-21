@@ -1,0 +1,64 @@
+<h1>Soporte Operaciones</h1>
+<form
+    [formGroup]="soporteOperacionesForm"
+    (ngSubmit)="enviar(soporteOperacionesForm.value)">
+    <div>
+        <mat-label>Agencia</mat-label>
+        <mat-form-field appearance="fill">
+            <mat-label>Agencia</mat-label>
+            <mat-select formControlName="agencia">
+              <mat-option value="01">Arequipa</mat-option>
+              <mat-option value="02">Juliaca</mat-option>
+              <mat-option value="03">Puno</mat-option>
+              <mat-option value="04">Moquegua</mat-option>
+              <mat-option value="05">Ayaviri</mat-option>
+              <mat-option value="06">Tacna</mat-option>
+              <mat-option value="07">Cusco</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-label>Ventanilla</mat-label>
+        <mat-form-field appearance="fill">
+            <mat-label>Ventanilla</mat-label>
+            <input formControlName="ventanilla" matInput>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-label>Numero de operacion</mat-label>
+        <mat-form-field appearance="fill">
+            <mat-label>Numero de operacion</mat-label>
+            <input formControlName="numeroOperacion" matInput>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-label>Operacion a realizar</mat-label>
+        <mat-form-field appearance="fill">
+            <mat-label>Operacion a realizar</mat-label>
+            <mat-select formControlName="operacion">
+              <mat-option value="01">Modificacion</mat-option>
+              <mat-option value="02">Cronograma</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-label>Detalle</mat-label>
+        <mat-form-field appearance="fill">
+            <mat-label>Detalle</mat-label>
+            <textarea formControlName="detalle" matInput></textarea>
+        </mat-form-field>
+    </div>
+    
+    <div>
+        <button
+            class="enviar"
+            type="submit"
+            mat-flat-button>
+            Enviar
+        </button>
+    </div>
+</form>

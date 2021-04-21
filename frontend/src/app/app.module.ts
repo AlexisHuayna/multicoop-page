@@ -48,6 +48,7 @@ import { GraciasComponent } from './gracias/gracias.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 @NgModule({
@@ -104,6 +105,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     MatIconModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     RecaptchaModule,
     RecaptchaFormsModule
   ],

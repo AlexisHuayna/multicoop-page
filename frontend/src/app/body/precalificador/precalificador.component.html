@@ -64,10 +64,13 @@
                 <input formControlName="monto" type="number" class="" placeholder="1500">
                 <div class="helper-informacion" *ngIf="!precalificadorForm.get('monto').value">El monto debe ser mayor a 500 y menor a 3000</div>
             </div>
-            <re-captcha
-                (resolved)="resolved($event)"
-                siteKey="6LdYsZUUAAAAAPJB7CCpYgXro6JFA1-nm41nNZJS">
-            </re-captcha>
+            <div class="precalificador-field">
+                <re-captcha
+                    (resolved)="resolved($event)"
+                    siteKey="6LdYsZUUAAAAAPJB7CCpYgXro6JFA1-nm41nNZJS"
+                    formControlName="captcha">
+                </re-captcha>
+            </div>
             <div class="precalificador-send">
                 <button
                     [disabled]="precalificadorForm.invalid"
@@ -83,7 +86,3 @@
         <img src="assets/images/fondo_pre_califica.jpg" alt="precalifica">
     </div>
 </div>
-
-<!--
-    <app-helpers [props]="propsHelper"></app-helpers>
--->

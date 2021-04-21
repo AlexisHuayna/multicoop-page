@@ -190,6 +190,14 @@
                 <label>Detalles</label>
                 <textarea formControlName="detalleReclamacion" class="" rows="3" maxlength="800"></textarea>
             </div>
+
+            <div class="captcha">
+                <re-captcha
+                    (resolved)="resolved($event)"
+                    siteKey="6LdYsZUUAAAAAPJB7CCpYgXro6JFA1-nm41nNZJS"
+                    formControlName="captcha">
+                </re-captcha>
+            </div>
     
             <div class="">
                 <input formControlName="condiciones" type="checkbox" class="">
@@ -199,7 +207,7 @@
                 <div class="helper-informacion" *ngIf="!reclamacionesForm.get('condiciones').value">Debe aceptar el tratamiento de
                     información para poder enviar su reclamo</div>
             </div>
-    
+
             <!--<button [disabled]="reclamacionesForm.invalid" type="submit" class="">Enviar</button>-->
             <div class="reclamaciones-send">
                 <button type="submit" [disabled]="reclamacionesForm.invalid" class="">Enviar</button>
@@ -209,5 +217,3 @@
 
     </form>
 </div>
-
-<app-helpers [props]="propsHelper"></app-helpers>
