@@ -5,7 +5,6 @@ import { interval, range } from 'rxjs';
 import { SorteoService } from '../services/sorteo.service';
 import { timer, } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
 
 interface server {
   resp: number;
@@ -17,21 +16,23 @@ interface server {
   styleUrls: ['./sorteo.component.css']
 })
 
-
 export class SorteoComponent implements OnInit {
 
   sorteoForm: FormGroup
   participantes = 5
   dis = false
   loader: any
-
+  errx
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private sorteoService: SorteoService,
-    public dialog: MatDialog
   ) {
+    if(this.isFacebookApp()){
+      window.open('https://www.multicoop.com.pe/sorteo', '_system');
+    }
+    
     this.deleteAllDOM();
     this.sorteoForm  = this.formBuilder.group({
       nombres: ['', Validators.compose([Validators.required])],
@@ -49,10 +50,16 @@ export class SorteoComponent implements OnInit {
       this.participantes = (x + 1)
     });
 
+
   }
 
   ngOnInit(): void {
     
+  }
+
+  isFacebookApp() {
+    var ua = navigator.userAgent || navigator.vendor; // || window.opera;
+    return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
   }
 
   deleteAllDOM() {
@@ -76,12 +83,13 @@ export class SorteoComponent implements OnInit {
         } else {
           console.log(response);
           this.closeLoader();
-          alert('Ops! Vuelva ha intentarlo');
+          alert(response);
         }
       }, err => {
-          alert('Ops! Vuelva ha intentarlo');
-          this.closeLoader();
+          alert(err.message);
+          this.errx = err;
           console.log(err);
+          this.closeLoader();
       });
     }
   }
@@ -93,18 +101,10 @@ export class SorteoComponent implements OnInit {
 
   launchLoader(){
     this.dis = true;
-    //this.loader = this.dialog.open(DialogLoader)
   }
 
   closeLoader(){
     this.dis = false;
-    //this.loader.close()
   }
 }
 
-
-@Component({
-  selector: 'dialog-loader',
-  templateUrl: 'dialog-loader.html'
-})
-export class DialogLoader {}

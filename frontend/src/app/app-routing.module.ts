@@ -106,11 +106,12 @@ const routes: Routes = [
     path: 'transparencia/tarifarioConsumoMype',
     component: TarifarioConsumoMypeComponent,
     pathMatch: 'full'
-  }, {
-    path:'sorteo',
-    component: SorteoComponent,
-    pathMatch: 'full',
-  }, {
+  }//, {
+   // path:'sorteo',
+    //component: SorteoComponent,
+   // pathMatch: 'full',
+  //}
+  , {
     path: 'ok',
     component: GraciasComponent,
     pathMatch: 'full'

@@ -39,7 +39,7 @@ import { TarifarioGrupalComponent } from './body/transparencia/tarifario-grupal/
 import { ProcedimientoAtencionComponent } from './body/transparencia/procedimiento-atencion/procedimiento-atencion.component';
 import { HelpersComponent } from './helpers/helpers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SorteoComponent, DialogLoader } from './sorteo/sorteo.component';
+import { SorteoComponent} from './sorteo/sorteo.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -88,8 +88,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     ProcedimientoAtencionComponent,
     HelpersComponent,
     SorteoComponent,
-    DialogLoader,
-    GraciasComponent,
+    GraciasComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
