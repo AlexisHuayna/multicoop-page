@@ -23,12 +23,15 @@ export class SorteoComponent implements OnInit {
   dis = false
   loader: any
   errx
+  pdfSrc = '../assets/docs/terminos_condiciones.pdf'
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private sorteoService: SorteoService,
   ) {
+    this.deleteAllDOM();
+    /*
     if(this.isFacebookApp()){
       window.open('https://www.multicoop.com.pe/sorteo', '_system');
     }
@@ -49,7 +52,8 @@ export class SorteoComponent implements OnInit {
     takeFive.subscribe(x => {
       this.participantes = (x + 1)
     });
-
+    */
+    //window.open('../assets/docs/terminos_condiciones.pdf', '_self', 'fullscreen=yes');
 
   }
 
