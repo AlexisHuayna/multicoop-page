@@ -1,157 +1,30 @@
-.reclamaciones-content{
-    padding-top: 1%;
-    padding-bottom: 2%;
-    background-color: #dedede;
-    background-size: 100% 100%;
+.acordion {
+    margin: 3% 0;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.example-radio-button {
+    margin: 5px;
 }
 
 .reclamaciones-content form{
-    font-style: normal;
-    font-family: 'Signika';
-    font-size: 1.5vw;
-    width: 70%;
-    margin: auto;
+    width: 85%;
+    margin: 0 auto 2% auto;
 }
 
-.reclamaciones-content input[type=text], input[type=date], select{
-    padding: .6% 1%;
-    margin-left: 1%;
-    color: #384f85;
-    font-size: 1.5vw;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.primera-fila, .segunda-fila, .tercera-fila, .cuarta-fila, .quinta-fila, .sexta-fila{
-    display: grid;
-    column-gap: .1%;
-    grid-template-columns: 30% auto;
-    margin: 1% 0;
-    font-weight: 300;
-}
-
-.septima-fila, .octava-fila, .novena-fila{
-    font-weight: 300;
-    margin: 1% 0;
-}
-
-.socio-field{
-    margin-right: 2%;
-    display: inline;
-}
-
-.agencia-field{
-    display: inline;
-}
-
-.nombres-field{
-    margin-right: 2%;
-    display: inline;
-}
-
-.apellidos-field{
-    display: inline;
-}
-
-.direccion-field{
-    margin: auto 0%;
-}
-
-.reclamaciones-send{
-    text-align: center;
-    margin-top: 2%;
-}
-
-.ubigeo-fila{
-    text-align: center;
-    display: grid;
-    grid-template-columns: 32% 32% auto;
-}
-
-.octava-fila input[type=radio], .septima-fila input[type=radio]{
-    margin-top: 1%;
-}
-
-.novena-fila label{
-    display: block;
-}
-
-.novena-fila textarea{
-    margin-top: 1%;
-    font-family: 'Signika' !important;
-    font-size: 1.5vw;
-    width: 100%;
-    height: 20%;
-    font-weight: lighter;
-}
-
-.separador-title{
-    text-align: center;
-    font-size: 2vw;
-    font-weight: 600;
-    font-style: normal;
-    margin: 2vw 0;
-}
-
-.helper-informacion{
-    font-size: 1vw;
-    color: red;
-}
-
-.separador{
-    border: 1px solid black;
-}
-
-button:disabled{
-    width: 40%;
-    color: white;
-    font-size: 1.8vw;
-    font-family: "Signika", Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background-color: #ccc;
-    border: none;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: .5rem;
-}
-
-button{
-    width: 40%;
-    color: white;
-    font-size: 1.8vw;
-    font-family: "Signika", Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    background-color: #f4bc07;
-    border: none;
-    display: inline-block;
-    text-decoration: none;
-    border-radius: .5rem;
-}
-
-button:hover:enabled{
-    cursor: pointer;
-    color: rgb(1, 105, 192, 1);
-}
-
-.fcontainer{
-    display: flex;
-}
-
-.element{
-    flex-grow: 1;
+.reclamaciones-send {
     text-align: center;
 }
 
-.example-chip-list {
+.example-chip-list{
     width: 100%;
 }
 
-.inc {
+.datos {
     margin: 1% 0;
-}
-
-.datosD {
-    margin-top: 2%;
 }

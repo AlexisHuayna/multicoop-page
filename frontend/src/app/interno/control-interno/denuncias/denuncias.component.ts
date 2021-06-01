@@ -22,7 +22,8 @@ export class DenunciasComponent implements OnInit {
   @ViewChild('DatosDenunciante') contenedorDatos;
 
   denunciasForm: FormGroup
-  anonimo = true
+  //anonimo: string;
+  anonimo = true;
 
   visible = true;
   selectable = true;
@@ -32,6 +33,8 @@ export class DenunciasComponent implements OnInit {
   filteredFruits: Observable<string[]>;
   fruits: string[] = [];
   allFruits: string[] = [];
+
+  panelOpenState = false;
 
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -116,7 +119,8 @@ export class DenunciasComponent implements OnInit {
   }
 
   anonimoController(evt){
-    let opcion = evt.target.value
+    console.log(evt)
+    let opcion = evt.value
     
     if (opcion === 'no') {
       this.anonimo = false
@@ -167,6 +171,7 @@ export class DenunciasComponent implements OnInit {
     } else {
       console.log("ERROR");
     }
+    
   }
 
   disableOtros() {

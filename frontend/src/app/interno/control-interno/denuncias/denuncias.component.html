@@ -1,198 +1,207 @@
-<div class="reclamaciones-content">
+ <div class="reclamaciones-content">
     <form [formGroup]="denunciasForm" class="" (ngSubmit)="denunciar(denunciasForm.value)">
 
-        <div class="agencia-datos">
-            <p class="separador-title">Identificacion de la agencia</p>
-            <div class="segunda-fila">
-                <div class="agencia-field">
-                    <label>Agencia</label>
-                </div>
-                <select formControlName="agencia">
-                    <option value="01">Arequipa</option>
-                    <option value="02">Juliaca</option>
-                    <option value="03">Puno</option>
-                    <option value="04">Moquegua</option>
-                    <option value="05">Ayaviri</option>
-                    <option value="06">Tacna</option>
-                    <option value="07">Cusco</option>
-                </select>
-    
-            </div>
-        </div>
-
-        <div class="reclamador-datos">
-            <p class="separador-title">Identificacion del denunciante</p>
-            
-            <div class="segunda-fila">
-                <div class="nombres-field">
-                    <label>¿Es anónima?</label>
-                </div>
-                <div class="fcontainer">
-                    <div class="element">
-                        <input formControlName="anonimo" type="radio" name="anonimo" value="si"
-                            (click)="anonimoController($event)"/>
-                        <label>Si</label>
-                    </div>
-                    <div class="element">
-                        <input formControlName="anonimo" type="radio" name="anonimo" value="no"
-                            (click)="anonimoController($event)"/>
-                        <label>No</label>
-                    </div>
-                </div>
-            </div>
-
-            <div [style.display]="anonimo ? 'none': 'block'" class="datosD">
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            class="acordion">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    I. Identificacion de la agencia
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="agencia-datos">
                 <div class="segunda-fila">
-                    <div class="nombres-field">
-                        <label>Nombres</label>
-                    </div>
-                    <input formControlName="nombres" type="text" placeholder="Diego Armando">
-                </div>
-                
-                <div class="tercera-fila">
-                    <div class="apellidos-field">
-                        <label for="inputApellidos">Apellidos</label>
-                    </div>
-                    <input formControlName="apellidos" type="text" placeholder="Rivera Corrales">
-                </div>
-        
-                <div class="tercera-fila">
-                    <div class="tipo-documento">
-                        <label>Documento</label>
-                    </div>
-                    <select formControlName="tipoDocumento" >
-                        <option value="dni">DNI</option>
-                        <option value="ce">Carnet de Extrangería</option>
-                    </select>
-                </div>
-                
-                <div class="cuarta-fila">
-                    <div class="numero-documento">
-                        <label>Número de documento</label>
-                    </div>
-                    <input formControlName="numeroDocumento" type="text" placeholder="65841298">
-                </div>
-        
-                <div class="quinta-fila">
-                    <div class="telefono-field">
-                        <label>Telefono</label>
-                    </div>
-                    <input formControlName="telefono" type="text" placeholder="926485135">
-                </div>
-                
-                <div class="quinta-fila">
-                    <div class="correo-field">
-                        <label>Correo</label>
-                    </div>
-                    <input formControlName="correo" type="text" placeholder="socio01@multicoop.com.pe">
-                </div>
-
-                <div class="quinta-fila">
-                    <div class="correo-field">
-                        <label>Puesto</label>
-                    </div>
-                    <input formControlName="puesto" type="text" placeholder="Analista Junior">
+                    <mat-form-field class="example-chip-list">
+                        <mat-label>Agencia</mat-label>
+                        <mat-select formControlName="agencia" matNativeControl>
+                            <mat-option value="01">Arequipa</mat-option>
+                            <mat-option value="02">Juliaca</mat-option>
+                            <mat-option value="03">Puno</mat-option>
+                            <mat-option value="04">Moquegua</mat-option>
+                            <mat-option value="05">Ayaviri</mat-option>
+                            <mat-option value="06">Tacna</mat-option>
+                            <mat-option value="07">Cusco</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
             </div>
-        </div>
+        </mat-expansion-panel>
 
-        <div class="bien-contratado">
-            <p class="separador-title">Identificacion del incidente</p>
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            class="acordion">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    II. Identificacion del denunciante
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="reclamador-datos">
+                <div class="segunda-fila">
+                    <div>
+                        <label>¿Es anónima?</label>
+                    </div>
+                    <div>
+                        <mat-radio-group
+                            aria-label="Anonimo"
+                            formControlName="anonimo"
+                            color="primary">
+                            <mat-radio-button class="example-radio-button" value="si" (change)="anonimoController($event)">Si</mat-radio-button>
+                            <mat-radio-button class="example-radio-button" value="no" (change)="anonimoController($event)">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+    
+                <div [style.display]="anonimo ? 'none': 'block'" >
+                    <div >
+                        <mat-form-field class="example-chip-list datos">
+                            <mat-label>Nombres</mat-label>
+                            <input formControlName="nombres" type="text" placeholder="Diego Armando" matInput>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div >
+                        <mat-form-field class="example-chip-list datos">
+                            <mat-label>Apellidos</mat-label>
+                            <input formControlName="apellidos" type="text" placeholder="Rivera Corrales" matInput>
+                        </mat-form-field>
+                    </div>
+            
+                    <div >
+                        <mat-form-field class="example-chip-list datos">
+                            <mat-label>Documento</mat-label>
+                            <mat-select color="primary" formControlName="tipoDocumento" matNativeControl>
+                                <mat-option value="dni">DNI</mat-option>
+                                <mat-option value="ce">Carnet de Extrangería</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div >
+                        <mat-form-field class="example-chip-list datos">
+                            <mat-label>Número de documento</mat-label>
+                            <input formControlName="numeroDocumento" type="text" placeholder="65841298" matInput>
+                        </mat-form-field>
+                    </div>
+            
+                    <div >
+                        <mat-form-field class="example-chip-list datos">
+                            <mat-label>Teléfono</mat-label>
+                            <input formControlName="telefono" type="text" placeholder="926485135" matInput>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div>
+                        <mat-form-field class="example-chip-list datos">
+                            <mat-label>Correo</mat-label>
+                            <input formControlName="correo" type="text" placeholder="empleado@multicoop.com.pe" matInput>
+                        </mat-form-field>
+                    </div>
+    
+                    <div >
+                        <mat-form-field class="example-chip-list datos">
+                            <mat-label>Puesto</mat-label>
+                            <input formControlName="puesto" type="text" placeholder="Analista Junior" matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
 
-            <div class="sexta-fila">
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            class="acordion">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    III. Identificacion del incidente
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="bien-contratado">
+                <div class="sexta-fila">
+
+                    <mat-form-field>
+                        <mat-label>Fecha de Incidencia</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="incidencia">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+        
+                <div class="septima-fila">
+                    <label>Incidente</label>
+                    <mat-radio-group color="primary" class="example-radio-group" aria-label="incidente" formControlName="incidente">
+                        <mat-radio-button class="example-radio-button" value="Hostigamiento Laboral" (change)="disableOtros()">Hostigamiento laboral</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Descuentos" (change)="disableOtros()">Descuentos</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Abuso de autoridad" (change)="disableOtros()">Abuso de autoridad</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Bullying" (change)="disableOtros()">Bullying</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Fraude o corrupcion" (change)="disableOtros()">Fraude o corrupcion</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="otros" (change)="enableOtros()">
+                            <mat-form-field>
+                                <mat-label>Otros</mat-label>
+                                <input formControlName="otrosIncidente" type="text" matInput>
+                            </mat-form-field>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            class="acordion">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    IV. Detalle del Incidente
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="detalles-reclamo-queja">
+                <div class="novena-fila">
+                    <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipList aria-label="Fruit selection">
+                          <mat-chip
+                            *ngFor="let fruit of fruits"
+                            [selectable]="selectable"
+                            [removable]="removable"
+                            (removed)="remove(fruit)">
+                            {{fruit}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                          </mat-chip>
+                          <input
+                            placeholder="Involucrados..."
+                            #fruitInput
+                            [formControl]="fruitCtrl"
+                            [matAutocomplete]="auto"
+                            [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                          <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                            {{fruit}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+    
+                    <mat-form-field class="example-chip-list">
+                        <mat-label>Detalle</mat-label>
+                        <textarea formControlName="detalleIncidente" class="" rows="3" maxlength="1000" matInput></textarea>
+                    </mat-form-field>
+                </div>
+        
                 <div class="">
-                    <label>Fecha de Incidencia</label>
-                </div>
-                <input formControlName="incidencia" type="date">
-            </div>
-    
-            <div class="septima-fila">
-                <label>Incidente</label>
-                <div >
-                    <div class="inc">
-                        <input formControlName="incidente" type="radio" class="" name="incidente" value="Hostigamiento Laboral"
-                            (click)="disableOtros()">
-                        <label>Hostigamiento laboral</label>
-                    </div>
-    
-                    <div class="inc">
-                        <input formControlName="incidente" type="radio" name="incidente" value="Descuentos"
-                            (click)="disableOtros()">
-                        <label>Descuentos</label>
-                    </div>
-    
-                    <div class="inc">
-                        <input formControlName="incidente" type="radio" name="incidente" value="Abuso de autoridad"
-                            (click)="disableOtros()">
-                        <label>Abuso de autoridad</label>
-                    </div>
-
-                    <div class="inc">
-                        <input formControlName="incidente" type="radio" name="incidente" value="Bullying"
-                            (click)="disableOtros()">
-                        <label>Bullying</label>
-                    </div>
-    
-                    <div class="inc">
-                        <input formControlName="incidente" type="radio" name="incidente" value="Fraude o corrupcion"
-                            (click)="disableOtros()">
-                        <label>Fraude y corrupcion</label>
-                    </div>
-
-                    <div class="inc">
-                        <input formControlName="incidente" type="radio" name="incidente" value="otros"
-                            (click)="enableOtros()">
-                        <label>Otros</label>
-                        <input formControlName="otrosIncidente" type="text">
-                    </div>
+                    <mat-checkbox color="primary" formControlName="veracidad">
+                        Declaro expresamente que la informacion que estoy brindando es verdadera.
+                    </mat-checkbox>
                 </div>
             </div>
+        </mat-expansion-panel>
+
+        <div class="reclamaciones-send">
+            <button mat-raised-button color="primary" type="submit" [disabled]="denunciasForm.invalid" >Enviar</button>
         </div>
-
-        <div class="detalles-reclamo-queja">
-            <p class="separador-title">Detalle del incidente</p>
-            <div class="novena-fila">
-                <mat-form-field class="example-chip-list">
-                    <mat-chip-list #chipList aria-label="Fruit selection">
-                      <mat-chip
-                        *ngFor="let fruit of fruits"
-                        [selectable]="selectable"
-                        [removable]="removable"
-                        (removed)="remove(fruit)">
-                        {{fruit}}
-                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                      </mat-chip>
-                      <input
-                        placeholder="Involucrados..."
-                        #fruitInput
-                        [formControl]="fruitCtrl"
-                        [matAutocomplete]="auto"
-                        [matChipInputFor]="chipList"
-                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                        (matChipInputTokenEnd)="add($event)">
-                    </mat-chip-list>
-                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-                        {{fruit}}
-                      </mat-option>
-                    </mat-autocomplete>
-                  </mat-form-field>
-
-                <label>Detalle</label>
-                <textarea formControlName="detalleIncidente" class="" rows="3" maxlength="1000"></textarea>
-            </div>
-    
-            <div class="">
-                <input formControlName="veracidad" type="checkbox">
-                <label class="">Declaro expresamente que la informacion que estoy brindando es verdadera.</label>
-            </div>
-
-            <div class="reclamaciones-send">
-                <button type="submit" [disabled]="denunciasForm.invalid" class="">Enviar</button>
-            </div>
-
-        </div>
-
     </form>
 </div>
 
