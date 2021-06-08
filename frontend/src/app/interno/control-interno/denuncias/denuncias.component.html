@@ -200,7 +200,7 @@
         </mat-expansion-panel>
 
         <div class="reclamaciones-send">
-            <button mat-raised-button color="primary" type="submit" [disabled]="denunciasForm.invalid" >Enviar</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="denunciasForm.invalid || disable" >Enviar</button>
         </div>
     </form>
 </div>

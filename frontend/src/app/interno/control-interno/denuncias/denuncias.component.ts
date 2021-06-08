@@ -25,6 +25,8 @@ export class DenunciasComponent implements OnInit {
   //anonimo: string;
   anonimo = true;
 
+  disable = false;
+
   visible = true;
   selectable = true;
   removable = true;
@@ -119,8 +121,7 @@ export class DenunciasComponent implements OnInit {
   }
 
   anonimoController(evt){
-    console.log(evt)
-    let opcion = evt.value
+    let opcion = evt.value;
     
     if (opcion === 'no') {
       this.anonimo = false
@@ -191,18 +192,23 @@ export class DenunciasComponent implements OnInit {
   }
 
   denunciar(values): void {
+    this.disable = true;
     values['involucrados'] = this.fruits.join('|');
     
     if (values['incidente'] === 'otros') {
       values['incidente'] = values['otrosIncidente'];
     }
 
+    values['incidencia'] = (new Date(values['incidencia'])).toISOString().substring(0, 10);
+
     this.denunciasService.addDenuncia(values).subscribe(
       res => {
+        this.disable = false;
         this.router.navigate(['/']);
         alert("Su denuncia fue procesada estaremos en contacto.");
         document.getElementById('shared').style.display = 'block';
       }, err => {
+        this.disable = false;
         console.log(err);
         alert("Algo malo ocurrio, intentelo mas tarde");
         document.getElementById('shared').style.display = 'block';
