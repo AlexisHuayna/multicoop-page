@@ -22,7 +22,7 @@ export class DenunciasComponent implements OnInit {
   @ViewChild('DatosDenunciante') contenedorDatos;
 
   denunciasForm: FormGroup
-  //anonimo: string;
+
   anonimo = true;
 
   disable = false;
@@ -35,6 +35,7 @@ export class DenunciasComponent implements OnInit {
   filteredFruits: Observable<string[]>;
   fruits: string[] = [];
   allFruits: string[] = [];
+  involucradosHelper = "";
 
   panelOpenState = false;
 
@@ -60,6 +61,7 @@ export class DenunciasComponent implements OnInit {
       incidente: ['', Validators.compose([Validators.required])],
       otrosIncidente: [{ value: '', disabled: true },],
       involucrados: ['',],
+      involucradosHelp: [''],
       detalleIncidente: ['', Validators.compose([Validators.required])],
       veracidad: [false, Validators.compose([Validators.requiredTrue])]
     });
@@ -193,6 +195,8 @@ export class DenunciasComponent implements OnInit {
 
   denunciar(values): void {
     this.disable = true;
+    this.fruits.push(this.involucradosHelper);
+
     values['involucrados'] = this.fruits.join('|');
     
     if (values['incidente'] === 'otros') {
@@ -204,17 +208,19 @@ export class DenunciasComponent implements OnInit {
     this.denunciasService.addDenuncia(values).subscribe(
       res => {
         this.disable = false;
-        this.router.navigate(['/']);
         alert("Su denuncia fue procesada estaremos en contacto.");
         document.getElementById('shared').style.display = 'block';
+        this.involucradosHelper = "";
+        this.router.navigate(['/']);
       }, err => {
         this.disable = false;
-        console.log(err);
         alert("Algo malo ocurrio, intentelo mas tarde");
         document.getElementById('shared').style.display = 'block';
+        this.involucradosHelper = "";
         this.router.navigate(['/']);
       }
     );
+    
   }
 
   deleteAllDOM() {

@@ -1,9 +1,5 @@
 <div *ngIf="statusView" class="container-form">
 
-<!--
-	<h1>Enviar CV a ecruz@multicoop.com.pe</h1>
--->
-	
 		<form
 		[formGroup]="postulanteForm"
 		(ngSubmit)="postular(postulanteForm.value)"
@@ -65,7 +61,7 @@
 					accept="application/pdf, application/vnd.ms-excel"
 					(change)="updateFileName($event.target.files)"
 					/>
-					<label for="file">
+				<label for="file">
 						<div class="cv-label">
 							<p id="fileName">{{file_name}}</p>
 						</div>

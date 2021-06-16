@@ -1,6 +1,5 @@
  <div class="reclamaciones-content">
-    <form [formGroup]="denunciasForm" class="" (ngSubmit)="denunciar(denunciasForm.value)">
-
+    <form [formGroup]="denunciasForm" class="" (ngSubmit)="denunciar(denunciasForm.value)" enctype="multipart/form-data">
         <mat-expansion-panel
             (opened)="panelOpenState = true"
             (closed)="panelOpenState = false"
@@ -123,7 +122,7 @@
 
                     <mat-form-field>
                         <mat-label>Fecha de Incidencia</mat-label>
-                        <input matInput [matDatepicker]="picker" formControlName="incidencia">
+                        <input matInput [matDatepicker]="picker" (focus)="picker.open()" formControlName="incidencia" readonly>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -133,10 +132,14 @@
                     <label>Incidente</label>
                     <mat-radio-group color="primary" class="example-radio-group" aria-label="incidente" formControlName="incidente">
                         <mat-radio-button class="example-radio-button" value="Hostigamiento Laboral" (change)="disableOtros()">Hostigamiento laboral</mat-radio-button>
-                        <mat-radio-button class="example-radio-button" value="Descuentos" (change)="disableOtros()">Descuentos</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Hostigamiento Sexual" (change)="disableOtros()">Hostigamiento sexual</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Descuentos por planilla" (change)="disableOtros()">Descuentos por planilla</mat-radio-button>
                         <mat-radio-button class="example-radio-button" value="Abuso de autoridad" (change)="disableOtros()">Abuso de autoridad</mat-radio-button>
                         <mat-radio-button class="example-radio-button" value="Bullying" (change)="disableOtros()">Bullying</mat-radio-button>
-                        <mat-radio-button class="example-radio-button" value="Fraude o corrupcion" (change)="disableOtros()">Fraude o corrupcion</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Fraude" (change)="disableOtros()">Fraude</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Corrupcion" (change)="disableOtros()">Corrupción</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Omision de corrupcion" (change)="disableOtros()">Omisión de normativa</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="Practicas Ilicitas" (change)="disableOtros()">Practicas ilicitas</mat-radio-button>
                         <mat-radio-button class="example-radio-button" value="otros" (change)="enableOtros()">
                             <mat-form-field>
                                 <mat-label>Otros</mat-label>
@@ -176,7 +179,8 @@
                             [matAutocomplete]="auto"
                             [matChipInputFor]="chipList"
                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                            (matChipInputTokenEnd)="add($event)">
+                            (matChipInputTokenEnd)="add($event)"
+                            [(ngModel)]="involucradosHelper">
                         </mat-chip-list>
                         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
                           <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
@@ -198,7 +202,35 @@
                 </div>
             </div>
         </mat-expansion-panel>
-
+<!--
+        <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            class="acordion">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    V. Evidencias
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div>
+                <input
+				formControlName="curriculum"
+				name="file"
+				type="file"
+				id="file"
+				class="inputfile"
+					accept="application/pdf, application/vnd.ms-excel"
+					(change)="updateFileName($event.target.files)"
+					/>
+				<label for="file">
+						<div class="cv-label">
+							<p id="fileName">{{file_name}}</p>
+						</div>
+					<img src="assets/icons/adjuntar_cv.svg" alt="cv">
+				</label>
+            </div>
+        </mat-expansion-panel>
+-->
         <div class="reclamaciones-send">
             <button mat-raised-button color="primary" type="submit" [disabled]="denunciasForm.invalid || disable" >Enviar</button>
         </div>
