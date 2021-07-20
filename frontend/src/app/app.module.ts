@@ -43,7 +43,7 @@ import { SorteoComponent} from './sorteo/sorteo.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { GraciasComponent } from './gracias/gracias.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -106,7 +106,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,    
   ],
   exports : [
     AgenciaValorPipe

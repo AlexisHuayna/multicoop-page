@@ -202,7 +202,7 @@
                 </div>
             </div>
         </mat-expansion-panel>
-<!--
+
         <mat-expansion-panel
             (opened)="panelOpenState = true"
             (closed)="panelOpenState = false"
@@ -212,29 +212,28 @@
                     V. Evidencias
                 </mat-panel-title>
             </mat-expansion-panel-header>
+            <p>En caso se tenga alguna evidencia adjuntar el archivo correspondiente.</p>
             <div>
                 <input
-				formControlName="curriculum"
+				formControlName="evidencias"
 				name="file"
 				type="file"
 				id="file"
 				class="inputfile"
-					accept="application/pdf, application/vnd.ms-excel"
-					(change)="updateFileName($event.target.files)"
-					/>
-				<label for="file">
-						<div class="cv-label">
-							<p id="fileName">{{file_name}}</p>
-						</div>
-					<img src="assets/icons/adjuntar_cv.svg" alt="cv">
-				</label>
+				(change)="updateFileName($event.target.files)"/>
             </div>
         </mat-expansion-panel>
--->
+
         <div class="reclamaciones-send">
             <button mat-raised-button color="primary" type="submit" [disabled]="denunciasForm.invalid || disable" >Enviar</button>
         </div>
     </form>
 </div>
-
+<ngx-ui-loader
+    text="Estamos procesando su denuncia..."
+    [fgsType]="loader"
+    fgsColor="#3f51b5"
+    pbColor="#3f51b5"
+    textColor="#3D3D3D"
+    overlayColor="rgba(211,211,211,0.26)"></ngx-ui-loader>
 

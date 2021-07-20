@@ -16,6 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [DenunciasComponent],
@@ -35,7 +36,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxUiLoaderModule
   ]
 })
 export class ControlInternoModule { }

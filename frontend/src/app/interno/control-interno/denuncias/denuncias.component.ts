@@ -7,6 +7,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { NgxUiLoaderService, SPINNER } from 'ngx-ui-loader';
 
 export interface Personal{
   Personal: string;
@@ -38,6 +39,9 @@ export class DenunciasComponent implements OnInit {
   involucradosHelper = "";
 
   panelOpenState = false;
+	fileSelected: File = null;
+  
+  loader = SPINNER.squareLoader;
 
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -45,7 +49,8 @@ export class DenunciasComponent implements OnInit {
   constructor(
     private _builder: FormBuilder,
     private denunciasService: DenunciasService,
-    private router: Router
+    private router: Router,
+    private ngxLoader: NgxUiLoaderService
   ) {
     this.denunciasForm = this._builder.group({
       agencia: ['01', Validators.compose([Validators.required])],
@@ -63,7 +68,8 @@ export class DenunciasComponent implements OnInit {
       involucrados: ['',],
       involucradosHelp: [''],
       detalleIncidente: ['', Validators.compose([Validators.required])],
-      veracidad: [false, Validators.compose([Validators.requiredTrue])]
+      veracidad: [false, Validators.compose([Validators.requiredTrue])],
+      evidencias: [null]
     });
 
     this.denunciasService.getPersonal().subscribe(
@@ -194,8 +200,15 @@ export class DenunciasComponent implements OnInit {
   }
 
   denunciar(values): void {
+    this.ngxLoader.start();
+    const formData = new FormData();
+
     this.disable = true;
     this.fruits.push(this.involucradosHelper);
+
+    this.involucradosHelper = "";
+
+    values['evidencias'] = this.fileSelected;
 
     values['involucrados'] = this.fruits.join('|');
     
@@ -205,18 +218,33 @@ export class DenunciasComponent implements OnInit {
 
     values['incidencia'] = (new Date(values['incidencia'])).toISOString().substring(0, 10);
 
-    this.denunciasService.addDenuncia(values).subscribe(
+    formData.append('agencia', values['agencia']);
+    formData.append('anonimo', values['anonimo']);
+    formData.append('nombres', values['nombres']);
+    formData.append('apellidos', values['apellidos']);
+    formData.append('tipoDocumento', values['tipoDocumento']);
+    formData.append('numeroDocumento', values['numeroDocumento']);
+    formData.append('telefono', values['telefono']);
+    formData.append('correo', values['correo']);
+    formData.append('puesto', values['puesto']);
+    formData.append('incidencia', values['incidencia']);
+    formData.append('incidente', values['incidente']);
+    formData.append('involucrados', values['involucrados']);
+    formData.append('detalleIncidente', values['detalleIncidente']);
+    formData.append('evidencias', this.fileSelected);
+
+    this.denunciasService.addDenuncia(formData).subscribe(
       res => {
         this.disable = false;
+        this.ngxLoader.stop();
         alert("Su denuncia fue procesada estaremos en contacto.");
         document.getElementById('shared').style.display = 'block';
-        this.involucradosHelper = "";
         this.router.navigate(['/']);
       }, err => {
         this.disable = false;
+        this.ngxLoader.stop();
         alert("Algo malo ocurrio, intentelo mas tarde");
         document.getElementById('shared').style.display = 'block';
-        this.involucradosHelper = "";
         this.router.navigate(['/']);
       }
     );
@@ -228,5 +256,9 @@ export class DenunciasComponent implements OnInit {
       document.getElementById('shared').style.display = 'none'
     }
   }
+  
+	updateFileName(files){
+    this.fileSelected = files[0];
+	}
 
 }
